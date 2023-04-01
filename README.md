@@ -11,8 +11,8 @@
 ### Installation - 
 
 ```
-npm install   \* Install the package.json file *\
-npm start     \* Start the frontend server. *\
+npm install  
+npm start     
 ```
 ### Features -
 
