@@ -8,13 +8,13 @@
 
 # For Frontend
 
-### Installation - 
+## Installation - 
 
 ```
 npm install  
 npm start     
 ```
-### Features -
+## Features -
 
 #### 1.) Create your own accounts.
 <p align="center">
