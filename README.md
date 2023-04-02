@@ -4,7 +4,7 @@
 
 <hr style="border:1px solid gray">
 
-### AnimeSuper is best website to great place to organize your favorite anime, manga and make you updated to anime community. 
+#### AnimeSuper is best website to great place to organize your favorite anime, manga and make you updated to anime community. 
 
 # For Frontend
 
@@ -41,8 +41,11 @@ npm start
   <img width="45%" src="https://user-images.githubusercontent.com/68547999/229363421-5f4a7623-475a-4ecb-8a17-ea530f792d9a.png">
 </p>
 
-#### 5.) Manage your anime/mange list, update your status. 
+#### 5.) Manage your anime/mange list, update your status and get updated to anime community. 
 <p align="center">
   <img width="45%" src="https://user-images.githubusercontent.com/68547999/229363451-1cc93aa3-cd6b-46d3-ab10-710232e9682a.png">
   <img width="45%" src="https://user-images.githubusercontent.com/68547999/229363472-733adae3-0622-4680-8ceb-db1e24f11e51.png">
 </p>
+
+
+## Technologies used -
