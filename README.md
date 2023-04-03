@@ -111,6 +111,7 @@ py manage.py runserver
 * [Redux Toolkit](https://redux-toolkit.js.org/)
 * [Swiper](https://swiperjs.com/)
 * [React Image File Resizer](https://www.npmjs.com/package/react-image-file-resizer)
+* [Firebase](https://firebase.google.com/)
 
 #### For Backend -
 * [Django](https://www.djangoproject.com/)
