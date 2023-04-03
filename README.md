@@ -49,3 +49,12 @@ npm start
 
 
 ## Technologies used -
+* [React](https://react.dev/)
+* [Figma](https://www.figma.com/)
+* [Iconify](https://iconify.design/)
+* [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer)
+* [Redux Toolkit](https://redux-toolkit.js.org/)
+* [Swiper](https://swiperjs.com/)
+* [React Image File Resizer](https://www.npmjs.com/package/react-image-file-resizer)
+
+
