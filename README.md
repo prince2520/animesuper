@@ -11,6 +11,7 @@
 ## Installation - 
 
 ```
+git clone https://github.com/prince2520/animeSuper-frontend.git
 npm install  
 npm start     
 ```
@@ -59,7 +60,7 @@ npm start
 
 ## Installation -
 ```
-git clone 
+git clone https://github.com/prince2520/animeSuper-backend.git
 pip install -r requirements.txt 
 py manage.py runserver
 ```
