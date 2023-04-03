@@ -16,11 +16,12 @@ npm start
 ```
 ## Features -
 
-#### 1.) Created the complete design in Figma. [Link](https://www.figma.com/file/hceRTLfnSDUt1bUrgR47Q0/Anime-Project?node-id=3-75) 
+#### 1.) Created the complete design of website in Figma. [Link](https://www.figma.com/file/hceRTLfnSDUt1bUrgR47Q0/Anime-Project?node-id=3-75) 
 <p align="center">
-  <img width="45%" src="https://user-images.githubusercontent.com/68547999/229363451-1cc93aa3-cd6b-46d3-ab10-710232e9682a.png">
-  <img width="45%" src="https://user-images.githubusercontent.com/68547999/229363472-733adae3-0622-4680-8ceb-db1e24f11e51.png">
+  <img width="45%" src="https://user-images.githubusercontent.com/68547999/229492141-ea8888d2-bb79-43fb-a8cf-865ac84ea0c6.png">
+  <img width="45%" src="https://user-images.githubusercontent.com/68547999/229492362-a0a9a6cf-80f0-4bb5-9259-6afc7f4d0a19.png">
 </p>
+
 
 #### 2.) Create your own accounts.
 <p align="center">
