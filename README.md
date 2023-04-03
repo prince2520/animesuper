@@ -103,7 +103,7 @@ py manage.py runserver
 | my_favorite/delete-favorite-item | email, categoryId, category |   -    | delete the anime/manga from the favoritelist  |
 
 
-## Technologies used -
+# Technologies used -
 #### For Frontend - 
 * [React](https://react.dev/)
 * [Figma](https://www.figma.com/)
