@@ -55,17 +55,6 @@ npm start
 </p>
 
 
-## Technologies used -
-* [React](https://react.dev/)
-* [Figma](https://www.figma.com/)
-* [Iconify](https://iconify.design/)
-* [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer)
-* [Redux Toolkit](https://redux-toolkit.js.org/)
-* [Swiper](https://swiperjs.com/)
-* [React Image File Resizer](https://www.npmjs.com/package/react-image-file-resizer)
-
-<br>
-
 # For Backend
 
 ## Installation -
@@ -112,5 +101,19 @@ py manage.py runserver
 | my_favorite/get-favorite-list |    email      |     -     | get the complete list of favoritelist of user   |
 | my_favorite/delete-favorite-item | email, categoryId, category |   -    | delete the anime/manga from the favoritelist  |
 
- 
+
+## Technologies used -
+#### For Frontend - 
+* [React](https://react.dev/)
+* [Figma](https://www.figma.com/)
+* [Iconify](https://iconify.design/)
+* [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer)
+* [Redux Toolkit](https://redux-toolkit.js.org/)
+* [Swiper](https://swiperjs.com/)
+* [React Image File Resizer](https://www.npmjs.com/package/react-image-file-resizer)
+
+#### For Backend -
+* [Django](https://www.djangoproject.com/)
+* [Django Rest Framework](https://www.django-rest-framework.org/)
+* [MyAnimelist API](https://myanimelist.net/apiconfig/references/api/v2)
 
