@@ -81,35 +81,36 @@ py manage.py runserver
 
 | endpoint     | query      | body     | description |
 | -------------- | ------------- | ----------- |------------------------------ |
-| authentication/signup |          | Test1         | to signup account  |
-| authentication/signin |          | Test1         | to login account  |
-| authentication/profile-detail |          | Test1         | get profile detail  |
-| authentication/profile-satistics |          | Test1         | get statistics of manga/anime of the user|
+| authentication/signup |      -    | username, email, password, confirmPassword | to signup account  |
+| authentication/signin |      -    | email, password      | to login account  |
+| authentication/profile-detail | email          | -         | get profile detail  |
+| authentication/profile-satistics |   email       | -         | get statistics of manga/anime of the user|
+| authentication/edit-profile |    -      | email         | get statistics of manga/anime of the user|
 
 #### Anime/Manga Endpoints -
 
 | endpoint     | query      | body     | description |
 | -------------- | ------------- | ----------- |------------------------------ |
-| animeManga/animeManga-list |          | Test1         | get the list of anime/manga according to ranking |
-| animeManga/animeManga-detail/<int:animeID> |          | Test1         | get the detail of the anime/manga  |
-| animeManga/animeManga-search |          | Test1         | search and get the result  |
+| animeManga/animeManga-list | category, rank_type, limit          | -         | get the list of anime/manga according to ranking |
+| animeManga/animeManga-detail/<int:animeID> | category          |  -        | get the detail of the anime/manga  |
+| animeManga/animeManga-search |  animeMangaName        |       -   | search and get the result  |
 
 #### Watchlist Endpoints -
 
 | endpoint     | query      | body     | description |
 | -------------- | ------------- | ----------- |------------------------------ |
-| my_watchlist/add-watchlist-item |          | Test1         | add anime/manga to watchlist of user |
-| my_watchlist/get-watchlist-list |          | Test1         | get the complete list of watchlist of user |
-| my_watchlist/delete-watchlist-item |          | Test1         | delete the anime/manga from the watchlist  |
-| my_watchlist/edit-watchlist-item|          | Test1         | edit the status of anime/manga  |
+| my_watchlist/add-watchlist-item |      -    |email, category, category_id, img_url, title, num_episode_or_chapter, media_type          | add anime/manga to watchlist of user |
+| my_watchlist/get-watchlist-list |  email    |      -    | get the complete list of watchlist of user |
+| my_watchlist/delete-watchlist-item |email, categoryId          |   -       | delete the anime/manga from the watchlist  |
+| my_watchlist/edit-watchlist-item|     -     | email, category_id, status, progress         | edit the status of anime/manga  |
 
 #### Favorite list Endpoints -
 
 | endpoint     | query      | body     | description |
 | -------------- | ------------- | ----------- |------------------------------ |
-| my_favorite/add-item-favorite |          | Test1         | add anime/manga to favorite list |
-| my_favorite/get-favorite-list |          | Test1         | get the complete list of favoritelist of user   |
-| my_favorite/delete-favorite-item |          | Test1         | delete the anime/manga from the favoritelist  |
+| my_favorite/add-item-favorite |   -     |email, category_id, category, img_url, title, score, year, num_episode_chapter, media_type          | add anime/manga to favorite list |
+| my_favorite/get-favorite-list |    email      |     -     | get the complete list of favoritelist of user   |
+| my_favorite/delete-favorite-item | email, categoryId, category |   -    | delete the anime/manga from the favoritelist  |
 
  
 
