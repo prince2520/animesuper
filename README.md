@@ -119,3 +119,8 @@ py manage.py runserver
 * [Django Rest Framework](https://www.django-rest-framework.org/)
 * [MyAnimelist API](https://myanimelist.net/apiconfig/references/api/v2)
 
+# Demo 
+
+https://user-images.githubusercontent.com/68547999/229545341-e9e0bb48-874a-4659-afe1-420c45d873a5.mp4
+
+
