@@ -68,9 +68,48 @@ npm start
 
 # For Backend
 
+## Installation -
 ```
 git clone 
 pip install -r requirements.txt 
 py manage.py runserver
 ```
+
+## API Endpoints -
+
+#### Authentication Endpoints -
+
+| endpoint     | query      | body     | description |
+| -------------- | ------------- | ----------- |------------------------------ |
+| authentication/signup |          | Test1         | to signup account  |
+| authentication/signin |          | Test1         | to login account  |
+| authentication/profile-detail |          | Test1         | get profile detail  |
+| authentication/profile-satistics |          | Test1         | get statistics of manga/anime of the user|
+
+#### Anime/Manga Endpoints -
+
+| endpoint     | query      | body     | description |
+| -------------- | ------------- | ----------- |------------------------------ |
+| animeManga/animeManga-list |          | Test1         | get the list of anime/manga according to ranking |
+| animeManga/animeManga-detail/<int:animeID> |          | Test1         | get the detail of the anime/manga  |
+| animeManga/animeManga-search |          | Test1         | search and get the result  |
+
+#### Watchlist Endpoints -
+
+| endpoint     | query      | body     | description |
+| -------------- | ------------- | ----------- |------------------------------ |
+| my_watchlist/add-watchlist-item |          | Test1         | add anime/manga to watchlist of user |
+| my_watchlist/get-watchlist-list |          | Test1         | get the complete list of watchlist of user |
+| my_watchlist/delete-watchlist-item |          | Test1         | delete the anime/manga from the watchlist  |
+| my_watchlist/edit-watchlist-item|          | Test1         | edit the status of anime/manga  |
+
+#### Favorite list Endpoints -
+
+| endpoint     | query      | body     | description |
+| -------------- | ------------- | ----------- |------------------------------ |
+| my_favorite/add-item-favorite |          | Test1         | add anime/manga to favorite list |
+| my_favorite/get-favorite-list |          | Test1         | get the complete list of favoritelist of user   |
+| my_favorite/delete-favorite-item |          | Test1         | delete the anime/manga from the favoritelist  |
+
+ 
 
