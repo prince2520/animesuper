@@ -1,7 +1,7 @@
-<p align="center">
-   <img align=left width="100" src="https://github.com/prince2520/animesuper/assets/68547999/4e8b9d99-1d13-4f76-93b3-eadd9c96738a">
+<p align="center" >
+   <img align=left height="75"  src="https://github.com/prince2520/animesuper/assets/68547999/4e8b9d99-1d13-4f76-93b3-eadd9c96738a">
    <img height="100" src="https://user-images.githubusercontent.com/68547999/229590865-45614c46-a5c2-4bb0-8851-e423d457369b.jpg">
-   <img align=right width="100" src="https://github.com/prince2520/animesuper/assets/68547999/51d4fcfc-e70d-4422-9e80-59284f1d34e7">
+   <img  align=right height="75" src="https://github.com/prince2520/animesuper/assets/68547999/51d4fcfc-e70d-4422-9e80-59284f1d34e7">
 </p>
 
 
