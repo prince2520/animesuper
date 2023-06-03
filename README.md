@@ -1,14 +1,25 @@
 <p align="center" >
    <img align=left width="10%"  src="https://github.com/prince2520/animesuper/assets/68547999/4e8b9d99-1d13-4f76-93b3-eadd9c96738a">
-   <img  width="30%" src="https://user-images.githubusercontent.com/68547999/229590865-45614c46-a5c2-4bb0-8851-e423d457369b.jpg">
+   <a href="https://animesuper.vercel.app">
+       <img  width="30%" src="https://user-images.githubusercontent.com/68547999/229590865-45614c46-a5c2-4bb0-8851-e423d457369b.jpg">
+   </a>
+
+  
    <img  align=right  width="10%" src="https://github.com/prince2520/animesuper/assets/68547999/51d4fcfc-e70d-4422-9e80-59284f1d34e7">
 </p>
 
 
 <hr style="border:1px solid gray">
 
-#### AnimeSuper is the ultimate destination for anime enthusiasts, providing a seamless platform to organize your favorite anime and manga while keeping you updated on the latest trends within the vibrant anime community.😊
-
+<p>
+   AnimeSuper is the ultimate destination for anime enthusiasts, providing a seamless platform to organize your favorite anime and manga while keeping you updated
+   on the latest trends within the vibrant anime community.😊
+   <h1>
+      <a href="https://animesuper.vercel.app">
+         Website Link
+      </a>
+   </h1>
+</p>
 
 # For Frontend
 
