@@ -14,11 +14,11 @@
 <p>
    AnimeSuper is the ultimate destination for anime enthusiasts, providing a seamless platform to organize your favorite anime and manga while keeping you updated
    on the latest trends within the vibrant anime community.😊
-   <h1>
+   <h2>
       <a href="https://animesuper.vercel.app">
          Website Link
       </a>
-   </h1>
+   </h2>
 </p>
 
 # For Frontend
