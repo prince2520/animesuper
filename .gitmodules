@@ -1,6 +1,6 @@
-[submodule "animeSuper-frontend"]
-	path = animeSuper-frontend
-	url = https://github.com/prince2520/animeSuper-frontend.git
-[submodule "animeSuper-backend"]
-	path = animeSuper-backend
-	url = https://github.com/prince2520/animeSuper-backend.git
+[submodule "animesuper-frontend"]
+	path = animesuper-frontend
+	url = https://github.com/prince2520/animesuper-frontend.git
+[submodule "animesuper-backend"]
+	path = animesuper-backend
+	url = https://github.com/prince2520/animesuper-backend.git
