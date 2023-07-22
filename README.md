@@ -9,7 +9,7 @@
 </p>
 
 
-<hr style="border:1px solid gray">
+<hr>
 
 <p>
    AnimeSuper is the ultimate destination for anime enthusiasts, providing a seamless platform to organize your favorite anime and manga while keeping you updated
