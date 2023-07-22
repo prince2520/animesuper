@@ -1,0 +1,27 @@
+
+.App {
+    height: 100vh;
+    background-color: #111314;
+}
+
+input {
+    border-style: solid;
+    border-color: #636262;
+    background-color: transparent;
+    color: white;
+    border-width: 0;
+    width: 90%;
+    height: 100%;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #111314  inset !important;
+    -webkit-text-fill-color: white !important;
+
+}

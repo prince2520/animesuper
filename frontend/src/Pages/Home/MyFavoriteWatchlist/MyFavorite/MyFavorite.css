@@ -1,0 +1,10 @@
+.favorite-img-container img {
+    position: relative;
+    top: -3rem;
+    object-fit: cover;
+    width: 100%;
+    opacity: 70%;
+    z-index: 1;
+}
+
+

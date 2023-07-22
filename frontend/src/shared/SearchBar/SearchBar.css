@@ -1,0 +1,20 @@
+.search-bar {
+    max-width: 50rem;
+    width: 70%;
+    border: 0.05rem solid #636262;
+    border-radius: 0.25rem;
+    padding: 0.35rem;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 800px) {
+    .search-bar {
+        padding: 0.05rem;
+        width: 100%;
+    }
+}

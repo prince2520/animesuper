@@ -1,0 +1,59 @@
+.bar {
+    width: 100%;
+    height: 100%;
+    background-color: #111314;
+    border: 2px solid #151719;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    min-width: 10rem;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bar .bar-top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1rem;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    width: 100%;
+
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+
+.option .description {
+    color: #636262;
+    font-size: 1.1rem;
+}
+
+
+.option .title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-column-gap: 0.5rem;
+
+    align-items: center;
+}
+
+.title div {
+    color: white;
+}
+
+.bar-top svg {
+    width: 100%;
+
+}

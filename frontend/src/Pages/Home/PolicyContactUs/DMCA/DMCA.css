@@ -1,0 +1,40 @@
+.dmca-page {
+    color: #636262;
+    margin: 0 1.5rem;
+}
+
+
+.dmca-route {
+    color: #636262;
+    font-size: 2rem;
+    font-weight: 600;
+    padding-bottom: 0.75rem;
+    border-bottom: 0.075rem solid #636262;
+}
+
+.dmca {
+    margin-top: 1.25rem;
+}
+
+.sub-heading {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 800px) {
+    .sub-heading {
+        font-size: 1.1rem;
+    }
+
+    .content{
+        font-size: 0.9rem;
+    }
+
+    .term-and-condition-page .heading,
+    .dmca-route ,
+    .contact-us-heading h1 {
+        font-size: 1.65rem;
+    }
+
+}

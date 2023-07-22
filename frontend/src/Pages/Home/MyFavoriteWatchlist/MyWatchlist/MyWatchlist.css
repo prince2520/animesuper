@@ -1,0 +1,107 @@
+
+.anime-status .anime-status-list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+    column-gap: 2rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+
+.anime-status-color .circle {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 0.25rem;
+}
+
+.anime-status .anime-status-color {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 0.25rem;
+    flex-direction: row;
+    column-gap: 1.25rem;
+}
+
+.anime-status-color .color-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-progress .progress-bar {
+    background-color: #2D3135;
+    width: 80%;
+    height: 0.75rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-bar .progress-bar-completed {
+    background: #dadada;
+    height: 100%;
+    width: 0;
+}
+
+.anime-status-list .selected {
+    color: white;
+    border-bottom: 0.15rem solid #F6764D;
+}
+
+.anime-manga-button span {
+    padding: 0.25rem 1rem;
+}
+
+.anime-manga-button .selected {
+    background-color: #F6764D;
+    color: white;
+    border-radius: 1.5rem;
+    box-shadow: -2px 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+@media screen and (max-width: 800px) {
+    .anime-status .anime-status-list {
+        column-gap: 1.5rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+
+
+    .anime-status .anime-status-color {
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+
+    .my-watchlist-page .my-watchlist-img-container {
+        width: 95%;
+        height: auto;
+        position: static;
+    }
+
+    .my-watchlist-img-container div{
+        position: static;
+        font-size: 2rem;
+        border-bottom: 1px solid #636262;
+        padding-bottom: 0.25rem;
+    }
+
+    .my-watchlist-page .anime-status {
+        width: 95%;
+        align-self: center;
+        margin: 0;
+    }
+
+    .my-watchlist-table .my-watchlist-table-heading {
+        display: none;
+    }
+}
+
+.favorite-table-list .my-favorite-table-item-mobile ,
+.my-watchlist-table-list .my-watchlist-table-item-mobile {
+    padding: 0.75rem 0.75rem;
+}
