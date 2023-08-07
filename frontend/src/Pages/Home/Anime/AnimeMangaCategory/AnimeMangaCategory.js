@@ -51,7 +51,7 @@ const AnimeMangaCategory = () => {
             <div className="category-cards">
                 {
                     animeManga.map(res =>
-                        <div className="card-container">
+                        <div className="card-container" key={res.node.id}>
                             <Card detail={res.node} titleSize={`0.8rem`} genresSize={`0.75rem`}/>
                         </div>
                     )
@@ -61,4 +61,4 @@ const AnimeMangaCategory = () => {
     );
 }
 
-export default AnimeMangaCategory;
+export default React.memo(AnimeMangaCategory);

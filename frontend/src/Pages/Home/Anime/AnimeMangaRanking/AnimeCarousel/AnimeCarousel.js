@@ -33,4 +33,4 @@ const AnimeCarousel = (props) => {
 
 }
 
-export default AnimeCarousel;
+export default React.memo(AnimeCarousel);

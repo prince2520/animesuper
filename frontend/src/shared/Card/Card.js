@@ -1,3 +1,5 @@
+import React from "react";
+
 import {useContext} from "react";
 
 import {useDispatch} from "react-redux";
@@ -68,4 +70,4 @@ const Card = (props) => {
     );
 }
 
-export default Card;
+export default React.memo(Card);

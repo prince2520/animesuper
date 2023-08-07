@@ -1,3 +1,7 @@
+:root {
+    --primary: #F6764D;
+    --white: #ffffff;
+}
 
 .App {
     height: 100vh;
