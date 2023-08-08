@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import {useContext} from "react";
 
@@ -18,11 +18,16 @@ const Card = (props) => {
     const authCtx = useContext(AuthContext);
     const {category} = useParams();
     const dispatch = useDispatch();
+    const [showCardDetail, setShowCardDetail] = useState(false);
 
 
     return (
         <div style={{height: '100%', width: '100%'}} >
-            <div className="card" style={{height: '100%', width: '100%'}} >
+            <div
+                className={`card ${showCardDetail ? 'show-card-detail': ''}`}
+                style={{height: '100%', width: '100%'}}
+                onMouseLeave={()=>setShowCardDetail(false)}
+                onMouseOver={()=>setShowCardDetail(true)} >
                 {props.detail.mean && <span className="rate">
                 <Icon icon="material-symbols:star-rounded" style={{fontSize: '1.5rem', color: 'yellow'}}/>
                     <span>{props.detail.mean}</span>

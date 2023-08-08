@@ -31,7 +31,7 @@ const AnimeMangaRanking = (props) => {
 
 
     useEffect(() => {
-        getCategoryList(category, props.rank.slug, 10).then(result => {
+        getCategoryList(category, props.rank.slug, 7).then(result => {
             dispatch(AnimeActions.saveData({category: category, slug: props.rank.slug, data: result.data}))
         });
     }, [category, props.rank.slug, dispatch]);

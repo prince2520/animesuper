@@ -10,13 +10,13 @@
 
 
 .card .rate {
+    display: none;
     position: absolute;
     left: 0.5rem;
     top: 1rem;
     background: rgba(19, 19, 19, 0.5);
     backdrop-filter: blur(2px);
     border-radius: 1rem;
-    display: flex;
     column-gap: 0.25rem;
     align-items: center;
     justify-content: center;
@@ -25,6 +25,7 @@
 }
 
 .card .watchlist {
+    display: none;
     position: absolute;
     right: 0.5rem;
     top: 1rem;
@@ -33,17 +34,16 @@
     background: rgba(19, 19, 19, 0.5);
     backdrop-filter: blur(2px);
     border-radius: 50% 50%;
-    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     color: white;
     z-index: 5;
-
 }
 
 
 .card .bottom {
+    display: none;
     position: absolute;
     bottom: 0;
     padding: 0.35rem;
@@ -52,11 +52,20 @@
     background: rgba(19, 19, 19, 0.5);
     backdrop-filter: blur(2px);
     border-radius: 0.5rem;
-    display: flex;
     flex-direction: column;
     row-gap: 0.5rem;
     z-index: 5;
+}
 
+.show-card-detail .bottom,
+.show-card-detail .watchlist,
+.show-card-detail .rate{
+    display: flex;
+}
+
+
+.show-card-detail .watchlist{
+    display: flex;
 }
 
 .bottom .title {
