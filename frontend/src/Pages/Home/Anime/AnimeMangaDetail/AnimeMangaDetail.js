@@ -24,37 +24,7 @@ import Skeleton from "react-loading-skeleton";
 const AnimeMangaDetail = () => {
     const {category, id} = useParams();
     const authCtx = useContext(AuthContext);
-    const [animeDetail, setAnimeDetail] = useState({
-        alternative_titles: {
-            en: ""
-        },
-        synopsis: "",
-        media_type: "",
-        num_episodes: "",
-        status: "",
-        start_date: "",
-        end_date: "",
-        main_picture: {
-            large: ""
-        },
-        start_season: {
-            season: "",
-            year: ""
-        },
-        broadcast: {
-            day_of_the_week: "",
-            start_time: ""
-        },
-        studios: [],
-        rating: "",
-        source: "",
-        genres: [],
-        related_anime: [],
-        rank: "",
-        popularity: "",
-        relation_type_formatted: "",
-        recommendations: []
-    });
+    const [animeDetail, setAnimeDetail] = useState();
 
     const addToWatchListHandler = () => {
         if(authCtx.isAuth){
@@ -132,7 +102,7 @@ const AnimeMangaDetail = () => {
     return (
         <div className="anime-detail-page">
             <div className="anime-detail-img" ref={ref}>
-                {animeDetail.main_picture ? <img src={animeDetail.main_picture.large} alt="anime"/> : <Skeleton/>}
+                {animeDetail?.main_picture ? <img src={animeDetail?.main_picture.large} alt="anime"/> : <Skeleton height={"100%"} width={"100%"}/>}
                 <div className='anime-detail-watchlist-like'>
                     <div className='anime-detail-watchlist-btn' onClick={()=>addToWatchListHandler()}>
                         <Button title={'Add to watchlist'}/>

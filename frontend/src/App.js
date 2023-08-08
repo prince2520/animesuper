@@ -1,8 +1,12 @@
-import './App.css';
+import React, {useContext, useEffect} from "react";
+
+import {useDispatch, useSelector} from "react-redux";
+import {Navigate, Route, Routes} from 'react-router-dom';
+
+
+
 import Home from "./Pages/Home/Home";
 import LoginSignupPage from "./Pages/LoginSignPage/LoginSignupPage";
-
-import {Navigate, Route, Routes} from 'react-router-dom'
 import LoginForm from "./Pages/LoginSignPage/Form/LoginForm";
 import SignupForm from "./Pages/LoginSignPage/Form/SignupForm";
 import TermAndCondition from "./Pages/Home/PolicyContactUs/TermAndCondition/TermAndCondition";
@@ -12,12 +16,16 @@ import AnimeMangaCategory from "./Pages/Home/Anime/AnimeMangaCategory/AnimeManga
 import MyWatchlist from "./Pages/Home/MyFavoriteWatchlist/MyWatchlist/MyWatchlist";
 import MyFavorite from "./Pages/Home/MyFavoriteWatchlist/MyFavorite/MyFavorite";
 import AnimeMangaDetail from "./Pages/Home/Anime/AnimeMangaDetail/AnimeMangaDetail";
-import React, {useContext, useEffect} from "react";
 import AuthContext from "./Context/auth";
 import AlertBox from "./shared/AlertBox/AlertBox";
-import {useDispatch, useSelector} from "react-redux";
-import {AlertBoxActions} from "./store/alertBox";
 import Anime from "./Pages/Home/Anime/Anime";
+import ScrollToTop from "./shared/ScrollToTop";
+
+import {AlertBoxActions} from "./store/alertBox";
+
+
+import './App.css';
+
 
 let time = null;
 
@@ -27,14 +35,16 @@ function App() {
     const alertBoxData = useSelector(state => state.alertBox.data);
     const dispatch = useDispatch();
 
-    useEffect(()=>{
+    useEffect(() => {
         clearTimeout(time);
-        if(visible){
+        if (visible) {
             time = setTimeout(() => {
                 dispatch(AlertBoxActions.closeAlertBox());
-            },[2000]);
+            }, [2000]);
         }
-    },[dispatch,visible, alertBoxData]);
+    }, [dispatch, visible, alertBoxData]);
+
+
 
     return (
         <div className="App">
@@ -61,6 +71,7 @@ function App() {
                     <Route path='' element={<Navigate to={'anime'}/>}/>
                 </Route>
             </Routes>
+            <ScrollToTop/>
         </div>
     );
 }

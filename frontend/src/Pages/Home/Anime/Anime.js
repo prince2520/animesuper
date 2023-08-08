@@ -10,6 +10,7 @@ import {helperActions} from "../../../store/helper";
 import {animeCategory, categoryType, mangaCategory} from "../../../common";
 
 import './Anime.css';
+import {useInView} from "react-intersection-observer";
 
 const Anime = () => {
     const dispatch = useDispatch();
@@ -19,10 +20,14 @@ const Anime = () => {
         dispatch(helperActions.searchBarHandler(true));
     }, [dispatch]);
 
+    const [ref, inView] = useInView();
+
     return (
-        <div className="anime-page">
+        <div className="anime-page" ref={ref}>
             <AnimeCarousel category={category}/>
-            {(category === categoryType[0].toLowerCase() ? animeCategory : mangaCategory).map(rank => <AnimeMangaRanking rank={rank}/>)}
+            {(category === categoryType[0].toLowerCase() ? animeCategory : mangaCategory).map(rank => {
+                return inView ?  (<AnimeMangaRanking rank={rank}/>) : null;
+            })}
         </div>
     );
 };

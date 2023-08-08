@@ -1,0 +1,13 @@
+.heading.information-heading{
+    margin-bottom: 1rem;
+}
+
+.information{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.information p{
+    margin: 0;
+}

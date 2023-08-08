@@ -13,19 +13,16 @@ import {AlertBoxActions} from "../../store/alertBox";
 import {categoryType} from "../../common";
 
 import './Card.css';
-import {useInView} from "react-intersection-observer";
 const Card = (props) => {
     const navigate = useNavigate();
     const authCtx = useContext(AuthContext);
     const {category} = useParams();
     const dispatch = useDispatch();
 
-    const [ref, inView] = useInView();
-
 
     return (
-        <div style={{height: '100%', width: '100%'}} ref={ref}>
-            {inView && <div className="card" style={{height: '100%', width: '100%'}} >
+        <div style={{height: '100%', width: '100%'}} >
+            <div className="card" style={{height: '100%', width: '100%'}} >
                 {props.detail.mean && <span className="rate">
                 <Icon icon="material-symbols:star-rounded" style={{fontSize: '1.5rem', color: 'yellow'}}/>
                     <span>{props.detail.mean}</span>
@@ -63,8 +60,7 @@ const Card = (props) => {
                 </div>
                 <img style={{cursor: 'pointer'}} onClick={() => navigate(`/home/${category}/${props.detail.id}`)}
                      src={props.detail.main_picture.medium} alt="card"/>
-            </div>}
-
+            </div>
         </div>
 
     );

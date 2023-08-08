@@ -7,7 +7,7 @@ const AnimeMangaDetailRelated = ({animeDetail, category}) => {
 
         <div className="related-anime">
             <span className="heading">Related Anime</span>
-            {(animeDetail.related_anime && animeDetail.related_anime.length > 0) ? animeDetail.related_anime.map(res =>
+            {(animeDetail?.related_anime.length > 0) ? animeDetail.related_anime.map(res =>
                 <p style={{color: "white"}}>
                     {res.relation_type_formatted} : <span style={{cursor: 'pointer'}} className="related-anime-link"
                                                           onClick={() => navigate(`/home/${category}/${res.node.id}`)}>{res.node.title}</span>

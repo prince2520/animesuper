@@ -5,7 +5,7 @@ const AnimeDetailOverview = ({animeDetail}) => {
         <>
             <div className="overview">
                 <span className="heading">Overview</span>
-                <p>{animeDetail.synopsis || <Skeleton count={8}/>}</p>
+                <p>{animeDetail?.synopsis || <Skeleton count={8}/>}</p>
             </div>
         </>
     );

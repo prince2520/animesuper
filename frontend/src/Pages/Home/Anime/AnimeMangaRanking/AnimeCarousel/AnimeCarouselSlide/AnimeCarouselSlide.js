@@ -40,7 +40,7 @@ const AnimeCarouselSlide = (props) => {
                         {animeMangaCarouselData?.title.slice(0, 250) || <Skeleton width={"80%"} count={1}/>}
                     </div>
                     <div className="synopsis">
-                        {animeMangaCarouselData?.synopsis.slice(0, 250) || <Skeleton count={5}/>}
+                        {animeMangaCarouselData?.synopsis.slice(0, 250) || <Skeleton count={3}/>}
                         {animeMangaCarouselData?.synopsis && "..."}
                     </div>
                     <div className="more-info">

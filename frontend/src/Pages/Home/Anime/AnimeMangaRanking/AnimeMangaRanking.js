@@ -14,15 +14,21 @@ import {categoryType} from "../../../../common";
 import SkeletonCard from "../../../../shared/SkeletonCard/SkeletonCard";
 
 
+
 const AnimeMangaRanking = (props) => {
     const swiperRef = useRef();
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const slug = props.rank.slug;
     const animeData = useSelector(state => state.anime.animeRankData[slug]);
+
     const mangaData = useSelector(state => state.anime.mangaRankData[slug]);
 
+
     const {category} = useParams();
+
+
+
 
     useEffect(() => {
         getCategoryList(category, props.rank.slug, 10).then(result => {
@@ -31,7 +37,7 @@ const AnimeMangaRanking = (props) => {
     }, [category, props.rank.slug, dispatch]);
 
     return (
-        <div className="ranking" style={props.style}>
+        <div className="ranking" style={props.style} >
             <span className="ranking-type">
                 <span className="ranking-name">{props.rank.title}</span>
                 <div className="navigation-box">
@@ -42,7 +48,7 @@ const AnimeMangaRanking = (props) => {
                     <span style={{cursor:'pointer'}} className="see-all" onClick={() => navigate(`/home/${category}/category/${props.rank.slug}`)}> See all > </span>
                 </div>
             </span>
-            <div className="ranking-cards">
+            <div className="ranking-cards" >
                 <Swiper
                     spaceBetween={75}
                     modules={[Navigation]}
@@ -90,11 +96,6 @@ const AnimeMangaRanking = (props) => {
                             </div>
                         </SwiperSlide>)
                     }
-                    {/*<SwiperSlide>*/}
-                    {/*    <div className="see-more" style={{cursor:'pointer'}} onClick={() => navigate(`/home/${category}/category/${props.rank.slug}`)}>*/}
-                    {/*        <div>See more</div>*/}
-                    {/*    </div>*/}
-                    {/*</SwiperSlide>*/}
                 </Swiper>
             </div>
         </div>
