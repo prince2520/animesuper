@@ -11,6 +11,7 @@ import Card from "../../../../shared/Card/Card";
 import {getCategoryList} from "../../../../api";
 import {AnimeActions} from "../../../../store/anime";
 import {categoryType} from "../../../../common";
+import SkeletonCard from "../../../../shared/SkeletonCard/SkeletonCard";
 
 
 const AnimeMangaRanking = (props) => {
@@ -24,7 +25,6 @@ const AnimeMangaRanking = (props) => {
     const {category} = useParams();
 
     useEffect(() => {
-        console.log(category)
         getCategoryList(category, props.rank.slug, 10).then(result => {
             dispatch(AnimeActions.saveData({category: category, slug: props.rank.slug, data: result.data}))
         });
@@ -81,7 +81,15 @@ const AnimeMangaRanking = (props) => {
                                     <Card detail={res.node} titleSize={`1rem`} genresSize={`0.85rem`}/>
                                 </div>
                             </SwiperSlide>
-                        )}
+                        )
+                    }
+                    {
+                        ((!animeData && !mangaData)) && Array(6).fill(null).map(()=><SwiperSlide>
+                            <div className="card-container">
+                                <SkeletonCard/>
+                            </div>
+                        </SwiperSlide>)
+                    }
                     {/*<SwiperSlide>*/}
                     {/*    <div className="see-more" style={{cursor:'pointer'}} onClick={() => navigate(`/home/${category}/category/${props.rank.slug}`)}>*/}
                     {/*        <div>See more</div>*/}

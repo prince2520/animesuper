@@ -17,6 +17,7 @@ import AnimeMangaDetailBottom from "./AnimMangaDetailBottom/AnimeMangaDetailBott
 import {categoryType} from "../../../../common";
 import {AlertBoxActions} from "../../../../store/alertBox";
 import AuthContext from "../../../../Context/auth";
+import Skeleton from "react-loading-skeleton";
 
 
 
@@ -131,7 +132,7 @@ const AnimeMangaDetail = () => {
     return (
         <div className="anime-detail-page">
             <div className="anime-detail-img" ref={ref}>
-                {animeDetail.main_picture && <img src={animeDetail.main_picture.large} alt="anime"/>}
+                {animeDetail.main_picture ? <img src={animeDetail.main_picture.large} alt="anime"/> : <Skeleton/>}
                 <div className='anime-detail-watchlist-like'>
                     <div className='anime-detail-watchlist-btn' onClick={()=>addToWatchListHandler()}>
                         <Button title={'Add to watchlist'}/>

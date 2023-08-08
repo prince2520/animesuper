@@ -51,8 +51,8 @@
 }
 
 .category-cards .card-container {
-    max-height: 15rem;
-    max-width: 10rem;
+    max-height: 18rem;
+    max-width: 12rem;
     width: 45%;
     flex-shrink: 0;
 }

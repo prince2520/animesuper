@@ -1,6 +1,8 @@
 :root {
     --primary: #F6764D;
     --white: #ffffff;
+
+    --border: #181818;
 }
 
 .App {

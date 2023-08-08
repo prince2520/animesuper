@@ -37,10 +37,12 @@
 .content .title {
     font-size: 2rem;
     font-weight: 600;
+    width: 100%;
 }
 
 .content .synopsis {
     color: #ABA5A5;
+    width: 100%;
 }
 
 .content .more-info {
