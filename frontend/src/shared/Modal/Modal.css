@@ -42,7 +42,7 @@
     align-items: center;
 
     border-radius: 1.25rem;
-    border: 0.20rem white var(--background-secondary);
+    border: 0.20rem solid var(--background-secondary);
 }
 
 .modal-box-2 .yes-button,
