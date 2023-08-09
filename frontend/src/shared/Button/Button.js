@@ -1,8 +1,11 @@
 import './Button.css'
+import ZoomInZoomOut from "../../Animation/Wrapper/ZoomInZoomOut";
 
 const Button = (props) => {
     return (
-        <button style={{cursor:'pointer'}} className="login-button">{props.title}</button>
+        <ZoomInZoomOut>
+            <button style={{cursor:'pointer'}} className="login-button">{props.title}</button>
+        </ZoomInZoomOut>
     );
 }
 export default Button;

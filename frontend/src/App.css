@@ -1,18 +1,19 @@
-:root {
-    --primary: #F6764D;
-    --white: #ffffff;
-
-    --border: #181818;
-}
 
 .App {
     height: 100vh;
-    background-color: #111314;
+    background-color: var(--background);
 }
+
+.align-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 input {
     border-style: solid;
-    border-color: #636262;
+    border-color: var(--text-light);
     background-color: transparent;
     color: white;
     border-width: 0;
@@ -27,7 +28,11 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px #111314  inset !important;
-    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0 30px var(--background)  inset !important;
+    -webkit-text-fill-color: var(--text) !important;
+}
 
+
+.cursor-btn {
+    cursor: pointer;
 }

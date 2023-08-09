@@ -10,8 +10,8 @@ const MyFavoriteItemWeb = ({res, index}) => {
     return (
         <div className="favorite-table-item">
             <span style={{width: "5%"}} className="item-no">{index + 1}</span>
-            <span style={{width: "15%"}} className="item-img"><img alt='main_picture' width="100%"
-                                                                   src={res.fields.img_url}/></span>
+            <span style={{width: "15%"}} className="item-img">
+                <img alt='main_picture' width="100%" src={res.fields.img_url}/></span>
             <span style={{width: "24%", alignItems: "flex-start"}}
                   className="item-title">{res.fields.title}</span>
             <span style={{width: "8%"}} className="item-score">{res.fields.score}</span>

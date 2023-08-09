@@ -43,13 +43,12 @@ const Home = () => {
                 favorite_genre: favorite_genre
             }));
         }).catch(err => console.log(err))
-    }, [dispatch,authCtx.email]);
-
+    }, [dispatch, authCtx.email]);
 
 
     return (
         <div className="home-page">
-            <div className={'sidebar-web'}>
+            <div className={'home-left sidebar-web'}>
                 {<SideBar/>}
             </div>
             {showMobileSideBar && <SideBarMobile/>}
@@ -64,15 +63,9 @@ const Home = () => {
                         <ProfileWithShare/>
                     </div>
                 </div>
-                <div style={{
-                    height: '100%',
-                    width: "100%",
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: "space-between",
-                    rowGap: '4rem'
-                }}>
+                <div
+                    className={'carousel-ranking-container'}
+                >
                     <Outlet/>
                     <Footer/>
                 </div>

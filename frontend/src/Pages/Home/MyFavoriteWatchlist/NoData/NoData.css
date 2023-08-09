@@ -21,6 +21,11 @@
 
 }
 
+.no-data-box h3{
+    color: var(--text-extra-light);
+    font-weight:300;
+}
+
 @media screen and (max-width: 800px) {
     .no-data-box {
         margin-top: 2rem;

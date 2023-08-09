@@ -16,11 +16,11 @@
 .footer-bar .footer-overlay {
     width: 100%;
     height: 100%;
-    background-color: #111314;
+    background-color: var(--background);
     opacity: 90%;
     top: 0;
     left: 0;
-    color: #636262;
+    color: var(--text-extra-light);
     font-size: 0.8rem;
     padding: 2rem;
     display: grid;
@@ -35,12 +35,12 @@
     column-gap: 2rem;
     padding: 1rem 1rem 1rem 0;
     font-size: 1rem;
-    color: white;
+    color: var(--text);
     font-weight: 600;
 }
 
 .policies a {
-    color: white;
+    color: var(--text);
     text-decoration: none;
 }
 

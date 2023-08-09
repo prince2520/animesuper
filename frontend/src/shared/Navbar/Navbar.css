@@ -17,7 +17,7 @@
     height: 3.5rem;
     width: 3.5rem;
     border-radius: 50%;
-    border: 0.075rem solid white;
+    border: 0.075rem solid var(--background-secondary);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -30,10 +30,10 @@
 
 
 .navbar .login-btn {
-    color: white;
+    color: var(--text);
     font-size: 1rem;
     font-weight: 600;
-    border: 2px solid white;
+    border: 2px solid var(--background-secondary);
     padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
     margin-right: 0.5rem;

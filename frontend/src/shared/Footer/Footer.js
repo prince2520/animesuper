@@ -14,7 +14,7 @@ const Footer = () => {
                     <div className="policies">
                         <Link to='terms-and-condition'>Term of conditions</Link>
                         <Link to='dmca'>DMCA</Link>
-                        <Link to='contact-us'>Contact Us</Link>
+                        <Link to='dmca'>Contact Us</Link>
                     </div>
                     <div className="store-policy">
                     <span className="note">
@@ -28,9 +28,8 @@ const Footer = () => {
 
                 <div className="footer-right">
                     <div className="socials-logo">
-                        <Icon icon="logos:facebook" style={{fontSize:'2rem'}}/>
-                        <Icon icon="logos:reddit-icon" style={{fontSize:'2rem'}}/>
-                        <Icon icon="logos:twitter" style={{fontSize:'2rem'}} />
+                        {["logos:facebook", "logos:reddit-icon", "logos:twitter"]
+                            .map(icon=> (<Icon icon={icon} style={{fontSize:'2rem'}}/>))}
                     </div>
                     <div className="site-logo">
                         <img alt='anime-super' src={Logo} style={{width:'7rem', position:'relative'}}/>

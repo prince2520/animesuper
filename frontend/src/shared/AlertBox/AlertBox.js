@@ -17,7 +17,7 @@ const AlertBox = () => {
                 <div className="icon-container" style={{backgroundColor: getIconAndColor.secondaryColor}}>
                     <Icon
                         icon={getIconAndColor.icon}
-                        style={{fontSize: '2rem', color: `white`}}
+                        style={{fontSize: '2rem', color: `var(--text)`}}
                     />
                 </div>
                 <div className="alert-box-container">
@@ -35,6 +35,7 @@ const AlertBox = () => {
                     </div>
                     <div className="alert-box-close" onClick={()=>dispatch(AlertBoxActions.closeAlertBox())}>
                         <Icon
+                            className={'cursor-btn'}
                             icon="material-symbols:close-rounded"
                             style={{fontSize: '2rem', color: `white`}}
                         />

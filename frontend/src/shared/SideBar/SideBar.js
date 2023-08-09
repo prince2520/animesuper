@@ -10,6 +10,7 @@ import {OverlayActions} from "../../store/overlay";
 import {Logo} from "../../photo";
 
 import './SideBar.css';
+import {sideBarData} from "./siderBarData";
 const SideBar = () => {
     const dispatch = useDispatch();
     const authCtx = useContext(AuthContext);
@@ -20,37 +21,18 @@ const SideBar = () => {
             <div className="bar-top">
                 <Link to='anime'><img alt={'anime-super'} src={Logo} width={'100%'}/></Link>
                 <div className="options">
-                    <div className="option">
-                        <span className="description">Menu</span>
-                        <Link style={{textDecoration: 'none'}} className="title" to='anime'>
-                            <Icon color="white" icon="material-symbols:home-outline-rounded"
-                                  style={{fontSize: '2rem'}}/>
-                            <div>Home</div>
-                        </Link>
-                    </div>
-                    <div className="option">
-                        <span className="description">Category</span>
-                        <Link style={{textDecoration: 'none'}} to='anime' className="title">
-                            <Icon color="white" icon="bx:movie-play" style={{fontSize: "2rem"}}/>
-                            <div>Anime</div>
-                        </Link>
-                        <Link style={{textDecoration: 'none'}} to='manga' className="title">
-                            <Icon color="white" icon="material-symbols:menu-book-outline-rounded"
-                                  style={{fontSize: '2rem'}}/>
-                            <div>Manga</div>
-                        </Link>
-                    </div>
-                    {authCtx.isAuth && <div className="option">
-                        <span className="description">Library</span>
-                        <Link style={{textDecoration: 'none'}} to='my-watchlist' className="title">
-                            <Icon color="white" icon="ph:book-bookmark" style={{fontSize: '2rem'}}/>
-                            <div>Watchlist</div>
-                        </Link>
-                        <Link style={{textDecoration: 'none'}} to='my-favorite' className="title">
-                            <Icon color="white" icon="mdi:cards-heart" style={{fontSize: '2rem'}}/>
-                            <div>Favorite</div>
-                        </Link>
-                    </div>}
+                    {sideBarData(authCtx.isAuth).map(data=>{
+                        return (
+                            (data.isAuth) && <div className="option">
+                                <span className="description">{data.categoryTitle}</span>
+                                {data.subCategoryData.map(subData=> <Link style={{textDecoration: 'none'}} className="title" to={subData.to}>
+                                    <Icon color="white" icon={subData.icon}
+                                          style={{fontSize: '2rem'}}/>
+                                    <div className={'category-btn'}>{subData.name}</div>
+                                </Link>)}
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
             <div className="bar-bottom" style={{marginBottom: "1rem"}}>
@@ -59,11 +41,11 @@ const SideBar = () => {
                     {authCtx.isAuth &&
                         <div className="title" style={{cursor:'pointer'}} onClick={() => dispatch(OverlayActions.showLogoutHandler())}>
                             <Icon color="white" icon="ri:logout-circle-line" style={{fontSize: '2rem'}}/>
-                            <div>Logout</div>
+                          <div className={'category-btn'}>Logout</div>
                         </div>}
                     {!authCtx.isAuth && <div style={{cursor:'pointer'}} className="title" onClick={() => navigate('/login')}>
-                        <Icon color="white" icon="ri:login-circle-line" style={{fontSize: '2rem'}}/>
-                        <div>Login</div>
+                        <Icon color="white" icon="ri:login-circle-line" onClick={() => navigate('/login')} style={{fontSize: '2rem'}}/>
+                        <div className={'category-btn'}>Login</div>
                     </div>}
                 </div>
             </div>

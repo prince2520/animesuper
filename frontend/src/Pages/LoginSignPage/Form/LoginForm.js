@@ -5,6 +5,7 @@ import {Icon} from "@iconify/react";
 
 import Button from "../../../shared/Button/Button";
 import AuthContext from "../../../Context/auth";
+import ZoomInZoomOut from "../../../Animation/Wrapper/ZoomInZoomOut";
 
 const LoginForm = () => {
     const authCtx = useContext(AuthContext);
@@ -24,10 +25,10 @@ const LoginForm = () => {
                 <span className="input-box">
                     <Icon
                         icon="ic:outline-email"
-                        style={{fontSize: '1.75rem', color: 'white'}}/>
+                        />
                     <input
                         name='email'
-                        style={{borderLeft: "0.095rem solid #636262", paddingLeft: "0.5rem"}}
+                        style={{borderLeft: "0.095rem solid", paddingLeft: "0.5rem"}}
                         type="email"
                         placeholder="Enter your username"/>
                 </span>
@@ -38,19 +39,22 @@ const LoginForm = () => {
                     <input
                         name='password'
                         type={!showPassword ? 'password' : 'text'}
-                        style={{borderRight: "0.095rem solid #636262", paddingRight: "0.5rem"}}
+                        style={{borderRight: "0.095rem solid", paddingRight: "0.5rem"}}
                         placeholder="Enter your password"
                     />
-                    <Icon
-                        icon={!showPassword ? `mdi:eye-off-outline` : 'mdi:eye-outline'}
-                        onClick={() => setShowPassword(!showPassword)}
-                        style={{fontSize: '1.75rem', color: 'white'}}/>
+                    <ZoomInZoomOut width={"fit-content"}>
+                        <Icon
+                            className={'cursor-btn'}
+                            icon={!showPassword ? `mdi:eye-off-outline` : 'mdi:eye-outline'}
+                            onClick={() => setShowPassword(!showPassword)}
+                            />
+                    </ZoomInZoomOut>
                 </span>
             </span>
-            <div className='form-btn-container' ><Button title="Login"/></div>
+            <div className='form-btn-container'><Button title="Login"/></div>
             <span className="change-box">
                 <p>Don't have an account?</p>
-                <Link to='/signup' className="change-form">Sign up</Link>
+                    <Link to='/signup' className="change-form">Sign up</Link>
             </span>
         </form>
     );

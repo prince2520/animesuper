@@ -2,7 +2,7 @@
     width: 100%;
     background-color: var(--primary);
     border-width: 0;
-    color: white;
+    color: var(--text);
     font-size: inherit;
     font-weight: 700;
     border-radius: 0.5rem;
@@ -14,8 +14,8 @@
 
 .login-button:hover,
 .login-button:active {
-    background-color:  white;
-    color: var(--primary);
+    background-color:  var(--background-secondary);
+    color: var(--text-primary);
 }
 
 

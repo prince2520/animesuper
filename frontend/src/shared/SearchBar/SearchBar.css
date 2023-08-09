@@ -1,7 +1,7 @@
 .search-bar {
     max-width: 50rem;
     width: 70%;
-    border: 0.05rem solid #636262;
+    border: 0.05rem solid var(--border);
     border-radius: 0.25rem;
     padding: 0.35rem;
     position: relative;

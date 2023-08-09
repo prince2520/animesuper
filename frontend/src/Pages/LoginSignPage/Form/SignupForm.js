@@ -5,6 +5,7 @@ import {Icon} from "@iconify/react";
 
 import Button from "../../../shared/Button/Button";
 import AuthContext from '../../../Context/auth'
+import ZoomInZoomOut from "../../../Animation/Wrapper/ZoomInZoomOut";
 
 const SignupForm = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -13,12 +14,7 @@ const SignupForm = () => {
 
     const signUpHandler = async (event) => {
         event.preventDefault();
-        authCtx.signUpHandler(
-            event.target[0].value,
-            event.target[1].value,
-            event.target[2].value,
-            event.target[3].value
-        );
+        authCtx.signUpHandler(event.target[0].value, event.target[1].value, event.target[2].value, event.target[3].value);
     }
 
     return (
@@ -29,10 +25,10 @@ const SignupForm = () => {
                 <span className="input-box">
                     <Icon
                         icon="gg:profile"
-                        style={{fontSize: '1.75rem', color: 'white'}}/>
+                        />
                     <input
                         name={'username'}
-                        style={{borderLeft: "0.095rem solid #636262", paddingLeft: "0.5rem"}}
+                        style={{borderLeft: "0.095rem solid", paddingLeft: "0.5rem"}}
                         type="text" placeholder="example_123"/>
                 </span>
             </span>
@@ -41,10 +37,10 @@ const SignupForm = () => {
                 <span className="input-box">
                     <Icon
                         icon="ic:outline-email"
-                        style={{fontSize: '1.75rem', color: 'white'}}/>
+                        />
                     <input
                         name={'email'}
-                        style={{borderLeft: "0.095rem solid #636262", paddingLeft: "0.5rem"}}
+                        style={{borderLeft: "0.095rem solid", paddingLeft: "0.5rem"}}
                         type="email"
                         placeholder="example@email.com"/>
                 </span>
@@ -55,12 +51,15 @@ const SignupForm = () => {
                     <input
                         name={'password'}
                         type={!showPassword ? 'password' : 'text'}
-                        style={{borderRight: "0.095rem solid #636262", paddingRight: "0.5rem"}}
+                        style={{borderRight: "0.095rem solid", paddingRight: "0.5rem"}}
                         placeholder="Pick a strong password"/>
-                    <Icon
-                        icon={!showPassword ? `mdi:eye-off-outline` : 'mdi:eye-outline'}
-                        onClick={() => setShowPassword(!showPassword)}
-                        style={{fontSize: '1.75rem', color: 'white'}}/>
+                    <ZoomInZoomOut width={"fit-content"}>
+                        <Icon
+                            className={'cursor-btn'}
+                            icon={!showPassword ? `mdi:eye-off-outline` : 'mdi:eye-outline'}
+                            onClick={() => setShowPassword(!showPassword)}
+                            />
+                    </ZoomInZoomOut>
                 </span>
             </span>
             <span>
@@ -69,21 +68,23 @@ const SignupForm = () => {
                     <input
                         name={'confirm-password'}
                         type={!showConfirmPassword ? 'password' : 'text'}
-                        style={{borderRight: "0.095rem solid #636262", paddingRight: "0.5rem"}}
+                        style={{borderRight: "0.095rem solid", paddingRight: "0.5rem"}}
                         placeholder="Confirm your password"/>
-                    <Icon
-                        icon={!showConfirmPassword ? `mdi:eye-off-outline` : 'mdi:eye-outline'}
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        style={{fontSize: '1.75rem', color: 'white'}}/>
+                    <ZoomInZoomOut width={"fit-content"}>
+                        <Icon
+                            className={'cursor-btn'}
+                            icon={!showConfirmPassword ? `mdi:eye-off-outline` : 'mdi:eye-outline'}
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            />
+                    </ZoomInZoomOut>
                 </span>
             </span>
             <div className='form-btn-container'><Button title="Create Account"/></div>
             <span className="change-box">
                 <p>Already have an account? </p>
-                <Link to='/login' className="change-form"> Login </Link>
+                    <Link to='/login' className="change-form"> Login </Link>
             </span>
-        </form>
-    );
+        </form>);
 }
 
 export default SignupForm;

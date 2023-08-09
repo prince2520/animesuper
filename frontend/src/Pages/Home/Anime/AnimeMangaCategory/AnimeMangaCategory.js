@@ -33,20 +33,19 @@ const AnimeMangaCategory = () => {
         <div className="category-page">
             <div
                 className="dmca-route">
-                Category > Anime ><span style={{color: "white"}}> {title}</span>
+                Category > Anime ><span style={{color: 'var(--text)'}}> {title}</span>
             </div>
             <div className="filter">
                 <span>Filter</span>
                 <Icon
                     icon="material-symbols:filter-alt-outline-sharp"
-                    style={{fontSize: '1.5rem', color: '#636262'}}/>
+                    style={{fontSize: '1.5rem', color: 'var(--text-extra-light)'}}/>
             </div>
             <div className="filter-container">
                 {(category === categoryType[0].toLowerCase() ? animeCategory : mangaCategory).map(res =>
                     <div
-                        style={{cursor: 'pointer'}}
                         onClick={() => navigate(`/home/${category}/category/${res.slug}`)}
-                        className={`filter-button ${id === res.slug ? 'selected' : ''}`}>{res.title}</div>)}
+                        className={`filter-button cursor-btn ${id === res.slug ? 'selected' : ''}`}>{res.title}</div>)}
             </div>
             <div className="category-cards">
                 {

@@ -13,10 +13,14 @@ const ChangeCategory = (props) => {
 
     return (
         <div className="anime-manga-button">
-            {categoryType.map(name => <span style={{cursor:'pointer'}} className={selectedCategory === name && 'selected'} onClick={() => {
-                props.eventHandler(name)
-                setSelectedCategory(name)
-            }}>{name}</span>)}
+            {categoryType.map(name =>
+                <span
+                    style={{cursor: 'pointer'}}
+                    className={selectedCategory === name && 'selected'}
+                    onClick={() => {
+                        props.eventHandler(name)
+                        setSelectedCategory(name)
+                    }}>{name}</span>)}
         </div>
     );
 };

@@ -1,9 +1,29 @@
 import {OverlayActions} from "../../../../../../store/overlay";
-import {MyWatchlistActions} from "../../../../../../store/myWatchlist";
 import {Icon} from "@iconify/react";
 import React from "react";
 import {useDispatch} from "react-redux";
 import {MyFavoriteActions} from "../../../../../../store/myFavorite";
+
+const favoriteItemData = (value) => {
+    return [
+        {
+            heading: null,
+            value: value.title,
+        },
+        {
+            heading: 'Score: ',
+            value: value.score,
+        },
+        {
+            heading: 'Types: ',
+            value: value.type,
+        },
+        {
+            heading: 'Year: ',
+            value: value.year,
+        }
+    ]
+};
 
 const MyFavoriteItemMobile = ({res, id}) => {
     const dispatch = useDispatch();
@@ -11,30 +31,25 @@ const MyFavoriteItemMobile = ({res, id}) => {
     return (
         <div className={'favorite-table-item-mobile'}>
             <div className='favorite-table-item-mobile-left'>
-                <span className="item-img"><img alt='main_picture' width="100%"
-                                                style={{width:"6rem", height:'100%'}}
-                                                src={res.fields.img_url}/></span>
+                <span className="item-img">
+                    <img alt='main_picture'
+                         width="100%"
+                         style={{width: "6rem", height: '100%'}}
+                         src={res.fields.img_url}/>
+                </span>
             </div>
             <div className='favorite-table-item-mobile-right'>
-                <div className="item-title-mobile">{res.fields.title}</div>
-                <div
-                    className="item-type-mobile">
-                    <span>Score: </span>
-                    <span>{res.fields.score}</span>
-                </div>
 
-                <div
-                    className="item-type-mobile">
-                    <span>Types: </span>
-                    <span>{res.fields.type}</span>
-                </div>
-                <div
-                    className="item-type-mobile">
-                    <span>Year: </span>
-                    <span>{res.fields.year}</span>
-                </div>
+                {favoriteItemData(res.fields).map(data=> (
+                    <div
+                        className="item-type-mobile">
+                        {data.heading && <span>{data.heading}</span>}
+                        <span>{data.value}</span>
+                    </div>
+                ))}
+
                 <div className='favorite-table-item-mobile-btn'>
-                    <div style={{ cursor: 'pointer', alignSelf:'flex-start'}} className="item-delete-mobile"
+                    <div style={{alignSelf: 'flex-start'}} className="item-delete-mobile cursor-btn"
                          onClick={() => {
                              dispatch(MyFavoriteActions.removeFavoriteItem({
                                  category: res.fields.type,
@@ -43,7 +58,7 @@ const MyFavoriteItemMobile = ({res, id}) => {
                              dispatch(OverlayActions.showRemoveFavoriteHandler())
                          }}>
                         <Icon
-                            style={{fontSize:"1.5rem"}}
+                            style={{fontSize: "1.5rem"}}
                             icon="material-symbols:delete-outline-rounded"
                         />
                         <span>Delete</span>
@@ -54,4 +69,4 @@ const MyFavoriteItemMobile = ({res, id}) => {
     );
 };
 
-export  default  MyFavoriteItemMobile;
+export default MyFavoriteItemMobile;

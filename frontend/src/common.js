@@ -3,15 +3,15 @@ export const categoryType = ['Anime', 'Manga'];
 
 export const getAlertIconAndColor = (success = false) => {
     let data = {
-        primaryColor: '#F05454',
-        secondaryColor: '#AF2D2D',
+        primaryColor: `var(--error)`,
+        secondaryColor: `var(--error-bold)`,
         icon: 'subway:error'
     }
 
     if (success)
         data = {
-            primaryColor: '#2D6A4F',
-            secondaryColor: '#004440',
+            primaryColor: `var(--success)`,
+            secondaryColor: `var(--success-bold)`,
             icon: 'mdi:check-circle-outline'
         }
 

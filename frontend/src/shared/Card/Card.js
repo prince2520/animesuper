@@ -13,6 +13,8 @@ import {AlertBoxActions} from "../../store/alertBox";
 import {categoryType} from "../../common";
 
 import './Card.css';
+import ZoomInZoomOut from "../../Animation/Wrapper/ZoomInZoomOut";
+
 const Card = (props) => {
     const navigate = useNavigate();
     const authCtx = useContext(AuthContext);
@@ -22,12 +24,13 @@ const Card = (props) => {
 
 
     return (
-        <div style={{height: '100%', width: '100%'}} >
+        <div
+            style={{height: '100%', width: '100%'}}>
             <div
-                className={`card ${showCardDetail ? 'show-card-detail': ''}`}
+                className={`card ${showCardDetail ? 'show-card-detail' : ''}`}
                 style={{height: '100%', width: '100%'}}
-                onMouseLeave={()=>setShowCardDetail(false)}
-                onMouseOver={()=>setShowCardDetail(true)} >
+                onMouseLeave={() => setShowCardDetail(false)}
+                onMouseOver={() => setShowCardDetail(true)}>
                 {props.detail.mean && <span className="rate">
                 <Icon icon="material-symbols:star-rounded" style={{fontSize: '1.5rem', color: 'yellow'}}/>
                     <span>{props.detail.mean}</span>
@@ -35,7 +38,7 @@ const Card = (props) => {
                 <div className="watchlist" style={{cursor: 'pointer'}} onClick={
                     () => {
 
-                        if(authCtx.isAuth){
+                        if (authCtx.isAuth) {
                             addToWatchlist(
                                 authCtx.email,
                                 category,
@@ -45,7 +48,7 @@ const Card = (props) => {
                                 category === categoryType[0].toLowerCase() ? props.detail.num_episodes : props.detail.num_chapters,
                                 props.detail.media_type
                             ).then(res => dispatch(AlertBoxActions.saveAlertBoxData(res))).catch(err => console.log(err))
-                        }else {
+                        } else {
                             dispatch(
                                 AlertBoxActions.saveAlertBoxData({
                                     success: false,
@@ -63,8 +66,10 @@ const Card = (props) => {
                           style={{fontSize: props.genresSize}}>{props.detail.genres.slice(0, 5).map(genre =>
                         <span>{genre.name}, </span>)}</span>
                 </div>
-                <img style={{cursor: 'pointer'}} onClick={() => navigate(`/home/${category}/${props.detail.id}`)}
-                     src={props.detail.main_picture.medium} alt="card"/>
+                <ZoomInZoomOut>
+                    <img style={{cursor: 'pointer'}} onClick={() => navigate(`/home/${category}/${props.detail.id}`)}
+                         src={props.detail.main_picture.medium} alt="card"/>
+                </ZoomInZoomOut>
             </div>
         </div>
 

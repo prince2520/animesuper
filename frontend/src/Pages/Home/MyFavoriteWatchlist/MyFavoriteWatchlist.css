@@ -1,6 +1,6 @@
 .favorite-page .anime-status ,
 .my-watchlist-page .anime-status {
-    color: #636262;
+    color: var(--text-extra-light);
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
@@ -13,7 +13,7 @@
 .my-watchlist-table {
     margin-top: 2rem;
     width: 95%;
-    color: white;
+    color: var(--text);
     font-size: 1.15rem;
     font-weight: 400;
 }
@@ -56,13 +56,13 @@
     bottom: 1rem;
     left: 2rem;
 
-    color: white;
+    color: var(--text);
 }
 
 
 .favorite-table .favorite-table-heading ,
 .my-watchlist-table .my-watchlist-table-heading {
-    background-color: #F6764D;
+    background-color: var(--primary);
     font-weight: 500;
     border-radius: 0.25rem;
     padding: 0.25rem 0.75rem;
@@ -81,10 +81,9 @@
 
 }
 
-
 .favorite-table-item  ,
 .my-watchlist-table-item {
-    border-bottom: 0.015rem #636262 solid;
+    border-bottom: 0.015rem var(--border) solid;
     margin-top: 1rem;
 }
 
@@ -98,7 +97,7 @@
 
 .favorite-table-item img ,
 .my-watchlist-table-item img {
-    border: 0.15rem #FFFFFF solid;
+    border: 0.15rem var(--text) solid;
     width: 5rem;
     height: 5.5rem;
     object-fit: cover;
@@ -150,7 +149,7 @@
     .my-watchlist-img-container div{
         position: static;
         font-size: 2rem;
-        border-bottom: 1px solid #636262;
+        border-bottom: 1px solid var(--border);
         padding-bottom: 0.25rem;
     }
 
@@ -180,7 +179,7 @@
     display: flex;
     column-gap: 1.75rem;
     font-size: 0.95rem;
-    border-bottom: 0.015rem #636262 solid;
+    border-bottom: 0.015rem var(--border) solid;
 }
 
 .favorite-table-item-mobile .favorite-table-item-mobile-left,
@@ -200,7 +199,7 @@
 
 .favorite-table-item-mobile img ,
 .my-watchlist-table-item-mobile img {
-    border: 0.15rem #FFFFFF solid;
+    border: 0.15rem var(--text) solid;
     width: 6rem;
     object-fit: cover;
     height: 100%;
@@ -231,19 +230,19 @@
     font-weight: 600;
     border-radius: 0.35rem;
 
-    border: 1px solid #D9D3D3;
+    border: 1px solid var(--text);
 }
 
 .item-delete-mobile{
-    border-color: #F6764D;
-    color: #F6764D ;
+    border-color: var(--primary);
+    color: var(--text-primary);
 }
 
 .favorite-table-item-mobile-right .item-type-mobile,
 .my-watchlist-table-item-mobile-right .item-type-mobile{
     display: flex;
     column-gap: 0.75rem;
-    color: #636262;
+    color: var(--text-extra-light);
     width: 100%;
 }
 
@@ -274,7 +273,7 @@
     .my-watchlist-img-container div{
         position: static;
         font-size: 2rem;
-        border-bottom: 1px solid #636262;
+        border-bottom: 1px solid var(--border);
         padding-bottom: 0.25rem;
     }
 

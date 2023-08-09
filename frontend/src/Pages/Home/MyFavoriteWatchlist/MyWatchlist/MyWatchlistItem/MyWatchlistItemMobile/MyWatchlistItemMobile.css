@@ -1,0 +1,26 @@
+.my-watchlist-table-item-mobile-left .item-no{
+    margin-right: 10%;
+    border-left: 0.25rem solid;
+}
+
+.item-progress .progress-bar-title{
+    color: var(--text-extra-light);
+    width: 100%;
+}
+
+.item-progress .progress-bar-detail{
+    color: var(--text-extra-light);
+    width: 100%;
+    text-align: right;
+}
+
+.item-progress .progress-bar{
+    background-color: var(--progress-bar);
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: 0.5rem
+}
+
+.my-watchlist-table-item-mobile-right .item-progress{
+    width: 100%;
+}

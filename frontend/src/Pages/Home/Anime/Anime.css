@@ -9,7 +9,7 @@
 
 .anime-carousel {
     width: 95%;
-    background-color: #111314;
+    background-color: var(--background);
     position: relative;
 }
 
@@ -27,7 +27,7 @@
 
 .img-overlay .content {
     width: 60%;
-    color: white;
+    color: var(--text);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -41,7 +41,7 @@
 }
 
 .content .synopsis {
-    color: #ABA5A5;
+    color: var(--text-light);
     width: 100%;
 }
 
@@ -52,7 +52,7 @@
 }
 
 .more-info div {
-    border: 1px solid #FFFFFF;
+    border: 1px solid var(--text);
     border-radius: 8px;
     padding: 0.25rem 0.5rem;
 
@@ -82,7 +82,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: var(--text);
     font-size: 1.5rem;
     font-weight: 500;
 }
@@ -99,7 +99,7 @@
     align-items: center;
     font-weight: 900;
 
-    background-color: #2D3135;
+    background-color: var(--container);
     color: white;
 
     border: none;
@@ -111,7 +111,7 @@
 }
 
 .navigation-buttons .next-button {
-    background: #F6764D;
+    background: var(--primary);
 }
 
 .ranking-type .navigation-box {
@@ -122,7 +122,13 @@
 
 .navigation-box .see-all {
     font-size: 1.25rem;
-    color: #636262;
+    color: var(--text-extra-light);
+}
+
+.navigation-box .see-all:hover,
+.navigation-box .see-all:active {
+    font-size: 1.25rem;
+    color: var(--primary);
 }
 
 .card-container {
@@ -185,7 +191,7 @@
 }
 
 .ranking-cards .see-more {
-    background-color: #F6764D;
+    background-color: var(--primary);
     width: 2.5rem;
     height: 18rem;
 
@@ -198,7 +204,7 @@
 .see-more > div {
     font-size: 1.25rem;
     font-weight: 500;
-    color: white;
+    color: var(--text);
     position: absolute;
     transform-origin: center;
     transform: rotate(-90deg);
@@ -212,4 +218,8 @@
 
 .remove-category{
     display: none;
+}
+
+.ranking-cards .swiper-container{
+    padding: 1rem;
 }

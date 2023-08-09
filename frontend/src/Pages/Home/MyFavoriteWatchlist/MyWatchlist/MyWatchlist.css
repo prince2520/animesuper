@@ -32,7 +32,7 @@
 }
 
 .item-progress .progress-bar {
-    background-color: #2D3135;
+    background-color: var(--progress-bar);
     width: 80%;
     height: 0.75rem;
     border-radius: 0.5rem;
@@ -40,14 +40,14 @@
 }
 
 .progress-bar .progress-bar-completed {
-    background: #dadada;
+    background: var(--progress-bar-done) ;
     height: 100%;
     width: 0;
 }
 
 .anime-status-list .selected {
-    color: white;
-    border-bottom: 0.15rem solid #F6764D;
+    color: var(--text);
+    border-bottom: 0.15rem solid var(--primary);
 }
 
 .anime-manga-button span {
@@ -55,8 +55,8 @@
 }
 
 .anime-manga-button .selected {
-    background-color: #F6764D;
-    color: white;
+    background-color: var(--primary);
+    color: var(--text);
     border-radius: 1.5rem;
     box-shadow: -2px 3px 3px rgba(0, 0, 0, 0.25);
 }
@@ -86,7 +86,7 @@
     .my-watchlist-img-container div{
         position: static;
         font-size: 2rem;
-        border-bottom: 1px solid #636262;
+        border-bottom: 1px solid var(--border);
         padding-bottom: 0.25rem;
     }
 

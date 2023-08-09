@@ -3,7 +3,7 @@
 .location-container,
 .favorite-genre-container {
     width: 100%;
-    color: #dadada;
+    color: var(--text-secondary);
 
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
     justify-content: center;
     align-items: center;
     column-gap: 0.5rem;
-    border: 1px #363535 solid;
+    border: 1px var(--border) solid;
     padding: 0.25rem;
     border-radius: 0.5rem;
     font-size: 0.8rem;
@@ -53,15 +53,15 @@
 
 .save-button button {
     border: none;
-    background-color: #F6764D;
+    background-color: var(--primary);
     width: 50%;
     font-size: 1.25rem;
-    color: white;
+    color: var(--text);
     font-weight: 500;
     padding: 0.25rem 0.5rem;
     border-radius: 0.5rem;
 
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
 }
 
 

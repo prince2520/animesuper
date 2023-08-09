@@ -7,7 +7,7 @@
     backdrop-filter: blur(6px);
 
     border-radius: 1rem;
-    border: 0.05rem #424242 solid;
+    border: 0.05rem var(--border) solid;
 
     display: grid;
     grid-template-rows: 5% auto;
@@ -36,20 +36,20 @@
 .profile-card-container-top .title {
     font-size: 1.5rem;
     font-weight: 500;
-    color: white;
+    color: var(--text);
 }
 
 .profile-card-container-top .edit-button {
     font-weight: 500;
-    color: #636262;
+    color: var(--text-extra-light);
     padding: 0.25rem 0.5rem;
 
 }
 
 .profile-card-container-top .edit-button-selected {
     font-weight: 500;
-    color: white;
-    background-color: rgba(246, 118, 77, 1);
+    color: var(--text);
+    background-color: var(--background-primary);
     padding: 0.25rem 0.5rem;
     border-radius: 0.75rem;
 
@@ -59,7 +59,7 @@
     width: 9rem;
     height: 9rem;
     border-radius: 50%;
-    background-color: black;
+    background-color: var(--background-secondary);
     overflow: hidden;
 
     display: flex;
@@ -67,7 +67,7 @@
     align-items: center;
     position: relative;
 
-    border: 0.125rem white solid;
+    border: 0.125rem var(--text) solid;
     box-shadow: 3px 3px 8px 5px rgba(0, 0, 0, 0.25);
 }
 
@@ -92,25 +92,25 @@
 
 .profile-personal-details .username {
     font-weight: 500;
-    color: #dadada;
+    color: var(--text-secondary);
 }
 
 .profile-personal-details .email {
     font-weight: 400;
-    color: #636262;
+    color: var(--text-extra-light);
 }
 
 .profile-anime-manga-details .favorite-genre,
 .profile-anime-manga-details .statistics {
     font-size: 1.25rem;
     font-weight: 500;
-    color: #dadada;
+    color: var(--text-secondary);
 }
 
 .favorite-genre .favorite-genre-title,
 .statistics .statistics-bar {
     display: inline-block;
-    border-bottom: 1px #363535 solid;
+    border-bottom: 1px var(--border) solid;
     width: 100%;
 }
 
@@ -126,10 +126,10 @@
     align-items: center;
     column-gap: 0.5rem;
     padding: 0.10rem 0.15rem;
-    border: 1px #595757 solid;
+    border: 1px var(--border) solid;
     border-radius: 1rem;
 
-    color: #636262;
+    color: var(--text-extra-light);
 
     font-size: 0.75rem;
     font-weight: 500;
@@ -139,7 +139,7 @@
 .favorite-genre-list .favorite-genre-item {
     font-size: 0.9rem;
     font-weight: 500;
-    border: 2px white solid;
+    border: 2px var(--background-secondary) solid;
     border-radius: 0.5rem;
     padding: 0.1rem 0.25rem;
 }
@@ -169,7 +169,7 @@
     width: 100%;
     align-items: center;
     column-gap: 0.5rem;
-    color: #636262;
+    color: var(--text-extra-light);
 }
 
 .currently-watching .currently-watching-detail {
@@ -194,16 +194,23 @@
 
 .logout-button button {
     width: 50%;
-    color: white;
-    background-color: #b92222;
+    color: var(--text);
+    background-color: var(--error-bold);
     border-radius: 0.5rem;
     font-size: 1.25rem;
     font-weight: 600;
     padding: 0.35rem 0.75rem;
 
-    border: 2px #b21c1c solid;
 
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    border: none;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+}
+
+.logout-button button:hover,
+.logout-button button:active{
+    background-color: var(--background-secondary);
+    color: var(--error-bold);
+
 }
 
 .profile-photo-container .edit-icon {
@@ -211,7 +218,7 @@
     bottom: 0.5rem;
     right: 0.25rem;
 
-    background-color: #F6764D;
+    background-color: var(--background-primary);
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 50%;
@@ -220,15 +227,15 @@
     justify-content: center;
     align-items: center;
 
-    box-shadow: 0px 3px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
 }
 
 .category-change-button .selected {
     background-color: rgba(169, 169, 169, 0.25);
     backdrop-filter: blur(6px);
-    color: #dadada;
+    color: var(--text-secondary);
     border-radius: 0.75rem;
-    border: 1px #444444 solid;
+    border: 1px var(--border) solid;
 }
 
 .category-change-button > span {

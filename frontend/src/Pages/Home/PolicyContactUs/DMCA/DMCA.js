@@ -3,7 +3,7 @@ import './DMCA.css';
 const DMCA = () => {
     return (
         <div className="dmca-page">
-            <div className="dmca-route"> Policy > <span style={{color: "white"}}>DMCA</span></div>
+            <div className="dmca-route"> Policy > <span style={{color: `var(--text)`}}>DMCA</span></div>
             <div className="dmca">
                 <div className="requirement">
                     <span className="sub-heading">DMCA take down request requirements-</span>

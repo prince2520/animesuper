@@ -12,7 +12,7 @@ import {getCategoryList} from "../../../../api";
 import {AnimeActions} from "../../../../store/anime";
 import {categoryType} from "../../../../common";
 import SkeletonCard from "../../../../shared/SkeletonCard/SkeletonCard";
-
+import ZoomInZoomOut from "../../../../Animation/Wrapper/ZoomInZoomOut";
 
 
 const AnimeMangaRanking = (props) => {
@@ -28,8 +28,6 @@ const AnimeMangaRanking = (props) => {
     const {category} = useParams();
 
 
-
-
     useEffect(() => {
         getCategoryList(category, props.rank.slug, 7).then(result => {
             dispatch(AnimeActions.saveData({category: category, slug: props.rank.slug, data: result.data}))
@@ -37,19 +35,28 @@ const AnimeMangaRanking = (props) => {
     }, [category, props.rank.slug, dispatch]);
 
     return (
-        <div className="ranking" style={props.style} >
+        <div className="ranking" style={props.style}>
             <span className="ranking-type">
                 <span className="ranking-name">{props.rank.title}</span>
                 <div className="navigation-box">
                     <div className="navigation-buttons">
-                        <button style={{cursor:'pointer'}} className="prev-button" onClick={() => swiperRef.current?.slidePrev()}>{"<"}</button>
-                        <button style={{cursor:'pointer'}} className="next-button" onClick={() => swiperRef.current?.slideNext()}>{">"}</button>
+                        {['<', '>'].map(data => (
+                            <button
+                                style={{cursor: 'pointer'}}
+                                className={(data === '<') ? `prev-button` : `next-button`}
+                                onClick={() => (data === '<') ? swiperRef.current?.slidePrev() : swiperRef.current?.slideNext()}>
+                                <span>{data}</span>
+                            </button>
+                        ))}
                     </div>
-                    <span style={{cursor:'pointer'}} className="see-all" onClick={() => navigate(`/home/${category}/category/${props.rank.slug}`)}> See all > </span>
+                    <span
+                        className="see-all cursor-btn"
+                        onClick={() => navigate(`/home/${category}/category/${props.rank.slug}`)}> See all > </span>
                 </div>
             </span>
-            <div className="ranking-cards" >
+            <div className="ranking-cards">
                 <Swiper
+                    className={'swiper-container'}
                     spaceBetween={75}
                     modules={[Navigation]}
                     onBeforeInit={(swiper) => {
@@ -90,7 +97,7 @@ const AnimeMangaRanking = (props) => {
                         )
                     }
                     {
-                        ((!animeData && !mangaData)) && Array(6).fill(null).map(()=><SwiperSlide>
+                        ((!animeData && !mangaData)) && Array(6).fill(null).map(() => <SwiperSlide>
                             <div className="card-container">
                                 <SkeletonCard/>
                             </div>

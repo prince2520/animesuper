@@ -4,6 +4,45 @@
     box-sizing: border-box;
 }
 
+:root {
+    --background: #111314;
+    --container: #2D3135;
+    --background-secondary: white;
+    --background-primary: var(--primary);
+
+    --progress-bar:  #2D3135;
+    --progress-bar-done:#dadada ;
+
+    --primary: #F6764D;
+    --white: #ffffff;
+
+    --text: white;
+    --text-light: #ABA5A5;
+    --text-extra-light: #636262;
+    --text-secondary: #dadada ;
+    --text-primary: var(--primary);
+
+    --border: #636262;
+
+    --error: #F05454;
+    --error-bold: #AF2D2D;
+
+    --success: #2D6A4F;
+    --success-bold: #004440;
+
+    --skeleton: #202020;
+    --skeleton-highlight: #444;
+    --skeleton-border: #181818;
+
+    --completed: #1877F2;
+    --dropped: #B42323;
+    --on-hold: #D3A913;
+    --currently-watching: #178D14;
+    --plan-to-watch: #636262;
+
+}
+
+
 html {
     width: 100%;
     height: 100%;

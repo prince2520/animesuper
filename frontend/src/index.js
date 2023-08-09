@@ -13,11 +13,12 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import './index.css';
 import {SkeletonTheme} from "react-loading-skeleton";
-import ScrollToTop from "./shared/ScrollToTop";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+    <SkeletonTheme
+        baseColor={`var(--skeleton)`}
+        highlightColor={`var(--skeleton-highlight)`}>
         <Router>
             <Provider store={store}>
                 <AuthContextProvider>

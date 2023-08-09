@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {useState} from "react";
 
 import randomColor from "randomcolor";
 import {useDispatch, useSelector} from "react-redux";
@@ -27,7 +27,7 @@ const ProfileCardStatistics = (props) => {
                             });
                             return <span className="favorite-genre-item"
                                          style={{borderColor: `${color}`, color: `${color}`}}>{res}</span>
-                        }) : <span style={{fontSize:'1rem', color:'#636262'} }>No data found</span>}
+                        }) : <span style={{fontSize: '1rem', color: '#636262'}}>No data found</span>}
 
                     </div>
                 </div>
@@ -36,13 +36,13 @@ const ProfileCardStatistics = (props) => {
                         <span>Statistics</span>
                         <div className="category-change-button">
                             {categoryType.map(name => <span
-                                style={{cursor:'pointer'}}
+                                style={{cursor: 'pointer'}}
                                 className={`${selectedCategory === name ? 'selected' : ''}`}
                                 onClick={() => setSelectedCategory(name)}>{name}</span>)}
                         </div>
                     </div>
                     <div className="statistics-list">
-                        {((selectedCategory === categoryType[0])? props.categoryStats.animeStats : props.categoryStats.mangaStats).map(res =>
+                        {((selectedCategory === categoryType[0]) ? props.categoryStats.animeStats : props.categoryStats.mangaStats).map(res =>
                             <div className="statistics-item">
                                 <div className="currently-watching">
                                     <span className="circle" style={{backgroundColor: getColor(res.status)}}/>
@@ -56,10 +56,13 @@ const ProfileCardStatistics = (props) => {
                 </div>
             </div>
             <div className="logout-button">
-                <button onClick={() => {
-                    dispatch(OverlayActions.closeOverlayHandler())
-                    dispatch(OverlayActions.showLogoutHandler())
-                }}>Logout</button>
+                <button
+                    className={'cursor-btn'}
+                    onClick={() => {
+                        dispatch(OverlayActions.closeOverlayHandler())
+                        dispatch(OverlayActions.showLogoutHandler())
+                    }}>Logout
+                </button>
             </div>
         </React.Fragment>
     );

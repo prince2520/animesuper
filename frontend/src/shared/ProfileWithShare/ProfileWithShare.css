@@ -26,13 +26,13 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 0.1rem solid #FFFFFF;
+    border: 0.1rem var(--background-secondary) #FFFFFF;
     border-radius: 47px;
     padding: 0.25rem 1rem;
     column-gap: 1rem;
     font-size: 1.1rem;
     font-weight: 600;
-    color: white;
+    color: var(--text);
 }
 
 .profile-button .profile-logo {
@@ -43,7 +43,7 @@
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    border: 0.125rem white solid;
+    border: 0.125rem var(--background-secondary) solid;
 }
 
 

@@ -44,7 +44,7 @@
     width: 4rem;
     height: 5rem;
     overflow: hidden;
-    border: 0.15rem white solid;
+    border: 0.15rem var(--background-secondary) solid;
 
 }
 
@@ -56,7 +56,7 @@
 }
 
 .search-result-item .search-result-item-middle {
-    color: white;
+    color: var(--text);
 }
 
 .genres ul {
@@ -71,10 +71,10 @@
 }
 
 ul .genre-list {
-    color: #636262;
+    color: var(--text-extra-light);
     font-weight: 600;
     padding: 0.15rem 0.25rem;
-    border: 1px #636262 solid;
+    border: 1px var(--border) solid;
     border-radius: 0.25rem;
 }
 
@@ -83,12 +83,12 @@ ul .genre-list {
     width: 5.5rem;
     height: 5.5rem;
     border-radius: 50%;
-    border: 0.25rem #636262 solid;
+    border: 0.25rem var(--border) solid;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
-    color: white;
+    color: var(--text);
     font-weight: 600;
     top: -2rem;
     right: -1.5rem;
@@ -101,10 +101,10 @@ ul .genre-list {
 .search-result-container .view-all {
     padding: 0.5rem 0;
     font-size: 1.25rem;
-    color: white;
+    color: var(--text);
     font-weight: 500;
     width: 100%;
-    background-color: #F6764D;
+    background-color: var(--background-primary);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -14,12 +14,12 @@ const LoginSignupPage = () => {
         <div className="form-page">
             <div className="form-page-left">
                 <span className="form-top">
-                    <img alt={'anime-super'} src={Logo} />
-                    <Link to='/home' className="skip" onClick={() => dispatch(helperActions.isSkipHandler(true))}>Skip >></Link>
+                    <img alt={'anime-super'} src={Logo}/>
+                        <Link to='/home' className="skip cursor-btn"
+                              onClick={() => dispatch(helperActions.isSkipHandler(true))}>Skip >> </Link>
                 </span>
                 <Outlet/>
             </div>
-
             <div className="form-page-right">
                 <div className="slogan">
                     <p>“Forgetting is like a wound. The wound may heal but it has already left a scar.”</p>
@@ -29,8 +29,7 @@ const LoginSignupPage = () => {
                     <img src={loginSignupPageRight} alt="img"/>
                 </div>
             </div>
-        </div>
-    )
-}
+        </div>)
+};
 
 export default LoginSignupPage;

@@ -50,11 +50,11 @@ function App() {
         <div className="App">
             {visible && <AlertBox/>}
             <Routes>
-                {!authCtx.isAuth && <Route path='/' element={<LoginSignupPage/>}>
+                <Route path='/' element={<LoginSignupPage/>}>
                     <Route path='login' element={<LoginForm/>}/>
                     <Route path='signup' element={<SignupForm/>}/>
                     <Route path='' element={<Navigate to={'login'}/>}/>
-                </Route>}
+                </Route>
                 <Route path='/home' element={<Home/>}>
                     <Route path=':category/category/:id' element={<AnimeMangaCategory/>}/>
                     {authCtx.isAuth &&

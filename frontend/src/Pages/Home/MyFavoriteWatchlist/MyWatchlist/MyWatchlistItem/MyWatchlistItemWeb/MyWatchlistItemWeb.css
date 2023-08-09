@@ -1,0 +1,36 @@
+.my-watchlist-table-item .item-no{
+    width: 5%;
+    border-left: 0.25rem solid;
+}
+
+.my-watchlist-table-item .item-img{
+    width: 15%;
+}
+
+.my-watchlist-table-item .item-title{
+    width: 24%;
+    align-items: flex-start;
+}
+
+.my-watchlist-table-item .item-progress{
+    width: 26%;
+}
+
+.item-progress .progress-bar-detail{
+    width: 100%;
+    text-align: right;
+    color: var(--text);
+}
+
+.item-progress .progress-bar{
+    background-color: var(--progress-bar);
+    width: 100%;
+    height: 0.5rem;
+}
+
+.my-watchlist-table-item .item-delete,
+.my-watchlist-table-item .item-type,
+.my-watchlist-table-item .item-edit{
+    width: 10%;
+}
+

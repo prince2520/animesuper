@@ -23,7 +23,7 @@ const ContactUs = () => {
 
     return (
         <div className="contact-us-page">
-            <div className="contact-us-route"> Help > <span style={{color: "white"}}>Contact Us</span></div>
+            <div className="contact-us-route"> Help > <span style={{color: `var(--text)`}}>Contact Us</span></div>
             <div onSubmit={(event) => messageUs(event)} className="content-us-box">
                 <span className="contact-us-heading heading">
                     <h1 style={{margin: "0"}}>Contact Us</h1>
@@ -51,14 +51,11 @@ const ContactUs = () => {
                         <span className="link-name">Twitter</span>
                     </div>
                 </div>
-                <div className="contact-note" style={{color: "#636262", fontSize: "1rem"}}>
+                <div className="contact-note">
                     Please submit your inquiry using the form below and we will get in touch with you shortly!
                 </div>
                 <span className="email-box">
-                    <label htmlFor="email" style={{
-                        fontSize: "1.25rem",
-                        fontWeight: "500",
-                    }}>Email</label>
+                    <label htmlFor="email" >Email</label>
                     <span className="input-box">
                         <Icon icon="ic:outline-email" style={{fontSize: '2rem', color: 'white'}}/>
                         <input style={{borderLeft: "0.095rem solid #636262", paddingLeft: "0.5rem"}} type="email"
@@ -68,10 +65,7 @@ const ContactUs = () => {
                 </span>
 
                 <div className="message-box">
-                    <label htmlFor="Message" style={{
-                        fontSize: "1.25rem",
-                        fontWeight: "500",
-                    }}>Message</label>
+                    <label htmlFor="Message">Message</label>
                     <textarea ref={messageRef} placeholder="Enter your message"/>
                 </div>
                 <div className='contact-us-submit' onClick={() => {

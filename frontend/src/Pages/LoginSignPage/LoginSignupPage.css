@@ -29,8 +29,13 @@
 
 .form-top .skip {
     font-size: 1.3rem;
-    color: white;
+    color: var(--text);
     font-weight: 700;
+}
+
+.form-top .skip:hover,
+.form-top .skip:active{
+    color: var(--text-primary);
 }
 
 .form-page-left form {
@@ -38,7 +43,7 @@
     width: 60%;
     display: flex;
     flex-direction: column;
-    color: white;
+    color: var(--text);
     row-gap: 1.5rem;
 }
 
@@ -55,7 +60,7 @@ form label {
 
 span .input-box {
     margin-top: 0.15rem;
-    border: 0.095rem solid #636262;
+    border: 0.095rem solid var(--border);
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -67,13 +72,13 @@ span .input-box {
 form input:focus,
 form input:hover {
     border-width: 0;
-    color: white;
+    color: var(--text);
 }
 
 .change-box {
     display: flex;
     font-size: 1.1rem;
-    color: #636262;
+    color: var(--text-light);
     justify-content: center;
     align-items: center;
     column-gap: 0.5rem;
@@ -84,10 +89,17 @@ form input:hover {
 }
 
 .change-box .change-form {
-    color: white;
+    color: var(--text);
     font-weight: 500;
     text-decoration: none;
 }
+
+.change-box .change-form:hover,
+.change-box .change-form:active
+{
+    color: var(--text-primary);
+}
+
 
 /* Form-Page --> Right Side */
 .form-page .form-page-right {
@@ -105,7 +117,7 @@ form input:hover {
     z-index: 1;
     font-size: 2rem;
     font-weight: 700;
-    color: white;
+    color: var(--text);
 }
 
 .slogan p {
@@ -122,7 +134,7 @@ form input:hover {
     top: 0;
     height: 100%;
     width: 100%;
-    background-color: black;
+    /*background-color: black;*/
     opacity: 65%;
     filter: blur(3px);
     z-index: 0;
@@ -133,6 +145,16 @@ form input:hover {
     height: 99.4%;
     object-fit: cover;
 }
+
+.input-box svg{
+    color: var(--text);
+    font-size: 1.75rem;
+}
+
+.input-box input{
+    color: var(--text-light);
+}
+
 
 form .form-btn-container {
     width: 50%;
