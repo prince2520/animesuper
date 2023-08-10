@@ -1,7 +1,7 @@
 import React, {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 
 import randomColor from "randomcolor";
-import {useDispatch, useSelector} from "react-redux";
 
 import {categoryType} from "../../../common";
 import {getColor} from "../../../store/myWatchlist";
@@ -25,8 +25,10 @@ const ProfileCardStatistics = (props) => {
                                 luminosity: 'light',
                                 hue: 'random'
                             });
-                            return <span className="favorite-genre-item"
-                                         style={{borderColor: `${color}`, color: `${color}`}}>{res}</span>
+                            return <span
+                                key={res.toString()}
+                                className="favorite-genre-item"
+                                style={{borderColor: `${color}`, color: `${color}`}}>{res}</span>
                         }) : <span style={{fontSize: '1rem', color: '#636262'}}>No data found</span>}
 
                     </div>
@@ -36,6 +38,7 @@ const ProfileCardStatistics = (props) => {
                         <span>Statistics</span>
                         <div className="category-change-button">
                             {categoryType.map(name => <span
+                                key={name.toString()}
                                 style={{cursor: 'pointer'}}
                                 className={`${selectedCategory === name ? 'selected' : ''}`}
                                 onClick={() => setSelectedCategory(name)}>{name}</span>)}
@@ -43,7 +46,7 @@ const ProfileCardStatistics = (props) => {
                     </div>
                     <div className="statistics-list">
                         {((selectedCategory === categoryType[0]) ? props.categoryStats.animeStats : props.categoryStats.mangaStats).map(res =>
-                            <div className="statistics-item">
+                            <div className="statistics-item" key={res.toString()}>
                                 <div className="currently-watching">
                                     <span className="circle" style={{backgroundColor: getColor(res.status)}}/>
                                     <div className="currently-watching-detail">

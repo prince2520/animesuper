@@ -1,13 +1,28 @@
-import {useDispatch} from "react-redux";
+import {useRef} from "react";
 import {Icon} from "@iconify/react";
+import {useDispatch} from "react-redux";
 
 import Button from "../../../../shared/Button/Button";
 
-import {OverlayActions} from "../../../../store/overlay";
 import {contactUs} from "../../../../api/auth";
+import {OverlayActions} from "../../../../store/overlay";
 
 import './ContactUs.css';
-import {useRef} from "react";
+
+const linkData = [
+    {
+        icon: "logos:facebook",
+        name: 'Facebook'
+    },
+    {
+        icon: "logos:reddit-icon",
+        name: 'Reddit'
+    },
+    {
+        icon: "logos:twitter",
+        name: 'Twitter'
+    }
+];
 
 const ContactUs = () => {
     const dispatch = useDispatch();
@@ -29,33 +44,22 @@ const ContactUs = () => {
                     <h1 style={{margin: "0"}}>Contact Us</h1>
                 </span>
                 <div className="links">
-                    <div className="link-box">
-                        <Icon
-                            className='link-icon'
-                            icon="logos:facebook"
-                            />
-                        <span className="link-name">Facebook</span>
-                    </div>
-                    <div className="link-box">
-                        <Icon
-                            className='link-icon'
-                            icon="logos:reddit-icon"
-                            />
-                        <span className="link-name">Reddit</span>
-                    </div>
-                    <div className="link-box">
-                        <Icon
-                            className='link-icon'
-                            icon="logos:twitter"
-                            />
-                        <span className="link-name">Twitter</span>
-                    </div>
+                    {
+                        linkData.map((data) =>
+                            <div className="link-box">
+                                <Icon
+                                    className='link-icon'
+                                    icon={data.icon}
+                                />
+                                <span className="link-name">{data.name}</span>
+                            </div>)
+                    }
                 </div>
                 <div className="contact-note">
                     Please submit your inquiry using the form below and we will get in touch with you shortly!
                 </div>
                 <span className="email-box">
-                    <label htmlFor="email" >Email</label>
+                    <label htmlFor="email">Email</label>
                     <span className="input-box">
                         <Icon icon="ic:outline-email" style={{fontSize: '2rem', color: 'white'}}/>
                         <input style={{borderLeft: "0.095rem solid #636262", paddingLeft: "0.5rem"}} type="email"

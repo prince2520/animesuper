@@ -9,9 +9,9 @@ import RemoveWatchlist from "./RemoveWatchlist/RemoveWatchlist";
 import './Modal.css'
 
 const Modal = () => {
+    const showLogout = useSelector(state => state.overlay.showLogout);
     const showRemoveWatchlist = useSelector(state => state.overlay.showRemoveWatchlist);
     const showRemoveFavorite = useSelector(state => state.overlay.showRemoveFavorite);
-    const showLogout = useSelector(state => state.overlay.showLogout);
     const showEditWatchlist = useSelector(state => state.overlay.showEditWatchlist);
     const showThankYouBox = useSelector(state => state.overlay.showThankYouBox);
 

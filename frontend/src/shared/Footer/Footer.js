@@ -1,9 +1,24 @@
-import {Link} from "react-router-dom";
 import {Icon} from "@iconify/react";
+import {Link} from "react-router-dom";
 
 import {FooterImage, Logo} from "../../photo";
 
 import './Footer.css';
+
+const policiesData = [
+    {
+        to : 'terms-and-condition',
+        name: 'Term of conditions'
+    },
+    {
+        to : 'dmca',
+        name: 'DMCA'
+    },
+    {
+        to : 'contact-us',
+        name: 'Contact Us'
+    }
+]
 
 const Footer = () => {
     return (
@@ -12,9 +27,8 @@ const Footer = () => {
             <div className="footer-overlay">
                 <div className="footer-left">
                     <div className="policies">
-                        <Link to='terms-and-condition'>Term of conditions</Link>
-                        <Link to='dmca'>DMCA</Link>
-                        <Link to='dmca'>Contact Us</Link>
+                        {policiesData.map(data=>
+                                <Link key={data.toString()} to={data.to}>{data.name}</Link>)}
                     </div>
                     <div className="store-policy">
                     <span className="note">
@@ -25,11 +39,10 @@ const Footer = () => {
                     </span>
                     </div>
                 </div>
-
                 <div className="footer-right">
                     <div className="socials-logo">
                         {["logos:facebook", "logos:reddit-icon", "logos:twitter"]
-                            .map(icon=> (<Icon icon={icon} style={{fontSize:'2rem'}}/>))}
+                            .map(icon=> (<Icon key={icon.toString()} icon={icon} style={{fontSize:'2rem'}}/>))}
                     </div>
                     <div className="site-logo">
                         <img alt='anime-super' src={Logo} style={{width:'7rem', position:'relative'}}/>

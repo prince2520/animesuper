@@ -26,10 +26,8 @@ const Home = () => {
     const showMobileSideBar = useSelector(state => state.helper.showMobileSideBar);
     const showSearchBar = useSelector(state => state.helper.showSearchBar);
 
-
     const authCtx = useContext(AuthContext);
     const dispatch = useDispatch()
-
 
     useEffect(() => {
         getProfileDetail(authCtx.email).then((res) => {

@@ -75,3 +75,4 @@ export const mangaCategory = [
 
 export const animeStatus = ['All Anime', 'Dropped', 'Currently Watching', 'Complete', 'On Hold', 'Plan to watch'];
 export const mangaStatus = ['All Manga', 'Dropped', 'Currently Reading', 'Complete', 'On Hold', 'Plan to read'];
+export const detail_links = ['Information', 'Overview', 'Related AnimeManga'];

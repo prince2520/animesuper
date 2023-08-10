@@ -1,3 +1,4 @@
+import React from "react";
 import {Icon} from "@iconify/react";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -7,9 +8,9 @@ import {AlertBoxActions} from "../../store/alertBox";
 import './AlertBox.css';
 
 const AlertBox = () => {
+    const dispatch = useDispatch();
     const data = useSelector(state => state.alertBox.data)
     const getIconAndColor = getAlertIconAndColor(data.success);
-    const dispatch = useDispatch();
 
     return (
         <div className="alert-box-page">
@@ -22,9 +23,8 @@ const AlertBox = () => {
                 </div>
                 <div className="alert-box-container">
                     <div className="alert-box-status">
-                        <div className="circle-1" style={{backgroundColor: getIconAndColor.secondaryColor}} />
-                        <div className='circle-2' style={{backgroundColor: getIconAndColor.secondaryColor}}/>
-                        <div className='circle-3' style={{backgroundColor: getIconAndColor.secondaryColor}}/>
+                        {['circle-1', 'circle-2', 'circle-3']
+                            .map((className)=> <div className={className} style={{backgroundColor: getIconAndColor.secondaryColor}} />)}
                     </div>
                     <div className="alert-box-content" >
                         <div style={{paddingLeft:'1rem'}}>
@@ -46,4 +46,4 @@ const AlertBox = () => {
     );
 };
 
-export default AlertBox;
+export default React.memo(AlertBox);

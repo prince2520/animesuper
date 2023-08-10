@@ -1,5 +1,6 @@
-import randomColor from 'randomcolor'
 import {useNavigate} from "react-router-dom";
+
+import randomColor from 'randomcolor'
 
 import './SearchResult.css';
 
@@ -13,7 +14,8 @@ const SearchResult = (props) => {
                         luminosity: 'dark',
                         hue: 'random'
                     });
-                    return <div className="search-result-item" onClick={() => navigate(`anime/${res.node.id}`)}>
+                    return <div key={res.toString()} className="search-result-item"
+                                onClick={() => navigate(`anime/${res.node.id}`)}>
                         <div className="search-result-item-left">
                             <div className="search-result-img-container">
                                 <img alt='search-result' src={res.node.main_picture.large}/>
@@ -22,9 +24,8 @@ const SearchResult = (props) => {
                         <div className="search-result-item-middle">
                             <span style={{fontSize: '1rem', fontWeight: '600'}}>{res.node.title}</span>
                             <ul className="search-result-detail">
-                                <li>{res.node.media_type.toUpperCase()}</li>
-                                <li>{res.node.status}</li>
-                                <li>{res.node.start_date}</li>
+                                {[res.node.media_type.toUpperCase(), res.node.status, res.node.start_date]
+                                    .map(data => <li key={data.toString()}>{res.node.media_type.toUpperCase()}</li>)}
                             </ul>
                             <div className='genres'>
                                 <ul>
@@ -34,9 +35,11 @@ const SearchResult = (props) => {
                                                 luminosity: 'light',
                                                 hue: 'random'
                                             });
-                                            return <li className="genre-list"
-                                                       style={{border: `2px ${color} solid`, color: `${color}`}}
-                                                       id={g.id}>{g.name}</li>
+                                            return <li
+                                                key={g.toString()}
+                                                className="genre-list"
+                                                style={{border: `2px ${color} solid`, color: `${color}`}}
+                                                id={g.id}>{g.name}</li>
                                         })
                                     }
                                 </ul>

@@ -1,18 +1,15 @@
 import {useContext} from "react";
-
-import {useDispatch, useSelector} from "react-redux";
 import {Icon} from "@iconify/react";
+import {useDispatch, useSelector} from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
 
 import AuthContext from "../../Context/auth";
+import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 
 import {OverlayActions} from "../../store/overlay";
 
-import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
-
 import './ProfileWithShare.css';
-
 
 const ProfileWithShare = () => {
 
@@ -20,13 +17,12 @@ const ProfileWithShare = () => {
     const user = useSelector(state => state.myProfile);
     const authCtx = useContext(AuthContext);
 
-
     return (
         <div className="profile-tab">
             <div className="share-links">
                 {['logos:facebook', 'logos:reddit-icon', 'logos:twitter']
-                    .map((data, index) =>
-                        <Icon key={index}
+                    .map((data) =>
+                        <Icon key={data.toString()}
                               icon={data}
                               style={{fontSize: '2.25rem'}}/>)}
             </div>
@@ -44,7 +40,6 @@ const ProfileWithShare = () => {
                     </div>
                 </div>}
             </ZoomInZoomOut>
-
         </div>)
 }
 

@@ -1,12 +1,11 @@
-import AnimeMangaDetailInformation from "../AnimeMangaDetailInformation/AnimeMangaDetailInformation";
-import AnimeDetailOverview from "../AnimeMangaDetailOverview/AnimeDetailOverview";
-import AnimeMangaDetailRelated from "../AnimeMangaDetailRelated/AnimeMangaDetailRelated";
-
-import './AnimeMangaDetailBottom.css';
-import AnimeMangaRecommendation from "../AnimeMangaRecommendation/AnimeMangaRecommendation";
+import AnimeDetailOverview from "./AnimeMangaDetailOverview/AnimeDetailOverview";
+import AnimeMangaDetailRelated from "./AnimeMangaDetailRelated/AnimeMangaDetailRelated";
+import AnimeMangaRecommendation from "./AnimeMangaRecommendation/AnimeMangaRecommendation";
+import AnimeMangaDetailInformation from "./AnimeMangaDetailInformation/AnimeMangaDetailInformation";
 import AnimeMangaDetailBottomMobile from "./AnimeMangaDetailBottomMobile/AnimeMangaDetailBottomMobile";
 
-export const detail_links = ['Information', 'Overview', 'Related AnimeManga'];
+import './AnimeMangaDetailBottom.css';
+
 const AnimeMangaDetailBottom = ({animeDetail, category}) => {
 
     return (
@@ -20,9 +19,9 @@ const AnimeMangaDetailBottom = ({animeDetail, category}) => {
                     <AnimeMangaDetailRelated animeDetail={animeDetail} category={category}/>
                 </div>
             </div>
-
             <AnimeMangaDetailBottomMobile animeDetail={animeDetail} category={category}/>
             <AnimeMangaRecommendation animeDetail={animeDetail} category={category}/>
+
         </div>
 
     );

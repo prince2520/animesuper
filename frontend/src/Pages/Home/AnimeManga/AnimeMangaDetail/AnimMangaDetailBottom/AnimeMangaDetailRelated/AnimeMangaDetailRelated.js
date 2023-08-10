@@ -4,7 +4,6 @@ const AnimeMangaDetailRelated = ({animeDetail, category}) => {
     const navigate = useNavigate();
 
     return (
-
         <div className="related-anime">
             <span className="heading">Related Anime</span>
             {(animeDetail?.related_anime.length > 0) ? animeDetail.related_anime.map(res =>
@@ -13,7 +12,6 @@ const AnimeMangaDetailRelated = ({animeDetail, category}) => {
                                                           onClick={() => navigate(`/home/${category}/${res.node.id}`)}>{res.node.title}</span>
                 </p>) : <p>No related anime found!</p>}
         </div>
-
     );
 };
 

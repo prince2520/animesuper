@@ -1,16 +1,15 @@
-import {useContext} from "react";
-
 import {Icon} from "@iconify/react";
+import {useContext} from "react";
 import {useDispatch} from "react-redux";
+import {Link, useNavigate} from "react-router-dom";
 
 import AuthContext from "../../Context/auth";
 
-import {Link, useNavigate} from "react-router-dom";
-import {OverlayActions} from "../../store/overlay";
 import {Logo} from "../../photo";
+import {sideBarData} from "./siderBarData";
+import {OverlayActions} from "../../store/overlay";
 
 import './SideBar.css';
-import {sideBarData} from "./siderBarData";
 const SideBar = () => {
     const dispatch = useDispatch();
     const authCtx = useContext(AuthContext);
@@ -23,13 +22,16 @@ const SideBar = () => {
                 <div className="options">
                     {sideBarData(authCtx.isAuth).map(data=>{
                         return (
-                            (data.isAuth) && <div className="option">
+                            (data.isAuth) && <div className="option" key={data.toString()}>
                                 <span className="description">{data.categoryTitle}</span>
-                                {data.subCategoryData.map(subData=> <Link style={{textDecoration: 'none'}} className="title" to={subData.to}>
+
+                                {data.subCategoryData
+                                    .map(subData=> <Link key={subData.toString()} style={{textDecoration: 'none'}} className="title" to={subData.to}>
                                     <Icon color="white" icon={subData.icon}
                                           style={{fontSize: '2rem'}}/>
                                     <div className={'category-btn'}>{subData.name}</div>
                                 </Link>)}
+
                             </div>
                         );
                     })}

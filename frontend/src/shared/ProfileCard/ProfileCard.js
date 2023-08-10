@@ -13,7 +13,6 @@ import {storage} from "../../firebase";
 import {OverlayActions} from "../../store/overlay";
 import {AlertBoxActions} from "../../store/alertBox";
 import {MyProfileActions} from "../../store/myProfile";
-
 import {getProfileStatistics, saveProfile} from "../../api/auth";
 
 import './ProfileCard.css';
@@ -21,6 +20,7 @@ import './ProfileCard.css';
 const ProfileCard = () => {
     const dispatch = useDispatch();
 
+    const [preview, setPreview] = useState(null);
     const [showEdit, setShowEdit] = useState(false);
     const [profileImage, setProfileImage] = useState(null);
     const [categoryStats, setCategoryStats] = useState({
@@ -33,7 +33,6 @@ const ProfileCard = () => {
 
     const imgRef = useRef(null);
 
-    const [preview, setPreview] = useState(null);
 
     useEffect(() => {
         if (profileImage) {

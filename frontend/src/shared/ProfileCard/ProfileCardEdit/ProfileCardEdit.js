@@ -1,18 +1,18 @@
 import React, {useRef} from "react";
-
 import {Icon} from "@iconify/react";
 import {useDispatch, useSelector} from "react-redux";
+
 import randomColor from "randomcolor";
 
 import {MyProfileActions} from "../../../store/myProfile";
 
-import './ProfileCardEdit.css'
+import './ProfileCardEdit.css';
 
 const ProfileCardEdit = (props) => {
     const user = useSelector(state => state.myProfile);
-    const genreRef = useRef(null);
     const dispatch = useDispatch()
 
+    const genreRef = useRef(null);
     const usernameRef = useRef(null);
     const genderRef = useRef(null);
     const locationRef = useRef(null);
@@ -55,11 +55,11 @@ const ProfileCardEdit = (props) => {
                     <input ref={genreRef} type="email" placeholder="ex - Action"
                            style={{borderRight: "1px solid #363535", paddingRight: "0.5rem"}}/>
                     <Icon onClick={() => {
-                        if(genreRef.current.value!=='') {
+                        if (genreRef.current.value !== '') {
                             dispatch(MyProfileActions.addNewGenre(genreRef.current.value));
                         }
                     }}
-                          icon="material-symbols:add-circle-outline" style={{fontSize: '1.5rem', cursor:'pointer'}}/>
+                          icon="material-symbols:add-circle-outline" style={{fontSize: '1.5rem', cursor: 'pointer'}}/>
                 </span>
             </div>
             <div className="favorite-genre">
@@ -69,9 +69,11 @@ const ProfileCardEdit = (props) => {
                             luminosity: 'light',
                             hue: 'random'
                         });
-                        return <span onClick={() => dispatch(MyProfileActions.deleteGenre(genre))}
-                                     className="favorite-genre-item"
-                                     style={{borderColor: `${color}`, color: `${color}`, cursor:'pointer'}}>{genre}</span>
+                        return <span
+                            key={genre.toString()}
+                            onClick={() => dispatch(MyProfileActions.deleteGenre(genre))}
+                            className="favorite-genre-item"
+                            style={{borderColor: `${color}`, color: `${color}`, cursor: 'pointer'}}>{genre}</span>
                     })}
                 </div>
             </div>

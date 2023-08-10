@@ -55,6 +55,7 @@ const EditStatus = () => {
                 </div>
                 <div className="edit-status-card-right-middle">
                     {(data.category === categoryType[0].toLowerCase() ? animeStatus.slice(1, 6) : mangaStatus.slice(1, 6)).map(title => <span
+                        key={title.toString()}
                         onClick={() => setStatus(title)}
                         style={{cursor: 'pointer'}}
                         className={`button ${title === status ? 'selected-status' : ''}`}>{title}</span>)}

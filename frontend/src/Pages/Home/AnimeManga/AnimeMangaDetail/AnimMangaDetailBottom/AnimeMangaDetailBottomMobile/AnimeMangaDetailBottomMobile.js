@@ -1,11 +1,12 @@
-import AnimeMangaDetailInformation from "../../AnimeMangaDetailInformation/AnimeMangaDetailInformation";
-import AnimeDetailOverview from "../../AnimeMangaDetailOverview/AnimeDetailOverview";
-import AnimeMangaDetailRelated from "../../AnimeMangaDetailRelated/AnimeMangaDetailRelated";
-import {detail_links} from "../AnimeMangaDetailBottom";
 import {useState} from "react";
+import {Icon} from "@iconify/react";
+
+import {detail_links} from '../../../../../../common';
+import AnimeDetailOverview from "../AnimeMangaDetailOverview/AnimeDetailOverview";
+import AnimeMangaDetailRelated from "../AnimeMangaDetailRelated/AnimeMangaDetailRelated";
+import AnimeMangaDetailInformation from "../AnimeMangaDetailInformation/AnimeMangaDetailInformation";
 
 import './AnimeMangaDetailBottomMobile.css';
-import {Icon} from "@iconify/react";
 
 const  AnimeMangaDetailBottomMobile = ({ animeDetail, category}) => {
     const [selectedLink, setSelectedLink] = useState(detail_links[0]);

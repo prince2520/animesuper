@@ -15,6 +15,7 @@ const ChangeCategory = (props) => {
         <div className="anime-manga-button">
             {categoryType.map(name =>
                 <span
+                    key={name.toString()}
                     style={{cursor: 'pointer'}}
                     className={selectedCategory === name && 'selected'}
                     onClick={() => {
