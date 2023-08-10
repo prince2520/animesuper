@@ -5,7 +5,7 @@ import {Icon} from "@iconify/react";
 
 import Button from "../../../shared/Button/Button";
 import AuthContext from "../../../Context/auth";
-import ZoomInZoomOut from "../../../Animation/Wrapper/ZoomInZoomOut";
+import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 
 const LoginForm = () => {
     const authCtx = useContext(AuthContext);

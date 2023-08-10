@@ -12,13 +12,13 @@ import SignupForm from "./Pages/LoginSignPage/Form/SignupForm";
 import TermAndCondition from "./Pages/Home/PolicyContactUs/TermAndCondition/TermAndCondition";
 import DMCA from "./Pages/Home/PolicyContactUs/DMCA/DMCA";
 import ContactUs from "./Pages/Home/PolicyContactUs/ContactUs/ContactUs";
-import AnimeMangaCategory from "./Pages/Home/Anime/AnimeMangaCategory/AnimeMangaCategory";
+import AnimeMangaCategory from "./Pages/Home/AnimeManga/AnimeMangaCategory/AnimeMangaCategory";
 import MyWatchlist from "./Pages/Home/MyFavoriteWatchlist/MyWatchlist/MyWatchlist";
 import MyFavorite from "./Pages/Home/MyFavoriteWatchlist/MyFavorite/MyFavorite";
-import AnimeMangaDetail from "./Pages/Home/Anime/AnimeMangaDetail/AnimeMangaDetail";
+import AnimeMangaDetail from "./Pages/Home/AnimeManga/AnimeMangaDetail/AnimeMangaDetail";
 import AuthContext from "./Context/auth";
 import AlertBox from "./shared/AlertBox/AlertBox";
-import Anime from "./Pages/Home/Anime/Anime";
+import AnimeManga from "./Pages/Home/AnimeManga/AnimeManga";
 import ScrollToTop from "./shared/ScrollToTop";
 
 import {AlertBoxActions} from "./store/alertBox";
@@ -40,14 +40,14 @@ function App() {
         if (visible) {
             time = setTimeout(() => {
                 dispatch(AlertBoxActions.closeAlertBox());
-            }, [2000]);
+            }, [3000]);
         }
     }, [dispatch, visible, alertBoxData]);
 
 
 
     return (
-        <div className="App">
+        <div className="App dark">
             {visible && <AlertBox/>}
             <Routes>
                 <Route path='/' element={<LoginSignupPage/>}>
@@ -66,7 +66,7 @@ function App() {
                     <Route path='terms-and-condition' element={<TermAndCondition/>}/>
                     <Route path='dmca' element={<DMCA/>}/>
                     <Route path='contact-us' element={<ContactUs/>}/>
-                    <Route path=':category' element={<Anime/>}/>
+                    <Route path=':category' element={<AnimeManga/>}/>
                     <Route path=':category/:id' element={<AnimeMangaDetail/>}/>
                     <Route path='' element={<Navigate to={'anime'}/>}/>
                 </Route>

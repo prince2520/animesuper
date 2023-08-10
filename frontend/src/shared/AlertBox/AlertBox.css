@@ -54,7 +54,7 @@
     align-items: center;
     padding: 0.5rem 0.5rem;
     top: -1.75rem;
-    left: 1rem;
+    left: 1rem
 }
 
 .alert-box-status .circle-1,
@@ -115,4 +115,12 @@
         top: auto;
         bottom: 1rem;
     }
+
+    .icon-container .alert-lottie-icon{
+        width: 1rem;
+    }
+}
+
+.icon-container .alert-lottie-icon{
+    width: 2.5rem;
 }

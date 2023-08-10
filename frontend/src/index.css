@@ -39,7 +39,6 @@
     --on-hold: #D3A913;
     --currently-watching: #178D14;
     --plan-to-watch: #636262;
-
 }
 
 
@@ -53,6 +52,6 @@ body {
     margin: 0;
     width: 100%;
     height: 100%;
-    font-family: Roboto;
+    font-family: Roboto, serif;
     font-style: normal;
 }

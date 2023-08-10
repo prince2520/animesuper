@@ -7,10 +7,11 @@ import NoData from "../NoData/NoData";
 import AuthContext from "../../../../Context/auth";
 import ChangeCategory from "../../../../shared/ChangeCategory/ChangeCategory";
 
-import {getMyWatchlist} from "../../../../api";
+import {getMyWatchlist} from "../../../../api/watchlist";
 import {helperActions} from "../../../../store/helper";
-import {animeStatus, mangaStatus, MyWatchlistActions} from "../../../../store/myWatchlist";
+import {MyWatchlistActions} from "../../../../store/myWatchlist";
 import {categoryType} from "../../../../common";
+import {animeStatus,mangaStatus} from "../../../../common";
 import {MyWatchlistImage} from "../../../../photo";
 
 import './MyWatchlist.css';

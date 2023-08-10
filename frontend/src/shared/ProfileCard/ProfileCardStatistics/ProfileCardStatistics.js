@@ -3,8 +3,8 @@ import React, {useState} from "react";
 import randomColor from "randomcolor";
 import {useDispatch, useSelector} from "react-redux";
 
-import {getColor} from "../../../store/myWatchlist";
 import {categoryType} from "../../../common";
+import {getColor} from "../../../store/myWatchlist";
 import {OverlayActions} from "../../../store/overlay";
 
 const ProfileCardStatistics = (props) => {

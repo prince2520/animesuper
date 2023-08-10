@@ -1,5 +1,5 @@
-import {Link, Outlet} from "react-router-dom";
 import {useDispatch} from 'react-redux'
+import {Link, Outlet} from "react-router-dom";
 
 import {helperActions} from "../../store/helper";
 import {loginSignupPageRight, Logo} from "../../photo";

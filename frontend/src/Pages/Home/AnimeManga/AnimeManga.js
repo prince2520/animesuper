@@ -9,10 +9,11 @@ import AnimeMangaRanking from "./AnimeMangaRanking/AnimeMangaRanking";
 import {helperActions} from "../../../store/helper";
 import {animeCategory, categoryType, mangaCategory} from "../../../common";
 
-import './Anime.css';
 import {useInView} from "react-intersection-observer";
 
-const Anime = () => {
+import './AnimeManga.css';
+
+const AnimeManga = () => {
     const dispatch = useDispatch();
     const {category} = useParams();
 
@@ -32,4 +33,4 @@ const Anime = () => {
     );
 };
 
-export default Anime;
+export default AnimeManga;

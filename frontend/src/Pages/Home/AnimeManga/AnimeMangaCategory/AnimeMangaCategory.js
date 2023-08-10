@@ -6,7 +6,7 @@ import {useNavigate, useParams} from "react-router-dom";
 
 import Card from "../../../../shared/Card/Card";
 
-import {getCategoryList} from "../../../../api";
+import {getCategoryList} from "../../../../api/animeManga";
 import {animeCategory, categoryType, mangaCategory} from "../../../../common";
 
 import './AnimeMangaCategory.css';

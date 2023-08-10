@@ -6,7 +6,7 @@ import './AnimeMangaDetailBottom.css';
 import AnimeMangaRecommendation from "../AnimeMangaRecommendation/AnimeMangaRecommendation";
 import AnimeMangaDetailBottomMobile from "./AnimeMangaDetailBottomMobile/AnimeMangaDetailBottomMobile";
 
-export const detail_links = ['Information', 'Overview', 'Related Anime'];
+export const detail_links = ['Information', 'Overview', 'Related AnimeManga'];
 const AnimeMangaDetailBottom = ({animeDetail, category}) => {
 
     return (

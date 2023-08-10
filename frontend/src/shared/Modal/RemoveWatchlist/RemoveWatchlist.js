@@ -5,10 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 
 import AuthContext from "../../../Context/auth";
 
+import {AlertBoxActions} from "../../../store/alertBox";
 import {OverlayActions} from "../../../store/overlay";
 import {MyWatchlistActions} from "../../../store/myWatchlist";
-import {deleteWatchlistItem} from "../../../api";
-import {AlertBoxActions} from "../../../store/alertBox";
+import {deleteWatchlistItem} from "../../../api/watchlist";
 
 const RemoveWatchlist = () => {
     const dispatch = useDispatch();

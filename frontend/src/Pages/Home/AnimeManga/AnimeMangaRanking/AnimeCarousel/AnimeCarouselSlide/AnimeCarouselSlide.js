@@ -6,7 +6,7 @@ import {useNavigate} from "react-router-dom";
 
 import Button from "../../../../../../shared/Button/Button";
 
-import {getAnimeDetail} from "../../../../../../api";
+import {getAnimeDetail} from "../../../../../../api/animeManga";
 import {AnimeActions} from "../../../../../../store/anime";
 
 import './AnimeCarouselSlide.css';

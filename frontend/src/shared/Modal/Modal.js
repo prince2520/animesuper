@@ -1,10 +1,10 @@
 import {useSelector} from "react-redux";
 
-import ThankYou from "./ThankYou/ThankYou";
 import Logout from "./Logout/Logout";
-import RemoveWatchlist from "./RemoveWatchlist/RemoveWatchlist";
-import RemoveFavorite from "./RemoveFavorite/RemoveFavorite";
+import ThankYou from "./ThankYou/ThankYou";
 import EditStatus from "./EditStatus/EditStatus";
+import RemoveFavorite from "./RemoveFavorite/RemoveFavorite";
+import RemoveWatchlist from "./RemoveWatchlist/RemoveWatchlist";
 
 import './Modal.css'
 

@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 
 import SearchResult from "../SearchResult/SearchResult";
 
-import {searchAnime} from "../../api";
+import {searchAnime} from "../../api/animeManga";
 
 import './SearchBar.css';
 

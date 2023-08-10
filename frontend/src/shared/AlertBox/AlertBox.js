@@ -1,5 +1,5 @@
-import {useDispatch, useSelector} from "react-redux";
 import {Icon} from "@iconify/react";
+import {useDispatch, useSelector} from "react-redux";
 
 import {getAlertIconAndColor} from "../../common";
 import {AlertBoxActions} from "../../store/alertBox";

@@ -46,6 +46,10 @@
     border: 0.125rem var(--background-secondary) solid;
 }
 
+.profile-logo .profile-photo-skeleton {
+    width: 100%;
+    height: 100%;
+}
 
 @media screen and (max-width: 800px) {
     .profile-tab {

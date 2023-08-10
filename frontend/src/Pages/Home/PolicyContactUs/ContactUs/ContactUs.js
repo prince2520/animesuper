@@ -4,7 +4,7 @@ import {Icon} from "@iconify/react";
 import Button from "../../../../shared/Button/Button";
 
 import {OverlayActions} from "../../../../store/overlay";
-import {contactUs} from "../../../../api";
+import {contactUs} from "../../../../api/auth";
 
 import './ContactUs.css';
 import {useRef} from "react";

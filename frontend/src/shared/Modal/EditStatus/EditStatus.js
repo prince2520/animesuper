@@ -6,11 +6,13 @@ import {useDispatch, useSelector} from "react-redux";
 import Button from "../../Button/Button";
 import AuthContext from "../../../Context/auth";
 
-import {editStatus} from "../../../api";
-import {OverlayActions} from "../../../store/overlay";
-import {animeStatus, mangaStatus, MyWatchlistActions} from "../../../store/myWatchlist";
-import {AlertBoxActions} from "../../../store/alertBox";
 import {categoryType} from "../../../common";
+import {editStatus} from "../../../api/watchlist";
+import {OverlayActions} from "../../../store/overlay";
+import {AlertBoxActions} from "../../../store/alertBox";
+import {MyWatchlistActions} from "../../../store/myWatchlist";
+import {mangaStatus, animeStatus} from "../../../common";
+
 
 import './EditStatus.css';
 

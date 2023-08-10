@@ -9,7 +9,7 @@ import AuthContext from "../../../../Context/auth";
 import ChangeCategory from "../../../../shared/ChangeCategory/ChangeCategory";
 
 import {helperActions} from "../../../../store/helper";
-import {getFavoriteList} from "../../../../api";
+import {getFavoriteList} from "../../../../api/favorite";
 import {MyFavoriteActions} from "../../../../store/myFavorite";
 import {MyFavoriteImage} from "../../../../photo";
 

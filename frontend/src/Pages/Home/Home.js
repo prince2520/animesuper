@@ -10,14 +10,14 @@ import Footer from "../../shared/Footer/Footer";
 import Navbar from "../../shared/Navbar/Navbar";
 import SearchBar from "../../shared/SearchBar/SearchBar";
 import ProfileWithShare from "../../shared/ProfileWithShare/ProfileWithShare";
+import SideBarMobile from "../../shared/SideBar/SideBarMobile/SideBarMobile";
 
-import {getProfileDetail} from "../../api";
+import {getProfileDetail} from '../../api/auth';
 import {MyProfileActions} from "../../store/myProfile";
 
 import 'swiper/css';
 import './Home.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import SideBarMobile from "../../shared/SideBar/SideBarMobile/SideBarMobile";
 
 
 const Home = () => {

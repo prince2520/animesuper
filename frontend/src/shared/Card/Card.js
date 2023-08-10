@@ -8,12 +8,13 @@ import {Icon} from "@iconify/react";
 
 import AuthContext from "../../Context/auth";
 
-import {addToWatchlist} from "../../api";
+import {addToWatchlist} from "../../api/watchlist";
 import {AlertBoxActions} from "../../store/alertBox";
 import {categoryType} from "../../common";
 
+import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
+
 import './Card.css';
-import ZoomInZoomOut from "../../Animation/Wrapper/ZoomInZoomOut";
 
 const Card = (props) => {
     const navigate = useNavigate();
@@ -68,7 +69,7 @@ const Card = (props) => {
                 </div>
                 <ZoomInZoomOut>
                     <img style={{cursor: 'pointer'}} onClick={() => navigate(`/home/${category}/${props.detail.id}`)}
-                         src={props.detail.main_picture.medium} alt="card"/>
+                         src={props.detail.main_picture?.medium} alt="card"/>
                 </ZoomInZoomOut>
             </div>
         </div>

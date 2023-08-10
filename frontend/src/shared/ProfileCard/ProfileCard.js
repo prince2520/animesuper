@@ -11,11 +11,12 @@ import ProfileCardStatistics from "./ProfileCardStatistics/ProfileCardStatistics
 
 import {storage} from "../../firebase";
 import {OverlayActions} from "../../store/overlay";
+import {AlertBoxActions} from "../../store/alertBox";
 import {MyProfileActions} from "../../store/myProfile";
-import {getProfileStatistics, saveProfile} from "../../api";
+
+import {getProfileStatistics, saveProfile} from "../../api/auth";
 
 import './ProfileCard.css';
-import {AlertBoxActions} from "../../store/alertBox";
 
 const ProfileCard = () => {
     const dispatch = useDispatch();

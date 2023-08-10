@@ -7,7 +7,9 @@ import {useInView} from "react-intersection-observer";
 import Button from "../../../../shared/Button/Button";
 
 import {helperActions} from "../../../../store/helper";
-import {addToFavorite, addToWatchlist, getAnimeDetail} from "../../../../api";
+import {addToFavorite} from "../../../../api/favorite";
+import {addToWatchlist} from "../../../../api/watchlist";
+import {getAnimeDetail} from "../../../../api/animeManga";
 
 
 import './AnimeMangaDetail.css';

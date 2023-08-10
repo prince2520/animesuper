@@ -1,5 +1,6 @@
+import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
+
 import './Button.css'
-import ZoomInZoomOut from "../../Animation/Wrapper/ZoomInZoomOut";
 
 const Button = (props) => {
     return (

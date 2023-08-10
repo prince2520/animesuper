@@ -5,10 +5,11 @@ import {useDispatch, useSelector} from "react-redux";
 
 import AuthContext from "../../../Context/auth";
 
-import {removeFavoriteItem} from "../../../api";
-import {MyFavoriteActions} from "../../../store/myFavorite";
 import {OverlayActions} from "../../../store/overlay";
 import {AlertBoxActions} from "../../../store/alertBox";
+import {removeFavoriteItem} from "../../../api/favorite";
+import {MyFavoriteActions} from "../../../store/myFavorite";
+
 const RemoveFavorite = () => {
     const category = useSelector(state => state.myFavorite.removeCategory);
     const categoryId = useSelector(state => state.myFavorite.removeCategoryId);

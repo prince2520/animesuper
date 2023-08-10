@@ -8,11 +8,10 @@ import {useNavigate, useParams} from "react-router-dom";
 
 import Card from "../../../../shared/Card/Card";
 
-import {getCategoryList} from "../../../../api";
+import {getCategoryList} from "../../../../api/animeManga";
 import {AnimeActions} from "../../../../store/anime";
 import {categoryType} from "../../../../common";
 import SkeletonCard from "../../../../shared/SkeletonCard/SkeletonCard";
-import ZoomInZoomOut from "../../../../Animation/Wrapper/ZoomInZoomOut";
 
 
 const AnimeMangaRanking = (props) => {

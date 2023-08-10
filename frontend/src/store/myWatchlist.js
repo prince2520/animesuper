@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
+import {animeStatus, mangaStatus} from "../common";
 
-export const animeStatus = ['All Anime', 'Dropped', 'Currently Watching', 'Complete', 'On Hold', 'Plan to watch'];
-export const mangaStatus = ['All Manga', 'Dropped', 'Currently Reading', 'Complete', 'On Hold', 'Plan to read'];
+
 
 const initialMyWatchlistState = {
     removeCategoryId: 0,
