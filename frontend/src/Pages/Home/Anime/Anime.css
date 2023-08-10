@@ -127,7 +127,6 @@
 
 .navigation-box .see-all:hover,
 .navigation-box .see-all:active {
-    font-size: 1.25rem;
     color: var(--primary);
 }
 

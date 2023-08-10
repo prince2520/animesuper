@@ -56,7 +56,6 @@ const AnimeMangaRanking = (props) => {
             </span>
             <div className="ranking-cards">
                 <Swiper
-                    className={'swiper-container'}
                     spaceBetween={75}
                     modules={[Navigation]}
                     onBeforeInit={(swiper) => {
