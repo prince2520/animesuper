@@ -7,6 +7,7 @@ import randomColor from "randomcolor";
 import {MyProfileActions} from "../../../store/myProfile";
 
 import './ProfileCardEdit.css';
+import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 
 const ProfileCardEdit = (props) => {
     const user = useSelector(state => state.myProfile);
@@ -77,16 +78,20 @@ const ProfileCardEdit = (props) => {
                     })}
                 </div>
             </div>
-            <div className="save-button">
-                <button onClick={() =>
-                    props.saveProfileDetail(
-                        usernameRef.current.value,
-                        genderRef.current.value,
-                        locationRef.current.value,
-                        user.new_favorite_genre
-                    )}>Save
-                </button>
-            </div>
+            <ZoomInZoomOut>
+                <div className="save-button">
+                    <button
+                        className={'cursor-btn selected-container'}
+                        onClick={() =>
+                        props.saveProfileDetail(
+                            usernameRef.current.value,
+                            genderRef.current.value,
+                            locationRef.current.value,
+                            user.new_favorite_genre
+                        )}>Save
+                    </button>
+                </div>
+            </ZoomInZoomOut>
         </React.Fragment>
     );
 };

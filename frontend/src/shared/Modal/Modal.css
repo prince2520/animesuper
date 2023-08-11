@@ -47,7 +47,6 @@
 
 .modal-box-2 .yes-button,
 .modal-box-2 .no-button {
-    width: 30%;
     border: none;
     border-radius: 0.25rem;
     color: var(--text);
@@ -61,6 +60,21 @@
 .modal-box-2 .yes-button {
     background-color: var(--error-bold);
 }
+
+.modal-box-2 .yes-button:hover {
+    color: var(--error-bold);
+}
+
+
+.modal-box-2 .no-button:hover {
+    color: var(--success-bold);
+}
+
+.modal-box-2 .yes-button:hover ,
+.modal-box-2 .no-button:hover {
+    background-color: var(--background-secondary);
+}
+
 
 .modal-box-2 .no-button {
     background-color: var(--success-bold);

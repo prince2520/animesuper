@@ -28,7 +28,11 @@ const RemoveWatchlist = () => {
             <div className="remove-watchlist-container-top">
                 <h1>Remove</h1>
                 <span>
-                    <Icon color="white" icon="material-symbols:close" style={{fontSize: '2rem'}}/>
+                    <Icon
+                        onClick={()=> dispatch(OverlayActions.closeOverlayHandler())}
+                        className={'cursor-btn'}
+                        color="white"
+                        icon="material-symbols:close" style={{fontSize: '2rem'}}/>
                 </span>
             </div>
             <div className="remove-watchlist-container-middle">

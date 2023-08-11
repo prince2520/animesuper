@@ -22,10 +22,13 @@
 
 .anime-detail-bottom-right .related-container-scroll{
     overflow: auto;
-    height: 20rem;
+    max-height: 18rem;
+    height: fit-content;
+
+    margin-top: 1rem;
 
     border: 1px solid var(--border);
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     padding: 0.5rem 0.75rem;
 }
 

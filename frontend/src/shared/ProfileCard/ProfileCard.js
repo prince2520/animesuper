@@ -16,6 +16,8 @@ import {MyProfileActions} from "../../store/myProfile";
 import {getProfileStatistics, saveProfile} from "../../api/auth";
 
 import './ProfileCard.css';
+import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
+import Skeleton from "react-loading-skeleton";
 
 const ProfileCard = () => {
     const dispatch = useDispatch();
@@ -71,7 +73,7 @@ const ProfileCard = () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((profile_photo) => {
                         saveProfile(authCtx.email, username, gender, location, favorite_genre, profile_photo).then(res => {
                             dispatch(AlertBoxActions.saveAlertBoxData(res));
-                            if(res.success) {
+                            if (res.success) {
                                 dispatch(MyProfileActions.saveProfileData({
                                     username: username,
                                     gender: gender,
@@ -87,7 +89,7 @@ const ProfileCard = () => {
         } else {
             saveProfile(authCtx.email, username, gender, location, favorite_genre, null).then(res => {
                 dispatch(AlertBoxActions.saveAlertBoxData(res));
-                if(res.success) {
+                if (res.success) {
                     dispatch(MyProfileActions.saveProfileData({
                         username: username,
                         gender: gender,
@@ -117,18 +119,17 @@ const ProfileCard = () => {
                 </span>
                 <span className="title">Profile</span>
                 <span
-                    style={{cursor: 'pointer'}}
-                    className={`edit-button ${showEdit && 'edit-button-selected'}`}
+                    className={`edit-button cursor-btn ${showEdit && 'edit-button-selected'}`}
                     onClick={() => setShowEdit(!showEdit)}>Edit</span>
             </div>
             <div className="profile-card-container-bottom">
                 <div className="profile-photo-container">
                     <div className="profile-photo">
-                        <img alt={'profile'} accept='image/*'
-                             src={preview || user.profile_photo}/>
+                        {user.profile_photo && <img alt={'profile'} accept='image/*'
+                              src={preview || user.profile_photo}/>}
+                        {!user.profile_photo && <Skeleton width={300} height={300}/>}
                     </div>
-                    {showEdit && <span className="edit-icon
-                    " style={{cursor: 'pointer'}} onClick={() => imgRef.current.click()}>
+                    {showEdit && <span className="edit-icon selected-container cursor-btn" onClick={() => imgRef.current.click()}>
                         <input
                             ref={imgRef}
                             type={"file"}
@@ -161,7 +162,6 @@ const ProfileCard = () => {
                         />
                         <Icon
                             icon="ri:edit-line"
-                            style={{fontSize: '1.5rem', color: 'white'}}
                         />
                     </span>}
                 </div>

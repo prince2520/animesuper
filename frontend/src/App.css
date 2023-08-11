@@ -10,7 +10,6 @@
     align-items: center;
 }
 
-
 input {
     border-style: solid;
     border-color: var(--text-light);
@@ -30,6 +29,10 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px var(--background)  inset !important;
     -webkit-text-fill-color: var(--text) !important;
+}
+
+.selected-highlight:hover{
+    color: var(--text-primary);
 }
 
 

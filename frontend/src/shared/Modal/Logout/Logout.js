@@ -6,6 +6,7 @@ import {useDispatch} from "react-redux";
 import AuthContext from "../../../Context/auth";
 
 import {OverlayActions} from "../../../store/overlay";
+import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 
 const Logout = () => {
     const dispatch = useDispatch();
@@ -16,20 +17,29 @@ const Logout = () => {
             <div className="logout-container-top">
                 <h1>Logout</h1>
                 <span>
-                    <Icon color="white" icon="material-symbols:close" style={{fontSize: '2rem'}}
-                          onClick={() => dispatch(OverlayActions.closeOverlayHandler())}/>
+                    <Icon
+                        className={'cursor-btn'}
+                        color="white" icon="material-symbols:close" style={{fontSize: '2rem'}}
+                        onClick={() => dispatch(OverlayActions.closeOverlayHandler())}/>
                 </span>
             </div>
             <div className="logout-container-middle">
                 <p>Are you sure, do you want to logout ?</p>
             </div>
             <div className="logout-container-bottom">
-                <button className="no-button" onClick={() => dispatch(OverlayActions.closeOverlayHandler())}>No</button>
-                <button className="yes-button" onClick={() => {
-                    dispatch(OverlayActions.closeOverlayHandler());
-                    authCtx.autoLogout();
-                }}>Yes
-                </button>
+                <ZoomInZoomOut>
+                    <button className="no-button cursor-btn"
+                            onClick={() => dispatch(OverlayActions.closeOverlayHandler())}>No
+                    </button>
+                </ZoomInZoomOut>
+                <ZoomInZoomOut>
+                    <button className="yes-button cursor-btn" onClick={() => {
+                        dispatch(OverlayActions.closeOverlayHandler());
+                        authCtx.autoLogout();
+                    }}>Yes
+                    </button>
+                </ZoomInZoomOut>
+
             </div>
         </div>
     );

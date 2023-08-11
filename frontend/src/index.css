@@ -56,8 +56,6 @@ body {
     font-style: normal;
 }
 
-
-
 ::-webkit-scrollbar{
     width: 0.5rem;
 }
@@ -72,4 +70,11 @@ body {
 
 ::-webkit-scrollbar-thumb:hover{
     background-color: var(--text);
+}
+
+
+.selected-container:hover,
+.selected-container:active{
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
 }

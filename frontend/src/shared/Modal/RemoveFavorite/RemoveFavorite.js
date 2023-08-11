@@ -29,7 +29,9 @@ const RemoveFavorite = () => {
             <div className="remove-favorite-container-top">
                 <h1>Remove</h1>
                 <span>
-                    <Icon color="white" icon="material-symbols:close" style={{fontSize: '2rem'}}/>
+                    <Icon
+                        className={'cursor-btn'}
+                        color="white" icon="material-symbols:close" style={{fontSize: '2rem'}}/>
                 </span>
             </div>
             <div className="remove-favorite-container-middle">

@@ -43,8 +43,13 @@
     font-weight: 500;
     color: var(--text-extra-light);
     padding: 0.25rem 0.5rem;
-
 }
+
+.profile-card-container-top .edit-button:hover{
+    color: var(--text);
+}
+
+
 
 .profile-card-container-top .edit-button-selected {
     font-weight: 500;
@@ -222,6 +227,9 @@
     width: 2.25rem;
     height: 2.25rem;
     border-radius: 50%;
+
+    color: var(--text);
+    font-size: 1.5rem;
 
     display: flex;
     justify-content: center;

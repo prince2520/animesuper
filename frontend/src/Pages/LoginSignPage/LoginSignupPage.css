@@ -152,7 +152,7 @@ form input:hover {
 }
 
 .input-box input{
-    color: var(--text-light);
+    color: var(--text);
     border-color: var(--border);
 }
 

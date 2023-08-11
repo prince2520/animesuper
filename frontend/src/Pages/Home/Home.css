@@ -72,6 +72,11 @@
     display: none;
 }
 
+.selected-highlight:hover,
+.selected-highlight:active{
+    color: var(--text-primary);
+}
+
 
 @media screen and (max-width: 800px) {
     .home-page {

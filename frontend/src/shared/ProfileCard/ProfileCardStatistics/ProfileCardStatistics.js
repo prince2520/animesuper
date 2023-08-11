@@ -6,8 +6,11 @@ import randomColor from "randomcolor";
 import {categoryType} from "../../../common";
 import {getColor} from "../../../store/myWatchlist";
 import {OverlayActions} from "../../../store/overlay";
+import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
+import Skeleton from "react-loading-skeleton";
 
 const ProfileCardStatistics = (props) => {
+    console.log(props)
     const [selectedCategory, setSelectedCategory] = useState(categoryType[0]);
 
 
@@ -55,18 +58,21 @@ const ProfileCardStatistics = (props) => {
                                     </div>
                                 </div>
                             </div>)}
+                        {(props.categoryStats.animeStats.length===0 && props.categoryStats.mangaStats.length===0) ? <Skeleton count={5}/> : null }
                     </div>
                 </div>
             </div>
-            <div className="logout-button">
-                <button
-                    className={'cursor-btn'}
-                    onClick={() => {
-                        dispatch(OverlayActions.closeOverlayHandler())
-                        dispatch(OverlayActions.showLogoutHandler())
-                    }}>Logout
-                </button>
-            </div>
+            <ZoomInZoomOut>
+                <div className="logout-button">
+                    <button
+                        className={'cursor-btn'}
+                        onClick={() => {
+                            dispatch(OverlayActions.closeOverlayHandler())
+                            dispatch(OverlayActions.showLogoutHandler())
+                        }}>Logout
+                    </button>
+                </div>
+            </ZoomInZoomOut>
         </React.Fragment>
     );
 };
