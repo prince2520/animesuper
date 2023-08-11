@@ -1,5 +1,8 @@
 import React from "react";
+
 import Card from "../../../../../../shared/Card/Card";
+
+import './AnimeMangaRecommendation.css'
 
 const AnimeMangaRecommendation = ({animeDetail}) => {
     return (
