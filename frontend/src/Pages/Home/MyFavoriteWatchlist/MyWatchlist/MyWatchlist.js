@@ -19,7 +19,9 @@ import MyWatchlistHeading from "./MyWatchlistHeading/MyWatchlistHeading";
 import MyWatchlistItem from "./MyWatchlistItem/MyWatchlistItem";
 import MyWatchlistColorStatus from "./MyWatchlistColorStatus/MyWatchlistColorStatus";
 
-import '../MyFavoriteWatchlist.css'
+import MyWatchlistItemSkeleton from "../MyFavoriteWatchlistItemSkeleton/MyWatchlistItemSkeleton";
+
+import '../MyFavoriteWatchlist.css';
 
 const MyWatchlist = () => {
     const {ref, inView} = useInView({
@@ -33,6 +35,8 @@ const MyWatchlist = () => {
     const statusFilter = useSelector(state => state.myWatchlist.currStatus);
     const [selectedCategory, setSelectedCategory] = useState('Anime');
 
+    const [showWatchlistSkeleton, setShowWatchlistSkeleton] = useState(false);
+
     useEffect(() => {
         dispatch(helperActions.searchBarHandler(false));
         dispatch(helperActions.blurNavbarHandler(!inView));
@@ -45,13 +49,17 @@ const MyWatchlist = () => {
 
 
     useEffect(() => {
+        setShowWatchlistSkeleton(true);
+
         getMyWatchlist(authCtx.email).then(result => {
-            dispatch(MyWatchlistActions.saveMyWatchlistData(result.Data))
-        });
+            dispatch(MyWatchlistActions.saveMyWatchlistData(result.Data));
+            setShowWatchlistSkeleton(false);
+        }).catch(err=>setShowWatchlistSkeleton(false));
+
         return () => {
             dispatch(MyWatchlistActions.currentStatus({currStatus: animeStatus[0], selectedCategory: 'anime'}));
         }
-    }, [authCtx.email, dispatch]);
+    }, [authCtx?.email, dispatch]);
 
 
     return (
@@ -78,13 +86,13 @@ const MyWatchlist = () => {
             <div className="my-watchlist-table">
                 <MyWatchlistHeading/>
                 <div className="my-watchlist-table-list">
-                    {filterData.length === 0 && <NoData/>}
-                    {filterData && filterData.map((res, index) =><MyWatchlistItem res={res} index={index}/>
-                    )}
+                    {!showWatchlistSkeleton && (filterData.length === 0) && <NoData/>}
+                    {filterData.map((res, index) =><MyWatchlistItem res={res} index={index}/>)}
+                    {showWatchlistSkeleton && Array(5).fill(null).map(()=><MyWatchlistItemSkeleton/>)}
                 </div>
             </div>
         </div>
     );
 }
 
-export default MyWatchlist;
+export default React.memo(MyWatchlist);

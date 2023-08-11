@@ -24,7 +24,6 @@ const SideBar = () => {
                         return (
                             (data.isAuth) && <div className="option" key={data.toString()}>
                                 <span className="description">{data.categoryTitle}</span>
-
                                 {data.subCategoryData
                                     .map(subData=> <Link key={subData.toString()} style={{textDecoration: 'none'}} className="title" to={subData.to}>
                                     <Icon color="white" icon={subData.icon}

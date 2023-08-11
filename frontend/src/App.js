@@ -19,7 +19,6 @@ import AnimeMangaDetail from "./Pages/Home/AnimeManga/AnimeMangaDetail/AnimeMang
 import AuthContext from "./Context/auth";
 import AlertBox from "./shared/AlertBox/AlertBox";
 import AnimeManga from "./Pages/Home/AnimeManga/AnimeManga";
-import ScrollToTop from "./shared/ScrollToTop";
 
 import {AlertBoxActions} from "./store/alertBox";
 
@@ -35,6 +34,7 @@ function App() {
     const alertBoxData = useSelector(state => state.alertBox.data);
     const dispatch = useDispatch();
 
+
     useEffect(() => {
         clearTimeout(time);
         if (visible) {
@@ -43,6 +43,8 @@ function App() {
             }, [3000]);
         }
     }, [dispatch, visible, alertBoxData]);
+
+
 
 
 
@@ -71,7 +73,6 @@ function App() {
                     <Route path='' element={<Navigate to={'anime'}/>}/>
                 </Route>
             </Routes>
-            <ScrollToTop/>
         </div>
     );
 }

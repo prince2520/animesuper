@@ -30,7 +30,7 @@ const Home = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        getProfileDetail(authCtx.email).then((res) => {
+        getProfileDetail(authCtx?.email).then((res) => {
             let favorite_genre = res.favorite_genre.map(result => result.fields.name);
             dispatch(MyProfileActions.saveProfileData({
                 username: res.username,
@@ -41,7 +41,7 @@ const Home = () => {
                 favorite_genre: favorite_genre
             }));
         }).catch(err => console.log(err))
-    }, [dispatch, authCtx.email]);
+    }, [dispatch, authCtx?.email]);
 
 
     return (

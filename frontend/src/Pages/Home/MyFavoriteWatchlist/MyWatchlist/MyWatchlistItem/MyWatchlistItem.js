@@ -14,4 +14,4 @@ const MyWatchlistItem = ({res, index}) => {
     );
 };
 
-export default MyWatchlistItem;
+export default React.memo(MyWatchlistItem);

@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 
 import {useDispatch, useSelector} from "react-redux";
@@ -18,11 +18,14 @@ import MyFavoriteHeading from "./MyFavoriteHeading/MyFavoriteHeading";
 import MyFavoriteItem from "./MyFavoriteItem/MyFavoriteItem";
 
 import '../MyFavoriteWatchlist.css';
+import MyFavoriteWatchlistItemSkeleton from "../MyFavoriteWatchlistItemSkeleton/MyWatchlistItemSkeleton";
 
 const MyFavorite = () => {
     const dispatch = useDispatch();
     const favoriteData = useSelector(state => state.myFavorite.filterData);
     const authCtx = useContext(AuthContext);
+    const [showFavoriteSkeleton, setShowFavoriteSkeleton] = useState(false);
+
 
     const {ref, inView} = useInView({
         threshold: 0.8,
@@ -41,10 +44,16 @@ const MyFavorite = () => {
     }, [inView, dispatch]);
 
     useEffect(() => {
-        getFavoriteList(authCtx.email).then(result => {
+        setShowFavoriteSkeleton(true);
+
+        getFavoriteList(authCtx?.email).then(result => {
+            setShowFavoriteSkeleton(false);
             dispatch(MyFavoriteActions.saveMyFavoriteData(result.Data))
-        }).catch(err => console.log(err));
-    }, [authCtx.email, dispatch])
+        }).catch(err => {
+            setShowFavoriteSkeleton(false);
+        });
+
+    }, [authCtx?.email, dispatch])
 
 
     return (
@@ -61,14 +70,15 @@ const MyFavorite = () => {
             <div className="favorite-table">
                 <MyFavoriteHeading/>
                 <div className="favorite-table-list">
-                    {favoriteData.length === 0 && <NoData/>}
+                    {(!showFavoriteSkeleton && favoriteData.length === 0) && <NoData/>}
                     {favoriteData.map((res, id) =>
                         <MyFavoriteItem res={res} id={id}/>
                     )}
+                    {showFavoriteSkeleton && Array(5).fill(null).map((res, id) => <MyFavoriteWatchlistItemSkeleton/>)}
                 </div>
             </div>
         </div>
     );
 };
 
-export default MyFavorite;
+export default React.memo(MyFavorite);

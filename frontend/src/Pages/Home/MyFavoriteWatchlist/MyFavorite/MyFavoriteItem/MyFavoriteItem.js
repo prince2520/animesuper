@@ -12,4 +12,4 @@ const MyFavoriteItem = ({res, id}) => {
     );
 };
 
-export default MyFavoriteItem;
+export default React.memo(MyFavoriteItem);
