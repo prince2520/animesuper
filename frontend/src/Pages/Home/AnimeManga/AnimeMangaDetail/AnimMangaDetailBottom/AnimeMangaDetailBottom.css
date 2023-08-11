@@ -12,8 +12,21 @@
     column-gap: 1.5rem;
 }
 
+.related-container .heading{
+    margin-top: 1rem;
+}
+
 .anime-detail-bottom .anime-detail-bottom-mobile{
     display: none;
+}
+
+.anime-detail-bottom-right .related-container-scroll{
+    overflow: auto;
+    height: 20rem;
+
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -37,6 +50,5 @@
         column-gap: 0.5rem;
 
     }
-
 
 }

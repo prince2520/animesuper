@@ -1,27 +1,25 @@
-import {useContext, useEffect, useState} from "react";
-
-import { useParams} from "react-router-dom";
+import {Icon} from "@iconify/react";
 import {useDispatch} from "react-redux";
+import { useParams} from "react-router-dom";
+import {useContext, useEffect, useState} from "react";
 import {useInView} from "react-intersection-observer";
+
+import Skeleton from "react-loading-skeleton";
 
 import Button from "../../../../shared/Button/Button";
 
+import {categoryType} from "../../../../common";
 import {helperActions} from "../../../../store/helper";
 import {addToFavorite} from "../../../../api/favorite";
 import {addToWatchlist} from "../../../../api/watchlist";
 import {getAnimeDetail} from "../../../../api/animeManga";
+import {AlertBoxActions} from "../../../../store/alertBox";
 
+import AuthContext from "../../../../Context/auth";
+import AnimeMangaTop from "./AnimeMangaTop/AnimeMangaTop";
+import AnimeMangaDetailBottom from "./AnimMangaDetailBottom/AnimeMangaDetailBottom";
 
 import './AnimeMangaDetail.css';
-import AnimeMangaTop from "./AnimeMangaTop/AnimeMangaTop";
-import {Icon} from "@iconify/react";
-import AnimeMangaDetailBottom from "./AnimMangaDetailBottom/AnimeMangaDetailBottom";
-import {categoryType} from "../../../../common";
-import {AlertBoxActions} from "../../../../store/alertBox";
-import AuthContext from "../../../../Context/auth";
-import Skeleton from "react-loading-skeleton";
-
-
 
 const AnimeMangaDetail = () => {
     const {category, id} = useParams();

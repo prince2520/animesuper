@@ -1,16 +1,17 @@
-import React, {useEffect, } from "react";
+import React, {useEffect} from "react";
 
 import {Icon} from "@iconify/react";
-import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+
+import Skeleton from "react-loading-skeleton";
 
 import Button from "../../../../../../shared/Button/Button";
 
-import {getAnimeDetail} from "../../../../../../api/animeManga";
 import {AnimeActions} from "../../../../../../store/anime";
+import {getAnimeDetail} from "../../../../../../api/animeManga";
 
 import './AnimeCarouselSlide.css';
-import Skeleton from "react-loading-skeleton";
 
 const AnimeCarouselSlide = (props) => {
     const dispatch = useDispatch();
@@ -36,40 +37,49 @@ const AnimeCarouselSlide = (props) => {
         <div>
             <div className="img-overlay">
                  <div className="content">
-                    <div className="title">
+
+                     <div className="title">
                         {animeMangaCarouselData?.title.slice(0, 250) || <Skeleton width={"80%"} count={1}/>}
                     </div>
+
                     <div className="synopsis">
                         {animeMangaCarouselData?.synopsis.slice(0, 250) || <Skeleton count={3}/>}
                         {animeMangaCarouselData?.synopsis && "..."}
                     </div>
+
                     <div className="more-info">
-                        <div className="type">
+
+                        {animeMangaCarouselData?.media_type && <div className="type">
                             <span><Icon
                                 style={{fontSize: 'inherit'}}
                                 icon="material-symbols:play-circle-outline-rounded"/></span>
-                            <span>{animeMangaCarouselData?.media_type.toUpperCase() || <Skeleton width={30}/>}</span>
-                        </div>
-                        <div className="duration">
+                            <span>{animeMangaCarouselData?.media_type.toUpperCase()}</span>
+                        </div>}
+                        {!animeMangaCarouselData?.media_type && <Skeleton width={60} height={22}/>}
+
+                        {animeMangaCarouselData?.average_episode_duration && <div className="duration">
                             <span><Icon style={{fontSize: 'inherit'}} icon="mdi:clock-time-three-outline"/></span>
-                            {animeMangaCarouselData?.average_episode_duration && `${Math.round(animeMangaCarouselData?.average_episode_duration / 60)}m`}
-                            {!animeMangaCarouselData?.average_episode_duration && <Skeleton width={40}/>}
-                        </div>
-                        <div className="release-date">
+                            {`${Math.round(animeMangaCarouselData?.average_episode_duration / 60)}m`}
+                        </div>}
+
+                        {animeMangaCarouselData?.start_date && <div className="release-date">
                             <span>
                                 <Icon style={{fontSize: 'inherit'}} icon="simple-line-icons:calender"/>
                             </span>
-                            <span>{animeMangaCarouselData?.start_date || <Skeleton width={60}/>}</span>
-                        </div>
+                            <span>{animeMangaCarouselData?.start_date}</span>
+                        </div>}
+                        {!animeMangaCarouselData?.start_date && <Skeleton width={60} height={22}/>}
                     </div>
+
                     <div className="detail" onClick={()=>navigate(`${props.category_id}`)}>
                         <Button title="Detail"/>
                     </div>
+
                 </div>
             </div>
             <img src={props.coverImg} alt="cyberpunk"/>
         </div>
-    )
+    );
 };
 
 export default AnimeCarouselSlide;

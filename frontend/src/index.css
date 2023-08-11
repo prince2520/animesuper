@@ -55,3 +55,21 @@ body {
     font-family: Roboto, serif;
     font-style: normal;
 }
+
+
+
+::-webkit-scrollbar{
+    width: 0.5rem;
+}
+::-webkit-scrollbar-track{
+    background-color: var(--container);
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 0.25rem;
+    background-color: var(--text-light);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--text);
+}

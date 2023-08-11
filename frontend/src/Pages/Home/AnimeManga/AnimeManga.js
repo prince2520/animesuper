@@ -2,14 +2,13 @@ import React, {useEffect} from "react";
 
 import {useDispatch} from "react-redux";
 import {useParams} from "react-router-dom";
+import {useInView} from "react-intersection-observer";
 
 import AnimeCarousel from "./AnimeMangaRanking/AnimeCarousel/AnimeCarousel";
 import AnimeMangaRanking from "./AnimeMangaRanking/AnimeMangaRanking";
 
 import {helperActions} from "../../../store/helper";
 import {animeCategory, categoryType, mangaCategory} from "../../../common";
-
-import {useInView} from "react-intersection-observer";
 
 import './AnimeManga.css';
 
