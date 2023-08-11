@@ -1,4 +1,5 @@
 .recommendation-container .card-container{
-    width: 10rem;
+    max-width: 10rem;
+    width: 45%;
     height: 12rem;
 }
