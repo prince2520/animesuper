@@ -88,7 +88,7 @@ const MyWatchlist = () => {
                 <div className="my-watchlist-table-list">
                     {!showWatchlistSkeleton && (filterData.length === 0) && <NoData/>}
                     {filterData.map((res, index) =><MyWatchlistItem res={res} index={index}/>)}
-                    {showWatchlistSkeleton && Array(5).fill(null).map(()=><MyWatchlistItemSkeleton/>)}
+                    {(showWatchlistSkeleton && filterData.length === 0 ) && Array(5).fill(null).map(()=><MyWatchlistItemSkeleton/>)}
                 </div>
             </div>
         </div>

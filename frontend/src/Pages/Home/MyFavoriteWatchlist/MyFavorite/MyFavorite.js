@@ -74,7 +74,7 @@ const MyFavorite = () => {
                     {favoriteData.map((res, id) =>
                         <MyFavoriteItem res={res} id={id}/>
                     )}
-                    {showFavoriteSkeleton && Array(5).fill(null).map((res, id) => <MyFavoriteWatchlistItemSkeleton/>)}
+                    {(showFavoriteSkeleton && favoriteData.length === 0) && Array(5).fill(null).map((res, id) => <MyFavoriteWatchlistItemSkeleton/>)}
                 </div>
             </div>
         </div>
