@@ -53,8 +53,9 @@
     font-size: 1.25rem;
     padding: 0.25rem 2rem;
     box-shadow: 0 0.05rem 0.05rem 0.05rem rgba(0, 0, 0, 0.25);
-    opacity: 90%;
+    opacity: 100%;
     text-align: center;
+    width: fit-content;
 }
 
 .modal-box-2 .yes-button {
@@ -64,7 +65,6 @@
 .modal-box-2 .yes-button:hover {
     color: var(--error-bold);
 }
-
 
 .modal-box-2 .no-button:hover {
     color: var(--success-bold);
@@ -164,6 +164,4 @@
     .remove-watchlist-container-middle p {
         font-size: 1rem;
     }
-
-
 }

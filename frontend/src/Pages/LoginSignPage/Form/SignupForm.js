@@ -28,7 +28,7 @@ const SignupForm = () => {
                         />
                     <input
                         name={'username'}
-                        style={{borderLeft: "0.095rem solid", paddingLeft: "0.5rem"}}
+                        style={{borderLeft: "0.095rem solid var(--border)", paddingLeft: "0.5rem"}}
                         type="text" placeholder="example_123"/>
                 </span>
             </span>
@@ -40,7 +40,7 @@ const SignupForm = () => {
                         />
                     <input
                         name={'email'}
-                        style={{borderLeft: "0.095rem solid", paddingLeft: "0.5rem"}}
+                        style={{borderLeft: "0.095rem solid var(--border)", paddingLeft: "0.5rem"}}
                         type="email"
                         placeholder="example@email.com"/>
                 </span>
@@ -51,7 +51,7 @@ const SignupForm = () => {
                     <input
                         name={'password'}
                         type={!showPassword ? 'password' : 'text'}
-                        style={{borderRight: "0.095rem solid", paddingRight: "0.5rem"}}
+                        style={{borderRight: "0.095rem solid var(--border)", paddingRight: "0.5rem"}}
                         placeholder="Pick a strong password"/>
                     <ZoomInZoomOut width={"fit-content"}>
                         <Icon
@@ -68,7 +68,7 @@ const SignupForm = () => {
                     <input
                         name={'confirm-password'}
                         type={!showConfirmPassword ? 'password' : 'text'}
-                        style={{borderRight: "0.095rem solid", paddingRight: "0.5rem"}}
+                        style={{borderRight: "0.095rem solid var(--border)", paddingRight: "0.5rem"}}
                         placeholder="Confirm your password"/>
                     <ZoomInZoomOut width={"fit-content"}>
                         <Icon

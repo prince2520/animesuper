@@ -27,12 +27,12 @@ const Logout = () => {
                 <p>Are you sure, do you want to logout ?</p>
             </div>
             <div className="logout-container-bottom">
-                <ZoomInZoomOut>
+                <ZoomInZoomOut width={'fit-content'}>
                     <button className="no-button cursor-btn"
                             onClick={() => dispatch(OverlayActions.closeOverlayHandler())}>No
                     </button>
                 </ZoomInZoomOut>
-                <ZoomInZoomOut>
+                <ZoomInZoomOut width={'fit-content'}>
                     <button className="yes-button cursor-btn" onClick={() => {
                         dispatch(OverlayActions.closeOverlayHandler());
                         authCtx.autoLogout();

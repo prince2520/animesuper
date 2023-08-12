@@ -9,6 +9,7 @@ import {OverlayActions} from "../../../store/overlay";
 import {AlertBoxActions} from "../../../store/alertBox";
 import {removeFavoriteItem} from "../../../api/favorite";
 import {MyFavoriteActions} from "../../../store/myFavorite";
+import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 
 const RemoveFavorite = () => {
     const category = useSelector(state => state.myFavorite.removeCategory);
@@ -30,6 +31,7 @@ const RemoveFavorite = () => {
                 <h1>Remove</h1>
                 <span>
                     <Icon
+                        onClick={()=>dispatch(OverlayActions.closeOverlayHandler())}
                         className={'cursor-btn'}
                         color="white" icon="material-symbols:close" style={{fontSize: '2rem'}}/>
                 </span>
@@ -39,8 +41,12 @@ const RemoveFavorite = () => {
                     this item from your favorite?</p>
             </div>
             <div className="remove-favorite-container-bottom">
-                <button className="yes-button">No</button>
-                <button className="no-button" onClick={() => removeFavoriteItemHandler()}>Yes</button>
+                <ZoomInZoomOut width={'fit-content'}>
+                    <button className="yes-button cursor-btn" onClick={()=>dispatch(OverlayActions.closeOverlayHandler())}>No</button>
+                </ZoomInZoomOut>
+                <ZoomInZoomOut  width={'fit-content'} >
+                    <button className="no-button cursor-btn" onClick={() => removeFavoriteItemHandler()}>Yes</button>
+                </ZoomInZoomOut>
             </div>
         </div>
     );

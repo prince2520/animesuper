@@ -28,7 +28,7 @@ const LoginForm = () => {
                         />
                     <input
                         name='email'
-                        style={{borderLeft: "0.095rem solid", paddingLeft: "0.5rem"}}
+                        style={{borderLeft: "0.095rem solid var(--border)", paddingLeft: "0.5rem"}}
                         type="email"
                         placeholder="Enter your username"/>
                 </span>
@@ -39,7 +39,7 @@ const LoginForm = () => {
                     <input
                         name='password'
                         type={!showPassword ? 'password' : 'text'}
-                        style={{borderRight: "0.095rem solid", paddingRight: "0.5rem"}}
+                        style={{borderRight: "0.095rem solid var(--border)", paddingRight: "0.5rem"}}
                         placeholder="Enter your password"
                     />
                     <ZoomInZoomOut width={"fit-content"}>
