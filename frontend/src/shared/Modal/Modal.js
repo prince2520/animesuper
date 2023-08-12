@@ -7,6 +7,7 @@ import RemoveFavorite from "./RemoveFavorite/RemoveFavorite";
 import RemoveWatchlist from "./RemoveWatchlist/RemoveWatchlist";
 
 import './Modal.css'
+import UpAndDown from "../../animation/Wrapper/UpAndDown";
 
 const Modal = () => {
     const showLogout = useSelector(state => state.overlay.showLogout);
@@ -16,7 +17,7 @@ const Modal = () => {
     const showThankYouBox = useSelector(state => state.overlay.showThankYouBox);
 
     return (
-        <div
+        <UpAndDown
             className={`modal ${showThankYouBox ? 'modal-thank-you' : ''} ${showRemoveFavorite || showRemoveWatchlist || showLogout ? 'modal-remove' : ''} ${showEditWatchlist ? 'modal-watchlist-edit' : ''} `}>
             <div className="modal-box-1"/>
             <div className="modal-box-2">
@@ -26,7 +27,7 @@ const Modal = () => {
                 {showLogout && <Logout/>}
                 {showThankYouBox && <ThankYou/>}
             </div>
-        </div>
+        </UpAndDown>
     )
 }
 

@@ -16,8 +16,8 @@ import {MyProfileActions} from "../../store/myProfile";
 import {getProfileStatistics, saveProfile} from "../../api/auth";
 
 import './ProfileCard.css';
-import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 import Skeleton from "react-loading-skeleton";
+import UpAndDown from "../../animation/Wrapper/UpAndDown";
 
 const ProfileCard = () => {
     const dispatch = useDispatch();
@@ -106,11 +106,12 @@ const ProfileCard = () => {
         getProfileStatistics(authCtx.email).then((res) => {
             setCategoryStats(res)
         }).catch(err => console.log(err))
-    }, [authCtx.email])
+    }, [authCtx.email]);
 
 
     return (
-        <div className="profile-card-container">
+        <UpAndDown
+            className="profile-card-container">
             <div className="profile-card-container-top">
                 <span className="close-button">
                     <Icon
@@ -126,10 +127,11 @@ const ProfileCard = () => {
                 <div className="profile-photo-container">
                     <div className="profile-photo">
                         {user.profile_photo && <img alt={'profile'} accept='image/*'
-                              src={preview || user.profile_photo}/>}
+                                                    src={preview || user.profile_photo}/>}
                         {!user.profile_photo && <Skeleton width={300} height={300}/>}
                     </div>
-                    {showEdit && <span className="edit-icon selected-container cursor-btn" onClick={() => imgRef.current.click()}>
+                    {showEdit && <span className="edit-icon selected-container cursor-btn"
+                                       onClick={() => imgRef.current.click()}>
                         <input
                             ref={imgRef}
                             type={"file"}
@@ -172,7 +174,7 @@ const ProfileCard = () => {
                 {!showEdit && <ProfileCardStatistics categoryStats={categoryStats}/>}
                 {showEdit && <ProfileCardEdit saveProfileDetail={saveProfileDetail}/>}
             </div>
-        </div>
+        </UpAndDown>
     );
 }
 

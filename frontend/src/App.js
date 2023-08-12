@@ -40,7 +40,7 @@ function App() {
         if (visible) {
             time = setTimeout(() => {
                 dispatch(AlertBoxActions.closeAlertBox());
-            }, [3000]);
+            }, [2000]);
         }
     }, [dispatch, visible, alertBoxData]);
 

@@ -1,5 +1,6 @@
 import React from "react";
 import {Icon} from "@iconify/react";
+import {motion} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
 
 import {getAlertIconAndColor} from "../../common";
@@ -7,13 +8,31 @@ import {AlertBoxActions} from "../../store/alertBox";
 
 import './AlertBox.css';
 
+
 const AlertBox = () => {
     const dispatch = useDispatch();
     const data = useSelector(state => state.alertBox.data)
     const getIconAndColor = getAlertIconAndColor(data.success);
 
+    const alertBoxVariant = {
+        initial : {
+            y: -10,
+            opacity: 0
+        },
+        animate: {
+            y: 0,
+            opacity : 1
+        }
+    }
+
+
     return (
-        <div className="alert-box-page">
+        <motion.div
+            variants={alertBoxVariant}
+            initial="initial"
+            animate="animate"
+            transition={{ duration: 0.25 }}
+            className="alert-box-page">
             <div className="alert-box" style={{backgroundColor: getIconAndColor.primaryColor}}>
                 <div className="icon-container" style={{backgroundColor: getIconAndColor.secondaryColor}}>
                     <Icon
@@ -42,7 +61,7 @@ const AlertBox = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

@@ -13,10 +13,10 @@ import {getFavoriteList} from "../../../../api/favorite";
 import {MyFavoriteActions} from "../../../../store/myFavorite";
 import {MyFavoriteImage} from "../../../../photo";
 
-import './MyFavorite.css';
 import MyFavoriteHeading from "./MyFavoriteHeading/MyFavoriteHeading";
 import MyFavoriteItem from "./MyFavoriteItem/MyFavoriteItem";
 
+import './MyFavorite.css';
 import '../MyFavoriteWatchlist.css';
 import MyFavoriteWatchlistItemSkeleton from "../MyFavoriteWatchlistItemSkeleton/MyWatchlistItemSkeleton";
 
