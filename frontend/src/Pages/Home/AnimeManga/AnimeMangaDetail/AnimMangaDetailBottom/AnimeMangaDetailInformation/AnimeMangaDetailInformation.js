@@ -6,7 +6,7 @@ const AnimeMangaDetailInformation = ({animeDetail}) => {
         <>
             <div className="heading information-heading">Information</div>
             <div className="information">
-                {!animeDetail && <Skeleton count={5} width={'80%'}/> }
+                {!animeDetail && <Skeleton count={5} width={'90%'}/> }
                 {animeDetail?.media_type ?
                     <p>Type: <span className="value">{animeDetail.media_type.toUpperCase()}</span></p> : null}
                 {animeDetail?.num_episodes ?
