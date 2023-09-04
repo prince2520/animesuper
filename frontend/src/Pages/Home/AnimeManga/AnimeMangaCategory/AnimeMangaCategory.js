@@ -3,8 +3,8 @@ import React, {useEffect, useState} from "react";
 import {Icon} from "@iconify/react";
 import {useNavigate, useParams} from "react-router-dom";
 
-import Card from "../../../../shared/Card/Card";
-import SkeletonCard from "../../../../shared/SkeletonCard/SkeletonCard";
+import Card from "../../../../components/Card/Card";
+import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 
 import {getCategoryList} from "../../../../api/animeManga";
 import {animeCategory, categoryType, mangaCategory} from "../../../../common";

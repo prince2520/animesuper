@@ -3,7 +3,7 @@ import {useContext, useState} from "react";
 import {Link} from "react-router-dom";
 import {Icon} from "@iconify/react";
 
-import Button from "../../../shared/Button/Button";
+import Button from "../../../components/Button/Button";
 import AuthContext from '../../../Context/auth'
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 

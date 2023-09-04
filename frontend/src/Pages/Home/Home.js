@@ -4,13 +4,13 @@ import {Outlet} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 
 import AuthContext from "../../Context/auth";
-import SideBar from "../../shared/SideBar/SideBar";
-import Overlay from "../../shared/Overlay/overlay";
-import Footer from "../../shared/Footer/Footer";
-import Navbar from "../../shared/Navbar/Navbar";
-import SearchBar from "../../shared/SearchBar/SearchBar";
-import ProfileWithShare from "../../shared/ProfileWithShare/ProfileWithShare";
-import SideBarMobile from "../../shared/SideBar/SideBarMobile/SideBarMobile";
+import SideBar from "../../components/SideBar/SideBar";
+import Overlay from "../../components/Overlay/overlay";
+import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/Navbar/Navbar";
+import SearchBar from "../../components/SearchBar/SearchBar";
+import ProfileWithShare from "../../components/ProfileWithShare/ProfileWithShare";
+import SideBarMobile from "../../components/SideBar/SideBarMobile/SideBarMobile";
 
 import {getProfileDetail} from '../../api/auth';
 import {MyProfileActions} from "../../store/myProfile";

@@ -2,7 +2,7 @@ import {useRef} from "react";
 import {Icon} from "@iconify/react";
 import {useDispatch} from "react-redux";
 
-import Button from "../../../../shared/Button/Button";
+import Button from "../../../../components/Button/Button";
 
 import {contactUs} from "../../../../api/auth";
 import {OverlayActions} from "../../../../store/overlay";

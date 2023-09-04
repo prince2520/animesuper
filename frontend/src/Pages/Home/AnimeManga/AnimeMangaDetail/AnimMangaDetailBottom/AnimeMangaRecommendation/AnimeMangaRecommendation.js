@@ -1,6 +1,6 @@
 import React from "react";
 
-import Card from "../../../../../../shared/Card/Card";
+import Card from "../../../../../../components/Card/Card";
 
 import './AnimeMangaRecommendation.css'
 

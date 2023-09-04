@@ -6,7 +6,7 @@ import {useInView} from "react-intersection-observer";
 
 import NoData from "../NoData/NoData";
 import AuthContext from "../../../../Context/auth";
-import ChangeCategory from "../../../../shared/ChangeCategory/ChangeCategory";
+import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
 
 import {helperActions} from "../../../../store/helper";
 import {getFavoriteList} from "../../../../api/favorite";

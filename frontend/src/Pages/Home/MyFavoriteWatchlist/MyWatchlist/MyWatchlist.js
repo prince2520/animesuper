@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import NoData from "../NoData/NoData";
 import AuthContext from "../../../../Context/auth";
-import ChangeCategory from "../../../../shared/ChangeCategory/ChangeCategory";
+import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
 
 import {getMyWatchlist} from "../../../../api/watchlist";
 import {helperActions} from "../../../../store/helper";

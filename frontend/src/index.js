@@ -13,7 +13,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 
 import './index.css';
 import {SkeletonTheme} from "react-loading-skeleton";
-import ScrollToTop from "./shared/ScrollToTop";
+import ScrollToTop from "./components/ScrollToTop";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

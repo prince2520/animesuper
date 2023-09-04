@@ -6,7 +6,7 @@ import {useInView} from "react-intersection-observer";
 
 import Skeleton from "react-loading-skeleton";
 
-import Button from "../../../../shared/Button/Button";
+import Button from "../../../../components/Button/Button";
 
 import {categoryType} from "../../../../common";
 import {helperActions} from "../../../../store/helper";

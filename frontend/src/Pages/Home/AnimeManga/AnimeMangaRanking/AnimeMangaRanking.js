@@ -6,12 +6,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {useNavigate, useParams} from "react-router-dom";
 
-import Card from "../../../../shared/Card/Card";
+import Card from "../../../../components/Card/Card";
 
 import {getCategoryList} from "../../../../api/animeManga";
 import {AnimeActions} from "../../../../store/anime";
 import {categoryType} from "../../../../common";
-import SkeletonCard from "../../../../shared/SkeletonCard/SkeletonCard";
+import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 
 
 const AnimeMangaRanking = (props) => {

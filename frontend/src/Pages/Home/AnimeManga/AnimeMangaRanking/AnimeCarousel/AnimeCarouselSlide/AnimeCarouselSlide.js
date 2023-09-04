@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
 
-import Button from "../../../../../../shared/Button/Button";
+import Button from "../../../../../../components/Button/Button";
 
 import {AnimeActions} from "../../../../../../store/anime";
 import {getAnimeDetail} from "../../../../../../api/animeManga";

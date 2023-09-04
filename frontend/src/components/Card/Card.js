@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 import {useContext} from "react";
 
+import {motion} from "framer-motion";
 import {Icon} from "@iconify/react";
 import {useDispatch} from "react-redux";
 import {useNavigate, useParams} from "react-router-dom";
@@ -24,6 +25,7 @@ const Card = (props) => {
     const [showCardDetail, setShowCardDetail] = useState(false);
 
 
+
     const addToWatchlistHandler = () => {
         if (authCtx.isAuth) {
             addToWatchlist(authCtx.email, category, props.detail.id, props.detail.main_picture.medium, props.detail.title, category === categoryType[0].toLowerCase() ? props.detail.num_episodes : props.detail.num_chapters, props.detail.media_type).then(res => dispatch(AlertBoxActions.saveAlertBoxData(res))).catch(err => console.log(err))
@@ -34,7 +36,6 @@ const Card = (props) => {
         }
     };
 
-
     return (<div
             style={{height: '100%', width: '100%'}}>
             <div
@@ -43,17 +44,19 @@ const Card = (props) => {
                 onMouseLeave={() => setShowCardDetail(false)}
                 onMouseOver={() => setShowCardDetail(true)}>
 
-                {props.detail.mean && <span className="rate">
+                {props.detail.mean && <motion.span
+                    className="rate">
                     <Icon icon="material-symbols:star-rounded" style={{fontSize: '1.5rem', color: 'yellow'}}/>
                     <span>{props.detail.mean}</span>
-                </span>}
+                </motion.span>}
 
                 {!props.isRecommemdation &&
                     <div className="watchlist" style={{cursor: 'pointer'}} onClick={() => addToWatchlistHandler()}>
                         +
                     </div>}
 
-                <div className="bottom">
+                <div
+                    className="bottom">
                     <span className="title" style={{fontSize: props.titleSize}}>{props.detail.title}</span>
                     {props.detail.genres && <span className="genres"
                                                   style={{fontSize: props.genresSize}}>{props.detail.genres.slice(0, 5).map(genre =>
