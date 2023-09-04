@@ -50,7 +50,7 @@ const AnimeMangaCategory = () => {
                 {
                     animeManga.map(res =>
                         <div className="card-container" key={res.node.id}>
-                            <Card detail={res.node} titleSize={`0.8rem`} genresSize={`0.75rem`}/>
+                            <Card detail={res.node}/>
                         </div>
                     )
                 }
