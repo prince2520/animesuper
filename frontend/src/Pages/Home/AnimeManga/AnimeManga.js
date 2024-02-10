@@ -25,9 +25,11 @@ const AnimeManga = () => {
     return (
         <div className="anime-page" ref={ref}>
             <AnimeCarousel category={category}/>
-            {(category === categoryType[0].toLowerCase() ? animeCategory : mangaCategory).map(rank => {
-                return inView ?  (<AnimeMangaRanking rank={rank}/>) : null;
-            })}
+            <div className=" flex-center anime-manga-ranking-container">
+                {(category === categoryType[0].toLowerCase() ? animeCategory : mangaCategory).map(rank => {
+                    return inView ?  (<AnimeMangaRanking rank={rank}/>) : null;
+                })}
+            </div>
         </div>
     );
 };

@@ -1,0 +1,36 @@
+{
+  "headings": [
+    {
+      "width": "5%",
+      "title": "#"
+    },
+    {
+      "width": "15%",
+      "title": "Image"
+    },
+    {
+      "width": "24%",
+      "title": "Title"
+    },
+    {
+      "width": "8%",
+      "title": "Score"
+    },
+    {
+      "width": "8%",
+      "title": "Type"
+    },
+    {
+      "width": "10%",
+      "title": "Year"
+    },
+    {
+      "width": "20%",
+      "title": "No. of Episode"
+    },
+    {
+      "width": "10%",
+      "title": "Delete"
+    }
+  ]
+}

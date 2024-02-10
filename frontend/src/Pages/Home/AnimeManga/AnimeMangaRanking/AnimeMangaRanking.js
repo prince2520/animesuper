@@ -28,15 +28,16 @@ const AnimeMangaRanking = (props) => {
 
 
     useEffect(() => {
-        getCategoryList(category, props.rank.slug, 7).then(result => {
+        getCategoryList(category, props.rank.slug, 10).then(result => {
             dispatch(AnimeActions.saveData({category: category, slug: props.rank.slug, data: result.data}))
         });
+
     }, [category, props.rank.slug, dispatch]);
 
     return (
         <div className="ranking" style={props.style}>
-            <span className="ranking-type">
-                <span className="ranking-name">{props.rank.title}</span>
+            <div className="ranking-type" style={{marginBottom:"0.75rem"}}>
+                <h3 className="ranking-name">{props.rank.title}</h3>
                 <div className="navigation-box">
                     <div className="navigation-buttons">
                         {['<', '>'].map(data => (
@@ -48,11 +49,11 @@ const AnimeMangaRanking = (props) => {
                             </button>
                         ))}
                     </div>
-                    <span
-                        className="see-all cursor-btn"
-                        onClick={() => navigate(`/home/${category}/category/${props.rank.slug}`)}> See all > </span>
+                    <h5
+                        className="highlight cursor-btn"
+                        onClick={() => navigate(`/home/${category}/category/${props.rank.slug}`)}> See all > </h5>
                 </div>
-            </span>
+            </div>
             <div className="ranking-cards">
                 <Swiper
                     spaceBetween={75}
@@ -70,26 +71,26 @@ const AnimeMangaRanking = (props) => {
                             spaceBetween: 10
                         },
                         550: {
-                            slidesPerView: 3,
-                            spaceBetween: 20
+                            slidesPerView: 4,
+                            spaceBetween: 15
                         },
                         1000: {
-                            slidesPerView: 4,
-                            spaceBetween: 20
+                            slidesPerView: 5,
+                            spaceBetween: 15
                         },
                         1400: {
-                            slidesPerView: 5,
-                            spaceBetween: 20
+                            slidesPerView: 6,
+                            spaceBetween: 15
                         }
                     }}
-                    slidesPerView={5}
+                    slidesPerView={6}
                 >
                     {
                         (category === categoryType[0].toLowerCase() ? animeData : mangaData) &&
                         (category === categoryType[0].toLowerCase() ? animeData : mangaData).map(res =>
                             <SwiperSlide>
                                 <div className="card-container">
-                                    <Card detail={res.node} titleSize={`1rem`} genresSize={`0.85rem`}/>
+                                    <Card detail={res.node}/>
                                 </div>
                             </SwiperSlide>
                         )

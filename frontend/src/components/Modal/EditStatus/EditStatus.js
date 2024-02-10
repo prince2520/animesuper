@@ -42,29 +42,28 @@ const EditStatus = () => {
 
     return (
         <div className="edit-status-card">
-            <div className="edit-status-card-left">
+            <div className="flex-center edit-status-card-left">
                 <div className="img-container"><img src={data.img_url} alt={'anime-manga'}/></div>
             </div>
             <div className="edit-status-card-right">
                 <div className="edit-status-card-right-top">
-                    <span className="title">{data.title}</span>
-                    <span className="close-button" style={{cursor: 'pointer'}}>
+                    <h4 className="color-text">{data.title}</h4>
+                    <h5 className="close-button cursor-btn">
                             <Icon color="white" onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
                                   icon="material-symbols:close" style={{fontSize: '2rem'}}/>
-                        </span>
+                    </h5>
                 </div>
                 <div className="edit-status-card-right-middle">
-                    {(data.category === categoryType[0].toLowerCase() ? animeStatus.slice(1, 6) : mangaStatus.slice(1, 6)).map(title => <span
+                    {(data.category === categoryType[0].toLowerCase() ? animeStatus.slice(1, 6) : mangaStatus.slice(1, 6)).map(title => <h6
                         key={title.toString()}
                         onClick={() => setStatus(title)}
-                        style={{cursor: 'pointer'}}
-                        className={`button ${title === status ? 'selected-status' : ''}`}>{title}</span>)}
+                        className={`button cursor-btn color-text ${title === status ? 'selected-status' : ''}`}>{title}</h6>)}
                 </div>
                 <div className="edit-status-card-right-bottom">
-                    <div className="num_of_episode">
-                        <span>Episode :</span>
-                        <input ref={progressRef} defaultValue={data.progress_read_watched}/>
-                        <span>/ {data.num_episode_or_chapter ? data.num_episode_or_chapter : 'N/A'}</span>
+                    <div className="flex-center num_of_episode">
+                        <h6>Episode :</h6>
+                        <h6><input ref={progressRef} defaultValue={data.progress_read_watched}/> /</h6>
+                        <h6 className="color-text"> {data.num_episode_or_chapter ? data.num_episode_or_chapter : 'N/A'}</h6>
                     </div>
                     <div className="save-container"onClick={() => saveStatusHandler()}>
                         <Button title="Save"/>

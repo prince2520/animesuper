@@ -1,21 +1,7 @@
-.login-button {
-    width: 100%;
-    background-color: var(--primary);
+.custom-button {
     border-width: 0;
-    color: var(--text);
-    font-size: inherit;
-    font-weight: 700;
-    border-radius: 0.5rem;
+    border-radius: 0.25rem;
     padding: 0.5rem 0.5rem;
     margin: auto;
-    box-shadow: 9px 11px 4px -5px rgba(0, 0, 0, 0.25);
 }
-
-
-.login-button:hover,
-.login-button:active {
-    background-color:  var(--background-secondary);
-    color: var(--text-primary);
-}
-
 

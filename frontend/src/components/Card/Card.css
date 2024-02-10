@@ -20,7 +20,7 @@
     column-gap: 0.25rem;
     align-items: center;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 0.25rem 0.5rem;
     z-index: 5;
 }
 
@@ -42,7 +42,7 @@
 }
 
 
-.card .bottom {
+.card .card-bottom {
     display: none;
     position: absolute;
     bottom: 0;
@@ -57,7 +57,7 @@
     z-index: 5;
 }
 
-.show-card-detail .bottom,
+.show-card-detail .card-bottom,
 .show-card-detail .watchlist,
 .show-card-detail .rate{
     display: flex;
@@ -66,16 +66,6 @@
 
 .show-card-detail .watchlist{
     display: flex;
-}
-
-.bottom .title {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.bottom .genres {
-    font-size: 0.85rem;
-    font-weight: 300;
 }
 
 .card img {
@@ -87,3 +77,10 @@
     z-index: 4;
 }
 
+
+
+.card-bottom .genres {
+    flex-wrap: wrap;    
+    justify-content: start;
+    column-gap: 0.5rem;
+}

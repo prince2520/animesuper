@@ -44,10 +44,10 @@ const SearchBar = () => {
 
     return (
         <form onSubmit={(event) => getSearchResult(event)} ref={wrapperRef}
-              className={`search-bar`} onFocus={() => setInputFocus(true)}>
+              className={`flex-center search-bar`} onFocus={() => setInputFocus(true)}>
             <input type="text"/>
             <button style={{background: 'none', border: 'none', padding: '0'}}>
-                <Icon color="white" icon="material-symbols:search" style={{color: '#8d8c8c', fontSize: '2rem'}}/>
+                <Icon icon="material-symbols:search"/>
             </button>
             {inputFocus && searchResult && <SearchResult closeSearchHandler={closeSearchHandler} results={searchResult}/>}
         </form>

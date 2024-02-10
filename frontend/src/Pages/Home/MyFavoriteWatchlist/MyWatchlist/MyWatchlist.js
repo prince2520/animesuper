@@ -7,6 +7,7 @@ import NoData from "../NoData/NoData";
 import AuthContext from "../../../../Context/auth";
 import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
 
+import { watchlistHeadings, watchlistColors } from "./watchlist";
 import {getMyWatchlist} from "../../../../api/watchlist";
 import {helperActions} from "../../../../store/helper";
 import {MyWatchlistActions} from "../../../../store/myWatchlist";
@@ -14,15 +15,40 @@ import {categoryType} from "../../../../common";
 import {animeStatus,mangaStatus} from "../../../../common";
 import {MyWatchlistImage} from "../../../../photo";
 
-import './MyWatchlist.css';
-import MyWatchlistHeading from "./MyWatchlistHeading/MyWatchlistHeading";
 import MyWatchlistItem from "./MyWatchlistItem/MyWatchlistItem";
-import MyWatchlistColorStatus from "./MyWatchlistColorStatus/MyWatchlistColorStatus";
-
-import MyWatchlistItemSkeleton from "../MyFavoriteWatchlistItemSkeleton/MyWatchlistItemSkeleton";
+import MyWatchlistItemSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
 
 import '../MyFavoriteWatchlist.css';
+import './MyWatchlist.css';
 
+
+// Sub Components
+
+const Heading = () => {
+    return (
+        <div className="my-watchlist-table-heading">
+            {watchlistHeadings.map(heading=><h5 className="color-text" style={{width: heading.width}}>{heading.title}</h5>)}
+        </div>
+    );
+};
+
+const ColorStatus = () => {
+    return (
+        <div className="anime-status-color">
+            {watchlistColors.map(data=>{
+                return (
+                    <div className={`${data.className} color-title`}>
+                        <span className="circle"/>
+                        <h6>{data.title}</h6>
+                    </div>
+                );
+            })}
+        </div>
+    );
+};
+
+
+// Main Component
 const MyWatchlist = () => {
     const {ref, inView} = useInView({
         threshold: 0.8,
@@ -65,7 +91,7 @@ const MyWatchlist = () => {
     return (
         <div className="my-watchlist-page">
             <div className="my-watchlist-img-container" ref={ref}>
-                <div>My Watchlist</div>
+                <h2>My Watchlist</h2>
                 <img src={MyWatchlistImage} alt='my-watchlist'/>
             </div>
             <div className="anime-status">
@@ -79,12 +105,12 @@ const MyWatchlist = () => {
                             currStatus: res,
                             selectedCategory: selectedCategory
                         }));
-                    }} style={{cursor:'pointer'}} className={`${statusFilter === res ? 'selected' : ''}`}>{res}</span>)}
+                    }} style={{cursor:'pointer'}} className={`${statusFilter === res ? 'selected' : ''}`}><h5>{res}</h5></span>)}
                 </div>
-                <MyWatchlistColorStatus/>
+                <ColorStatus/>
             </div>
             <div className="my-watchlist-table">
-                <MyWatchlistHeading/>
+                <Heading/>
                 <div className="my-watchlist-table-list">
                     {!showWatchlistSkeleton && (filterData.length === 0) && <NoData/>}
                     {filterData.map((res, index) =><MyWatchlistItem res={res} index={index}/>)}

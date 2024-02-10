@@ -1,13 +1,11 @@
 import React from "react";
 
-import Card from "../../../../../../components/Card/Card";
-
-import './AnimeMangaRecommendation.css'
+import Card from "../../../../../components/Card/Card";
 
 const AnimeMangaRecommendation = ({animeDetail}) => {
     return (
         <div className="recommendation">
-            <span className="heading">Recommendation for you</span>
+            <h3>Recommendation for you</h3>
             <div className="recommendation-container">
                 {animeDetail?.recommendations.length > 0 ?
                     animeDetail.recommendations.map(res =>

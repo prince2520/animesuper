@@ -1,3 +1,6 @@
+import './common.css';
+import './index.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
@@ -10,10 +13,7 @@ import store from "./store/store";
 import {AuthContextProvider} from "./Context/auth";
 import 'react-loading-skeleton/dist/skeleton.css'
 
-
-import './index.css';
 import {SkeletonTheme} from "react-loading-skeleton";
-import ScrollToTop from "./components/ScrollToTop";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,9 +23,7 @@ root.render(
         <Router>
             <Provider store={store}>
                 <AuthContextProvider>
-                    <ScrollToTop>
-                        <App/>
-                    </ScrollToTop>
+                    <App/>
                 </AuthContextProvider>
             </Provider>
         </Router>

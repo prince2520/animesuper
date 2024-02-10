@@ -21,7 +21,7 @@ const ChangeCategory = (props) => {
                     onClick={() => {
                         props.eventHandler(name)
                         setSelectedCategory(name)
-                    }}>{name}</span>)}
+                    }}><p>{name}</p></span>)}
         </div>
     );
 };

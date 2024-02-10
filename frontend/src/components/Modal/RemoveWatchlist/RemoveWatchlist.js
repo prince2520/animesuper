@@ -15,6 +15,8 @@ const RemoveWatchlist = () => {
     const category = useSelector(state => state.myWatchlist.removeCategory);
     const categoryId = useSelector(state => state.myWatchlist.removeCategoryId);
     const authCtx = useContext(AuthContext);
+
+
     const removeWatchlistItemHandler = () => {
         deleteWatchlistItem(authCtx.email, category, categoryId).then(res => {
             dispatch(AlertBoxActions.saveAlertBoxData(res))
@@ -26,7 +28,7 @@ const RemoveWatchlist = () => {
     return (
         <div className="remove-watchlist-container">
             <div className="remove-watchlist-container-top">
-                <h1>Remove</h1>
+                <h3>Remove</h3>
                 <span>
                     <Icon
                         onClick={()=> dispatch(OverlayActions.closeOverlayHandler())}
@@ -36,12 +38,12 @@ const RemoveWatchlist = () => {
                 </span>
             </div>
             <div className="remove-watchlist-container-middle">
-                <p>Are you sure, do you want to remove
+                <p className="color-text">Are you sure, do you want to remove
                     this item from your watchlist?</p>
             </div>
             <div className="remove-watchlist-container-bottom">
-                <button className="yes-button">No</button>
-                <button className="no-button" onClick={() => removeWatchlistItemHandler()}>Yes</button>
+                <button className="yes-button"><h5 className="color-text" onClick={()=>dispatch(OverlayActions.closeOverlayHandler())}>No</h5></button>
+                <button className="no-button" onClick={() => removeWatchlistItemHandler()}><h5 className="color-text">Yes</h5></button>
             </div>
         </div>
     );

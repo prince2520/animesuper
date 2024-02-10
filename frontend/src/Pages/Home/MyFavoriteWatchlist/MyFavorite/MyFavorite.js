@@ -8,17 +8,29 @@ import NoData from "../NoData/NoData";
 import AuthContext from "../../../../Context/auth";
 import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
 
+
+import MyFavoriteData from './MyFavoriteData.json';
 import {helperActions} from "../../../../store/helper";
 import {getFavoriteList} from "../../../../api/favorite";
 import {MyFavoriteActions} from "../../../../store/myFavorite";
 import {MyFavoriteImage} from "../../../../photo";
 
-import MyFavoriteHeading from "./MyFavoriteHeading/MyFavoriteHeading";
 import MyFavoriteItem from "./MyFavoriteItem/MyFavoriteItem";
 
 import './MyFavorite.css';
 import '../MyFavoriteWatchlist.css';
-import MyFavoriteWatchlistItemSkeleton from "../MyFavoriteWatchlistItemSkeleton/MyWatchlistItemSkeleton";
+import FavoriteWatchlistSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
+
+
+// Sub Component
+const Heading = () => {
+    return (
+        <div className="favorite-table-heading">
+            {MyFavoriteData.headings.map(heading => <h5 className="color-text" style={{width:heading.width}}>{heading.title}</h5>)}
+        </div>
+    );
+};
+
 
 const MyFavorite = () => {
     const dispatch = useDispatch();
@@ -59,22 +71,20 @@ const MyFavorite = () => {
     return (
         <div className="favorite-page">
             <div className="favorite-img-container" ref={ref}>
-                <div>My Favorite</div>
+                <h2>My Favorite</h2>
                 <img alt='my_favorite' src={MyFavoriteImage}/>
             </div>
             <div className='anime-status'>
-                <ChangeCategory eventHandler={(name) => {
-                    dispatch(MyFavoriteActions.changeDataCategory(name))
-                }}/>
+                <ChangeCategory eventHandler={(name) => {dispatch(MyFavoriteActions.changeDataCategory(name))}}/>
             </div>
             <div className="favorite-table">
-                <MyFavoriteHeading/>
+                <Heading/>
                 <div className="favorite-table-list">
                     {(!showFavoriteSkeleton && favoriteData.length === 0) && <NoData/>}
                     {favoriteData.map((res, id) =>
                         <MyFavoriteItem res={res} id={id}/>
                     )}
-                    {(showFavoriteSkeleton && favoriteData.length === 0) && Array(5).fill(null).map((res, id) => <MyFavoriteWatchlistItemSkeleton/>)}
+                    {(showFavoriteSkeleton && favoriteData.length === 0) && Array(5).fill(null).map(() => <FavoriteWatchlistSkeleton/>)}
                 </div>
             </div>
         </div>

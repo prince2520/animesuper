@@ -1,86 +1,97 @@
-import {useRef} from "react";
-import {Icon} from "@iconify/react";
-import {useDispatch} from "react-redux";
+import { useRef } from "react";
+import { Icon } from "@iconify/react";
+import { useDispatch } from "react-redux";
+
+import { contactUs } from "../../../../api/auth";
+import { OverlayActions } from "../../../../store/overlay";
 
 import Button from "../../../../components/Button/Button";
 
-import {contactUs} from "../../../../api/auth";
-import {OverlayActions} from "../../../../store/overlay";
-
-import './ContactUs.css';
+import "./../PolicyContactUs.css";
+import "./ContactUs.css";
 
 const linkData = [
-    {
-        icon: "logos:facebook",
-        name: 'Facebook'
-    },
-    {
-        icon: "logos:reddit-icon",
-        name: 'Reddit'
-    },
-    {
-        icon: "logos:twitter",
-        name: 'Twitter'
-    }
+  {
+    icon: "logos:facebook",
+    name: "Facebook",
+  },
+  {
+    icon: "logos:reddit-icon",
+    name: "Reddit",
+  },
+  {
+    icon: "logos:twitter",
+    name: "Twitter",
+  },
 ];
 
 const ContactUs = () => {
-    const dispatch = useDispatch();
-    const emailRef = useRef();
-    const messageRef = useRef();
+  const emailRef = useRef();
+  const messageRef = useRef();
 
-    const messageUs = () => {
-        let email = emailRef.current.value;
-        let message = messageRef.current.value;
+  const dispatch = useDispatch();
 
-        contactUs(email, message).then(res => console.log(res)).catch(err => console.log(err))
-    }
+  const messageUs = () => {
+    let email = emailRef.current.value;
+    let message = messageRef.current.value;
 
-    return (
-        <div className="contact-us-page">
-            <div className="contact-us-route"> Help > <span style={{color: `var(--text)`}}>Contact Us</span></div>
-            <div onSubmit={(event) => messageUs(event)} className="content-us-box">
-                <span className="contact-us-heading heading">
-                    <h1 style={{margin: "0"}}>Contact Us</h1>
-                </span>
-                <div className="links">
-                    {
-                        linkData.map((data) =>
-                            <div className="link-box">
-                                <Icon
-                                    className='link-icon'
-                                    icon={data.icon}
-                                />
-                                <span className="link-name">{data.name}</span>
-                            </div>)
-                    }
-                </div>
-                <div className="contact-note">
-                    Please submit your inquiry using the form below and we will get in touch with you shortly!
-                </div>
-                <span className="email-box">
-                    <label htmlFor="email">Email</label>
-                    <span className="input-box">
-                        <Icon icon="ic:outline-email" style={{fontSize: '2rem', color: 'white'}}/>
-                        <input style={{borderLeft: "0.095rem solid #636262", paddingLeft: "0.5rem"}} type="email"
-                               ref={emailRef}
-                               placeholder="Enter your email"/>
-                    </span>
-                </span>
+    contactUs(email, message)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
 
-                <div className="message-box">
-                    <label htmlFor="Message">Message</label>
-                    <textarea ref={messageRef} placeholder="Enter your message"/>
-                </div>
-                <div className='contact-us-submit' onClick={() => {
-                    messageUs()
-                    dispatch(OverlayActions.showThankYouBoxHandler())
-                }}>
-                    <Button title="Submit"/>
-                </div>
+  return (
+    <div className="flex-center contact-us-page">
+      <div className="route">
+        <h3 className="color-text-light">
+          Help > <span style={{ color: `var(--text)` }}>Contact Us</span>
+        </h3>
+      </div>
+
+      <div onSubmit={(event) => messageUs(event)} className="content-us-box">
+        <h2>Contact Us</h2>
+
+        <div className="links">
+          {linkData.map((data) => (
+            <div className="link-box">
+              <Icon className="link-icon" icon={data.icon} />
+              <h6 className="link-name">{data.name}</h6>
             </div>
+          ))}
         </div>
-    )
-}
+
+        <p className="contact-note">
+          Please submit your inquiry using the form below and we will get in
+          touch with you shortly!
+        </p>
+
+        <div className="email-box">
+          <h5>Email</h5>
+          <div className="input-box">
+            <Icon icon="ic:outline-email" />
+            <input type="email" ref={emailRef} placeholder="Enter your email" />
+          </div>
+        </div>
+
+        <div className="message-box">
+          <h5>Message</h5>
+          <textarea ref={messageRef} placeholder="Enter your message" />
+        </div>
+
+        <div
+          className="contact-us-submit"
+          onClick={() => {
+            messageUs();
+            dispatch(OverlayActions.showThankYouBoxHandler());
+          }}
+        >
+          <Button width={"100%"} backgroundColor={"var(--primary)"}>
+            <h5 className="color-text">Submit</h5>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ContactUs;

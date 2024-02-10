@@ -1,0 +1,189 @@
+h1{
+    font-size: 3.5rem;
+    font-weight: 1000;
+}
+
+h2{
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h3{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+h6 {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+p{
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+h1,h2,h3,h4{
+    color: var(--text);
+}
+
+h5, h6{
+    color: var(--text-light);
+}
+
+p{
+    color: var(--text-extra-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    width: fit-content;
+}
+
+a{
+    text-decoration: none!important;
+}
+
+@media screen and (max-width: 480px) {
+    h1{
+        font-size: 2.5rem;
+        font-weight: 1000;
+    }
+    
+    h2{
+        font-size: 1.78rem;
+        font-weight: 900;
+    }
+    
+    h3{
+        font-size: 1rem;
+        font-weight: 900;
+    }
+    
+    h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+    
+    h5 {
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    
+    h6 {
+        font-size: 0.53rem;
+        font-weight: 500;
+    }
+    
+    p{
+        font-size: 0.6rem;
+        font-weight: 500;
+        margin: 0;
+    }
+}
+
+.shadow {
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+input {
+    background-color: transparent;
+    border-width: 0;
+    width: 90%;
+    height: 100%;
+    outline: none;
+    color: var(--text-light);
+    font-family: "Mulish", sans-serif;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+
+    -webkit-text-fill-color: var(--background) !important;
+}
+
+
+.input-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+
+    margin-top: 0.15rem;
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.25rem;
+}
+
+.input-box svg{
+    font-size: 1.5rem;
+    color: var(--text-light);
+}
+
+.input-box input{
+    color: var(--text-light);
+}
+
+.input-box:hover,
+.input-box:active{
+    border: 1px solid var(--text);
+}
+
+.cursor-btn {
+    cursor: pointer;
+}
+
+.input-box:hover input,
+.input-box:active input,
+.input-box:hover svg,
+.input-box:active svg
+{
+    color: var(--text);
+    border: 1px var(--text);
+}
+
+a{
+    text-decoration: none;
+}
+
+.highlight:hover{
+    color: var(--text);
+}
+
+
+.color-text{
+    color: var(--text);
+}
+
+.color-text-light{
+    color: var(--text-light);
+}
+
+.color-text-extra-light{
+    color: var(--text-extra-light);
+}
+
+.route {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}

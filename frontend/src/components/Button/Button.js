@@ -1,12 +1,18 @@
+import './Button.css';
+
 import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 
-import './Button.css'
-
-const Button = (props) => {
+const Button = ({children, width, backgroundColor, onClick}) => {
     return (
         <ZoomInZoomOut>
-            <button style={{cursor:'pointer'}} className="login-button">{props.title}</button>
+            <button 
+             onClick={onClick}
+             style={{width:width, backgroundColor: backgroundColor}}
+             className="flex-center cursor-btn custom-button">
+                {children}
+            </button>
         </ZoomInZoomOut>
     );
 }
+
 export default Button;

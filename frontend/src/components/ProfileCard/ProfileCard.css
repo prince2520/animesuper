@@ -1,9 +1,11 @@
+.profile-card-statistics-form{
+    width: 100%;
+}
 .profile-card-container {
     max-width: 22.5rem;
 
     position: absolute;
-    background: rgba(49, 49, 49, 0.3);
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background: rgba(49, 49, 49, 0.1);
     backdrop-filter: blur(6px);
 
     border-radius: 1rem;
@@ -19,9 +21,7 @@
 
 
 .profile-card-container .profile-card-container-top {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .profile-card-container .profile-card-container-bottom {
@@ -33,23 +33,13 @@
 }
 
 
-.profile-card-container-top .title {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: var(--text);
-}
-
 .profile-card-container-top .edit-button {
-    font-weight: 500;
-    color: var(--text-extra-light);
     padding: 0.25rem 0.5rem;
 }
 
 .profile-card-container-top .edit-button:hover{
     color: var(--text);
 }
-
-
 
 .profile-card-container-top .edit-button-selected {
     font-weight: 500;
@@ -67,12 +57,9 @@
     background-color: var(--background-secondary);
     overflow: hidden;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
     position: relative;
 
-    border: 0.125rem var(--text) solid;
+    border: 2px var(--text) solid;
     box-shadow: 3px 3px 8px 5px rgba(0, 0, 0, 0.25);
 }
 
@@ -95,23 +82,6 @@
     width: 100%;
 }
 
-.profile-personal-details .username {
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
-.profile-personal-details .email {
-    font-weight: 400;
-    color: var(--text-extra-light);
-}
-
-.profile-anime-manga-details .favorite-genre,
-.profile-anime-manga-details .statistics {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-}
-
 .favorite-genre .favorite-genre-title,
 .statistics .statistics-bar {
     display: inline-block;
@@ -126,9 +96,6 @@
 }
 
 .statistics-bar .category-change-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     column-gap: 0.5rem;
     padding: 0.10rem 0.15rem;
     border: 1px var(--border) solid;

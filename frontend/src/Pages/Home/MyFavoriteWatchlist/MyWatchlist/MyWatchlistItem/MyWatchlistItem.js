@@ -1,11 +1,9 @@
-
 import React from "react";
-import MyWatchlistItemMobile from "./MyWatchlistItemMobile/MyWatchlistItemMobile";
+
 import MyWatchlistItemWeb from "./MyWatchlistItemWeb/MyWatchlistItemWeb";
+import MyWatchlistItemMobile from "./MyWatchlistItemMobile/MyWatchlistItemMobile";
 
 const MyWatchlistItem = ({res, index}) => {
-
-
     return (
         <>
             <MyWatchlistItemWeb res={res} index={index}/>

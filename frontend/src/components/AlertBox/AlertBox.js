@@ -1,4 +1,7 @@
+import './AlertBox.css';
+
 import React from "react";
+
 import {Icon} from "@iconify/react";
 import {motion} from "framer-motion";
 import {useDispatch, useSelector} from "react-redux";
@@ -6,10 +9,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getAlertIconAndColor} from "../../common";
 import {AlertBoxActions} from "../../store/alertBox";
 
-import './AlertBox.css';
-
-
 const AlertBox = () => {
+
     const dispatch = useDispatch();
     const data = useSelector(state => state.alertBox.data)
     const getIconAndColor = getAlertIconAndColor(data.success);
@@ -23,7 +24,7 @@ const AlertBox = () => {
             y: 0,
             opacity : 1
         }
-    }
+    };
 
 
     return (
@@ -32,23 +33,24 @@ const AlertBox = () => {
             initial="initial"
             animate="animate"
             transition={{ duration: 0.25 }}
-            className="alert-box-page">
-            <div className="alert-box" style={{backgroundColor: getIconAndColor.primaryColor}}>
-                <div className="icon-container" style={{backgroundColor: getIconAndColor.secondaryColor}}>
+            className="flex-center alert-box-page">
+
+            <div className="shadow alert-box" style={{backgroundColor: getIconAndColor.primaryColor}}>
+                <div className="flex-center icon-container" style={{backgroundColor: getIconAndColor.secondaryColor}}>
                     <Icon
                         icon={getIconAndColor.icon}
                         style={{fontSize: '2rem', color: `var(--text)`}}
                     />
                 </div>
-                <div className="alert-box-container">
+                <div className="flex-center alert-box-container">
                     <div className="alert-box-status">
                         {['circle-1', 'circle-2', 'circle-3']
                             .map((className)=> <div className={className} style={{backgroundColor: getIconAndColor.secondaryColor}} />)}
                     </div>
-                    <div className="alert-box-content" >
+                    <div className="flex-center alert-box-content" >
                         <div style={{paddingLeft:'1rem'}}>
-                            <h2 style={{margin: "0"}}>{data.success ? 'Success': 'Error'}</h2>
-                            <h3 style={{margin: "0"}}>{data.description}</h3>
+                            <h5>{data.success ? 'Success': 'Error'}</h5>
+                            <p className='color-text'>{data.description}</p>
                         </div>
 
                     </div>
@@ -56,11 +58,12 @@ const AlertBox = () => {
                         <Icon
                             className={'cursor-btn'}
                             icon="material-symbols:close-rounded"
-                            style={{fontSize: '2rem', color: `white`}}
+                            style={{fontSize: '2rem'}}
                         />
                     </div>
                 </div>
             </div>
+            
         </motion.div>
     );
 };

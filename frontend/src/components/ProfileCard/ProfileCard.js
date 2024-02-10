@@ -35,7 +35,6 @@ const ProfileCard = () => {
 
     const imgRef = useRef(null);
 
-
     useEffect(() => {
         if (profileImage) {
             const readImg = new FileReader();
@@ -101,6 +100,32 @@ const ProfileCard = () => {
         }
     }
 
+    const compressProfileImage = (event) => {
+        const file = event.target.files[0]
+        if (file && file.type.substr(0, 5) === "image") {
+            try {
+                Resizer.imageFileResizer(
+                    event.target.files[0],
+                    300,
+                    300,
+                    "JPEG",
+                    100,
+                    0,
+                    (uri) => {
+                        setProfileImage(uri)
+                    },
+                    "blob",
+                    200,
+                    200
+                );
+            } catch (err) {
+                console.log(err);
+            }
+        } else {
+            setProfileImage(null)
+        }
+    }
+
 
     useEffect(() => {
         getProfileStatistics(authCtx.email).then((res) => {
@@ -112,20 +137,20 @@ const ProfileCard = () => {
     return (
         <UpAndDown
             className="profile-card-container">
-            <div className="profile-card-container-top">
+            <div className="flex-center profile-card-container-top">
                 <span className="close-button">
                     <Icon
                         onClick={() => dispatch(OverlayActions.closeOverlayHandler())} color="white"
                         icon="material-symbols:close" style={{cursor: 'pointer', fontSize: '2rem'}}/>
                 </span>
-                <span className="title">Profile</span>
-                <span
+                <h3>Profile</h3>
+                <p
                     className={`edit-button cursor-btn ${showEdit && 'edit-button-selected'}`}
-                    onClick={() => setShowEdit(!showEdit)}>Edit</span>
+                    onClick={() => setShowEdit(!showEdit)}>Edit</p>
             </div>
             <div className="profile-card-container-bottom">
                 <div className="profile-photo-container">
-                    <div className="profile-photo">
+                    <div className="flex-center profile-photo">
                         {user.profile_photo && <img alt={'profile'} accept='image/*'
                                                     src={preview || user.profile_photo}/>}
                         {!user.profile_photo && <Skeleton width={300} height={300}/>}
@@ -136,31 +161,7 @@ const ProfileCard = () => {
                             ref={imgRef}
                             type={"file"}
                             style={{display: 'none'}}
-                            onChange={(event) => {
-                                const file = event.target.files[0]
-                                if (file && file.type.substr(0, 5) === "image") {
-                                    try {
-                                        Resizer.imageFileResizer(
-                                            event.target.files[0],
-                                            300,
-                                            300,
-                                            "JPEG",
-                                            100,
-                                            0,
-                                            (uri) => {
-                                                setProfileImage(uri)
-                                            },
-                                            "blob",
-                                            200,
-                                            200
-                                        );
-                                    } catch (err) {
-                                        console.log(err);
-                                    }
-                                } else {
-                                    setProfileImage(null)
-                                }
-                            }}
+                            onChange={(event) => compressProfileImage(event)}
                         />
                         <Icon
                             icon="ri:edit-line"
@@ -168,8 +169,8 @@ const ProfileCard = () => {
                     </span>}
                 </div>
                 <div className="profile-personal-details">
-                    <span className="username">{user.username}</span>
-                    <span className="email">{authCtx.email && authCtx.email}</span>
+                    <h5 className="username">{user.username}</h5>
+                    <p className="email">{authCtx.email && authCtx.email}</p>
                 </div>
                 {!showEdit && <ProfileCardStatistics categoryStats={categoryStats}/>}
                 {showEdit && <ProfileCardEdit saveProfileDetail={saveProfileDetail}/>}

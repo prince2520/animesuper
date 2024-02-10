@@ -26,13 +26,10 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 0.1rem solid var(--background-secondary);
+    border: 1px solid var(--text);
     border-radius: 47px;
-    padding: 0.25rem 1rem;
+    padding: 0.2rem 1rem;
     column-gap: 1rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--text);
 }
 
 .profile-button .profile-logo {
@@ -40,10 +37,10 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
-    border: 0.125rem var(--background-secondary) solid;
+    border: 2px var(--text) solid;
 }
 
 .profile-logo .profile-photo-skeleton {

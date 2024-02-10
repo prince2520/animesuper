@@ -55,3 +55,22 @@
     }
 
 }
+.recommendation-container .card-container{
+    max-width: 10rem;
+    width: 45%;
+    height: 15rem;
+}
+
+.heading.information-heading{
+    margin-bottom: 1rem;
+}
+
+.information{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.information p{
+    margin: 0;
+}

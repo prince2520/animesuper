@@ -1,9 +1,9 @@
 import React from "react";
-import MyFavoriteItemWeb from "./MyFavoriteItemWeb/MyFavoriteItemWeb";
-import MyFavoriteItemMobile from "./MyFavoriteItemMobile/MyFavoriteItemMobile";
+
+import MyFavoriteItemWeb from "./MyFavoriteItemWeb";
+import MyFavoriteItemMobile from "./MyFavoriteItemMobile";
 
 const MyFavoriteItem = ({res, id}) => {
-
     return (
         <>
             <MyFavoriteItemWeb index={id} res={res}/>

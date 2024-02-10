@@ -6,22 +6,26 @@ import randomColor from "randomcolor";
 import {categoryType} from "../../../common";
 import {getColor} from "../../../store/myWatchlist";
 import {OverlayActions} from "../../../store/overlay";
-import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 import Skeleton from "react-loading-skeleton";
+import Button from "../../Button/Button";
 
 const ProfileCardStatistics = (props) => {
-    console.log(props)
     const [selectedCategory, setSelectedCategory] = useState(categoryType[0]);
-
-
     const user = useSelector(state => state.myProfile);
+
     const dispatch = useDispatch();
 
+    const logoutProfileCard = (event) => {
+        event.preventDefault();
+        dispatch(OverlayActions.closeOverlayHandler())
+        dispatch(OverlayActions.showLogoutHandler())
+    }
+
     return (
-        <React.Fragment>
+        <form className="profile-card-statistics-form" onSubmit={(event)=>logoutProfileCard(event)}>
             <div className="profile-anime-manga-details">
                 <div className="favorite-genre">
-                    <span className="favorite-genre-title">Favorite Genre</span>
+                    <h5 className="favorite-genre-title">Favorite Genre</h5>
                     <div className="favorite-genre-list">
                         {user.old_favorite_genre.length > 0 ? user.old_favorite_genre.map(res => {
                             let color = randomColor({
@@ -31,20 +35,20 @@ const ProfileCardStatistics = (props) => {
                             return <span
                                 key={res.toString()}
                                 className="favorite-genre-item"
-                                style={{borderColor: `${color}`, color: `${color}`}}>{res}</span>
-                        }) : <span style={{fontSize: '1rem', color: '#636262'}}>No data found</span>}
+                                style={{borderColor: `${color}`, color: `${color}`}}><p>{res}</p></span>
+                        }) : <p>No data found</p>}
 
                     </div>
                 </div>
                 <div className="statistics">
                     <div className="statistics-bar">
-                        <span>Statistics</span>
-                        <div className="category-change-button">
-                            {categoryType.map(name => <span
+                        <h5>Statistics</h5>
+                        <div className="flex-center category-change-button">
+                            {categoryType.map(name => <h6
                                 key={name.toString()}
                                 style={{cursor: 'pointer'}}
                                 className={`${selectedCategory === name ? 'selected' : ''}`}
-                                onClick={() => setSelectedCategory(name)}>{name}</span>)}
+                                onClick={() => setSelectedCategory(name)}>{name}</h6>)}
                         </div>
                     </div>
                     <div className="statistics-list">
@@ -53,8 +57,8 @@ const ProfileCardStatistics = (props) => {
                                 <div className="currently-watching">
                                     <span className="circle" style={{backgroundColor: getColor(res.status)}}/>
                                     <div className="currently-watching-detail">
-                                        <span className="title">{res.status}</span>
-                                        <span className="value">{res.count}</span>
+                                        <p className="title">{res.status}</p>
+                                        <p className="value">{res.count}</p>
                                     </div>
                                 </div>
                             </div>)}
@@ -62,18 +66,10 @@ const ProfileCardStatistics = (props) => {
                     </div>
                 </div>
             </div>
-            <ZoomInZoomOut>
-                <div className="logout-button">
-                    <button
-                        className={'cursor-btn'}
-                        onClick={() => {
-                            dispatch(OverlayActions.closeOverlayHandler())
-                            dispatch(OverlayActions.showLogoutHandler())
-                        }}>Logout
-                    </button>
-                </div>
-            </ZoomInZoomOut>
-        </React.Fragment>
+            <Button width={"60%"} backgroundColor={"var(--primary)"}>
+              <h5 className="color-text">Logout</h5>
+            </Button>
+        </form>
     );
 };
 

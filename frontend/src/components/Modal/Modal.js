@@ -20,7 +20,7 @@ const Modal = () => {
         <UpAndDown
             className={`modal ${showThankYouBox ? 'modal-thank-you' : ''} ${showRemoveFavorite || showRemoveWatchlist || showLogout ? 'modal-remove' : ''} ${showEditWatchlist ? 'modal-watchlist-edit' : ''} `}>
             <div className="modal-box-1"/>
-            <div className="modal-box-2">
+            <div className="flex-center modal-box-2">
                 {showRemoveWatchlist && <RemoveWatchlist/>}
                 {showRemoveFavorite && <RemoveFavorite/>}
                 {showEditWatchlist && <EditStatus/>}

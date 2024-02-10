@@ -1,4 +1,3 @@
-
 .anime-status .anime-status-list {
     display: flex;
     flex-wrap: wrap;
@@ -33,7 +32,7 @@
 
 .item-progress .progress-bar {
     background-color: var(--progress-bar);
-    width: 80%;
+    width: 100%;
     height: 0.75rem;
     border-radius: 0.5rem;
     overflow: hidden;
@@ -46,20 +45,17 @@
 }
 
 .anime-status-list .selected {
-    color: var(--text);
     border-bottom: 0.15rem solid var(--primary);
+}
+
+.anime-status-list .selected > h5 {
+    color: var(--text);
 }
 
 .anime-manga-button span {
     padding: 0.25rem 1rem;
 }
 
-.anime-manga-button .selected {
-    background-color: var(--primary);
-    color: var(--text);
-    border-radius: 1.5rem;
-    box-shadow: -2px 3px 3px rgba(0, 0, 0, 0.25);
-}
 
 @media screen and (max-width: 800px) {
     .anime-status .anime-status-list {
@@ -99,6 +95,26 @@
     .my-watchlist-table .my-watchlist-table-heading {
         display: none;
     }
+}
+
+.completed .circle {
+    background-color: var(--completed);
+}
+
+.dropped .circle {
+    background-color: var(--dropped);
+}
+
+.on-hold .circle {
+    background-color: var(--on-hold);
+}
+
+.currently-watching .circle {
+    background-color: var(--currently-watching);
+}
+
+.plan-watch .circle {
+    background-color: var(--plan-to-watch);
 }
 
 .favorite-table-list .my-favorite-table-item-mobile ,

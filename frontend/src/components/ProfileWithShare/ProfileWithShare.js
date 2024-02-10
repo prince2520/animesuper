@@ -24,12 +24,13 @@ const ProfileWithShare = () => {
                     .map((data) =>
                         <Icon key={data.toString()}
                               icon={data}
-                              style={{fontSize: '2.25rem'}}/>)}
+                              style={{fontSize: '1.75rem'}}/>)}
             </div>
             <ZoomInZoomOut width={'fit-content'}>
-                {authCtx.isAuth && <div className="profile-button" style={{cursor: 'pointer'}}
+                {authCtx.isAuth && 
+                <div className="profile-button" style={{cursor: 'pointer'}}
                                         onClick={() => dispatch(OverlayActions.showProfileHandler())}>
-                    <span>{user.username || <Skeleton width={50}/>}</span>
+                    <h5 className="color-text">{user.username || <Skeleton width={50}/>}</h5>
                     <div className="profile-logo">
                         {user.profile_photo &&
                             <img

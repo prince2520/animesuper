@@ -1,8 +1,8 @@
-import {OverlayActions} from "../../../../../../store/overlay";
+import {OverlayActions} from "../../../../../store/overlay";
 import {Icon} from "@iconify/react";
 import React from "react";
 import {useDispatch} from "react-redux";
-import {MyFavoriteActions} from "../../../../../../store/myFavorite";
+import {MyFavoriteActions} from "../../../../../store/myFavorite";
 
 const favoriteItemData = (value) => {
     return [
@@ -25,7 +25,7 @@ const favoriteItemData = (value) => {
     ]
 };
 
-const MyFavoriteItemMobile = ({res, id}) => {
+const MyFavoriteItemMobile = ({res}) => {
     const dispatch = useDispatch();
 
     return (

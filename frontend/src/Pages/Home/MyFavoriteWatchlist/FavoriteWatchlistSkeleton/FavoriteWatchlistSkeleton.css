@@ -1,0 +1,11 @@
+.favorite-watchlist-skeleton{
+    height: 6rem;
+    width: 100%;
+    margin: 0.75rem 0;
+}
+
+@media screen and (max-width: 800px) {
+    .favorite-watchlist-skeleton{
+        height: 10rem;
+    }
+}

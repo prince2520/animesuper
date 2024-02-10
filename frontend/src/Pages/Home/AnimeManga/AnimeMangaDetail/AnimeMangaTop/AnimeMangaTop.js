@@ -17,7 +17,7 @@ const AnimeMangaTop = ({animeDetail, addToFavoriteHandler, addToWatchListHandler
                                 <span className="rating">
                                     <Icon color="yellow" style={{fontSize: '1.5rem'}}
                                           icon="material-symbols:star"/>
-                                    {animeDetail?.mean ? animeDetail.mean : 'N/A'}
+                                    <h5>{animeDetail?.mean ? animeDetail.mean : 'N/A'}</h5>
                                 </span>
                             <span onClick={() => addToFavoriteHandler()} style={{zIndex: '100', cursor: 'pointer'}}
                                   className="favorite"><Icon color="gray" style={{
@@ -33,12 +33,12 @@ const AnimeMangaTop = ({animeDetail, addToFavoriteHandler, addToWatchListHandler
                 </div>
                 <div className="anime-detail-top-right">
                     <div className="title">
-                        {animeDetail?.title || <Skeleton/>}
+                        <h2>{animeDetail?.title || <Skeleton/>}</h2>
                     </div>
                     <div className="rating-popularity-container">
-                        {animeDetail?.rank && <span className="rating">Rating # {animeDetail?.rank}</span>}
+                        {animeDetail?.rank && <h5 className="rating">Rating # {animeDetail?.rank}</h5>}
                         {animeDetail?.popularity &&
-                            <span className="popularity">Popularity # {animeDetail?.popularity}</span>}
+                            <h5 className="popularity">Popularity # {animeDetail?.popularity}</h5>}
                     </div>
                 </div>
             </div>

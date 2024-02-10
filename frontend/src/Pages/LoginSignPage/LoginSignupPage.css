@@ -13,8 +13,6 @@
 }
 
 .form-page-left .form-top {
-    display: flex;
-    align-items: center;
     justify-content: space-between;
     margin: 1rem 0 1.5rem 0;
 }
@@ -24,13 +22,11 @@
 }
 
 .form-top img{
-    height: 5rem;
+    height: 4rem;
 }
 
 .form-top .skip {
-    font-size: 1.3rem;
     color: var(--text);
-    font-weight: 700;
 }
 
 .form-top .skip:hover,
@@ -47,50 +43,21 @@
     row-gap: 1.5rem;
 }
 
-form .heading {
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-
-form label {
-    font-size: 1.1rem;
-    font-weight: 500;
-}
-
-
-span .input-box {
-    margin-top: 0.15rem;
-    border: 0.095rem solid var(--border);
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.4rem 0.7rem;
-    border-radius: 0.5rem;
-}
-
-form input:focus,
-form input:hover {
-    border-width: 0;
-    color: var(--text);
+form .form-btn-container {
+    width: 50%;
+    align-self: center;
 }
 
 .change-box {
     display: flex;
-    font-size: 1.1rem;
     color: var(--text-light);
     justify-content: center;
     align-items: center;
     column-gap: 0.5rem;
 }
 
-.change-box p {
-    margin: 0;
-}
-
 .change-box .change-form {
     color: var(--text);
-    font-weight: 500;
     text-decoration: none;
 }
 
@@ -110,23 +77,11 @@ form input:hover {
 
 .form-page-right .slogan {
     position: absolute;
-    display: flex;
     flex-direction: column;
-    align-items: center;
-    margin-top: 5rem;
     z-index: 1;
-    font-size: 2rem;
-    font-weight: 700;
     color: var(--text);
-}
+    padding: 8rem 3rem;
 
-.slogan p {
-    width: 80%;
-}
-
-.slogan span {
-    font-weight: 500;
-    font-size: 1.5rem;
 }
 
 .form-page-right .img-overlay {
@@ -146,35 +101,16 @@ form input:hover {
     object-fit: cover;
 }
 
-.input-box svg{
-    color: var(--text);
-    font-size: 1.75rem;
-}
-
-.input-box input{
-    color: var(--text);
-    border-color: var(--border);
-}
-
-
-form .form-btn-container {
-    width: 50%;
-    align-self: center;
-    font-size: 1.25rem;
-}
 
 /* Mobile Size */
-
 @media screen and (max-width: 500px) {
     .form-page-left .form-top {
         margin: 1rem 0 1.5rem 0;
     }
 
-
 }
 
 @media screen and (max-width: 800px) {
-
     /* Left Side*/
     .form-page .form-page-left {
         width: 100%;
@@ -184,24 +120,9 @@ form .form-btn-container {
         width: 80%;
     }
 
-    form .heading {
-        font-size: 2rem;
-        font-weight: 700;
-    }
-
-    form label {
-        font-size: 1rem;
-        font-weight: 500;
-    }
-
-    form input {
-        font-size: 1rem;
-        font-weight: 400;
-    }
-
-    .slogan span {
-        font-weight: 500;
-        font-size: 3rem;
+    form .form-btn-container {
+        width: 80%;
+        align-self: center;
     }
 
     /* Right Side */
@@ -214,14 +135,6 @@ form .form-btn-container {
     }
 
     .form-top img{
-        height: 3.75rem;
-    }
-
-    form .form-btn-container {
-        width: 80%;
-        align-self: center;
-        font-size: 1.1rem;
-        font-weight: 800;
-
+        height: 3rem;
     }
 }

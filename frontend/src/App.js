@@ -1,15 +1,15 @@
-import React, {useContext, useEffect} from "react";
+import './App.css';
+
+import React, {useContext, useEffect, useLayoutEffect} from "react";
 
 import {useDispatch, useSelector} from "react-redux";
-import {Navigate, Route, Routes} from 'react-router-dom';
-
+import {Navigate, Route, Routes, useLocation} from 'react-router-dom';
 
 import Home from "./Pages/Home/Home";
 import LoginSignupPage from "./Pages/LoginSignPage/LoginSignupPage";
 import LoginForm from "./Pages/LoginSignPage/Form/LoginForm";
 import SignupForm from "./Pages/LoginSignPage/Form/SignupForm";
-import TermAndCondition from "./Pages/Home/PolicyContactUs/TermAndCondition/TermAndCondition";
-import DMCA from "./Pages/Home/PolicyContactUs/DMCA/DMCA";
+import TermAndCondition from "./Pages/Home/PolicyContactUs/TermAndCondition";
 import ContactUs from "./Pages/Home/PolicyContactUs/ContactUs/ContactUs";
 import AnimeMangaCategory from "./Pages/Home/AnimeManga/AnimeMangaCategory/AnimeMangaCategory";
 import MyWatchlist from "./Pages/Home/MyFavoriteWatchlist/MyWatchlist/MyWatchlist";
@@ -20,9 +20,7 @@ import AlertBox from "./components/AlertBox/AlertBox";
 import AnimeManga from "./Pages/Home/AnimeManga/AnimeManga";
 
 import {AlertBoxActions} from "./store/alertBox";
-
-
-import './App.css';
+import DMCA from './Pages/Home/PolicyContactUs/DMCA';
 
 
 let time = null;
@@ -33,6 +31,8 @@ function App() {
     const visible = useSelector(state => state.alertBox.isVisible);
     const alertBoxData = useSelector(state => state.alertBox.data);
 
+    const {pathname} = useLocation();
+
 
     useEffect(() => {
         clearTimeout(time);
@@ -42,8 +42,6 @@ function App() {
             }, [2000]);
         }
     }, [dispatch, visible, alertBoxData]);
-
-
 
 
 

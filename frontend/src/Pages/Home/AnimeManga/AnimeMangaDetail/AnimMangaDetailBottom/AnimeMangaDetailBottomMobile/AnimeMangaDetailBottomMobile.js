@@ -2,9 +2,9 @@ import {useState} from "react";
 import {Icon} from "@iconify/react";
 
 import {detail_links} from '../../../../../../common';
-import AnimeDetailOverview from "../AnimeMangaDetailOverview/AnimeDetailOverview";
-import AnimeMangaDetailRelated from "../AnimeMangaDetailRelated/AnimeMangaDetailRelated";
-import AnimeMangaDetailInformation from "../AnimeMangaDetailInformation/AnimeMangaDetailInformation";
+import AnimeDetailOverview from "../AnimeDetailOverview";
+import AnimeMangaDetailRelated from "../AnimeMangaDetailRelated";
+import AnimeMangaDetailInformation from "../AnimeMangaDetailInformation";
 
 import './AnimeMangaDetailBottomMobile.css';
 

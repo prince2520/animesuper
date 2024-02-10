@@ -1,3 +1,5 @@
+import './Navbar.css';
+
 import {Icon} from "@iconify/react";
 import {Link} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
@@ -9,8 +11,6 @@ import AuthContext from "../../Context/auth";
 import {useContext} from "react";
 import {helperActions} from "../../store/helper";
 import {OverlayActions} from "../../store/overlay";
-
-import './Navbar.css';
 
 const Navbar = () => {
     const profilePhoto = useSelector(state => state.myProfile.profile_photo);
