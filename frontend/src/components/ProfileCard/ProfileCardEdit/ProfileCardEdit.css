@@ -1,3 +1,22 @@
+.profile-photo-container .edit-icon {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.25rem;
+
+    background-color: var(--background-primary);
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 50%;
+
+    color: var(--text);
+    font-size: 1.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.25);
+}
 .profile-card-edit-form{
     flex-direction: column;
     row-gap: 0.5rem;   

@@ -2,7 +2,7 @@ import {Icon} from "@iconify/react";
 
 import Skeleton from "react-loading-skeleton";
 
-import Button from "../../../../../components/Button/Button";
+import Button from "../../../../../components/CustomButton/CustomButton";
 
 const AnimeMangaTop = ({animeDetail, addToFavoriteHandler, addToWatchListHandler}) => {
 

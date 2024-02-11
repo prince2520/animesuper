@@ -1,5 +1,3 @@
-import './AlertBox.css';
-
 import React from "react";
 
 import {Icon} from "@iconify/react";
@@ -8,6 +6,8 @@ import {useDispatch, useSelector} from "react-redux";
 
 import {getAlertIconAndColor} from "../../common";
 import {AlertBoxActions} from "../../store/alertBox";
+
+import './AlertBox.css';
 
 const AlertBox = () => {
 

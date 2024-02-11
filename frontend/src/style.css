@@ -1,3 +1,4 @@
+/* edit inbuild html tags style */
 h1{
     font-size: 3.5rem;
     font-weight: 1000;
@@ -42,17 +43,59 @@ h5, h6{
     color: var(--text-light);
 }
 
-p{
-    color: var(--text-extra-light);
-}
-
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
     width: fit-content;
 }
 
+p{
+    color: var(--text-extra-light);
+}
+
 a{
     text-decoration: none!important;
+}
+
+
+input {
+    background-color: transparent;
+    border-width: 0;
+    width: 90%;
+    height: 100%;
+    outline: none;
+    color: var(--text-light);
+    font-family: "Mulish", sans-serif;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active{
+
+    -webkit-text-fill-color: var(--background) !important;
+}
+
+::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track{
+    background-color: var(--container);
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 0.25rem;
+    background-color: var(--text-light);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--text);
+}
+
+.selected-container:hover,
+.selected-container:active{
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
 }
 
 @media screen and (max-width: 480px) {
@@ -93,6 +136,8 @@ a{
     }
 }
 
+/* custom css classes */
+
 .shadow {
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -102,26 +147,6 @@ a{
     justify-content: center;
     align-items: center;
 }
-
-
-input {
-    background-color: transparent;
-    border-width: 0;
-    width: 90%;
-    height: 100%;
-    outline: none;
-    color: var(--text-light);
-    font-family: "Mulish", sans-serif;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
-
-    -webkit-text-fill-color: var(--background) !important;
-}
-
 
 .input-box {
     display: flex;
@@ -149,10 +174,6 @@ input:-webkit-autofill:active{
     border: 1px solid var(--text);
 }
 
-.cursor-btn {
-    cursor: pointer;
-}
-
 .input-box:hover input,
 .input-box:active input,
 .input-box:hover svg,
@@ -162,12 +183,14 @@ input:-webkit-autofill:active{
     border: 1px var(--text);
 }
 
-a{
-    text-decoration: none;
-}
 
 .highlight:hover{
     color: var(--text);
+}
+
+
+.cursor-btn {
+    cursor: pointer;
 }
 
 

@@ -6,10 +6,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
 
-import Button from "../../../../../../components/Button/Button";
-
 import { AnimeActions } from "../../../../../../store/anime";
 import { getAnimeDetail } from "../../../../../../api/animeManga";
+
+import CustomButton from "../../../../../../components/CustomButton/CustomButton";
 
 import "./AnimeCarouselSlide.css";
 
@@ -97,9 +97,9 @@ const AnimeCarouselSlide = (props) => {
             className="detail"
             onClick={() => navigate(`${props.category_id}`)}
           >
-            <Button width={"100%"} backgroundColor={"var(--primary)"}>
+            <CustomButton width={"100%"} backgroundColor={"var(--primary)"}>
               <h5 className="color-text">Detail</h5>
-            </Button>
+            </CustomButton>
           </div>
         </div>
       </div>

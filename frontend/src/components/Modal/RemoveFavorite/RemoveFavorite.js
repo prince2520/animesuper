@@ -2,22 +2,22 @@ import { useContext } from "react";
 
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../../Button/Button";
-
-import AuthContext from "../../../Context/auth";
 
 import { OverlayActions } from "../../../store/overlay";
 import { AlertBoxActions } from "../../../store/alertBox";
 import { removeFavoriteItem } from "../../../api/favorite";
 import { MyFavoriteActions } from "../../../store/myFavorite";
 
-import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
+
+import AuthContext from "../../../Context/auth";
+import CustomButton from "../../CustomButton/CustomButton";
+
 
 const RemoveFavorite = () => {
+  const dispatch = useDispatch();
+  const authCtx = useContext(AuthContext);
   const category = useSelector((state) => state.myFavorite.removeCategory);
   const categoryId = useSelector((state) => state.myFavorite.removeCategoryId);
-  const authCtx = useContext(AuthContext);
-  const dispatch = useDispatch();
 
   const removeFavoriteItemHandler = () => {
     removeFavoriteItem(authCtx.email, category, categoryId)
@@ -31,7 +31,7 @@ const RemoveFavorite = () => {
 
   return (
     <div className="remove-favorite-container">
-      <div className="remove-favorite-container-top">
+      <div className="flex-center remove-favorite-container-top">
         <h3>Remove</h3>
         <span>
           <Icon
@@ -47,12 +47,12 @@ const RemoveFavorite = () => {
         <p>Are you sure, do you want to remove this item from your favorite?</p>
       </div>
       <div className="flex-center remove-favorite-container-bottom">
-        <Button width={"45%"} onClick={() => dispatch(OverlayActions.closeOverlayHandler())} backgroundColor={"var(--primary)"}>
+        <CustomButton width={"45%"} onClick={() => dispatch(OverlayActions.closeOverlayHandler())} backgroundColor={"var(--error)"}>
           <h5 className="color-text">No</h5>
-        </Button>
-        <Button width={"45%"} onClick={() => () => removeFavoriteItemHandler()} backgroundColor={"var(--primary)"}>
+        </CustomButton>
+        <CustomButton width={"45%"} onClick={() => () => removeFavoriteItemHandler()} backgroundColor={"var(--success)"}>
           <h5 className="color-text">Yes</h5>
-        </Button>
+        </CustomButton>
       </div>
     </div>
   );

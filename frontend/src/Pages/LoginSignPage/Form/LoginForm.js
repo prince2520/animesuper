@@ -4,9 +4,8 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 
 import AuthContext from "../../../Context/auth";
-
-import Button from "../../../components/Button/Button";
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
+import CustomButton from "../../../components/CustomButton/CustomButton";
 
 const LoginForm = () => {
   const authCtx = useContext(AuthContext);
@@ -48,9 +47,9 @@ const LoginForm = () => {
         </span>
       </div>
 
-      <Button width={"60%"} backgroundColor={"var(--primary)"}>
+      <CustomButton width={"60%"} backgroundColor={"var(--primary)"}>
         <h5 className="color-text">Login</h5>
-      </Button>
+      </CustomButton>
 
       <span className="change-box">
         <p className="color-text-extra-light">Don't have an account?</p>

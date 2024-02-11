@@ -5,8 +5,8 @@ import {ThankYouImg} from "../../../photo";
 const ThankYou = () => {
     return (
         <div className="thank-you-container">
-            <div className="thank-you-container-top">
-                <h1>Thank You !</h1>
+            <div className="flex-center thank-you-container-top">
+                <h3>Thank You !</h3>
                 <span>
                     <Icon color="white" icon="material-symbols:close" style={{fontSize: '2rem'}}/>
                 </span>

@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { contactUs } from "../../../../api/auth";
 import { OverlayActions } from "../../../../store/overlay";
 
-import Button from "../../../../components/Button/Button";
+import CustomButton from "../../../../components/CustomButton/CustomButton";
 
 import "./../PolicyContactUs.css";
 import "./ContactUs.css";
@@ -31,6 +31,7 @@ const ContactUs = () => {
 
   const dispatch = useDispatch();
 
+  // message to administrators
   const messageUs = () => {
     let email = emailRef.current.value;
     let message = messageRef.current.value;
@@ -85,9 +86,9 @@ const ContactUs = () => {
             dispatch(OverlayActions.showThankYouBoxHandler());
           }}
         >
-          <Button width={"100%"} backgroundColor={"var(--primary)"}>
+          <CustomButton width={"100%"} backgroundColor={"var(--primary)"}>
             <h5 className="color-text">Submit</h5>
-          </Button>
+          </CustomButton>
         </div>
       </div>
     </div>

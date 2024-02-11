@@ -1,25 +1,22 @@
-import React, {useContext, useEffect, useState} from "react";
-
-
 import {useDispatch, useSelector} from "react-redux";
 import {useInView} from "react-intersection-observer";
+import React, {useContext, useEffect, useState} from "react";
 
-import NoData from "../NoData/NoData";
-import AuthContext from "../../../../Context/auth";
-import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
-
-
-import MyFavoriteData from './MyFavoriteData.json';
+import {MyFavoriteImage} from "../../../../photo";
 import {helperActions} from "../../../../store/helper";
 import {getFavoriteList} from "../../../../api/favorite";
 import {MyFavoriteActions} from "../../../../store/myFavorite";
-import {MyFavoriteImage} from "../../../../photo";
 
+import NoData from "../NoData/NoData";
+import AuthContext from "../../../../Context/auth";
 import MyFavoriteItem from "./MyFavoriteItem/MyFavoriteItem";
+import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
+import FavoriteWatchlistSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
+
+import MyFavoriteData from './MyFavoriteData.json';
 
 import './MyFavorite.css';
 import '../MyFavoriteWatchlist.css';
-import FavoriteWatchlistSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
 
 
 // Sub Component
@@ -34,8 +31,8 @@ const Heading = () => {
 
 const MyFavorite = () => {
     const dispatch = useDispatch();
-    const favoriteData = useSelector(state => state.myFavorite.filterData);
     const authCtx = useContext(AuthContext);
+    const favoriteData = useSelector(state => state.myFavorite.filterData);
     const [showFavoriteSkeleton, setShowFavoriteSkeleton] = useState(false);
 
 

@@ -28,10 +28,7 @@ const Footer = () => {
         <div className="footer-left">
           <div className="policies">
             {policiesData.map((data) => (
-              <Link
-                key={data.toString()}
-                to={data.to}
-              >
+              <Link key={data.toString()} to={data.to}>
                 <p className="color-text-light highlight">{data.name}</p>
               </Link>
             ))}

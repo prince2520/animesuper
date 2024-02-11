@@ -1,6 +1,6 @@
-import './FavoriteWatchlistSkeleton.css'
-
 import Skeleton from "react-loading-skeleton";
+
+import './FavoriteWatchlistSkeleton.css';
 
 const FavoriteWatchlistSkeleton = () => {
     return (

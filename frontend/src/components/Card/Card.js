@@ -7,12 +7,11 @@ import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import AuthContext from "../../Context/auth";
-
 import { categoryType } from "../../common";
 import { addToWatchlist } from "../../api/watchlist";
 import { AlertBoxActions } from "../../store/alertBox";
 
+import AuthContext from "../../Context/auth";
 import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 
 import "./Card.css";

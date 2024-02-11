@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,19 +7,21 @@ import randomColor from "randomcolor";
 
 import { MyProfileActions } from "../../../store/myProfile";
 
-import Button from "../../Button/Button";
+import CustomButton from "../../CustomButton/CustomButton";
 
-import "./ProfileCardEdit.css";
+import './ProfileCardEdit.css';
 
 const ProfileCardEdit = (props) => {
-  const user = useSelector((state) => state.myProfile);
-  const dispatch = useDispatch();
-
   const genreRef = useRef(null);
-  const usernameRef = useRef(null);
   const genderRef = useRef(null);
+  const usernameRef = useRef(null);
   const locationRef = useRef(null);
 
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.myProfile);
+
+
+  // Update and save profile details 
   const saveEditHandler = (event) => {
     event.preventDefault();
     props.saveProfileDetail(
@@ -114,9 +117,9 @@ const ProfileCardEdit = (props) => {
           })}
         </div>
       </div>
-      <Button width={"60%"} backgroundColor={"var(--primary)"}>
+      <CustomButton width={"60%"} backgroundColor={"var(--primary)"}>
         <h5 className="color-text">Save</h5>
-      </Button>
+      </CustomButton>
     </form>
   );
 };

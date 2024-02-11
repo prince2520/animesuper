@@ -1,3 +1,7 @@
+.my-watchlist-table-item{
+    height: 7rem;
+}
+
 .my-watchlist-table-item .item-no{
     width: 5%;
     border-left: 0.25rem solid;

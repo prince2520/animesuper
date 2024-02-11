@@ -27,11 +27,11 @@ const Home = () => {
     const showSearchBar = useSelector(state => state.helper.showSearchBar);
 
     const authCtx = useContext(AuthContext);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         getProfileDetail(authCtx?.email).then((res) => {
-            let favorite_genre = res.favorite_genre.map(result => result.fields.name);
+            let favorite_genre = res?.favorite_genre.map(result => result.fields.name);
             dispatch(MyProfileActions.saveProfileData({
                 username: res.username,
                 email: res.email,

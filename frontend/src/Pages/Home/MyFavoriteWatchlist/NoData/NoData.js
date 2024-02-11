@@ -1,6 +1,7 @@
 import {NoDataImg} from "../../../../photo";
 
 import './NoData.css';
+
 const NoData = () => {
     return (
         <div className='no-data-box'>

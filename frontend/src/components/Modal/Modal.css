@@ -41,40 +41,6 @@
     border: 0.15rem solid var(--background-secondary);
 }
 
-.modal-box-2 .yes-button,
-.modal-box-2 .no-button {
-    border: none;
-    border-radius: 0.25rem;
-    color: var(--text);
-    font-size: 1.25rem;
-    padding: 0.25rem 2rem;
-    box-shadow: 0 0.05rem 0.05rem 0.05rem rgba(0, 0, 0, 0.25);
-    opacity: 100%;
-    text-align: center;
-    width: fit-content;
-}
-
-.modal-box-2 .yes-button {
-    background-color: var(--error-bold);
-}
-
-.modal-box-2 .yes-button:hover {
-    color: var(--error-bold);
-}
-
-.modal-box-2 .no-button:hover {
-    color: var(--success-bold);
-}
-
-.modal-box-2 .yes-button:hover ,
-.modal-box-2 .no-button:hover {
-    background-color: var(--background-secondary);
-}
-
-
-.modal-box-2 .no-button {
-    background-color: var(--success-bold);
-}
 
 .thank-you-container,
 .logout-container,
@@ -92,9 +58,7 @@
 .logout-container .logout-container-top,
 .remove-favorite-container .remove-favorite-container-top,
 .remove-watchlist-container .remove-watchlist-container-top {
-    display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .thank-you-container-top span,

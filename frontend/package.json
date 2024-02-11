@@ -28,6 +28,7 @@
     "react-scripts": "5.0.1",
     "react-virtualized-auto-sizer": "^1.0.20",
     "react-window": "^1.8.9",
+    "styled-components": "^6.1.8",
     "swiper": "^8.4.4",
     "web-vitals": "^2.1.4"
   },
