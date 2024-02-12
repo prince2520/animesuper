@@ -1,35 +1,26 @@
-.search-result-container {
-    position: absolute;
+.search-result-box {
     width: 100%;
-    font-size: 0.75rem;
 
-    background-color: #151719;
-    border-bottom: 1px solid #2D3135;
-    box-shadow: 0 0 10px 10px rgb(0 0 0 / 25%);
-    left: -0.05rem;
+    position: absolute;
     top: 3rem;
+    left: -0.05rem;
+    background-color: rgba(17, 19, 20, 0.95);
+    border: 1px solid var(--border);
 }
 
-.search-result-container .search-result-item {
+.search-result-box .search-result-item {
     display: grid;
     grid-template-columns: 20% 70% 10%;
-    padding: 0.5rem;
-    border-bottom: 0.5px solid #2D3135;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid var(--border);
     overflow: hidden;
-}
-
-.search-result-item .search-result-item-left {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .search-result-item .search-result-item-middle {
     display: flex;
     flex-direction: column;
-    row-gap: 1rem;
+    row-gap: 0.5rem;
 }
-
 
 .search-result-item-middle .search-result-detail {
     display: flex;
@@ -37,6 +28,8 @@
     column-gap: 1.5rem;
     margin: 0;
     padding-left: 1rem;
+    list-style: none;
+    padding: 0;
 }
 
 
@@ -52,11 +45,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
-}
-
-.search-result-item .search-result-item-middle {
-    color: var(--text);
 }
 
 .genres ul {
@@ -71,8 +59,6 @@
 }
 
 ul .genre-list {
-    color: var(--text-extra-light);
-    font-weight: 600;
     padding: 0.15rem 0.25rem;
     border: 1px var(--border) solid;
     border-radius: 0.25rem;
@@ -84,12 +70,7 @@ ul .genre-list {
     height: 5.5rem;
     border-radius: 50%;
     border: 0.25rem var(--border) solid;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1rem;
-    color: var(--text);
-    font-weight: 600;
+ 
     top: -2rem;
     right: -1.5rem;
 }
@@ -98,23 +79,13 @@ ul .genre-list {
     position: relative;
 }
 
-.search-result-container .view-all {
-    padding: 0.5rem 0;
-    font-size: 1.25rem;
-    color: var(--text);
-    font-weight: 500;
+.search-result-box .view-all {
     width: 100%;
+    padding: 0.5rem 0;
     background-color: var(--background-primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 @media screen and (max-width: 800px) {
-    ul .genre-list {
-        font-size: 0.65rem;
-    }
-
     .search-result-item-right .rating{
         display: none;
     }
