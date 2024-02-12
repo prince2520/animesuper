@@ -24,9 +24,9 @@ const Navbar = () => {
             <Link to='/home' className="nav-logo">
                 <img alt='anime-super' src={Logo}/>
             </Link>
-            {authCtx.isAuth ? <div className="profile">
+            {authCtx.isAuth ? <div className="flex-center profile">
                 <img onClick={() => dispatch(OverlayActions.showProfileHandler())} src={profilePhoto} alt="profile-img"/>
-            </div> : <Link to='/login' className='login-btn'>Login</Link> }
+            </div> : <Link to='/login' className='login-btn'><h4>Login</h4></Link> }
         </div>
     );
 }

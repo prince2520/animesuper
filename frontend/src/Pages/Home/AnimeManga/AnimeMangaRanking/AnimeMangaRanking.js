@@ -52,7 +52,7 @@ const AnimeMangaRanking = (props) => {
                     : swiperRef.current?.slideNext()
                 }
               >
-                <span>{data}</span>
+                <p className="color-text">{data}</p>
               </button>
             ))}
           </div>

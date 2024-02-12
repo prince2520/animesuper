@@ -56,7 +56,7 @@ const ContactUs = () => {
           {linkData.map((data) => (
             <div className="link-box">
               <Icon className="link-icon" icon={data.icon} />
-              <h6 className="link-name">{data.name}</h6>
+              <h6>{data.name}</h6>
             </div>
           ))}
         </div>

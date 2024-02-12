@@ -50,50 +50,34 @@
     padding: 0.5rem 1rem;
     height: 15rem;
     resize: none;
-    border: 0.095rem solid var(--border) ;
-    border-radius: 0.5rem;
+    border: 1px solid var(--border) ;
+    border-radius: 0.25rem;
 
     font-family: "Mulish", sans-serif;
+}
+
+
+.message-box textarea:hover,
+.message-box textarea:active
+{
+    border: 1px solid var(--text);
+    color: var(--text);
 }
 
 .content-us-box .contact-us-submit{
     width: 80%;
     max-width: 15rem;
-    font-size: 1.25rem;
-
     align-self: center;
-}
-
-.content-us-box .contact-note{
-    font-size: 1rem;
-    color: var(--text-extra-light);
 }
 
 
 @media screen and (max-width: 800px) {
     .contact-us-page .content-us-box {
-        width: 95%;
-    }
-
-    .contact-us-page .contact-us-route,
-    .contact-us-page .heading{
-        font-size: 1.65rem;
-    }
-
-    .link-box .link-icon {
-        font-size: 1.5rem;
-    }
-    .link-box .link-name{
-        font-size: 0.75rem;
+        width: 100%;
     }
 
     .links {
         display: flex;
         column-gap: 0.45rem;
     }
-
-    .content-us-box .contact-us-submit{
-        font-size: 1.1rem;
-
-    }
-}
+};

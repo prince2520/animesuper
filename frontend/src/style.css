@@ -110,12 +110,12 @@ input:-webkit-autofill:active{
     }
     
     h3{
-        font-size: 1rem;
+        font-size: 1.25rem;
         font-weight: 900;
     }
     
     h4 {
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: 700;
     }
     
@@ -125,12 +125,12 @@ input:-webkit-autofill:active{
     }
     
     h6 {
-        font-size: 0.53rem;
+        font-size: 0.6rem;
         font-weight: 500;
     }
     
     p{
-        font-size: 0.6rem;
+        font-size: 0.7rem;
         font-weight: 500;
         margin: 0;
     }
