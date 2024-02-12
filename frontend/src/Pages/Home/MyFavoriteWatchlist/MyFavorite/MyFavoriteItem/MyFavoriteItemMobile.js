@@ -9,10 +9,6 @@ import { MyFavoriteActions } from "../../../../../store/myFavorite";
 const favoriteItemData = (value) => {
   return [
     {
-      heading: null,
-      value: value.title,
-    },
-    {
       heading: "Score: ",
       value: value.score,
     },
@@ -43,10 +39,14 @@ const MyFavoriteItemMobile = ({ res }) => {
         </span>
       </div>
       <div className="favorite-table-item-mobile-right">
+        <div className="item-type-mobile">
+          <h5 className="color-text">{res.fields.title}</h5>
+        </div>
+
         {favoriteItemData(res.fields).map((data) => (
           <div className="item-type-mobile">
-            {data.heading && <span>{data.heading}</span>}
-            <span>{data.value}</span>
+            {data.heading && <p>{data.heading}</p>}
+            <p>{data.value}</p>
           </div>
         ))}
 
@@ -65,10 +65,10 @@ const MyFavoriteItemMobile = ({ res }) => {
             }}
           >
             <Icon
-              style={{ fontSize: "1.5rem" }}
+              style={{ fontSize: "1.25rem" }}
               icon="material-symbols:delete-outline-rounded"
             />
-            <span>Delete</span>
+            <p style={{color: 'var(--primary)'}}>Delete</p>
           </div>
         </div>
       </div>

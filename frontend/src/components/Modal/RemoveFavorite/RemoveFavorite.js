@@ -8,7 +8,6 @@ import { AlertBoxActions } from "../../../store/alertBox";
 import { removeFavoriteItem } from "../../../api/favorite";
 import { MyFavoriteActions } from "../../../store/myFavorite";
 
-
 import AuthContext from "../../../Context/auth";
 import CustomButton from "../../CustomButton/CustomButton";
 
@@ -50,7 +49,7 @@ const RemoveFavorite = () => {
         <CustomButton width={"45%"} onClick={() => dispatch(OverlayActions.closeOverlayHandler())} backgroundColor={"var(--error)"}>
           <h5 className="color-text">No</h5>
         </CustomButton>
-        <CustomButton width={"45%"} onClick={() => () => removeFavoriteItemHandler()} backgroundColor={"var(--success)"}>
+        <CustomButton width={"45%"} onClick={() => removeFavoriteItemHandler()} backgroundColor={"var(--success)"}>
           <h5 className="color-text">Yes</h5>
         </CustomButton>
       </div>

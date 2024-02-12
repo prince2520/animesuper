@@ -20,20 +20,22 @@ const MyWatchlistItemMobile = ({ res }) => {
       </div>
 
       <div className="my-watchlist-table-item-mobile-right">
-        <div className="item-title-mobile">{res.fields.title}</div>
+        <h5 className="item-title-mobile color-text">{res.fields.title}</h5>
         <div className="item-type-mobile">
-          <span>Type: </span>
-          <span>
+          <p>Type: </p>
+          <p>
             {res.fields.type.charAt(0).toUpperCase() + res.fields.type.slice(1)}
-          </span>
+          </p>
         </div>
         <span className="item-progress">
-          <div className={"progress-bar-title"}>Progress :</div>
+          <p className={"progress-bar-title"}>Progress :</p>
           <div className="progress-bar-detail">
-            {res.fields.progress_read_watched} /{" "}
-            {res.fields.num_episode_or_chapter
-              ? res.fields.num_episode_or_chapter
-              : "N/A"}
+            <p className="color-text">
+              {res.fields.progress_read_watched} /{" "}
+              {res.fields.num_episode_or_chapter
+                ? res.fields.num_episode_or_chapter
+                : "N/A"}
+            </p>
           </div>
           <div className="progress-bar">
             <div
@@ -64,8 +66,8 @@ const MyWatchlistItemMobile = ({ res }) => {
               );
             }}
           >
-            <Icon style={{ fontSize: "1.5rem" }} icon="ri:edit-line" />
-            <span>Edit</span>
+            <Icon style={{ fontSize: "1.25rem" }} icon="ri:edit-line" />
+            <p className="color-text">Edit</p>
           </div>
           <div
             className="item-delete-mobile cursor-btn"
@@ -80,10 +82,10 @@ const MyWatchlistItemMobile = ({ res }) => {
             }}
           >
             <Icon
-              style={{ fontSize: "1.5rem" }}
+              style={{ fontSize: "1.25rem" }}
               icon="material-symbols:delete-outline-rounded"
             />
-            <span>Delete</span>
+            <p style={{color:"var(--primary)"}}>Delete</p>
           </div>
         </div>
       </div>

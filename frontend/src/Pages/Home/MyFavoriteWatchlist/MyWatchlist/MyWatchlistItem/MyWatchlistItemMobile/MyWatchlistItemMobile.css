@@ -4,12 +4,10 @@
 }
 
 .item-progress .progress-bar-title{
-    color: var(--text-extra-light);
     width: 100%;
 }
 
 .item-progress .progress-bar-detail{
-    color: var(--text-extra-light);
     width: 100%;
     text-align: right;
 }
