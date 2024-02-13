@@ -1,23 +1,16 @@
-.anime-detail-bottom-mobile-top .anime-detail-bottom-mobile-title{
-    font-size: 1.75rem;
-    font-weight: 600;
-    color: white;
-}
 
 .anime-detail-bottom-mobile-top{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    column-gap: 0.75rem;
 }
 
 .anime-detail-bottom-mobile-top .rating{
-    display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
     column-gap: 0.25rem;
-    background-color: #262424;
+    background-color: var(--container);
     color: white;
     padding: 0.5rem 0.75rem;
     border-radius: 1.5em;
@@ -26,18 +19,14 @@
 }
 
 .anime-detail-bottom-mobile-btn-container{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+    justify-content: flex-start!important;
     column-gap: 0.75rem;
     flex-wrap: wrap;
     row-gap: 0.75rem;
 }
 
-.anime-detail-bottom-mobile-btn-container span{
-    border: 2px solid #636262;
+.anime-detail-bottom-mobile-btn-container h6{
+    border: 1px solid var(--border);
     padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
-    font-size: 0.9rem;
-
+    border-radius: 0.25rem;
 }

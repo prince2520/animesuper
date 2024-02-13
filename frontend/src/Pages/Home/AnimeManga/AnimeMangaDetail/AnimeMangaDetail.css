@@ -220,13 +220,12 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
     }
 
     .anime-detail-watchlist-like .anime-detail-watchlist-btn{
         width: 55%;
         max-width: 10rem;
-        font-size: 1.1rem;
-
     }
 
     .anime-detail-watchlist-like .anime-detail-like-btn{
@@ -237,7 +236,6 @@
         height: 2.5rem;
         width: 2.5rem;
         border-radius: 50%;
-        font-size: 2rem;
 
         box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
 
@@ -265,29 +263,9 @@
         width: 100%;
     }
 
-    .recommendation-container .recommendation-card {
-        font-size: 0.85rem;
-    }
-
     .recommendation .recommendation-container {
         column-gap: 1rem;
         row-gap: 1rem;
         justify-content: center;
     }
-
-    .overview .heading,
-    .related-anime .heading,
-    .anime-detail-bottom-left .heading,
-    .recommendation .heading,
-    .related-container. .heading
-    {
-        font-size: 1.5rem;
-    }
-
-    .information p,
-    .overview p,
-    .related-anime p{
-        font-size: 1rem;
-    }
-
 }

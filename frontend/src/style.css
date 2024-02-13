@@ -67,6 +67,12 @@ input {
     font-family: "Mulish", sans-serif;
 }
 
+input:hover, input:focus {
+    color: var(--text);
+
+}
+
+
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

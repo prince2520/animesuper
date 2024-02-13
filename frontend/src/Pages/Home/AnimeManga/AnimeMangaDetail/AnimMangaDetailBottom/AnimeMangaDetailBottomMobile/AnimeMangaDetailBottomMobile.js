@@ -15,38 +15,38 @@ const AnimeMangaDetailBottomMobile = ({ animeDetail, category }) => {
   return (
     <div className="anime-detail-bottom-mobile">
       <div className="anime-detail-bottom-mobile-top">
-        <div className="anime-detail-bottom-mobile-title">
+        <h2>
           {animeDetail?.title}
-        </div>
-        <div className="rating">
+        </h2>
+        <div className="flex-center rating">
           <Icon
             color="yellow"
-            style={{ fontSize: "1.5rem" }}
+            style={{ fontSize: "1.25rem" }}
             icon="material-symbols:star"
           />
-          <span>{animeDetail?.mean}</span>
+          <p className="color-text">{animeDetail?.mean}</p>
         </div>
       </div>
-      <div className="anime-detail-bottom-mobile-btn-container">
+      <div className="flex-center anime-detail-bottom-mobile-btn-container">
         {animeDetail?.media_type ? (
-          <span>{animeDetail.media_type.toUpperCase()}</span>
+          <h6>{animeDetail.media_type.toUpperCase()}</h6>
         ) : null}
         {animeDetail?.num_episodes ? (
-          <span>{animeDetail?.num_episodes + " Episodes"}</span>
+          <h6>{animeDetail?.num_episodes + " Episodes"}</h6>
         ) : null}
         {animeDetail?.num_chapters ? (
-          <span>{animeDetail?.num_chapters + " Chapters"}</span>
+          <h6>{animeDetail?.num_chapters + " Chapters"}</h6>
         ) : null}
-        {animeDetail?.status ? <span>{animeDetail.status}</span> : null}
+        {animeDetail?.status ? <h6>{animeDetail.status}</h6> : null}
       </div>
       <div className="detail-links">
         {detail_links.map((links) => (
-          <span
+          <h4
             className={`detail-link ${selectedLink === links && "selected"}`}
             onClick={() => setSelectedLink(links)}
           >
             {links}
-          </span>
+          </h4>
         ))}
       </div>
       {selectedLink === detail_links[0] && (

@@ -12,9 +12,6 @@
     column-gap: 1.5rem;
 }
 
-.related-container .heading{
-    margin-top: 1rem;
-}
 
 .anime-detail-bottom .anime-detail-bottom-mobile{
     display: none;
@@ -30,6 +27,12 @@
     border: 1px solid var(--border);
     border-radius: 0.25rem;
     padding: 0.5rem 0.75rem;
+}
+
+.related-container-scroll .related-anime{
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0.75rem;
 }
 
 @media screen and (max-width: 800px) {

@@ -119,7 +119,9 @@ const AnimeMangaDetail = () => {
             className="anime-detail-watchlist-btn"
             onClick={() => addToWatchListHandler()}
           >
-            <CustomButton title={"Add to watchlist"}></CustomButton>
+            <CustomButton width={"100%"} backgroundColor={"var(--primary)"}>
+              <h5 className="color-text">Add to watchlist</h5>
+            </CustomButton>
           </div>
           <div
             className="anime-detail-like-btn"

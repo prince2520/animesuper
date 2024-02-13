@@ -173,8 +173,7 @@
   width: 100%;
   display: flex;
   column-gap: 1.75rem;
-  font-size: 0.95rem;
-  border-bottom: 0.015rem var(--border) solid;
+  border-bottom: 1px var(--border) solid;
 }
 
 .favorite-table-item-mobile .favorite-table-item-mobile-left,
@@ -235,14 +234,11 @@
 .my-watchlist-table-item-mobile-right .item-type-mobile {
   display: flex;
   column-gap: 0.75rem;
-  color: var(--text-extra-light);
   width: 100%;
 }
 
 .favorite-table-item-mobile-right .item-title-mobile,
 .my-watchlist-table-item-mobile-right .item-title-mobile {
-  font-size: 1.15rem;
-  font-weight: 600;
   width: 100%;
 }
 
@@ -264,7 +260,6 @@
   .favorite-img-container div,
   .my-watchlist-img-container div {
     position: static;
-    font-size: 2rem;
     border-bottom: 1px solid var(--border);
     padding-bottom: 0.25rem;
   }

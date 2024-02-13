@@ -9,7 +9,7 @@ const AnimeMangaDetailRelated = ({ animeDetail, category }) => {
       <h3 className="heading">Related Anime</h3>
 
       <div className={"related-container-scroll"}>
-        <div className="related-anime">
+        <div className="flex-center related-anime">
           {animeDetail?.related_anime.length > 0 ? (
             animeDetail.related_anime.map((res) => (
               <p style={{ color: "white" }}>
