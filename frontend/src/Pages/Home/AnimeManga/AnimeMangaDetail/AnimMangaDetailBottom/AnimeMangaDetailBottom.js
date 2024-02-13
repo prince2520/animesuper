@@ -10,12 +10,12 @@ import "./AnimeMangaDetailBottom.css";
 
 const AnimeMangaDetailBottom = ({ animeDetail, category }) => {
   return (
-    <div className="anime-detail-bottom">
+    <div className="flex-center anime-detail-bottom">
       <div className="anime-detail-bottom-web">
         <div className="anime-detail-bottom-left">
           <AnimeMangaDetailInformation animeDetail={animeDetail} />
         </div>
-        <div className="anime-detail-bottom-right">
+        <div className="flex-center anime-detail-bottom-right">
           <AnimeDetailOverview animeDetail={animeDetail} />
           <AnimeMangaDetailRelated
             showRelated={false}

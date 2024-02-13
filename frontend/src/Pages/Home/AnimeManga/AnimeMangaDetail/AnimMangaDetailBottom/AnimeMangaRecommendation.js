@@ -6,12 +6,12 @@ const AnimeMangaRecommendation = ({animeDetail}) => {
     return (
         <div className="recommendation">
             <h3>Recommendation for you</h3>
-            <div className="recommendation-container">
+            <div className="flex-center recommendation-container">
                 {animeDetail?.recommendations.length > 0 ?
                     animeDetail.recommendations.map(res =>
                         <div className={'card-container'}>
                             <Card isRecommemdation={true} detail={res.node}/>
-                        </div>) : <p style={{color: 'var(--text-extra-light)'}}>No recommendations found!</p>}
+                        </div>) : <p style={{width:'100%'}}>No recommendations found!</p>}
             </div>
         </div>
     );

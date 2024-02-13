@@ -12,7 +12,7 @@
 
     position: absolute;
     opacity: 65%;
-    filter: blur(3px);
+    filter: blur(10px);
 }
 
 .anime-detail-page .anime-detail-top {
@@ -44,10 +44,11 @@
 }
 
 .anime-detail-page .anime-detail-bottom {
-    display: flex;
+    width: 100%;
     flex-direction: column;
     justify-content: flex-start;
     margin-top: 8.5rem;
+    row-gap: 3rem;
     padding: 0 3.5rem;
 }
 
@@ -67,6 +68,9 @@
 }
 
 .anime-detail-bottom .anime-detail-bottom-right{
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 2rem;
     width: 70%;
 }
 
@@ -94,9 +98,8 @@
 .rating-favorite-container .rating {
     background: rgba(19, 19, 19, 0.5);
     backdrop-filter: blur(2px);
-    border-radius: 1rem;
-    padding: 0.5rem 1rem;
-    margin-top: 1.5rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.75rem;
 }
 
 .rating-favorite-container .rating {
@@ -140,19 +143,6 @@
     position: relative;
 }
 
-.recommendation {
-    margin-top: 4rem;
-}
-
-.recommendation .recommendation-container {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    column-gap: 1.5rem;
-    row-gap: 1rem;
-    margin-top: 1rem;
-}
 
 .recommendation-card img {
     position: absolute;
@@ -264,7 +254,7 @@
     }
 
     .recommendation .recommendation-container {
-        column-gap: 1rem;
+        column-gap: 0.75rem;
         row-gap: 1rem;
         justify-content: center;
     }

@@ -5,7 +5,7 @@ const AnimeMangaDetailRelated = ({ animeDetail, category }) => {
   const navigate = useNavigate();
 
   return (
-    <div className={"related-container"}>
+    <div className={"related-container"} style={{width:'100%'}}>
       <h3 className="heading">Related Anime</h3>
 
       <div className={"related-container-scroll"}>

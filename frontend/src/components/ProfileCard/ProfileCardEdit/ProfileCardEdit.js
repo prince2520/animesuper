@@ -101,7 +101,7 @@ const ProfileCardEdit = (props) => {
               hue: "random",
             });
             return (
-              <h6
+              <p
                 key={genre.toString()}
                 onClick={() => dispatch(MyProfileActions.deleteGenre(genre))}
                 className="favorite-genre-item"
@@ -112,7 +112,7 @@ const ProfileCardEdit = (props) => {
                 }}
               >
                 {genre}
-              </h6>
+              </p>
             );
           })}
         </div>

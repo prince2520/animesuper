@@ -11,7 +11,6 @@ import { MyFavoriteActions } from "../../../store/myFavorite";
 import AuthContext from "../../../Context/auth";
 import CustomButton from "../../CustomButton/CustomButton";
 
-
 const RemoveFavorite = () => {
   const dispatch = useDispatch();
   const authCtx = useContext(AuthContext);
@@ -43,13 +42,23 @@ const RemoveFavorite = () => {
         </span>
       </div>
       <div className="remove-favorite-container-middle">
-        <p>Are you sure, do you want to remove this item from your favorite?</p>
+        <p className="color-text">
+          Are you sure, do you want to remove this item from your favorite?
+        </p>
       </div>
       <div className="flex-center remove-favorite-container-bottom">
-        <CustomButton width={"45%"} onClick={() => dispatch(OverlayActions.closeOverlayHandler())} backgroundColor={"var(--error)"}>
+        <CustomButton
+          width={"45%"}
+          onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+          backgroundColor={"var(--error)"}
+        >
           <h5 className="color-text">No</h5>
         </CustomButton>
-        <CustomButton width={"45%"} onClick={() => removeFavoriteItemHandler()} backgroundColor={"var(--success)"}>
+        <CustomButton
+          width={"45%"}
+          onClick={() => removeFavoriteItemHandler()}
+          backgroundColor={"var(--success)"}
+        >
           <h5 className="color-text">Yes</h5>
         </CustomButton>
       </div>

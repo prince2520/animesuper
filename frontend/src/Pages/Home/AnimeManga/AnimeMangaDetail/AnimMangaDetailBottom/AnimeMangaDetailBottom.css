@@ -7,23 +7,27 @@
     color: white
 }
 .anime-detail-bottom .anime-detail-bottom-web{
+    width: 100%;
     color: #636262;
     display: flex;
     column-gap: 1.5rem;
 }
 
+.related-container, .overview, .anime-detail-bottom-left, .recommendation {
+    display: flex;
+    row-gap: 1rem;
+    flex-direction: column;
+}
 
 .anime-detail-bottom .anime-detail-bottom-mobile{
     display: none;
 }
 
 .anime-detail-bottom-right .related-container-scroll{
+    width: 100%;
     overflow: auto;
     max-height: 18rem;
     height: fit-content;
-
-    margin-top: 1rem;
-
     border: 1px solid var(--border);
     border-radius: 0.25rem;
     padding: 0.5rem 0.75rem;
@@ -64,8 +68,15 @@
     height: 15rem;
 }
 
-.heading.information-heading{
-    margin-bottom: 1rem;
+.recommendation {
+    width: 100%;
+}
+
+.recommendation-container {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    row-gap: 1.25rem;
+    column-gap: 1rem;
 }
 
 .information{

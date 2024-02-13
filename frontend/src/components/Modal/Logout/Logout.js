@@ -28,7 +28,7 @@ const Logout = () => {
         </span>
       </div>
       <div className="logout-container-middle">
-        <p>Are you sure, do you want to logout ?</p>
+        <p className="color-text">Are you sure, do you want to logout ?</p>
       </div>
       <div className="logout-container-bottom">
         <CustomButton
