@@ -37,7 +37,7 @@
 
 .anime-manga-category-page .anime-manga-category-cards {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     column-gap: 2rem;
     row-gap: 2rem;
@@ -47,5 +47,9 @@
 @media screen and (max-width: 800px) {
     .anime-manga-filter-container .anime-manga-filter-button {
         padding: 0.25rem 1rem;
+    }
+
+    .anime-manga-category-page .anime-manga-category-cards {
+        column-gap: 1.1rem;
     }
 }
