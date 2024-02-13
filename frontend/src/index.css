@@ -57,24 +57,3 @@ body {
 }
 
 
-::-webkit-scrollbar{
-    width: 0.5rem;
-}
-::-webkit-scrollbar-track{
-    background-color: var(--container);
-}
-
-::-webkit-scrollbar-thumb{
-    border-radius: 0.25rem;
-    background-color: var(--text-light);
-}
-
-::-webkit-scrollbar-thumb:hover{
-    background-color: var(--text);
-}
-
-.selected-container:hover,
-.selected-container:active{
-    background-color: var(--background-secondary);
-    color: var(--text-primary);
-}

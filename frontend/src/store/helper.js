@@ -23,9 +23,9 @@ const helperSlice = createSlice({
         showMobileSideBarHandler(state, action){
             state.showMobileSideBar = action.payload
         }
-
     }
 });
 
 export const helperActions = helperSlice.actions;
+
 export default helperSlice.reducer;

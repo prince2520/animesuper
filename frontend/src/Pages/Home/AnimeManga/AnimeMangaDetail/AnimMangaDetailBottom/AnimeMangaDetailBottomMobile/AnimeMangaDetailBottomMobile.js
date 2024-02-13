@@ -15,9 +15,7 @@ const AnimeMangaDetailBottomMobile = ({ animeDetail, category }) => {
   return (
     <div className="anime-detail-bottom-mobile">
       <div className="anime-detail-bottom-mobile-top">
-        <h2>
-          {animeDetail?.title}
-        </h2>
+        <h2>{animeDetail?.title}</h2>
         <div className="flex-center rating">
           <Icon
             color="yellow"

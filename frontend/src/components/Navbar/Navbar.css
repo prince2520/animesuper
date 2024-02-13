@@ -1,12 +1,14 @@
 .navbar {
-    padding: 0 0.5rem 0.5rem 0.5rem;
     height: 100%;
     width: 100%;
+
     display: grid;
-    grid-template-columns: 20% auto 20%;
-    column-gap: 1rem;
     justify-items: center;
     align-items: center;
+    column-gap: 1rem;
+    grid-template-columns: 20% auto 20%;
+
+    padding: 0 0.5rem 0.5rem 0.5rem
 }
 
 .nav-logo img {
@@ -16,6 +18,7 @@
 .profile {
     height: 3.5rem;
     width: 3.5rem;
+
     border-radius: 50%;
     border: 1px solid var(--background-secondary);
     overflow: hidden;
@@ -24,7 +27,6 @@
 .profile img {
     height: 100%;
 }
-
 
 .navbar .login-btn {
     border: 1px solid var(--text);

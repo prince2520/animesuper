@@ -6,14 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
 
-import { AnimeActions } from "../../../../../../store/anime";
-import { getAnimeDetail } from "../../../../../../api/animeManga";
+import { AnimeActions } from "../../../../../store/anime";
+import { getAnimeDetail } from "../../../../../api/animeManga";
 
-import CustomButton from "../../../../../../components/CustomButton/CustomButton";
+import CustomButton from "../../../../../components/CustomButton/CustomButton";
 
-import "./AnimeCarouselSlide.css";
+import "./AnimeMangaCarouselSlide.css";
 
-const AnimeCarouselSlide = (props) => {
+const AnimeMangaCarouselSlide = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -108,4 +108,4 @@ const AnimeCarouselSlide = (props) => {
   );
 };
 
-export default AnimeCarouselSlide;
+export default AnimeMangaCarouselSlide;

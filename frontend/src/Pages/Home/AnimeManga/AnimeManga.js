@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 import { helperActions } from "../../../store/helper";
 import { animeCategory, categoryType, mangaCategory } from "../../../common";
 
-import AnimeCarousel from "./AnimeMangaRanking/AnimeCarousel/AnimeCarousel";
+import AnimeMangaCarousel from "./AnimeMangaCarousel/AnimeMangaCarousel";
 import AnimeMangaRanking from "./AnimeMangaRanking/AnimeMangaRanking";
 
 import "./AnimeManga.css";
@@ -24,7 +24,7 @@ const AnimeManga = () => {
 
   return (
     <div className="anime-page" ref={ref}>
-      <AnimeCarousel category={category} />
+      <AnimeMangaCarousel category={category} />
       <div className=" flex-center anime-manga-ranking-container">
         {(category === categoryType[0].toLowerCase()
           ? animeCategory

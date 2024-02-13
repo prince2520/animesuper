@@ -4,15 +4,15 @@ import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 
-import { categoryType } from "../../../../../common";
-import { animeCarousel, mangaCarousel } from "../../../../../photo";
+import { categoryType } from "../../../../common";
+import { animeCarousel, mangaCarousel } from "../../../../photo";
 
-import AnimeCarouselSlide from "./AnimeCarouselSlide/AnimeCarouselSlide";
+import AnimeCarouselSlide from "./AnimeMangaCarouselSlide/AnimeMangaCarouselSlide";
 
 import "swiper/swiper-bundle.css";
-import "./AnimeCarousel.css";
+import "./AnimeMangaCarousel.css";
 
-const AnimeCarousel = (props) => {
+const AnimeMangaCarousel = (props) => {
   const { category } = useParams();
 
   SwiperCore.use([Autoplay, Pagination]);
@@ -42,4 +42,4 @@ const AnimeCarousel = (props) => {
   );
 };
 
-export default React.memo(AnimeCarousel);
+export default React.memo(AnimeMangaCarousel);

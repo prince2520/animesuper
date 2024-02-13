@@ -13,16 +13,17 @@ import { getCategoryList } from "../../../../api/animeManga";
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 
+import "./AnimeMangaRanking.css";
+
 const AnimeMangaRanking = (props) => {
   const swiperRef = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { category } = useParams();
-  
+
   const slug = props.rank.slug;
   const animeData = useSelector((state) => state.anime.animeRankData[slug]);
   const mangaData = useSelector((state) => state.anime.mangaRankData[slug]);
-
 
   useEffect(() => {
     getCategoryList(category, props.rank.slug, 10).then((result) => {
@@ -38,14 +39,14 @@ const AnimeMangaRanking = (props) => {
 
   return (
     <div className="ranking" style={props.style}>
-      <div className="ranking-type" style={{ marginBottom: "0.75rem" }}>
-        <h3 className="ranking-name">{props.rank.title}</h3>
+      <div className="flex-center ranking-type" style={{ marginBottom: "0.75rem" }}>
+        <h3>{props.rank.title}</h3>
         <div className="navigation-box">
           <div className="navigation-buttons">
             {["<", ">"].map((data) => (
               <button
                 style={{ cursor: "pointer" }}
-                className={data === "<" ? `prev-button` : `next-button`}
+                className={`flex-center ${data === "<" ? `prev-button` : `next-button`}`}
                 onClick={() =>
                   data === "<"
                     ? swiperRef.current?.slidePrev()

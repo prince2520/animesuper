@@ -20,6 +20,36 @@ import AnimeMangaDetailBottom from "./AnimMangaDetailBottom/AnimeMangaDetailBott
 
 import "./AnimeMangaDetail.css";
 
+// Sub-Component 
+const AnimeMangaTopMobile = ({addToFavoriteHandler, addToWatchListHandler}) => {
+  return (
+    <div className="anime-detail-watchlist-like">
+      <div
+        className="anime-detail-watchlist-btn"
+        onClick={() => addToWatchListHandler()}
+      >
+        <CustomButton width={"100%"} backgroundColor={"var(--primary)"}>
+          <h5 className="color-text">Add to watchlist</h5>
+        </CustomButton>
+      </div>
+      <div
+        className="anime-detail-like-btn"
+        onClick={() => addToFavoriteHandler()}
+      >
+        <Icon
+          color="gray"
+          style={{
+            opacity: "0.7",
+          }}
+          icon="mdi:heart"
+        />
+      </div>
+    </div>
+  );
+};
+
+
+// Main-Component
 const AnimeMangaDetail = () => {
   const dispatch = useDispatch();
   const { category, id } = useParams();
@@ -114,28 +144,9 @@ const AnimeMangaDetail = () => {
         ) : (
           <Skeleton height={"100%"} width={"100%"} />
         )}
-        <div className="anime-detail-watchlist-like">
-          <div
-            className="anime-detail-watchlist-btn"
-            onClick={() => addToWatchListHandler()}
-          >
-            <CustomButton width={"100%"} backgroundColor={"var(--primary)"}>
-              <h5 className="color-text">Add to watchlist</h5>
-            </CustomButton>
-          </div>
-          <div
-            className="anime-detail-like-btn"
-            onClick={() => addToFavoriteHandler()}
-          >
-            <Icon
-              color="gray"
-              style={{
-                opacity: "0.7",
-              }}
-              icon="mdi:heart"
-            />
-          </div>
-        </div>
+        <AnimeMangaTopMobile
+          addToWatchListHandler={addToWatchListHandler}
+         addToFavoriteHandler={addToFavoriteHandler}/>
       </div>
       <AnimeMangaTop
         addToFavoriteHandler={addToFavoriteHandler}

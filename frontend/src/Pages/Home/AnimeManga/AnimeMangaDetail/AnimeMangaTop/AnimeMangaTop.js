@@ -1,7 +1,9 @@
 import { Icon } from "@iconify/react";
 
 import Skeleton from "react-loading-skeleton";
-import CustomButton from "../../../../../components/CustomButton/CustomButton"
+import CustomButton from "../../../../../components/CustomButton/CustomButton";
+
+import "./AnimeMangaTop.css";
 
 const AnimeMangaTop = ({
   animeDetail,
@@ -19,19 +21,21 @@ const AnimeMangaTop = ({
           )}
           {animeDetail?.main_picture && (
             <div className="anime-detail-top-left-content">
-              <div className="rating-favorite-container">
+              <div className="flex-center rating-favorite-container">
                 <span className="flex-center rating">
                   <Icon
                     color="yellow"
                     style={{ fontSize: "1.25rem" }}
                     icon="material-symbols:star"
                   />
-                  <p className="color-text">{animeDetail?.mean ? animeDetail.mean : "N/A"}</p>
+                  <p className="color-text">
+                    {animeDetail?.mean ? animeDetail.mean : "N/A"}
+                  </p>
                 </span>
                 <span
                   onClick={() => addToFavoriteHandler()}
-                  style={{ zIndex: "100"}}
-                  className="cursor-btn favorite"
+                  style={{ zIndex: "100" }}
+                  className="cursor-btn"
                 >
                   <Icon
                     color="gray"
@@ -44,15 +48,15 @@ const AnimeMangaTop = ({
                 </span>
               </div>
               <div onClick={() => addToWatchListHandler()}>
-                <CustomButton width={"100%"} backgroundColor={'var(--primary)'}><h5 className="color-text">Add to watchlist</h5></CustomButton>
+                <CustomButton width={"100%"} backgroundColor={"var(--primary)"}>
+                  <h5 className="color-text">Add to watchlist</h5>
+                </CustomButton>
               </div>
             </div>
           )}
         </div>
         <div className="anime-detail-top-right">
-          <div className="title">
-            <h2>{animeDetail?.title || <Skeleton />}</h2>
-          </div>
+          <h2>{animeDetail?.title || <Skeleton />}</h2>
           <div className="rating-popularity-container">
             {animeDetail?.rank && (
               <h5 className="rating">Rating # {animeDetail?.rank}</h5>

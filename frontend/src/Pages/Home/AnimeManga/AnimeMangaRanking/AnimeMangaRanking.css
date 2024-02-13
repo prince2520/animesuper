@@ -1,0 +1,41 @@
+.anime-manga-ranking-container{
+    margin-top: 2rem;
+    width: 95%;
+    height: 100%;
+    flex-direction: column;
+    row-gap: 3rem;
+}
+
+.anime-page .ranking {
+    width: 100%;
+}
+
+.ranking .ranking-type {
+    justify-content: space-between;
+}
+
+.ranking-type .navigation-buttons {
+    display: flex;
+    column-gap: 0.5rem;
+}
+
+.navigation-buttons .prev-button,
+.navigation-buttons .next-button {
+    background-color: var(--container);
+
+    border: none;
+
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.navigation-buttons .next-button {
+    background: var(--primary);
+}
+
+.ranking-type .navigation-box {
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+}
