@@ -7,16 +7,3 @@
     flex-wrap: nowrap;
     column-gap: 0.5rem;
 }
-
-@media screen and (max-width: 800px) {
-    .more-info .type,
-    .more-info .release-date,
-    .more-info .duration{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        column-gap: 0.5rem;
-        font-size: 0.75rem;
-    }
-
-}
