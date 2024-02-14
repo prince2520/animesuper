@@ -12,12 +12,11 @@ const ChangeCategory = (props) => {
   }, []);
 
   return (
-    <div className="anime-manga-button">
+    <div className="flex-center anime-manga-button">
       {categoryType.map((name) => (
         <span
           key={name.toString()}
-          style={{ cursor: "pointer" }}
-          className={selectedCategory === name && "selected"}
+          className={`cursor-btn ${selectedCategory === name && "selected"}`}
           onClick={() => {
             props.eventHandler(name);
             setSelectedCategory(name);

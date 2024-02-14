@@ -1,15 +1,9 @@
 .anime-manga-button {
-    display: flex;
     width: fit-content;
-    justify-content: center;
-    align-items: center;
     column-gap: 1rem;
-    font-size: 1.35rem;
-    font-weight: 500;
     border: 1px solid var(--border);
     padding: 0.25rem 0.5rem;
     border-radius: 1.5rem;
-    color: var(--text-extra-light);
 }
 
 .anime-manga-button span {
@@ -24,10 +18,4 @@
 
 .anime-manga-button .selected > p {
     color: var(--text);
-}
-
-@media screen and (max-width: 800px) {
-    .anime-manga-button {
-        font-size: 0.9rem;
-    }
 }

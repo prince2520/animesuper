@@ -38,10 +38,9 @@ const AnimeMangaTop = ({
                   className="cursor-btn"
                 >
                   <Icon
-                    color="gray"
+                    color="var(--error)"
                     style={{
                       fontSize: "2.25rem",
-                      opacity: "0.7",
                     }}
                     icon="mdi:heart"
                   />

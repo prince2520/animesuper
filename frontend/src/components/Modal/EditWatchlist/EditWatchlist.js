@@ -80,7 +80,7 @@ const EditWatchlist = () => {
             <h6
               key={title.toString()}
               onClick={() => setStatus(title)}
-              className={`button cursor-btn color-text ${
+              className={`color-text-light button cursor-btn color-text ${
                 title === status ? "selected-status" : ""
               }`}
             >
@@ -105,7 +105,7 @@ const EditWatchlist = () => {
                 : "N/A"}
             </h6>
           </div>
-          <CustomButton width={"70%"} backgroundColor={"var(--primary)"}>
+          <CustomButton width={"40%"} backgroundColor={"var(--primary)"}>
             <p className="color-text">Save</p>
           </CustomButton>
         </div>

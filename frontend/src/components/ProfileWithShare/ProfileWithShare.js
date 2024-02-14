@@ -12,13 +12,14 @@ import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 import "./ProfileWithShare.css";
 
 const ProfileWithShare = () => {
+  
   const dispatch = useDispatch();
   const authCtx = useContext(AuthContext);
   const user = useSelector((state) => state.myProfile);
 
   return (
-    <div className="profile-tab">
-      <div className="share-links">
+    <div className="flex-center profile-tab">
+      <div className="flex-center share-links">
         {["logos:facebook", "logos:reddit-icon", "logos:twitter"].map(
           (data) => (
             <Icon
@@ -32,14 +33,14 @@ const ProfileWithShare = () => {
       <ZoomInZoomOut width={"fit-content"}>
         {authCtx.isAuth && (
           <div
-            className="profile-button"
+            className="flex-center profile-button"
             style={{ cursor: "pointer" }}
             onClick={() => dispatch(OverlayActions.showProfileHandler())}
           >
             <h5 className="color-text">
               {user.username || <Skeleton width={50} />}
             </h5>
-            <div className="profile-logo">
+            <div className="flex-center profile-logo">
               {user.profile_photo && (
                 <img
                   alt={"profile"}

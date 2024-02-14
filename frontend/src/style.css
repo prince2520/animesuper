@@ -69,7 +69,6 @@ input {
 
 input:hover, input:focus {
     color: var(--text);
-
 }
 
 input:-webkit-autofill,

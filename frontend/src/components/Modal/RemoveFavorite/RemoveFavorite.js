@@ -42,7 +42,7 @@ const RemoveFavorite = () => {
         </span>
       </div>
       <div className="remove-favorite-container-middle">
-        <p className="color-text">
+        <p className="color-text-light">
           Are you sure, do you want to remove this item from your favorite?
         </p>
       </div>

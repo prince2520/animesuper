@@ -41,7 +41,7 @@ const RemoveWatchlist = () => {
         </span>
       </div>
       <div className="remove-watchlist-container-middle">
-        <p className="color-text">
+        <p className="color-text-light">
           Are you sure, do you want to remove this item from your watchlist?
         </p>
       </div>

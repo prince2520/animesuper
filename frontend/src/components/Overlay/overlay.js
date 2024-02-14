@@ -23,7 +23,7 @@ const Overlay = () => {
     }
 
     return (
-        <div className="overlay-page">
+        <div className="flex-center overlay-page">
             <motion.div
                 variants={overlayVariant}
                 initial="initial"

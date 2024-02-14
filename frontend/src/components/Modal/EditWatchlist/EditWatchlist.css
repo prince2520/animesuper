@@ -3,14 +3,6 @@
     grid-template-columns: 40% auto;
 }
 
-
-.edit-status-card .edit-status-card-right {
-    padding: 3rem 1rem 3rem;
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-}
-
 .edit-status-card-left .img-container {
     width: 70%;
     height: 80%;
@@ -25,6 +17,14 @@
     object-fit: cover;
 }
 
+.edit-status-card .edit-status-card-right {
+    display: flex;
+    row-gap: 1rem;
+    flex-direction: column;
+
+    padding: 3rem 1rem 3rem;
+}
+
 .edit-status-card-right .edit-status-card-right-top {
     display: flex;
     justify-content: space-between;
@@ -37,7 +37,6 @@
 }
 
 .edit-status-card-right-middle .button {
-    color: var(--text-extra-light);
     border: 1px solid var(--border);
     border-radius: 0.25rem;
     padding: 0.25rem 0.5rem 0.25rem;
@@ -51,7 +50,6 @@
 }
 
 .edit-status-card-right-bottom .num_of_episode {
-    color: var(--text);
     display: flex;
     column-gap: 0.5rem;
 }
@@ -63,9 +61,6 @@
     height: 1.5rem;
 }
 
-.edit-status-card-right-bottom .save-container {
-    width: 40%;
-}
 
 .edit-status-card-right .edit-status-card-right-bottom {
     display: flex;
@@ -80,9 +75,6 @@
 }
 
 @media screen and (max-width: 800px) {
-    .edit-status-card-right-middle{
-        font-size: 0.75rem;
-    }
 
     .edit-status-card .edit-status-card-right {
         padding: 0;

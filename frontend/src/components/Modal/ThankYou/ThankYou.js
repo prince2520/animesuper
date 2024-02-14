@@ -12,7 +12,7 @@ const ThankYou = () => {
                 </span>
             </div>
             <div className="thank-you-container-middle">
-                <p>We have received your query. We will contact you as soon as possible!</p>
+                <p className="color-text-light">We have received your query. We will contact you as soon as possible!</p>
             </div>
             <div className="thank-you-container-bottom">
                 <img alt={'thank-you'} src={ThankYouImg}/>

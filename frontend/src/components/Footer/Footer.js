@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="footer-right">
-          <div className="socials-logo">
+          <div className="flex-center socials-logo">
             {["logos:facebook", "logos:reddit-icon", "logos:twitter"].map(
               (icon) => (
                 <Icon

@@ -18,12 +18,11 @@ import "./Card.css";
 
 const Card = (props) => {
   const navigate = useNavigate();
-  const { category } = useParams();
   const dispatch = useDispatch();
+  const { category } = useParams();
 
   const authCtx = useContext(AuthContext);
 
-  const [showCardDetail, setShowCardDetail] = useState(false);
 
   const addToWatchlistHandler = () => {
     if (authCtx.isAuth) {
@@ -51,12 +50,8 @@ const Card = (props) => {
   };
 
   return (
-    <div style={{ height: "100%", width: "100%" }}>
       <div
-        className={`card ${showCardDetail ? "show-card-detail" : ""}`}
-        style={{ height: "100%", width: "100%" }}
-        onMouseLeave={() => setShowCardDetail(false)}
-        onMouseOver={() => setShowCardDetail(true)}
+        className={`card `}
       >
         {props.detail.mean && (
           <motion.span className="rate">
@@ -70,7 +65,7 @@ const Card = (props) => {
 
         {!props.isRecommemdation && (
           <div
-            className=" watchlist"
+            className="watchlist"
             style={{ cursor: "pointer" }}
             onClick={() => addToWatchlistHandler()}
           >
@@ -79,9 +74,7 @@ const Card = (props) => {
         )}
 
         <div className="card-bottom">
-          <h5
-            className="color-text title"
-          >
+          <h5 className="color-text title">
             {props.detail.title.slice(0, 25)}{" "}
             {props.detail.title.length >= 25 ? "..." : ""}
           </h5>
@@ -102,7 +95,6 @@ const Card = (props) => {
           />
         </ZoomInZoomOut>
       </div>
-    </div>
   );
 };
 

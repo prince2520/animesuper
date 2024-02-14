@@ -1,10 +1,10 @@
 .search-bar {
-    max-width: 50rem;
     width: 70%;
-    border: 1px solid var(--border);
+    max-width: 50rem;
+    position: relative;
     border-radius: 0.25rem;
     padding: 0.05rem 0.5rem;
-    position: relative;
+    border: 1px solid var(--border);
 
     justify-content: space-between!important;
     column-gap: 0.75rem;
@@ -18,12 +18,10 @@
     color: var(--text);
 }
 
-
 .search-bar svg{
     font-size: 1.5rem;
     color: var(--text-light);
 }
-
 
 @media screen and (max-width: 800px) {
     .search-bar {
