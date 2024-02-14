@@ -53,7 +53,7 @@ const AnimeMangaCarouselSlide = (props) => {
             {animeMangaCarouselData?.synopsis && "..."}
           </p>
 
-          <div className="more-info">
+          <div className="flex-center more-info">
             {animeMangaCarouselData?.media_type && (
               <div className="type">
                 <Icon
