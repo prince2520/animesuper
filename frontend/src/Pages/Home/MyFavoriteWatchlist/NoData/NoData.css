@@ -11,32 +11,15 @@
 .no-data-box h3 {
     margin: 0;
     font-weight: 200;
-
 }
 
 .no-data-box img {
     margin-top: 2rem;
     width: 70%;
     max-width: 18rem;
-
 }
 
 .no-data-box h3{
     color: var(--text-extra-light);
     font-weight:300;
-}
-
-@media screen and (max-width: 800px) {
-    .no-data-box {
-        margin-top: 2rem;
-    }
-
-    .no-data-box h1{
-        font-size: 1.5rem;
-    }
-
-    .no-data-box h3 {
-       font-size: 1rem;
-    }
-
 }

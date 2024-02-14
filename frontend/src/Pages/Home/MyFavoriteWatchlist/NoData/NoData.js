@@ -1,6 +1,6 @@
 import {NoDataImg} from "../../../../photo";
 
-import './NoData.css';
+import '../NoData/NoData.css';
 
 const NoData = () => {
     return (
