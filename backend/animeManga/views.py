@@ -21,9 +21,10 @@ def ListAnimeManga(request):
     category = request.GET.get('category', '')
     rank_type = request.GET.get('rank_type', '')
     limit = request.GET.get('limit', '')
+    offset = request.GET.get('offset', '')
 
     urls = f'{settings.MYANIMELIST_URL}/v2/{category}/ranking?ranking_type={rank_type}&fields=id,mean,start_season,title,' \
-           f'media_type,main_picture,genres,num_chapters,num_episodes&limit={limit}'
+           f'media_type,main_picture,genres,num_chapters,num_episodes&limit={limit}&offset={offset}'
 
     headers = {
         'X-MAL-CLIENT-ID': f'{settings.MYANIMELIST_API_KEY}'

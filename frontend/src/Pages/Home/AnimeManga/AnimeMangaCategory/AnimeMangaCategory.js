@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 import { Icon } from "@iconify/react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,19 +8,31 @@ import { animeCategory, categoryType, mangaCategory } from "../../../../common";
 
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
+import PrevNextButton from "../../../../components/PrevNextBtn/PrevNextBtn";
 
 import "./AnimeMangaCategory.css";
 
 const AnimeMangaCategory = () => {
   const [animeManga, setAnimeManga] = useState([]);
+  const [offset, setOffset] = useState(0);
 
   const navigate = useNavigate();
   const { category, id } = useParams();
 
+  const updateAnimeMangaCategory = (value = 0, firstMount = false) => {
+    let total = (firstMount ? 0 : offset) + value
+    if (offset + value >= 0) {
+      setAnimeManga([]);
+      getCategoryList(category, id, 20, total).then((result) => {
+        setAnimeManga(result.data);
+        setOffset(total);
+      });
+    }
+  };
+
   useEffect(() => {
-    getCategoryList(category, id, 20).then((result) => {
-      setAnimeManga(result.data);
-    });
+    setAnimeManga([]);
+    updateAnimeMangaCategory(0, true);
   }, [category, id]);
 
   //Title of anime/manga category
@@ -78,6 +90,7 @@ const AnimeMangaCategory = () => {
               </div>
             ))}
       </div>
+      <PrevNextButton updateAnimeMangaCategory={updateAnimeMangaCategory} />
     </div>
   );
 };

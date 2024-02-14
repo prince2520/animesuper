@@ -1,0 +1,36 @@
+.prev-next-btn {
+  margin-top: 3rem;
+  column-gap: 2rem;
+}
+
+.prev-next-btn > .prev-btn,
+.prev-next-btn > .next-btn {
+  width: 10rem;
+  column-gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 3rem;
+}
+
+.prev-next-btn > .prev-btn {
+  background-color: var(--container);
+}
+
+.prev-next-btn > .next-btn {
+  background-color: var(--primary);
+}
+
+.prev-next-btn > .prev-btn:hover {
+  background-color: var(--text);
+}
+
+.prev-next-btn .prev-btn:hover > h5 {
+  color: var(--container);
+}
+
+.prev-next-btn > .next-btn:hover {
+  background-color: var(--text);
+}
+
+.prev-next-btn .next-btn:hover > h5 {
+  color: var(--primary);
+}
