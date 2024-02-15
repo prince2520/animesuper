@@ -1,37 +1,37 @@
 /* edit inbuild html tags style */
 h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2.29635rem, 3vw + 1rem, 3.5rem);
   font-weight: 1000;
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.1rem, 3vw + 1rem, 2rem);
   font-weight: 700;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: clamp(0.9rem, 5vw + 1rem, 1.5rem) ;
   font-weight: 700;
 }
 
 h4 {
-  font-size: 1.25rem;
+  font-size: clamp(0.8rem, 5vw + 1rem, 1.25rem);
   font-weight: 600;
 }
 
 h5 {
-  font-size: 1.1rem;
+  font-size: clamp(0.6rem, 6vw + 1rem, 1.1rem);
   font-weight: 600;
 }
 
 h6 {
-  font-size: 0.75rem;
+  font-size:  clamp(0.5rem, 6vw + 0.5rem, 0.7rem);
   font-weight: 500;
 }
 
 p {
   margin: 0;
-  font-size: 0.85rem;
+  font-size:  clamp(0.75rem, 6vw + 0.5rem, 0.85rem);
   font-weight: 500;
 }
 
@@ -111,128 +111,10 @@ input:-webkit-autofill:active {
   color: var(--text-primary);
 }
 
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  h1 {
-    font-size: 2.29635rem;
-  }
-
-  h2 {
-    font-size: 1.64025rem;
-  }
-
-  h3 {
-    font-size: 0.98415rem;
-  }
-
-  h4 {
-    font-size: 0.820125rem;
-  }
-
-  h5 {
-    font-size: 0.72171rem;
-  }
-
-  h6 {
-    font-size: 0.54675rem;
-  }
-
-  p {
-    font-size: 0.557685rem;
-  }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) and (max-width: 768px) {
-  h1 {
-    font-size: 2.5515rem;
-  }
-
-  h2 {
-    font-size: 1.8225rem;
-  }
-
-  h3 {
-    font-size: 1.0935rem;
-  }
-
-  h4 {
-    font-size: 0.91125rem;
-  }
-
-  h5 {
-    font-size: 0.8019rem;
-  }
-
-  h6 {
-    font-size: 0.6075rem;
-  }
-
-  p {
-    font-size: 0.61965rem;
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-  h1 {
-    font-size: 2.835rem;
-  }
-
-  h2 {
-    font-size: 2.025rem;
-  }
-
-  h3 {
-    font-size: 1.215rem;
-  }
-
-  h4 {
-    font-size: 1.0125rem;
-  }
-
-  h5 {
-    font-size: 0.891rem;
-  }
-
-  h6 {
-    font-size: 0.6075rem;
-  }
-
-  p {
-    font-size: 0.6885rem;
-  }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) and (max-width: 1200px) {
-  h1 {
-    font-size: 3.15rem;
-  }
-
-  h2 {
-    font-size: 2.25rem;
-  }
-
-  h3 {
-    font-size: 1.35rem;
-  }
-
-  h4 {
-    font-size: 1.125rem;
-  }
-
-  h5 {
-    font-size: 0.99rem;
-  }
-
-  h6 {
-    font-size: 0.675rem;
-  }
-
-  p {
-    font-size: 0.765rem;
-  }
+.card-container {
+  height: 17rem;
+  width: clamp(10rem, 10vw + 1rem ,12rem);
+  flex-shrink: 0;
 }
 
 /* custom css classes */
@@ -303,4 +185,20 @@ input:-webkit-autofill:active {
 .route {
   border-bottom: 1px solid var(--border);
   padding-bottom: 0.5rem;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
 }

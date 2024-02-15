@@ -77,27 +77,26 @@ const AnimeMangaRanking = (props) => {
           }}
           breakpoints={{
             0: {
-              slidesPerView: 1,
-              spaceBetween: 5,
-            },
-            360: {
               slidesPerView: 2,
               spaceBetween: 5,
             },
-            550: {
+            600: {
+              slidesPerView: 3,
+              spaceBetween: 5,
+            },
+            852: {
               slidesPerView: 4,
               spaceBetween: 6,
             },
-            1000: {
+            1100: {
               slidesPerView: 5,
               spaceBetween: 8,
             },
-            1400: {
+            1300: {
               slidesPerView: 6,
-              spaceBetween: 10,
+              spaceBetween: 8
             },
           }}
-          slidesPerView={6}
         >
           {(category === categoryType[0].toLowerCase()
             ? animeData

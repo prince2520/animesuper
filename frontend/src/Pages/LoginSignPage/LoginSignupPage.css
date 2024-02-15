@@ -85,7 +85,6 @@
     top: 0;
     height: 100%;
     width: 100%;
-    /*background-color: black;*/
     opacity: 65%;
     filter: blur(3px);
     z-index: 0;

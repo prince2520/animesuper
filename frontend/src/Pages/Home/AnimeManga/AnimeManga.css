@@ -1,61 +1,58 @@
 .anime-page {
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
 }
 
 .content .detail {
-    width: 30%;
+  width: 30%;
 }
 
-.card-container {
-    height: 16rem;
-    width: 11rem;
-    flex-shrink: 0;
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .anime-page .navbar-container {
+    display: block;
+  }
+
+  .search-container .search {
+    width: 100%;
+  }
+
+  .anime-carousel {
+    width: 100%;
+    height: 22rem;
+  }
+
+  .img-overlay .content {
+    row-gap: 0.5rem;
+    width: 85%;
+  }
+
+  .content .synopsis {
+    color: #aba5a5;
+  }
+
+  .content .more-info {
+    display: flex;
+    column-gap: 0.5rem;
+  }
+
+  .content .detail {
+    width: 60%;
+  }
 }
 
-@media screen and (max-width: 800px) {
-    .anime-page .navbar-container {
-        display: block;
-    }
-
-    .search-container .search {
-        width: 100%;
-    }
-
-    .anime-carousel {
-        width: 100%;
-        height: 22rem;
-    }
-
-    .img-overlay .content {
-        row-gap: 0.5rem;
-        width: 85%;
-    }
-
-    .content .synopsis {
-        color: #ABA5A5;
-    }
-
-    .card-container {
-        height: 16rem;
-        width: 10rem;
-        flex-shrink: 0;
-    }
-
-    .content .more-info {
-        display: flex;
-        column-gap: 0.5rem;
-    }
-
-
-    .content .detail {
-        width: 60%;
-    }
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
 }
 
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+}
 
-
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+}
