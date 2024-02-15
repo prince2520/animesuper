@@ -43,10 +43,6 @@
     row-gap: 1.5rem;
 }
 
-form .form-btn-container {
-    width: 50%;
-    align-self: center;
-}
 
 .change-box {
     display: flex;
@@ -102,27 +98,15 @@ form .form-btn-container {
 }
 
 
-/* Mobile Size */
-@media screen and (max-width: 500px) {
-    .form-page-left .form-top {
-        margin: 1rem 0 1.5rem 0;
-    }
-
-}
-
-@media screen and (max-width: 800px) {
-    /* Left Side*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
     .form-page .form-page-left {
         width: 100%;
     }
 
     .form-page-left form {
         width: 80%;
-    }
-
-    form .form-btn-container {
-        width: 80%;
-        align-self: center;
+        max-width: 23.25rem;
     }
 
     /* Right Side */
@@ -135,6 +119,60 @@ form .form-btn-container {
     }
 
     .form-top img{
-        height: 3rem;
+        height: 2.6244rem;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+    .form-page .form-page-left {
+        width: 100%;
+    }
+
+    .form-page-left form {
+        width: 80%;
+        max-width: 23.25rem;
+    }
+
+    /* Right Side */
+    .form-page .form-page-right {
+        display: none;
+    }
+
+    .form-top img{
+        height: 2.916rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+    .form-page .form-page-left {
+        width: 100%;
+    }
+
+    .form-page-left form {
+        width: 80%;
+        max-width: 23.25rem;
+    }
+
+    /* Right Side */
+    .form-page .form-page-right {
+        display: none;
+    }
+
+    .form-top img{
+        height: 3.25rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+    .form-page-left form {
+        width: 80%;
+        max-width: 23.25rem;
+    }
+
+    .form-top img{
+        height: 3.6rem;
     }
 }
