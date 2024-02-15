@@ -1,216 +1,306 @@
 /* edit inbuild html tags style */
-h1{
-    font-size: 3.5rem;
-    font-weight: 1000;
+h1 {
+  font-size: 3.5rem;
+  font-weight: 1000;
 }
 
-h2{
-    font-size: 2.5rem;
-    font-weight: 700;
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
 }
 
-h3{
-    font-size: 1.5rem;
-    font-weight: 700;
+h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 h4 {
-    font-size: 1.25rem;
-    font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
 h5 {
-    font-size: 1.1rem;
-    font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 h6 {
-    font-size: 0.75rem;
-    font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
-p{
-    margin: 0;
-    font-size: 0.85rem;
-    font-weight: 500;
+p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
-h1,h2,h3,h4{
-    color: var(--text);
+h1,
+h2,
+h3,
+h4 {
+  color: var(--text);
 }
 
-h5, h6{
-    color: var(--text-light);
+h5,
+h6 {
+  color: var(--text-light);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    width: fit-content;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  width: fit-content;
 }
 
-p{
-    color: var(--text-extra-light);
+p {
+  color: var(--text-extra-light);
+  margin: 0;
 }
 
-a{
-    text-decoration: none!important;
+a {
+  text-decoration: none !important;
 }
-
 
 input {
-    background-color: transparent;
-    border-width: 0;
-    width: 90%;
-    height: 100%;
-    outline: none;
-    color: var(--text-light);
-    font-family: "Mulish", sans-serif;
+  background-color: transparent;
+  border-width: 0;
+  width: 90%;
+  height: 100%;
+  outline: none;
+  color: var(--text-light);
+  font-family: "Mulish", sans-serif;
 }
 
-input:hover, input:focus {
-    color: var(--text);
+input:hover,
+input:focus {
+  color: var(--text);
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
-input:-webkit-autofill:active{
-
-    -webkit-text-fill-color: var(--background) !important;
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--background) !important;
 }
 
-::-webkit-scrollbar{
-    width: 0.5rem;
+::-webkit-scrollbar {
+  width: 0.5rem;
 }
 
-::-webkit-scrollbar-track{
-    background-color: var(--container);
+::-webkit-scrollbar-track {
+  background-color: var(--container);
 }
 
-::-webkit-scrollbar-thumb{
-    border-radius: 0.25rem;
-    background-color: var(--text-light);
+::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+  background-color: var(--text-light);
 }
 
-::-webkit-scrollbar-thumb:hover{
-    background-color: var(--text);
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--text);
 }
 
 .selected-container:hover,
-.selected-container:active{
-    background-color: var(--background-secondary);
-    color: var(--text-primary);
+.selected-container:active {
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
 }
 
-@media screen and (max-width: 480px) {
-    h1{
-        font-size: 2.5rem;
-        font-weight: 1000;
-    }
-    
-    h2{
-        font-size: 1.78rem;
-        font-weight: 900;
-    }
-    
-    h3{
-        font-size: 1.25rem;
-        font-weight: 900;
-    }
-    
-    h4 {
-        font-size: 1rem;
-        font-weight: 700;
-    }
-    
-    h5 {
-        font-size: 0.75rem;
-        font-weight: 600;
-    }
-    
-    h6 {
-        font-size: 0.6rem;
-        font-weight: 500;
-    }
-    
-    p{
-        font-size: 0.7rem;
-        font-weight: 500;
-        margin: 0;
-    }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.29635rem;
+  }
+
+  h2 {
+    font-size: 1.64025rem;
+  }
+
+  h3 {
+    font-size: 0.98415rem;
+  }
+
+  h4 {
+    font-size: 0.820125rem;
+  }
+
+  h5 {
+    font-size: 0.72171rem;
+  }
+
+  h6 {
+    font-size: 0.54675rem;
+  }
+
+  p {
+    font-size: 0.557685rem;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  h1 {
+    font-size: 2.5515rem;
+  }
+
+  h2 {
+    font-size: 1.8225rem;
+  }
+
+  h3 {
+    font-size: 1.0935rem;
+  }
+
+  h4 {
+    font-size: 0.91125rem;
+  }
+
+  h5 {
+    font-size: 0.8019rem;
+  }
+
+  h6 {
+    font-size: 0.6075rem;
+  }
+
+  p {
+    font-size: 0.61965rem;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  h1 {
+    font-size: 2.835rem;
+  }
+
+  h2 {
+    font-size: 2.025rem;
+  }
+
+  h3 {
+    font-size: 1.215rem;
+  }
+
+  h4 {
+    font-size: 1.0125rem;
+  }
+
+  h5 {
+    font-size: 0.891rem;
+  }
+
+  h6 {
+    font-size: 0.6075rem;
+  }
+
+  p {
+    font-size: 0.6885rem;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  h1 {
+    font-size: 3.15rem;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  h4 {
+    font-size: 1.125rem;
+  }
+
+  h5 {
+    font-size: 0.99rem;
+  }
+
+  h6 {
+    font-size: 0.675rem;
+  }
+
+  p {
+    font-size: 0.765rem;
+  }
 }
 
 /* custom css classes */
-
 .shadow {
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .input-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
 
-    margin-top: 0.15rem;
-    border: 1px solid var(--border);
-    padding: 0.4rem 0.7rem;
-    border-radius: 0.25rem;
+  margin-top: 0.15rem;
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.25rem;
 }
 
-.input-box svg{
-    font-size: 1.5rem;
-    color: var(--text-light);
+.input-box svg {
+  font-size: 1.5rem;
+  color: var(--text-light);
 }
 
-.input-box input{
-    color: var(--text-light);
+.input-box input {
+  color: var(--text-light);
 }
 
 .input-box:hover,
-.input-box:active{
-    border: 1px solid var(--text);
+.input-box:active {
+  border: 1px solid var(--text);
 }
 
 .input-box:hover input,
 .input-box:active input,
 .input-box:hover svg,
-.input-box:active svg
-{
-    color: var(--text);
-    border: 1px var(--text);
+.input-box:active svg {
+  color: var(--text);
+  border: 1px var(--text);
 }
 
-
-.highlight:hover{
-    color: var(--text);
+.highlight:hover {
+  color: var(--text);
 }
-
 
 .cursor-btn {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
-.color-text{
-    color: var(--text);
+.color-text {
+  color: var(--text);
 }
 
-.color-text-light{
-    color: var(--text-light);
+.color-text-light {
+  color: var(--text-light);
 }
 
-.color-text-extra-light{
-    color: var(--text-extra-light);
+.color-text-extra-light {
+  color: var(--text-extra-light);
 }
 
 .route {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
 }
