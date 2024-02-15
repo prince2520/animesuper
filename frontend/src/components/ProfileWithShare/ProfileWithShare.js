@@ -12,7 +12,6 @@ import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 import "./ProfileWithShare.css";
 
 const ProfileWithShare = () => {
-  
   const dispatch = useDispatch();
   const authCtx = useContext(AuthContext);
   const user = useSelector((state) => state.myProfile);

@@ -1,37 +1,37 @@
 /* edit inbuild html tags style */
 h1 {
-  font-size: clamp(2.29635rem, 3vw + 1rem, 3.5rem);
+  font-size: clamp(2rem, 3vw + 0.5rem, 3.5rem);
   font-weight: 1000;
 }
 
 h2 {
-  font-size: clamp(1.1rem, 3vw + 1rem, 2rem);
+  font-size: clamp(1.1rem, 3vw + 0.5rem, 2rem);
   font-weight: 700;
 }
 
 h3 {
-  font-size: clamp(0.9rem, 5vw + 1rem, 1.5rem) ;
+  font-size: clamp(0.9rem, 2vw + 0.5rem, 1.5rem);
   font-weight: 700;
 }
 
 h4 {
-  font-size: clamp(0.8rem, 5vw + 1rem, 1.25rem);
+  font-size: clamp(0.8rem, 2vw + 0.5rem, 1.25rem);
   font-weight: 600;
 }
 
 h5 {
-  font-size: clamp(0.6rem, 6vw + 1rem, 1.1rem);
+  font-size: clamp(0.5rem, 2vw + 0.5rem, 1.1rem);
   font-weight: 600;
 }
 
 h6 {
-  font-size:  clamp(0.5rem, 6vw + 0.5rem, 0.7rem);
+  font-size: clamp(0.5rem, 2vw + 0.5rem, 0.7rem);
   font-weight: 500;
 }
 
 p {
   margin: 0;
-  font-size:  clamp(0.75rem, 6vw + 0.5rem, 0.85rem);
+  font-size: clamp(0.85rem, 2vw + 0.5rem, 0.85rem);
   font-weight: 500;
 }
 
@@ -113,7 +113,7 @@ input:-webkit-autofill:active {
 
 .card-container {
   height: 17rem;
-  width: clamp(10rem, 10vw + 1rem ,12rem);
+  width: clamp(10rem, 10vw + 1rem, 12rem);
   flex-shrink: 0;
 }
 

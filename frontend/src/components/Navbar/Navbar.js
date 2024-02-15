@@ -10,6 +10,7 @@ import { OverlayActions } from "../../store/overlay";
 import AuthContext from "../../Context/auth";
 
 import "./Navbar.css";
+import MenuBtn from "../MenuBtn/MenuBtn";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -21,13 +22,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-      <Icon
-        icon="material-symbols:menu-rounded"
-        onClick={() =>
-          dispatch(helperActions.showMobileSideBarHandler(!showMobileSideBar))
-        }
-        style={{ fontSize: "2rem", color: "white" }}
-      />
+      <MenuBtn/>
       <Link to="/home" className="nav-logo">
         <img alt="anime-super" src={Logo} />
       </Link>

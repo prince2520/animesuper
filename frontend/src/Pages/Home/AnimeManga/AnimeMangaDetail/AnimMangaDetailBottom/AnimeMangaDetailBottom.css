@@ -19,7 +19,6 @@
     width: 30%;
 }
 
-
 .information{
     display: flex;
     flex-direction: column;
@@ -33,16 +32,10 @@
     width: 70%;
 }
 
-
-.anime-detail-bottom .detail-links{
-    display: none;
-}
-
 .detail-links .selected{
     border-bottom: 2px white solid;
     color: white
 }
-
 
 .related-anime .related-anime-link {
     color: #1877F2;
@@ -53,7 +46,8 @@
 }
 
 .related-container, .overview, 
-.anime-detail-bottom-left, .recommendation {
+.anime-detail-bottom-left, 
+.recommendation {
     display: flex;
     row-gap: 1rem;
     flex-direction: column;

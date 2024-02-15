@@ -18,6 +18,7 @@ import { MyProfileActions } from "../../store/myProfile";
 import "swiper/css";
 import "./Home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import MenuBtn from "../../components/MenuBtn/MenuBtn";
 
 const Home = () => {
   const showOverlay = useSelector((state) => state.overlay.showOverlay);
@@ -65,6 +66,9 @@ const Home = () => {
             <Navbar />
           </div>
           <div className={`search-bar-box ${!showSearchBar ? "show" : ""}`}>
+            <div className="menu-btn-container">
+              <MenuBtn />
+            </div>
             <SearchBar />
             <ProfileWithShare />
           </div>
