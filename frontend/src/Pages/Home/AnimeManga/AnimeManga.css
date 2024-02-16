@@ -11,6 +11,17 @@
   width: 30%;
 }
 
+.more-info .type,
+.more-info .release-date,
+.more-info .duration{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: 0.5rem;
+}
+
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .anime-page .navbar-container {

@@ -11,8 +11,6 @@ import { getAnimeDetail } from "../../../../../api/animeManga";
 
 import CustomButton from "../../../../../components/CustomButton/CustomButton";
 
-import '../AnimeMangaCarouselSlide/AnimeMangaCarouselSlide.css';
-
 const AnimeMangaCarouselSlide = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();

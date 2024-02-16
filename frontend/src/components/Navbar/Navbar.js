@@ -1,28 +1,24 @@
-import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Logo } from "../../photo";
-import { helperActions } from "../../store/helper";
 import { OverlayActions } from "../../store/overlay";
 
+import MenuBtn from "../MenuBtn/MenuBtn";
 import AuthContext from "../../Context/auth";
 
 import "./Navbar.css";
-import MenuBtn from "../MenuBtn/MenuBtn";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const authCtx = useContext(AuthContext);
-  const showMobileSideBar = useSelector(
-    (state) => state.helper.showMobileSideBar
-  );
+
   const profilePhoto = useSelector((state) => state.myProfile.profile_photo);
 
   return (
     <div className="navbar">
-      <MenuBtn/>
+      <MenuBtn />
       <Link to="/home" className="nav-logo">
         <img alt="anime-super" src={Logo} />
       </Link>

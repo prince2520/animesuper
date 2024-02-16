@@ -39,14 +39,19 @@ const AnimeMangaRanking = (props) => {
 
   return (
     <div className="ranking" style={props.style}>
-      <div className="flex-center ranking-type" style={{ marginBottom: "0.75rem" }}>
+      <div
+        className="flex-center ranking-type"
+        style={{ marginBottom: "0.75rem" }}
+      >
         <h3>{props.rank.title}</h3>
         <div className="navigation-box">
           <div className="navigation-buttons">
             {["<", ">"].map((data) => (
               <button
                 style={{ cursor: "pointer" }}
-                className={`flex-center ${data === "<" ? `prev-button` : `next-button`}`}
+                className={`flex-center ${
+                  data === "<" ? `prev-button` : `next-button`
+                }`}
                 onClick={() =>
                   data === "<"
                     ? swiperRef.current?.slidePrev()
@@ -94,7 +99,7 @@ const AnimeMangaRanking = (props) => {
             },
             1300: {
               slidesPerView: 6,
-              spaceBetween: 8
+              spaceBetween: 8,
             },
           }}
         >
