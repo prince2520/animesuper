@@ -14,17 +14,15 @@
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Contributing](#contributing)
-* [Issue Template](#raising-an-issue)
 * [Code of conduct](#code-of-conduct)
 * [License](#license)
-* [Authors](#authors)
 
 
 ## About The Project
 ![AnimeSuper](https://github.com/prince2520/animesuper/assets/68547999/7939a76f-55cb-4030-932f-fc194d1840a5)
 
 ## Built With
-##### Frontend
+#### Frontend
 * [React](https://react.dev/)
 * [Figma](https://www.figma.com/)
 * [Iconify](https://iconify.design/)
@@ -34,7 +32,7 @@
 * [React Image File Resizer](https://www.npmjs.com/package/react-image-file-resizer)
 * [Firebase](https://firebase.google.com/)
 
-##### Backend
+#### Backend
 * [Django](https://www.djangoproject.com/)
 * [Django Rest Framework](https://www.django-rest-framework.org/)
 * [MyAnimelist API](https://myanimelist.net/apiconfig/references/api/v2)
@@ -82,7 +80,6 @@ REACT_APP_messagingSenderId=*****
 REACT_APP_appId=*****
 REACT_APP_measurementId=*****
 ```
-
 <p><b>Step 4 -</b> Run client server locally</p>
 
 ```
@@ -103,13 +100,10 @@ pip install -r requirements.txt
 # add .env file to animesuper directory
 
 # add your myanimelist api credentials
-
 MYANIMELIST_URL=https://api.myanimelist.net
 MYANIMELIST_API_KEY==******
 
-
 # email credentials 
-
 EMAIL_USE_TLS=True
 EMAIL_HOST=smtp.gmail.com
 EMAIL_HOST_USER=******
@@ -119,7 +113,6 @@ EMAIL_PORT=587
 
 
 # add your yugabyte credentials
-
 DB_ENGINE=django_yugabytedb
 DB_NAME=yugabyte
 DB_HOST=******
@@ -136,12 +129,27 @@ DB_PASSWORD=******
 py manage.py runserver 8000
 ```
 
-# Technologies used -
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+* If you have suggestions for adding or removing projects, feel free to [open an issue](https://github.com/prince2520/animesuper/issues) to discuss it
+
+* Please make sure you check your spelling and grammar.
+
+### Creating A Pull Request
+
+Wanna contribute to AnimeSuper ?
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/FeatureName`)
+3. Commit your Changes (`git commit -m 'Add some FeatureName'`)
+4. Push to the Branch (`git push origin feature/FeatureName`)
+5. Open a Pull Request
 
 
-# Demo 
-[Youtube Link](https://www.youtube.com/watch?v=Y-R6vcsiS_M&ab_channel=029Prince)
+## Code of conduct
 
-https://user-images.githubusercontent.com/68547999/229545341-e9e0bb48-874a-4659-afe1-420c45d873a5.mp4
+Developers are requested to go through our <a href="https://github.com/prince2520/animesuper/blob/main/CODE_OF_CONDUCT.md">code of conduct</a> thoroughly to maintain a peaceful environment within our project.
 
-
+## License
+Distributed under the Apache License 2.0 . See [LICENSE](https://github.com/prince2520/animesuper/blob/main/LICENSE.txt) for more information.
