@@ -16,6 +16,7 @@
 * [Contributing](#contributing)
 * [Code of conduct](#code-of-conduct)
 * [License](#license)
+* [Project Links](#project-links)
 
 
 ## About The Project
@@ -152,4 +153,11 @@ Wanna contribute to AnimeSuper ?
 Developers are requested to go through our <a href="https://github.com/prince2520/animesuper/blob/main/CODE_OF_CONDUCT.md">code of conduct</a> thoroughly to maintain a peaceful environment within our project.
 
 ## License
-Distributed under the Apache License 2.0 . See [LICENSE](https://github.com/prince2520/animesuper/blob/main/LICENSE.txt) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/prince2520/animesuper/blob/main/LICENSE.txt) for more information.
+
+## Project Links
+<p align="left">
+<a href="https://animesuper.vercel.app/login" target="_blank" rel="noreferrer"> <img src="https://github.com/prince2520/animesuper/assets/68547999/56ca3f30-2eb8-48fb-a669-2cadd5fc3297" alt="angular" height="35"/> </a>
+<a href="" target="_blank" rel="noreferrer"> <img src="https://github.com/prince2520/animesuper/assets/68547999/fc73f01d-9043-4756-a8fd-b9b029b20c39" alt="angular"  height="35"/> </a>
+<a href="https://www.figma.com/file/HVnROhqnB55YlNtuJKuyDy/Anime-Project?type=design&node-id=3%3A75&mode=design&t=QVytotlyazcxi008-1" target="_blank" rel="noreferrer"> <img src="https://github.com/prince2520/animesuper/assets/68547999/a973c973-0031-4712-a573-07189646f6d5" alt="angular" height="35"/> </a>
+</p>
