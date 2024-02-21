@@ -114,6 +114,7 @@ export const AuthContextProvider = (props) => {
       })
       .catch((err) => console.log(err));
   };
+  
   const logoutHandler = () => {
     setIsAuth(false);
     localStorage.clear();
