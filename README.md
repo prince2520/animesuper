@@ -38,7 +38,7 @@
 ![AnimeSuper](https://github.com/prince2520/animesuper/assets/68547999/7939a76f-55cb-4030-932f-fc194d1840a5)
 
 <p align="left">
-AnimeSuper is the ultimate hub for anime enthusiasts, providing a seamless platform to organize and cherish their favorite  anime/manga and also user organize watchlist. With a user-friendly interface, it ensures fans stay effortlessly updated on the latest trends, creating a delightful experience that fosters a sense of community and passion among anime lovers. 
+AnimeSuper is the ultimate hub for anime enthusiasts, providing a seamless platform to organize and cherish their favorite  anime/manga and also user organize their watchlist. With a user-friendly interface, it ensures fans stay effortlessly updated on the latest trends, creating a delightful experience that fosters a sense of community and passion among anime lovers. 
 </p>
 
 ## Built With
@@ -60,6 +60,7 @@ AnimeSuper is the ultimate hub for anime enthusiasts, providing a seamless platf
 ## Getting Started  
 
 ### Prerequisites
+<a href="https://git-scm.com/downloads" >npm</a>  is a package manager for the JavaScript programming language maintained by npm, Inc. npm is the default package manager for the JavaScript runtime environment Node.js and is included as a recommended feature in the Node.js installer. 
 
 <a href="https://git-scm.com/downloads" >Git</a> is a distributed version control system used for software development. It allows multiple developers to work on the same codebase simultaneously, keeping track of changes and managing versions. It also enables users to revert changes and collaborate more effectively.
 
@@ -177,6 +178,5 @@ Distributed under the MIT License. See [LICENSE](https://github.com/prince2520/a
 ## Project Links
 <p align="left">
 <a href="https://animesuper.vercel.app" target="_blank" rel="noreferrer"> <img src="https://github.com/prince2520/animesuper/assets/68547999/56ca3f30-2eb8-48fb-a669-2cadd5fc3297" alt="website" height="30"/> </a>
-<a href="" target="_blank" rel="noreferrer"> <img src="https://github.com/prince2520/animesuper/assets/68547999/fc73f01d-9043-4756-a8fd-b9b029b20c39" alt="angular"  height="30"/> </a>
+<a href="https://youtu.be/0NogpVVX1H4" target="_blank" rel="noreferrer"> <img src="https://github.com/prince2520/animesuper/assets/68547999/fc73f01d-9043-4756-a8fd-b9b029b20c39" alt="hou"  height="30"/> </a>
 <a href="https://www.figma.com/file/HVnROhqnB55YlNtuJKuyDy/Anime-Project?type=design&node-id=3%3A75&mode=design&t=QVytotlyazcxi008-1" target="_blank" rel="noreferrer"> <img src="https://github.com/prince2520/animesuper/assets/68547999/a973c973-0031-4712-a573-07189646f6d5" alt="figma" height="30"/></a>
-</p>
