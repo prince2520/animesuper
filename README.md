@@ -1,4 +1,4 @@
-![LinkedIn cover - 1](https://github.com/prince2520/animesuper/assets/68547999/ee1123d8-d767-4dd9-962f-75d2a4ed555e)
+![Github Cover](https://github.com/prince2520/animesuper/assets/68547999/f1677b8d-589b-412a-b57a-da74f6245377)
 
 <p align = "center">
   AnimeSuper: ultimate hub for anime fans, seamless platform to organize favorites, and stay updated on trends.😊
@@ -18,6 +18,7 @@
 <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="figma"/></a>
 </p>
 
+</br>
 <br/>
 
 
@@ -77,7 +78,7 @@ git clone https://github.com/prince2520/animesuper.git
 npm install 
 ```
 
-<p><b>Step 3 -</b> Add environment variable by creating .env file </p>
+<p><b>Step 3 -</b> Add environment variables. </p>
 
 ```
 # Create .env file and paste to root folder
@@ -95,7 +96,7 @@ REACT_APP_messagingSenderId=*****
 REACT_APP_appId=*****
 REACT_APP_measurementId=*****
 ```
-<p><b>Step 4 -</b> Run client server locally</p>
+<p><b>Step 4 -</b> Run frontend server locally.</p>
 
 ```
 npm start 
@@ -109,7 +110,7 @@ npm start
 pip install -r requirements.txt 
 ```
 
-<p><b>Step 6 -</b> Add environment variable by creating .env file </p>
+<p><b>Step 6 -</b> Add environment variables. </p>
 
 ```
 # add .env file to animesuper directory
@@ -138,7 +139,7 @@ DB_PASSWORD=******
 
 ```
 
-<p><b>Step 7 -</b> Run backend server locally </p>
+<p><b>Step 7 -</b> Run backend server locally.</p>
 
 ```
 py manage.py runserver 8000
