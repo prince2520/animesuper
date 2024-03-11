@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { categoryType } from "../../../../common";
+import { categoryType } from "../../../../constants/constants";
 import { AnimeActions } from "../../../../store/anime";
 import { getCategoryList } from "../../../../api/animeManga";
 

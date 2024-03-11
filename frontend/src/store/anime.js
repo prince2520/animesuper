@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {categoryType} from "../common";
+import {categoryType} from "../constants/constants";
 
 
 const initialAnimeState = {

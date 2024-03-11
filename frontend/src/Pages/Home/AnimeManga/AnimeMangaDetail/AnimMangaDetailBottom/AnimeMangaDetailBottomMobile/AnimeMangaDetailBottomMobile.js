@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
-import { detail_links } from "../../../../../../common";
+import { detail_links } from "../../../../../../constants/constants";
 
 import AnimeDetailOverview from "../AnimeDetailOverview";
 import AnimeMangaDetailRelated from "../AnimeMangaDetailRelated";

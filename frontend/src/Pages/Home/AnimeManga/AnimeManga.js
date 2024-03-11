@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
 import { helperActions } from "../../../store/helper";
-import { animeCategory, categoryType, mangaCategory } from "../../../common";
+import { animeCategory, categoryType, mangaCategory } from "../../../constants/constants";
 
 import AnimeMangaCarousel from "./AnimeMangaCarousel/AnimeMangaCarousel";
 import AnimeMangaRanking from "./AnimeMangaRanking/AnimeMangaRanking";

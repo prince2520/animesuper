@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { getCategoryList } from "../../../../api/animeManga";
-import { animeCategory, categoryType, mangaCategory } from "../../../../common";
+import { animeCategory, categoryType, mangaCategory } from "../../../../constants/constants";
 
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 
-import { categoryType } from "../../../../common";
+import { categoryType } from "../../../../constants/constants";
 import { animeCarousel, mangaCarousel } from "../../../../photo";
 
 import AnimeCarouselSlide from "./AnimeMangaCarouselSlide/AnimeMangaCarouselSlide";

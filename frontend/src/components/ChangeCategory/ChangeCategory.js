@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { categoryType } from "../../common";
+import { categoryType } from "../../constants/constants";
 
 import "./ChangeCategory.css";
 

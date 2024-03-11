@@ -2,12 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import React, { useContext, useEffect, useState } from "react";
 
-import { categoryType } from "../../../../common";
+import { animeStatus, mangaStatus, categoryType } from "../../../../constants/constants";
 import { MyWatchlistImage } from "../../../../photo";
 import { helperActions } from "../../../../store/helper";
 import { getMyWatchlist } from "../../../../api/watchlist";
-import { animeStatus, mangaStatus } from "../../../../common";
-import { watchlistHeadings, watchlistColors } from "./watchlist";
+import { watchlistHeadings, watchlistColors } from "../../../../constants/constants";
 import { MyWatchlistActions } from "../../../../store/myWatchlist";
 
 import NoData from "../NoData/NoData";

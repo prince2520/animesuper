@@ -1,24 +1,10 @@
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { policiesData } from "../../constants/constants";
 
 import { FooterImage, Logo } from "../../photo";
 
 import "./Footer.css";
-
-const policiesData = [
-  {
-    to: "terms-and-condition",
-    name: "Term of conditions",
-  },
-  {
-    to: "dmca",
-    name: "DMCA",
-  },
-  {
-    to: "contact-us",
-    name: "Contact Us",
-  },
-];
 
 const Footer = () => {
   return (

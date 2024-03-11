@@ -5,23 +5,8 @@ import { useDispatch } from "react-redux";
 
 import { OverlayActions } from "../../../../../store/overlay";
 import { MyFavoriteActions } from "../../../../../store/myFavorite";
+import { favoriteItemData } from "../../../../../constants/constants";
 
-const favoriteItemData = (value) => {
-  return [
-    {
-      heading: "Score: ",
-      value: value.score,
-    },
-    {
-      heading: "Types: ",
-      value: value.type,
-    },
-    {
-      heading: "Year: ",
-      value: value.year,
-    },
-  ];
-};
 
 const MyFavoriteItemMobile = ({ res }) => {
   const dispatch = useDispatch();

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Logo } from "../../photo";
-import { sideBarData } from "./siderBarData";
+import { sideBarData } from "../../constants/constants";
 import { OverlayActions } from "../../store/overlay";
 
 import AuthContext from "../../Context/auth";

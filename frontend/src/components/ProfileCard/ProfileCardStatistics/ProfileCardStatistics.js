@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Skeleton from "react-loading-skeleton";
 import randomColor from "randomcolor";
 
-import { categoryType } from "../../../common";
-import { getColor } from "../../../store/myWatchlist";
+import { categoryType, getStatusColor } from "../../../constants/constants";
 import { OverlayActions } from "../../../store/overlay";
 
 import CustomButton from "../../CustomButton/CustomButton";
@@ -83,7 +82,7 @@ const ProfileCardStatistics = (props) => {
                 <div className="currently-watching">
                   <span
                     className="circle"
-                    style={{ backgroundColor: getColor(res.status) }}
+                    style={{ backgroundColor: getStatusColor(res.status) }}
                   />
                   <div className="currently-watching-detail">
                     <p className="title">{res.status}</p>

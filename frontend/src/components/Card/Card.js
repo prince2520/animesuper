@@ -7,7 +7,7 @@ import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { categoryType } from "../../common";
+import { categoryType } from "../../constants/constants";
 import { addToWatchlist } from "../../api/watchlist";
 import { AlertBoxActions } from "../../store/alertBox";
 

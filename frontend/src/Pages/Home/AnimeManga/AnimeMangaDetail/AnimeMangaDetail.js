@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 import Skeleton from "react-loading-skeleton";
 
-import { categoryType } from "../../../../common";
+import { categoryType } from "../../../../constants/constants";
 import { helperActions } from "../../../../store/helper";
 import { addToFavorite } from "../../../../api/favorite";
 import { addToWatchlist } from "../../../../api/watchlist";

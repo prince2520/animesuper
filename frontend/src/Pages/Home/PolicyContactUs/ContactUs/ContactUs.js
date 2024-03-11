@@ -4,26 +4,14 @@ import { useDispatch } from "react-redux";
 
 import { contactUs } from "../../../../api/auth";
 import { OverlayActions } from "../../../../store/overlay";
+import {contactLinkData} from "../../../../constants/constants";
 
 import CustomButton from "../../../../components/CustomButton/CustomButton";
 
 import "./../PolicyContactUs.css";
 import "./ContactUs.css";
 
-const linkData = [
-  {
-    icon: "logos:facebook",
-    name: "Facebook",
-  },
-  {
-    icon: "logos:reddit-icon",
-    name: "Reddit",
-  },
-  {
-    icon: "logos:twitter",
-    name: "Twitter",
-  },
-];
+
 
 const ContactUs = () => {
   const emailRef = useRef();
@@ -53,7 +41,7 @@ const ContactUs = () => {
         <h2>Contact Us</h2>
 
         <div className="links">
-          {linkData.map((data) => (
+          {contactLinkData.map((data) => (
             <div className="link-box">
               <Icon className="link-icon" icon={data.icon} />
               <h6>{data.name}</h6>

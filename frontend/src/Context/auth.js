@@ -13,7 +13,7 @@ const AuthContext = React.createContext({
   isAuth: false,
   email: "",
   username: "",
-  profilePhoto: null,
+  profilePhoto: null
 });
 
 export const AuthContextProvider = (props) => {

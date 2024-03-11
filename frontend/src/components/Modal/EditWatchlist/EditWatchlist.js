@@ -3,12 +3,11 @@ import React, { useContext, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { categoryType } from "../../../common";
 import { editStatus } from "../../../api/watchlist";
 import { OverlayActions } from "../../../store/overlay";
 import { AlertBoxActions } from "../../../store/alertBox";
-import { mangaStatus, animeStatus } from "../../../common";
 import { MyWatchlistActions } from "../../../store/myWatchlist";
+import { mangaStatus, animeStatus, categoryType  } from "../../../constants/constants";
 
 import AuthContext from "../../../Context/auth";
 import CustomButton from "../../CustomButton/CustomButton";
