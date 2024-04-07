@@ -35,7 +35,7 @@
 
 
 ## About The Project
-![AnimeSuper](https://github.com/prince2520/animesuper/assets/68547999/7939a76f-55cb-4030-932f-fc194d1840a5)
+![AnimeSuper](https://github.com/prince2520/animesuper/assets/68547999/b97c4f28-40f4-49b1-8229-a20ac920dfd8)
 
 <p align="left">
 AnimeSuper is the ultimate hub for anime enthusiasts, providing a seamless platform to organize and cherish their favorite  anime/manga and also user organize their watchlist. With a user-friendly interface, it ensures fans stay effortlessly updated on the latest trends, creating a delightful experience that fosters a sense of community and passion among anime lovers. 
