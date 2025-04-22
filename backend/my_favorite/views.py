@@ -3,20 +3,24 @@ import json
 from django.core.serializers import serialize
 from django.db.models import Q
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from accounts.models import User
 from my_favorite.models import FavoriteItem, MyFavorite
 
 # Create your views here.
 
-@api_view(['POST', 'GET'])
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def AddFavoriteItem(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-
-    email = body_data['email']
+    
+    user = request.user
+    
+    email = user.email
     category_id = body_data['category_id']
     category = body_data['category']
     img_url = body_data['img_url']
@@ -54,14 +58,19 @@ def AddFavoriteItem(request):
                     status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def DeleteFavoriteItem(request):
-    email = request.GET.get('email', '')
-    category_id = request.GET.get('categoryId', '')
-    category = request.GET.get('category', '')
+    body_unicode = request.body.decode('utf-8')
+    body_data = json.loads(body_unicode)
+    
+    user = request.user
+    
+    email = user.email
+    categoryId = body_data['categoryId']
 
     try:
-        item = FavoriteItem.objects.get(category_id=category_id)
+        item = FavoriteItem.objects.get(category_id=categoryId)
     except item.DoesNotExist:
         item = None
 
@@ -74,9 +83,13 @@ def DeleteFavoriteItem(request):
                     status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def MyFavoriteList(request):
-    email = request.GET.get('email', '')
+    
+    user = request.user
+    email = user.email
+    
     user = User.objects.get(email=email)
     myFavoriteList = MyFavorite.objects.get(user=user)
     serialized_data = serialize("json", myFavoriteList.favorite_list.all(), use_natural_foreign_keys=True)

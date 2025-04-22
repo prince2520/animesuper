@@ -28,7 +28,6 @@ const Card = (props) => {
   const addToWatchlistHandler = () => {
     if (authCtx.isAuth) {
       addToWatchlist(
-        authCtx.email,
         category,
         props.detail.id,
         props.detail.main_picture.medium,

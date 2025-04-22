@@ -76,7 +76,7 @@ const MyWatchlist = () => {
   useEffect(() => {
     setShowWatchlistSkeleton(true);
 
-    getMyWatchlist(authCtx.email)
+    getMyWatchlist(authCtx.token)
       .then((result) => {
         dispatch(MyWatchlistActions.saveMyWatchlistData(result.Data));
         setShowWatchlistSkeleton(false);

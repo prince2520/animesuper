@@ -48,7 +48,7 @@ const ProfileCard = () => {
   }, [profileImage]);
 
   useEffect(() => {
-    getProfileStatistics(authCtx.email, authCtx.token)
+    getProfileStatistics(authCtx.token)
       .then((res) => {
         setCategoryStats(res);
       })
@@ -87,7 +87,6 @@ const ProfileCard = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((profile_photo) => {
             saveProfile(
-              authCtx.email,
               username,
               gender,
               location,
@@ -115,7 +114,6 @@ const ProfileCard = () => {
       );
     } else {
       saveProfile(
-        authCtx.email,
         username,
         gender,
         location,

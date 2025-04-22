@@ -32,7 +32,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getProfileDetail(authCtx?.email, authCtx.token)
+    getProfileDetail(authCtx.token)
       .then((res) => {
         let favorite_genre = res?.favorite_genre?.map(
           (result) => result.fields.name

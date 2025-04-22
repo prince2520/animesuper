@@ -1,26 +1,36 @@
 // get user profile detail
-export const getProfileDetail = async (email) => {
+export const getProfileDetail = async (token) => {
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/authentication/profile-detail?email=${email}`
+    `${process.env.REACT_APP_SERVER_URL}/authentication/profile-detail`,
+    {
+      method: "GET",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }
   );
   return result.json();
 };
 
 // update and Save user profile
 export const saveProfile = async (
-  email,
   username,
   gender,
   location,
   favorite_genre,
-  photoUrl
+  photoUrl,
+  token
 ) => {
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/authentication/edit-profile`,
     {
-      method: "POST",
+      method: "PATCH",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },      
       body: JSON.stringify({
-        email: email,
         username: username,
         gender: gender,
         location: location,
@@ -33,9 +43,16 @@ export const saveProfile = async (
 };
 
 // get user profile statistics
-export const getProfileStatistics = async (email) => {
+export const getProfileStatistics = async (token) => {
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/authentication/profile-satistics?email=${email}`
+    `${process.env.REACT_APP_SERVER_URL}/authentication/profile-satistics`,
+    {
+      method : "GET",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
+      }
+    }
   );
 
   return result.json();

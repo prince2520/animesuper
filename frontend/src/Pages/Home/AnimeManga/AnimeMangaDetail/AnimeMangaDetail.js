@@ -84,7 +84,6 @@ const AnimeMangaDetail = () => {
   const addToWatchListHandler = () => {
     if (authCtx.isAuth) {
       addToWatchlist(
-        authCtx.email,
         category,
         animeDetail.id,
         animeDetail.main_picture.medium,
@@ -92,7 +91,8 @@ const AnimeMangaDetail = () => {
         category === categoryType[0].toLowerCase()
           ? animeDetail.num_episodes
           : animeDetail.num_chapters,
-        animeDetail.media_type
+        animeDetail.media_type,
+        authCtx.token
       )
         .then((res) => dispatch(AlertBoxActions.saveAlertBoxData(res)))
         .catch((err) => console.log(err));
@@ -120,7 +120,8 @@ const AnimeMangaDetail = () => {
         category === categoryType[1].toLowerCase()
           ? animeDetail.num_chapters
           : animeDetail.num_episodes,
-        animeDetail.media_type
+        animeDetail.media_type,
+        authCtx.token
       )
         .then((res) => {
           dispatch(AlertBoxActions.saveAlertBoxData(res));

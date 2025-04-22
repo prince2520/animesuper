@@ -3,7 +3,7 @@ import React, { useContext, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { editStatus } from "../../../api/watchlist";
+import { editWatchlistItem } from "../../../api/watchlist";
 import { OverlayActions } from "../../../store/overlay";
 import { AlertBoxActions } from "../../../store/alertBox";
 import { MyWatchlistActions } from "../../../store/myWatchlist";
@@ -26,8 +26,7 @@ const EditWatchlist = () => {
 
   const saveStatusHandler = (event) => {
     event.preventDefault();
-    editStatus(
-      authCtx.email,
+    editWatchlistItem(
       status,
       progressRef.current.value,
       data.category_id,

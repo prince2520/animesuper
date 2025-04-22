@@ -1,15 +1,18 @@
 // edit watchlist status
-export const editStatus = async (email, status, progress, category_id) => {
+export const editWatchlistItem = async (status, progress, category_id, token) => {
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_watchlist/edit-watchlist-item`,
     {
-      method: "PUT",
+      method: "PATCH",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
-        email: email,
         category_id: category_id,
         progress: progress,
         status: status,
-      }),
+      })
     }
   );
 
@@ -18,20 +21,23 @@ export const editStatus = async (email, status, progress, category_id) => {
 
 // add anime/manga to watchlist
 export const addToWatchlist = async (
-  email,
   category,
   category_id,
   img_url,
   title,
   num_episode_or_chapter,
-  media_type
+  media_type,
+  token
 ) => {
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_watchlist/add-watchlist-item`,
     {
       method: "POST",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
       body: JSON.stringify({
-        email: email,
         category: category,
         category_id: category_id,
         img_url: img_url,
@@ -46,12 +52,14 @@ export const addToWatchlist = async (
 
 
 //get user watchlist
-export const getMyWatchlist = async (email, token) => {
+export const getMyWatchlist = async (token) => {
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/get-watchlist-list?email=${email}`,
+    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/get-watchlist-list`,
     {
+      method: "GET",
       headers: {
-        Authorization: `Token ${token}`,
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
       },
     }
   );
@@ -60,9 +68,20 @@ export const getMyWatchlist = async (email, token) => {
 };
 
 // delete anime/manga from watchlist
-export const deleteWatchlistItem = async (email, category, categoryId) => {
+export const deleteWatchlistItem = async (category, category_id, token) => {
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/delete-watchlist-item?email=${email}&categoryId=${categoryId}`
+    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/delete-watchlist-item`,
+    {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        category: category,
+        category_id: category_id,
+      }),
+    }
   );
 
   return result.json();

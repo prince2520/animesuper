@@ -4,8 +4,9 @@ from django.core.serializers import serialize
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from accounts.models import User, Genre
 from my_watchlist.models import MyWatchlistItem
@@ -17,7 +18,7 @@ mangaStatus = ['Dropped', 'Currently Reading', 'Complete', 'On Hold', 'Plan to r
 
 # Create your views here.
 
-@api_view(['GET', 'POST', 'OPTIONS'])
+@api_view(['POST'])
 def signup(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')
@@ -50,7 +51,7 @@ def signup(request):
 
 
 @csrf_exempt
-@api_view(['GET', 'POST', 'OPTIONS'])
+@api_view(['POST'])
 def signin(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')
@@ -77,18 +78,19 @@ def signin(request):
             'username': user.username,
             'profilePhoto': user.profile_photo,
             'isAuth': True,
-            'token': str(token)
+            'token': str(token.access_token)
         }, status=status.HTTP_200_OK)
 
 
 @csrf_exempt
-@api_view(['POST', 'OPTIONS'])
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
 def editProfile(request):
-    if request.method == 'POST':
+    if request.method == 'PATCH':
         body_unicode = request.body.decode('utf-8')
         body_data = json.loads(body_unicode)
 
-        email = body_data['email']
+        email =  request.user.email
 
         user = None
 
@@ -121,9 +123,10 @@ def editProfile(request):
 
 @csrf_exempt
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def getProfileDetail(request):
     if request.method == 'GET':
-        email = request.GET.get('email', '')
+        email = request.user.email
 
         try:
             user = User.objects.get(email=email)
@@ -146,9 +149,10 @@ def getProfileDetail(request):
 
 @csrf_exempt
 @api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def getProfileStatistics(request):
     if request.method == 'GET':
-        email = request.GET.get('email', '')
+        email = request.user.email
 
         try:
             my_watchlist = MyWatchlistItem.objects.filter(user__email=email)

@@ -3,8 +3,9 @@ import json
 from django.core.serializers import serialize
 from django.db.models import Q
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from accounts.models import User
 from my_watchlist.models import MyWatchlistItem
@@ -13,12 +14,15 @@ from my_watchlist.models import MyWatchlistItem
 # Create your views here.
 
 
-@api_view(['POST', 'GET'])
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
 def AddWatchlistItem(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-
-    email = body_data['email']
+    
+    user = request.user
+    
+    email = user.email
     category = body_data['category']
     category_id = body_data['category_id']
     img_url = body_data['img_url']
@@ -52,10 +56,16 @@ def AddWatchlistItem(request):
                     status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
 def DeleteWatchlistItem(request):
-    email = request.GET.get('email', '')
-    category_id = request.GET.get('categoryId', '')
+    body_unicode = request.body.decode('utf-8')
+    body_data = json.loads(body_unicode)
+    
+    user = request.user
+    
+    email = user.email  
+    category_id = body_data['category_id']
 
     user = User.objects.get(email=email)
 
@@ -68,9 +78,11 @@ def DeleteWatchlistItem(request):
     return Response({'success': False, 'description': 'Something goes wrong!'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'POST'])
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
 def GetMyWatchlist(request):
-    email = request.GET.get('email', '')
+    user = request.user
+    email = user.email  
 
     user = User.objects.get(email=email)
     myWatchList = MyWatchlistItem.objects.filter(user=user)
@@ -79,12 +91,15 @@ def GetMyWatchlist(request):
     return Response({'success': True, 'Data': json.loads(serialized_data)}, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST', 'PUT'])
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
 def EditMyWatchlist(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
 
-    email = body_data['email']
+    user = request.user
+    
+    email = user.email    
     category_id = body_data['category_id']
     item_status = body_data['status']
     progress = body_data['progress']

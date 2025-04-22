@@ -18,7 +18,7 @@ const RemoveFavorite = () => {
   const categoryId = useSelector((state) => state.myFavorite.removeCategoryId);
 
   const removeFavoriteItemHandler = () => {
-    removeFavoriteItem(authCtx.email, category, categoryId, authCtx.token)
+    removeFavoriteItem(category, categoryId, authCtx.token)
       .then((res) => {
         dispatch(AlertBoxActions.saveAlertBoxData(res));
         dispatch(MyFavoriteActions.deleteFavoriteItem());
