@@ -8,6 +8,7 @@ import { getAlertIconAndColor } from "../../common";
 import { AlertBoxActions } from "../../store/alertBox";
 
 import "./AlertBox.css";
+import { uid } from "uid";
 
 const AlertBox = () => {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const AlertBox = () => {
           <div className="alert-box-status">
             {["circle-1", "circle-2", "circle-3"].map((className) => (
               <div
+                key={uid(8)}
                 className={className}
                 style={{ backgroundColor: getIconAndColor.secondaryColor }}
               />

@@ -79,7 +79,7 @@ const MyWatchlistSlice = createSlice({
           (res) =>
             res.fields.status === action.payload.currStatus &&
             res.fields.category ===
-              action.payload.selectedCategory.toLowerCase()
+            action.payload.selectedCategory.toLowerCase()
         );
       } else {
         state.filterData = state.watchlistData.filter(

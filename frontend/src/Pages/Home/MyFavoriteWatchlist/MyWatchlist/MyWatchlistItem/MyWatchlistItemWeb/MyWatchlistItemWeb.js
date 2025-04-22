@@ -10,10 +10,6 @@ import "./MyWatchlistItemWeb.css";
 const MyWatchlistItemWeb = ({ res, index }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    console.log(res, index);
-  }, []);
-
   return (
     <div className="my-watchlist-table-item">
       <h5

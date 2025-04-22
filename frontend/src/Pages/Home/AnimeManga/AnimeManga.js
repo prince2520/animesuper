@@ -11,6 +11,7 @@ import AnimeMangaCarousel from "./AnimeMangaCarousel/AnimeMangaCarousel";
 import AnimeMangaRanking from "./AnimeMangaRanking/AnimeMangaRanking";
 
 import "./AnimeManga.css";
+import { uid } from "uid";
 
 const AnimeManga = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const AnimeManga = () => {
           ? animeCategory
           : mangaCategory
         ).map((rank) => {
-          return inView ? <AnimeMangaRanking rank={rank} /> : null;
+          return inView ? <AnimeMangaRanking key={uid(8)} rank={rank} /> : null;
         })}
       </div>
     </div>

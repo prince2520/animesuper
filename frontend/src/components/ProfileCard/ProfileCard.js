@@ -48,7 +48,7 @@ const ProfileCard = () => {
   }, [profileImage]);
 
   useEffect(() => {
-    getProfileStatistics(authCtx.email)
+    getProfileStatistics(authCtx.email, authCtx.token)
       .then((res) => {
         setCategoryStats(res);
       })
@@ -61,12 +61,12 @@ const ProfileCard = () => {
     username,
     gender,
     location,
-    favorite_genre
+    favorite_genre,
   ) => {
     if (profileImage) {
       let imageRef = ref(storage, `images/${authCtx.email}`);
       const uploadTask = uploadBytesResumable(imageRef, profileImage);
-      await uploadTask.on(
+      uploadTask.on(
         "state_changed",
         (snapshot) => {
           const progress =
@@ -92,7 +92,8 @@ const ProfileCard = () => {
               gender,
               location,
               favorite_genre,
-              profile_photo
+              profile_photo,
+              authCtx.token
             )
               .then((res) => {
                 dispatch(AlertBoxActions.saveAlertBoxData(res));
@@ -119,7 +120,8 @@ const ProfileCard = () => {
         gender,
         location,
         favorite_genre,
-        null
+        null,
+        authCtx.token
       )
         .then((res) => {
           dispatch(AlertBoxActions.saveAlertBoxData(res));

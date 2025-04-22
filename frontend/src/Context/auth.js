@@ -13,7 +13,8 @@ const AuthContext = React.createContext({
   isAuth: false,
   email: "",
   username: "",
-  profilePhoto: null
+  profilePhoto: null,
+  token: null,
 });
 
 export const AuthContextProvider = (props) => {
@@ -24,6 +25,7 @@ export const AuthContextProvider = (props) => {
   const [isAuth, setIsAuth] = useState(false);
   const [username, setUsername] = useState("");
   const [profilePhoto, setProfilePhoto] = useState(null);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const localUserEmail = localStorage.getItem("email");
@@ -33,6 +35,9 @@ export const AuthContextProvider = (props) => {
 
     const localProfilePhoto = localStorage.getItem("profilePhoto");
     setProfilePhoto(localProfilePhoto);
+
+    const localToken = localStorage.getItem("token");
+    setToken(localToken);
 
     const localExpiryDate = localStorage.getItem("expiryDate");
 
@@ -89,6 +94,7 @@ export const AuthContextProvider = (props) => {
     })
       .then((res) => res.json())
       .then((result) => {
+
         if (result.success) {
           localStorage.setItem("email", result.email);
           setEmail(result.email);
@@ -99,10 +105,14 @@ export const AuthContextProvider = (props) => {
           localStorage.setItem("profilePhoto", result.profilePhoto);
           setProfilePhoto(result.profilePhoto);
 
+          localStorage.setItem("token", result.token);
+          setToken(result.token);
+
           const remainingMilliseconds = 60 * 60 * 1000;
           const expiryDate = new Date(
             new Date().getTime() + remainingMilliseconds
           );
+
           localStorage.setItem("expiryDate", expiryDate.toISOString());
           setIsAuth(result.isAuth);
           autoLogout(remainingMilliseconds);
@@ -132,6 +142,7 @@ export const AuthContextProvider = (props) => {
         email: email,
         username: username,
         profilePhoto: profilePhoto,
+        token: token,
       }}
     >
       {props.children}

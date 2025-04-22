@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { uid } from "uid";
 
 const AnimeMangaDetailRelated = ({ animeDetail, category }) => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const AnimeMangaDetailRelated = ({ animeDetail, category }) => {
         <div className="flex-center related-anime">
           {animeDetail?.related_anime.length > 0 ? (
             animeDetail.related_anime.map((res) => (
-              <p className="color-text">
+              <p key={uid(8)} className="color-text">
                 {res.relation_type_formatted} :{" "}
                 <span
                   className=" cursor-btn related-anime-link"

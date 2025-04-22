@@ -11,6 +11,7 @@ import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 import PrevNextButton from "../../../../components/PrevNextBtn/PrevNextBtn";
 
 import "./AnimeMangaCategory.css";
+import { uid } from "uid";
 
 const AnimeMangaCategory = () => {
   const [animeManga, setAnimeManga] = useState([]);
@@ -65,6 +66,7 @@ const AnimeMangaCategory = () => {
           : mangaCategory
         ).map((res) => (
           <h5
+          key={uid(8)}
             onClick={() => navigate(`/home/${category}/category/${res.slug}`)}
             className={`anime-manga-filter-button cursor-btn ${
               id === res.slug ? "selected" : ""
@@ -77,7 +79,7 @@ const AnimeMangaCategory = () => {
 
       <div className="anime-manga-category-cards">
         {animeManga.map((res) => (
-          <div className="card-container" key={res.node.id}>
+          <div className="card-container" key={uid(8)}>
             <Card detail={res.node} />
           </div>
         ))}
@@ -85,7 +87,7 @@ const AnimeMangaCategory = () => {
           Array(20)
             .fill(null)
             .map((res, index) => (
-              <div className="card-container" key={index}>
+              <div className="card-container" key={uid(8)}>
                 <SkeletonCard />
               </div>
             ))}

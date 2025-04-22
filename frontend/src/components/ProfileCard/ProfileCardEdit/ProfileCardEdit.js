@@ -10,6 +10,7 @@ import { MyProfileActions } from "../../../store/myProfile";
 import CustomButton from "../../CustomButton/CustomButton";
 
 import './ProfileCardEdit.css';
+import { uid } from "uid";
 
 const ProfileCardEdit = (props) => {
   const genreRef = useRef(null);
@@ -102,7 +103,7 @@ const ProfileCardEdit = (props) => {
             });
             return (
               <p
-                key={genre.toString()}
+                key={uid(8)}
                 onClick={() => dispatch(MyProfileActions.deleteGenre(genre))}
                 className="favorite-genre-item"
                 style={{

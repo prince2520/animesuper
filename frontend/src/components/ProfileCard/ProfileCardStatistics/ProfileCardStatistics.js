@@ -11,6 +11,7 @@ import { OverlayActions } from "../../../store/overlay";
 import CustomButton from "../../CustomButton/CustomButton";
 
 import "./ProfileCardStatistics.css";
+import { uid } from "uid";
 
 const ProfileCardStatistics = (props) => {
   const [selectedCategory, setSelectedCategory] = useState(categoryType[0]);
@@ -42,7 +43,7 @@ const ProfileCardStatistics = (props) => {
                 });
                 return (
                   <span
-                    key={res.toString()}
+                    key={uid(8)}
                     className="favorite-genre-item"
                     style={{ borderColor: `${color}`, color: `${color}` }}
                   >
@@ -61,7 +62,7 @@ const ProfileCardStatistics = (props) => {
             <div className="flex-center category-change-button">
               {categoryType.map((name) => (
                 <h6
-                  key={name.toString()}
+                  key={uid(8)}
                   style={{ padding: "0.1rem 0.5rem" }}
                   className={`cursor-btn ${
                     selectedCategory === name ? "selected" : ""
@@ -78,7 +79,7 @@ const ProfileCardStatistics = (props) => {
               ? props.categoryStats.animeStats
               : props.categoryStats.mangaStats
             ).map((res) => (
-              <div className="statistics-item" key={res.toString()}>
+              <div className="statistics-item" key={uid(8)}>
                 <div className="currently-watching">
                   <span
                     className="circle"

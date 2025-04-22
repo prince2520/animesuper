@@ -17,13 +17,14 @@ import MyFavoriteData from './MyFavoriteData.json';
 
 import './MyFavorite.css';
 import '../MyFavoriteWatchlist.css';
+import { uid } from "uid";
 
 
 // Sub Component
 const Heading = () => {
     return (
         <div className="favorite-table-heading">
-            {MyFavoriteData.headings.map(heading => <h5 className="color-text" style={{width:heading.width}}>{heading.title}</h5>)}
+            {MyFavoriteData.headings.map(heading => <h5 key={uid(8)} className="color-text" style={{width:heading.width}}>{heading.title}</h5>)}
         </div>
     );
 };
@@ -55,7 +56,7 @@ const MyFavorite = () => {
     useEffect(() => {
         setShowFavoriteSkeleton(true);
 
-        getFavoriteList(authCtx?.email).then(result => {
+        getFavoriteList(authCtx?.email, authCtx.token).then(result => {
             setShowFavoriteSkeleton(false);
             dispatch(MyFavoriteActions.saveMyFavoriteData(result.Data))
         }).catch(err => {
@@ -79,9 +80,9 @@ const MyFavorite = () => {
                 <div className="favorite-table-list">
                     {(!showFavoriteSkeleton && favoriteData.length === 0) && <NoData/>}
                     {favoriteData.map((res, id) =>
-                        <MyFavoriteItem res={res} id={id}/>
+                        <MyFavoriteItem key={uid(8)} res={res} id={id}/>
                     )}
-                    {(showFavoriteSkeleton && favoriteData.length === 0) && Array(5).fill(null).map(() => <FavoriteWatchlistSkeleton/>)}
+                    {(showFavoriteSkeleton && favoriteData.length === 0) && Array(5).fill(null).map(() => <FavoriteWatchlistSkeleton key={uid(8)}/>)}
                 </div>
             </div>
         </div>

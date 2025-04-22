@@ -1,5 +1,5 @@
 // edit watchlist status
-export const editStatus = async (email, status, progress, category_id) => {
+export const editStatusAPI = async (email, status, progress, category_id) => {
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_watchlist/edit-watchlist-item`,
     {
@@ -17,7 +17,7 @@ export const editStatus = async (email, status, progress, category_id) => {
 };
 
 // add anime/manga to watchlist
-export const addToWatchlist = async (
+export const addToWatchlistAPI = async (
   email,
   category,
   category_id,
@@ -46,7 +46,7 @@ export const addToWatchlist = async (
 
 
 //get user watchlist
-export const getMyWatchlist = async (email, token) => {
+export const getMyWatchlistAPI = async (email, token) => {
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_watchlist/get-watchlist-list?email=${email}`,
     {
@@ -60,7 +60,7 @@ export const getMyWatchlist = async (email, token) => {
 };
 
 // delete anime/manga from watchlist
-export const deleteWatchlistItem = async (email, category, categoryId) => {
+export const deleteWatchlistItemAPI = async (email, category, categoryId) => {
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_watchlist/delete-watchlist-item?email=${email}&categoryId=${categoryId}`
   );

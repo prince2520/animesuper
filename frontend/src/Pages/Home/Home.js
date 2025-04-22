@@ -8,6 +8,7 @@ import SideBar from "../../components/SideBar/SideBar";
 import Overlay from "../../components/Overlay/overlay";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
+import MenuBtn from "../../components/MenuBtn/MenuBtn";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ProfileWithShare from "../../components/ProfileWithShare/ProfileWithShare";
 import SideBarMobile from "../../components/SideBar/SideBarMobile/SideBarMobile";
@@ -18,7 +19,6 @@ import { MyProfileActions } from "../../store/myProfile";
 import "swiper/css";
 import "./Home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import MenuBtn from "../../components/MenuBtn/MenuBtn";
 
 const Home = () => {
   const showOverlay = useSelector((state) => state.overlay.showOverlay);
@@ -32,9 +32,9 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getProfileDetail(authCtx?.email)
+    getProfileDetail(authCtx?.email, authCtx.token)
       .then((res) => {
-        let favorite_genre = res?.favorite_genre.map(
+        let favorite_genre = res?.favorite_genre?.map(
           (result) => result.fields.name
         );
         dispatch(

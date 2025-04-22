@@ -15,7 +15,6 @@ const AlertBoxSlice = createSlice({
     initialState: initialAlertBoxState,
     reducers: {
         saveAlertBoxData(state, action) {
-            console.log("jh")
             state.data = {
                 success: action.payload.success,
                 description: action.payload.description

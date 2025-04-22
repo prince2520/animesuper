@@ -10,6 +10,7 @@ import AuthContext from "../../Context/auth";
 import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 
 import "./ProfileWithShare.css";
+import { uid } from "uid";
 
 const ProfileWithShare = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const ProfileWithShare = () => {
         {["logos:facebook", "logos:reddit-icon", "logos:twitter"].map(
           (data) => (
             <Icon
-              key={data.toString()}
+              key={uid(8)}
               icon={data}
               style={{ fontSize: "1.75rem" }}
             />

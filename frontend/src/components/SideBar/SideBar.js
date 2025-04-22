@@ -10,6 +10,7 @@ import { OverlayActions } from "../../store/overlay";
 import AuthContext from "../../Context/auth";
 
 import "./SideBar.css";
+import { uid } from "uid";
 
 const SideBar = () => {
   const dispatch = useDispatch();
@@ -27,11 +28,11 @@ const SideBar = () => {
           {sideBarData(authCtx.isAuth).map((data) => {
             return (
               data.isAuth && (
-                <div className="option" key={data.toString()}>
+                <div className="option" key={uid(8)}>
                   <h6>{data.categoryTitle}</h6>
                   {data.subCategoryData.map((subData) => (
                     <Link
-                      key={subData.toString()}
+                      key={uid(8)}
                       className="option-link"
                       to={subData.to}
                     >

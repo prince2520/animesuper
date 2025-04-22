@@ -17,7 +17,7 @@ const RemoveWatchlist = () => {
   const categoryId = useSelector((state) => state.myWatchlist.removeCategoryId);
 
   const removeWatchlistItemHandler = () => {
-    deleteWatchlistItem(authCtx.email, category, categoryId)
+    deleteWatchlistItem(authCtx.email, category, categoryId, authCtx.token)
       .then((res) => {
         dispatch(AlertBoxActions.saveAlertBoxData(res));
         dispatch(MyWatchlistActions.deleteWatchlistItem());

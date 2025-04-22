@@ -14,6 +14,7 @@ import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 
 import "./AnimeMangaRanking.css";
+import { uid } from "uid";
 
 const AnimeMangaRanking = (props) => {
   const swiperRef = useRef();
@@ -48,10 +49,10 @@ const AnimeMangaRanking = (props) => {
           <div className="navigation-buttons">
             {["<", ">"].map((data) => (
               <button
+                key={uid(8)}
                 style={{ cursor: "pointer" }}
-                className={`flex-center ${
-                  data === "<" ? `prev-button` : `next-button`
-                }`}
+                className={`flex-center ${data === "<" ? `prev-button` : `next-button`
+                  }`}
                 onClick={() =>
                   data === "<"
                     ? swiperRef.current?.slidePrev()
@@ -110,7 +111,7 @@ const AnimeMangaRanking = (props) => {
               ? animeData
               : mangaData
             ).map((res) => (
-              <SwiperSlide>
+              <SwiperSlide key={uid(8)}>
                 <div className="card-container">
                   <Card detail={res.node} />
                 </div>
@@ -121,7 +122,7 @@ const AnimeMangaRanking = (props) => {
             Array(6)
               .fill(null)
               .map(() => (
-                <SwiperSlide>
+                <SwiperSlide key={uid(8)}>
                   <div className="card-container">
                     <SkeletonCard />
                   </div>

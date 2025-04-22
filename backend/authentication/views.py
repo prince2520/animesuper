@@ -9,6 +9,8 @@ from rest_framework.response import Response
 
 from accounts.models import User, Genre
 from my_watchlist.models import MyWatchlistItem
+from rest_framework_simplejwt.tokens import RefreshToken
+
 
 animeStatus = ['Dropped', 'Currently Watching', 'Complete', 'On Hold', 'Plan to watch']
 mangaStatus = ['Dropped', 'Currently Reading', 'Complete', 'On Hold', 'Plan to read']
@@ -66,12 +68,16 @@ def signin(request):
         if not user.check_password(password):
             return Response({'success': False, 'description': 'Password is incorrect!'},
                             status=status.HTTP_400_BAD_REQUEST)
+        token = RefreshToken.for_user(user)
+        
+            
         return Response({
             'success': True,
             'email': user.email,
             'username': user.username,
             'profilePhoto': user.profile_photo,
-            'isAuth': True
+            'isAuth': True,
+            'token': str(token)
         }, status=status.HTTP_200_OK)
 
 

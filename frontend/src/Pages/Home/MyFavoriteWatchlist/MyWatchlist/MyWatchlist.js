@@ -17,13 +17,14 @@ import MyWatchlistItemSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchl
 
 import "../MyFavoriteWatchlist.css";
 import "./MyWatchlist.css";
+import { uid } from "uid";
 
 // Sub Components
 const Heading = () => {
   return (
     <div className="my-watchlist-table-heading">
       {watchlistHeadings.map((heading) => (
-        <h5 className="color-text" style={{ width: heading.width }}>
+        <h5 key={uid(8)} className="color-text" style={{ width: heading.width }}>
           {heading.title}
         </h5>
       ))}
@@ -37,7 +38,7 @@ const ColorStatus = () => {
     <div className="anime-status-color">
       {watchlistColors.map((data) => {
         return (
-          <div className={`${data.className} color-title`}>
+          <div key={uid(8)} className={`${data.className} color-title`}>
             <span className="circle" />
             <h6>{data.title}</h6>
           </div>
@@ -111,6 +112,7 @@ const MyWatchlist = () => {
             : mangaStatus
           ).map((res) => (
             <span
+              key={uid(8)}
               onClick={() => {
                 dispatch(
                   MyWatchlistActions.currentStatus({
@@ -132,13 +134,13 @@ const MyWatchlist = () => {
         <div className="my-watchlist-table-list">
           {!showWatchlistSkeleton && filterData.length === 0 && <NoData />}
           {filterData.map((res, index) => (
-            <MyWatchlistItem res={res} index={index} />
+            <MyWatchlistItem  key={uid(8)} res={res} index={index} />
           ))}
           {showWatchlistSkeleton &&
             filterData.length === 0 &&
             Array(5)
               .fill(null)
-              .map(() => <MyWatchlistItemSkeleton />)}
+              .map(() => <MyWatchlistItemSkeleton key={uid(8)} />)}
         </div>
       </div>
     </div>

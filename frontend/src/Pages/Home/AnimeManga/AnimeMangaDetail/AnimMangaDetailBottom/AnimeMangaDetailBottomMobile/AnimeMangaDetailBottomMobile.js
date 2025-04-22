@@ -8,6 +8,7 @@ import AnimeMangaDetailRelated from "../AnimeMangaDetailRelated";
 import AnimeMangaDetailInformation from "../AnimeMangaDetailInformation";
 
 import "./AnimeMangaDetailBottomMobile.css";
+import { uid } from "uid";
 
 const AnimeMangaDetailBottomMobile = ({ animeDetail, category }) => {
   const [selectedLink, setSelectedLink] = useState(detail_links[0]);
@@ -40,6 +41,7 @@ const AnimeMangaDetailBottomMobile = ({ animeDetail, category }) => {
       <div className="detail-links">
         {detail_links.map((links) => (
           <h4
+            key={uid(8)}
             className={`detail-link ${selectedLink === links && "selected"}`}
             onClick={() => setSelectedLink(links)}
           >

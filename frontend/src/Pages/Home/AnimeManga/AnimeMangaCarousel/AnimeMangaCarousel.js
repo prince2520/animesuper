@@ -11,6 +11,7 @@ import AnimeCarouselSlide from "./AnimeMangaCarouselSlide/AnimeMangaCarouselSlid
 
 import "swiper/swiper-bundle.css";
 import "./AnimeMangaCarousel.css";
+import { uid } from "uid";
 
 const AnimeMangaCarousel = (props) => {
   const { category } = useParams();
@@ -28,7 +29,7 @@ const AnimeMangaCarousel = (props) => {
             ? animeCarousel
             : mangaCarousel
           ).map((res) => (
-            <SwiperSlide>
+            <SwiperSlide key={uid(8)}>
               <AnimeCarouselSlide
                 category={res.category}
                 category_id={res.category_id}

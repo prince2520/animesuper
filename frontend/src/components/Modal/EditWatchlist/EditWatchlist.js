@@ -13,6 +13,7 @@ import AuthContext from "../../../Context/auth";
 import CustomButton from "../../CustomButton/CustomButton";
 
 import "./EditWatchlist.css";
+import { uid } from "uid";
 
 const EditWatchlist = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,8 @@ const EditWatchlist = () => {
       authCtx.email,
       status,
       progressRef.current.value,
-      data.category_id
+      data.category_id,
+      authCtx.token
     )
       .then((res) => {
         dispatch(AlertBoxActions.saveAlertBoxData(res));
@@ -77,7 +79,7 @@ const EditWatchlist = () => {
             : mangaStatus.slice(1, 6)
           ).map((title) => (
             <h6
-              key={title.toString()}
+              key={uid(8)}
               onClick={() => setStatus(title)}
               className={`color-text-light button cursor-btn color-text ${
                 title === status ? "selected-status" : ""
