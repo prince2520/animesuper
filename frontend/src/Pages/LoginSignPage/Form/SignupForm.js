@@ -1,25 +1,29 @@
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useState } from "react";
 
-import AuthContext from "../../../Context/auth";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
+import { AlertBoxActions } from "../../../store/alertBox";
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const authCtx = useContext(AuthContext);
-
   const signUpHandler = async (event) => {
+    let data = {
+      username: event.target[0].value,
+      email: event.target[1].value, 
+      password: event.target[2].value,
+      confirmPassword: event.target[3].value
+    };
+
     event.preventDefault();
-    authCtx.signUpHandler(
-      event.target[0].value,
-      event.target[1].value,
-      event.target[2].value,
-      event.target[3].value
-    );
+
+    signUpHandler(...data)
+    .then((res)=>{
+      AlertBoxActions.saveAlertBoxData(res);
+    }).catch((err)=>{ console.log(err)});
   };
 
   return (

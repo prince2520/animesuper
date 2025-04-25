@@ -3,12 +3,12 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
-import { OverlayActions } from "../../../../../store/overlay";
+import { OverlayActions } from "../../../../../redux/slice/overlaySlice";
 import { MyFavoriteActions } from "../../../../../store/myFavorite";
 import { favoriteItemData } from "../../../../../constants/constants";
 
 
-const MyFavoriteItemMobile = ({ res }) => {
+const MyFavoriteItemMobile = ({ item }) => {
   const dispatch = useDispatch();
 
   return (
@@ -19,16 +19,16 @@ const MyFavoriteItemMobile = ({ res }) => {
             alt="main_picture"
             width="100%"
             style={{ width: "6rem", height: "100%" }}
-            src={res.fields.img_url}
+            src={item.img_url}
           />
         </span>
       </div>
       <div className="favorite-table-item-mobile-right">
         <div className="item-type-mobile">
-          <h5 className="color-text">{res.fields.title}</h5>
+          <h5 className="color-text">{item.title}</h5>
         </div>
 
-        {favoriteItemData(res.fields).map((data) => (
+        {favoriteItemData(item).map((data) => (
           <div className="item-type-mobile">
             {data.heading && <p>{data.heading}</p>}
             <p>{data.value}</p>
@@ -42,11 +42,11 @@ const MyFavoriteItemMobile = ({ res }) => {
             onClick={() => {
               dispatch(
                 MyFavoriteActions.removeFavoriteItem({
-                  category: res.fields.type,
-                  categoryId: res.fields.category_id,
+                  category: item.type,
+                  categoryId: item.category_id,
                 })
               );
-              dispatch(OverlayActions.showRemoveFavoriteHandler());
+              dispatch(OverlayActions.showRemoveFavoriteReducer());
             }}
           >
             <Icon

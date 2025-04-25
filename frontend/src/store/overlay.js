@@ -14,7 +14,7 @@ const OverlaySlice = createSlice({
     name: 'overlay',
     initialState: initialOverlayState,
     reducers: {
-        closeOverlayHandler(state) {
+        closeOverlayReducer(state) {
             state.showOverlay = false;
             state.showProfile = false;
             state.showLogout = false;
@@ -23,27 +23,27 @@ const OverlaySlice = createSlice({
             state.showEditWatchlist = false;
             state.showThankYouBox = false;
         },
-        showProfileHandler(state) {
+        showProfileReducer(state) {
             state.showOverlay = true;
             state.showProfile = true;
         },
-        showLogoutHandler(state) {
+        showLogoutReducer(state) {
             state.showOverlay = true;
             state.showLogout = true;
         },
-        showRemoveFavoriteHandler(state, action) {
+        showRemoveFavoriteReducer(state, action) {
             state.showOverlay = true;
             state.showRemoveFavorite = true;
         },
-        showRemoveWatchlistHandler(state) {
+        showRemoveWatchlistReducer(state) {
             state.showOverlay = true;
             state.showRemoveWatchlist = true;
         },
-        showEditWatchlistHandler(state) {
+        showEditWatchlistReducer(state) {
             state.showOverlay = true;
             state.showEditWatchlist = true;
         },
-        showThankYouBoxHandler(state) {
+        showThankYouBoxReducer(state) {
             state.showOverlay = true;
             state.showThankYouBox = true;
         }

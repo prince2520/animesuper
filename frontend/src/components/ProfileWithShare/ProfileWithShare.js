@@ -1,12 +1,10 @@
-import { useContext } from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
 
-import { OverlayActions } from "../../store/overlay";
+import { OverlayActions } from "../../redux/slice/overlaySlice";
 
-import AuthContext from "../../Context/auth";
 import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 
 import "./ProfileWithShare.css";
@@ -14,8 +12,7 @@ import { uid } from "uid";
 
 const ProfileWithShare = () => {
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
-  const user = useSelector((state) => state.myProfile);
+  const auth = useSelector((state) => state.auth);
 
   return (
     <div className="flex-center profile-tab">
@@ -31,24 +28,24 @@ const ProfileWithShare = () => {
         )}
       </div>
       <ZoomInZoomOut width={"fit-content"}>
-        {authCtx.isAuth && (
+        {auth.isAuth && (
           <div
             className="flex-center profile-button"
             style={{ cursor: "pointer" }}
-            onClick={() => dispatch(OverlayActions.showProfileHandler())}
+            onClick={() => dispatch(OverlayActions.showProfileReducer())}
           >
             <h5 className="color-text">
-              {user.username || <Skeleton width={50} />}
+              {auth.username || <Skeleton width={50} />}
             </h5>
             <div className="flex-center profile-logo">
-              {user.profile_photo && (
+              {auth.profile_photo && (
                 <img
                   alt={"profile"}
                   style={{ objectFit: "cover", height: "2.5rem" }}
-                  src={user.profile_photo}
+                  src={auth.profile_photo}
                 />
               )}
-              {!user.profile_photo && <Skeleton width={40} height={100} />}
+              {!auth.profile_photo && <Skeleton width={40} height={100} />}
             </div>
           </div>
         )}

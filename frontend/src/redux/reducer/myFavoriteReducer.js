@@ -1,19 +1,26 @@
-export const removeFavoriteItemReducer = (state, action) => {
-    state.removeCategory = action.payload.category;
-    state.removeCategoryId = action.payload.categoryId;
+export const getFavoriteListReducer = (state, action) => {
+    state.favorite.anime = action.payload.anime ?? [];
+    state.favorite.manga = action.payload.manga ?? []
 };
 
-export const saveMyFavoriteDataReducer = (state, action) => {
-    console.log(action.payload)
-    state.data = action.payload;
-    state.filterData = action.payload.filter(res => res.fields.category === 'anime')
-};
+export const deleteFavoriteReducer = (state, action) => {
+    if (action.payload.category === "anime")
+        state.favorite.anime = state.favorite.anime.concat().filter((item) => item.category_id !== action.payload.category_id);
+    else
+        state.favorite.manga = state.favorite.manga.concat().filter((item) => item.category_id !== action.payload.category_id);
+}
 
-export const deleteFavoriteItemReducer = (state) => {
-    state.data = state.data.filter(res => res.fields.category_id !== state.removeCategoryId);
-    state.filterData = state.filterData.filter(res => res.fields.category_id !== state.removeCategoryId);
-};
+export const saveDeleteFavoriteReducer = (state, action) =>{
+    const {deleteFavoriteCategory, deleteFavoriteCategoryId} = action.payload;
+    
+    state.deleteFavoriteCategory = deleteFavoriteCategory;
+    state.deleteFavoriteCategoryId = deleteFavoriteCategoryId;
 
-export const changeDataCategoryReducer = (state, action) => {
-    state.filterData = state.data.filter(res => res.fields.category === action.payload.toLowerCase());
+}
+
+export const createFavoriteReducer = (state, action) => {
+    if (action.payload.category === "anime")
+        state.favorite.anime.push(action.payload)
+    else
+        state.favorite.manga.push(action.payload)
 }

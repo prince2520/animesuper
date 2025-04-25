@@ -31,7 +31,6 @@ const AnimeSlice = createSlice({
 
 
             state.animeMangaCarouselData[action.payload.id] = data;
-
         }
     }
 });

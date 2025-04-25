@@ -2,8 +2,37 @@ import {
     animeStatus,
     mangaStatus,
     getStatusColor,
-  } from "../constants/constants";
-  
+} from "../../constants/constants";
+
+
+export const getWatchlistReducer = (state, action) => {
+    state.watchlist.anime = action.payload.anime?.map((item) => { return { ...item, color: getStatusColor(item.status) } }) ?? [];
+    state.watchlist.manga = action.payload.manga?.map((item) => { return { ...item, color: getStatusColor(item.status) } }) ?? [];
+};
+
+export const createWatchlistReducer = (state, action) => {
+    if (action.payload.category === "anime")
+        state.watchlist.anime.push(action.payload);
+    else
+        state.watchlist.manga.push(action.payload);
+}
+
+
+export const deleteWatchlistReducer = (state, action) => {
+    if (action.payload.category === "anime")
+        state.watchlist.anime = state.watchlist.anime.concat().filter((item) => item.category_id !== action.payload.category_id);
+    else
+        state.watchlist.manga = state.watchlist.manga.concat().filter((item) => item.category_id !== action.payload.category_id);
+}
+
+export const saveDeleteWatchlistReducer = (state, action) =>{
+    const {deleteWatchlistCategory, deleteWatchlistCategoryId} = action.payload;
+    
+    state.deleteWatchlistCategory = deleteWatchlistCategory;
+    state.deleteWatchlistCategoryId = deleteWatchlistCategoryId;
+}
+
+
 export const saveMyWatchlistDataReducer = (state, action) => {
     state.watchlistData = action.payload.map((res) => {
         let color = getStatusColor(res.fields.status);

@@ -6,21 +6,34 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../../Context/auth";
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 import CustomButton from "../../../components/CustomButton/CustomButton";
+import { useDispatch } from "react-redux";
+import { loginThunk } from "../../../redux/thunk/authThunk";
+import { useAuth } from "../../../hooks/useAuth";
 
 const LoginForm = () => {
-  const authCtx = useContext(AuthContext);
-
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const {authTimer} = useAuth();
 
   const loginHandler = (event) => {
     event.preventDefault();
-    authCtx.loginHandler(event.target[0].value, event.target[1].value);
+
+    dispatch(loginThunk({
+      email: event.target[0].value,
+      password: event.target[1].value
+    }))
+    .unwrap()
+    .then(((data) => {
+      authTimer(data);
+    }))
+    .catch((err) => {console.log(err)});
+    
   };
 
   return (
     <form onSubmit={(event) => loginHandler(event)}>
       <h2>Login</h2>
-      
+
       <div>
         <h5>Email</h5>
         <span className="input-box">
@@ -57,7 +70,7 @@ const LoginForm = () => {
           <p className="color-text-light highlight">Sign up</p>
         </Link>
       </span>
-      
+
     </form>
   );
 };

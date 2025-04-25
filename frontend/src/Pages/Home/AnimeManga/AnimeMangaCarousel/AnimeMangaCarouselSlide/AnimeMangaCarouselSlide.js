@@ -5,34 +5,23 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
-
-import { AnimeActions } from "../../../../../store/anime";
-import { getAnimeDetail } from "../../../../../api/animeManga";
-
 import CustomButton from "../../../../../components/CustomButton/CustomButton";
+import { getAnimeMangaDetailThunk } from "../../../../../redux/thunk/animeMangaThunk";
 
 const AnimeMangaCarouselSlide = (props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const animeMangaCarouselData = useSelector(
-    (state) => state.anime.animeMangaCarouselData[props.category_id]
+    (state) => state.animeManga.animeMangaCarouselData[props.category_id]
   );
 
   useEffect(() => {
-    getAnimeDetail(props.category, props.category_id).then((res) => {
-      dispatch(
-        AnimeActions.saveCarouselData({
-          id: res.id,
-          category: props.category,
-          title: res.title,
-          synopsis: res.synopsis,
-          media_type: res.media_type,
-          average_episode_duration: res.average_episode_duration,
-          start_date: res.start_date,
-        })
-      );
-    });
+    dispatch(getAnimeMangaDetailThunk({
+      category: props.category,
+      id: props.category_id
+    }));
+
   }, [props.category, props.category_id, dispatch]);
 
   return (

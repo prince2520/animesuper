@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
 import { AlertBoxActions } from "./store/alertBox";
 
@@ -21,6 +21,9 @@ import AnimeMangaDetail from "./Pages/Home/AnimeManga/AnimeMangaDetail/AnimeMang
 import AnimeMangaCategory from "./Pages/Home/AnimeManga/AnimeMangaCategory/AnimeMangaCategory";
 
 import "./App.css";
+import { AuthActions } from "./redux/slice/authSlice";
+import { useAuth } from "./hooks/useAuth";
+import { getUserThunk } from "./redux/thunk/authThunk";
 
 let time = null;
 
@@ -30,6 +33,10 @@ function App() {
   const visible = useSelector((state) => state.alertBox.isVisible);
   const alertBoxData = useSelector((state) => state.alertBox.data);
 
+  const {autoLogout, logout} = useAuth();
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     clearTimeout(time);
     if (visible) {
@@ -38,6 +45,25 @@ function App() {
       }, [2000]);
     }
   }, [dispatch, visible, alertBoxData]);
+
+
+  useEffect(() => {
+    const localToken = localStorage.getItem("token");
+
+    const localExpiryDate = localStorage.getItem("expiryDate");
+
+    if (new Date(localExpiryDate) <= new Date()) {
+      dispatch(AuthActions.updateIsAuthReducer({ isAuth: false }));
+      logout();
+      return;
+    }
+    const remainingMilliseconds =
+      new Date(localExpiryDate).getTime() - new Date().getTime();
+
+    autoLogout(remainingMilliseconds);
+    dispatch(getUserThunk({token: localToken}))
+    .unwrap().then(()=>navigate("home")).catch((err)=>console.log(err));
+  }, []);
 
   return (
     <div className="App dark">

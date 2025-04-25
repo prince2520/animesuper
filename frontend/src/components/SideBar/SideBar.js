@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { Logo } from "../../photo";
 import { sideBarData } from "../../constants/constants";
-import { OverlayActions } from "../../store/overlay";
+import { OverlayActions } from "../../redux/slice/overlaySlice";
 
 import AuthContext from "../../Context/auth";
 
@@ -54,7 +54,7 @@ const SideBar = () => {
           {authCtx.isAuth && (
             <div
               className="cursor-btn  option-link"
-              onClick={() => dispatch(OverlayActions.showLogoutHandler())}
+              onClick={() => dispatch(OverlayActions.showLogoutReducer())}
             >
               <h5>
                 <Icon icon="ri:logout-circle-line" />

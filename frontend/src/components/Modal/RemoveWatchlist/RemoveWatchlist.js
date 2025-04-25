@@ -1,30 +1,29 @@
-import { useContext } from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { OverlayActions } from "../../../store/overlay";
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
 import { AlertBoxActions } from "../../../store/alertBox";
-import { deleteWatchlistItem } from "../../../api/watchlist";
-import { MyWatchlistActions } from "../../../store/myWatchlist";
 
-import AuthContext from "../../../Context/auth";
 import CustomButton from "../../CustomButton/CustomButton";
+import { deleteWatchlistThunk } from "../../../redux/thunk/myWatchlistThunk";
 
 const RemoveWatchlist = () => {
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
-  const category = useSelector((state) => state.myWatchlist.removeCategory);
-  const categoryId = useSelector((state) => state.myWatchlist.removeCategoryId);
+  const myWatchlist = useSelector(state => state.myWatchlist);
 
-  const removeWatchlistItemHandler = () => {
-    deleteWatchlistItem(category, categoryId, authCtx.token)
-      .then((res) => {
+
+  const deleteWatchlistHandler = () => {
+    dispatch(deleteWatchlistThunk({
+      category: myWatchlist.deleteWatchlistCategory,
+      category_id: myWatchlist.deleteWatchlistCategoryId
+    }))
+      .unwrap()
+      .then(res => {
         dispatch(AlertBoxActions.saveAlertBoxData(res));
-        dispatch(MyWatchlistActions.deleteWatchlistItem());
-        dispatch(OverlayActions.closeOverlayHandler());
+        dispatch(OverlayActions.closeOverlayReducer());
       })
-      .catch((err) => console.log(err));
-  };
+      .catch(err => console.log(err));
+  }
 
   return (
     <div className="remove-watchlist-container">
@@ -32,7 +31,7 @@ const RemoveWatchlist = () => {
         <h3>Remove</h3>
         <span>
           <Icon
-            onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+            onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
             className={"cursor-btn"}
             color="white"
             icon="material-symbols:close"
@@ -48,14 +47,14 @@ const RemoveWatchlist = () => {
       <div className="remove-watchlist-container-bottom">
         <CustomButton
           width={"45%"}
-          onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+          onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
           backgroundColor={"var(--error)"}
         >
           <h5 className="color-text">No</h5>
         </CustomButton>
         <CustomButton
           width={"45%"}
-          onClick={() => removeWatchlistItemHandler()}
+          onClick={() => deleteWatchlistHandler()}
           backgroundColor={"var(--success)"}
         >
           <h5 className="color-text">Yes</h5>

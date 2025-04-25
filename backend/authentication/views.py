@@ -71,14 +71,46 @@ def signin(request):
                             status=status.HTTP_400_BAD_REQUEST)
         token = RefreshToken.for_user(user)
         
+        serialized_data = serialize("json", user.favorite_genre.all(), use_natural_foreign_keys=True)
             
         return Response({
-            'success': True,
-            'email': user.email,
             'username': user.username,
-            'profilePhoto': user.profile_photo,
-            'isAuth': True,
+            'email': user.email,
+            'profile_photo': user.profile_photo,
+            'gender': user.gender,
+            'location' : user.location,
+            'favorite_genre': json.loads(serialized_data),
+        
+            'success': True,
             'token': str(token.access_token)
+        }, status=status.HTTP_200_OK)
+
+
+
+@csrf_exempt
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getUser(request):
+    if request.method == 'GET':
+        email = request.user.email
+
+        user = User.objects.filter(email=email).first()
+
+        if User.objects.filter(email=email).exists() is False:
+            return Response({'success': False, 'description': 'User with this email not exists!'},
+                            status=status.HTTP_400_BAD_REQUEST)
+        
+        serialized_data = serialize("json", user.favorite_genre.all(), use_natural_foreign_keys=True)
+            
+        return Response({
+            'username': user.username,
+            'email': user.email,
+            'profile_photo': user.profile_photo,
+            'gender': user.gender,
+            'location' : user.location,
+            'favorite_genre': json.loads(serialized_data),
+        
+            'success': True,
         }, status=status.HTTP_200_OK)
 
 
@@ -119,31 +151,6 @@ def editProfile(request):
             return Response({'success': True, 'description': 'Profile edited successfully'}, status=status.HTTP_200_OK)
         except user.DoesNotExist:
             return Response({'success': False, 'description': 'Something goes wrong!'}, status=status.HTTP_404_NOT_FOUND)
-
-
-@csrf_exempt
-@api_view(['GET'])
-@permission_classes([IsAuthenticated])
-def getProfileDetail(request):
-    if request.method == 'GET':
-        email = request.user.email
-
-        try:
-            user = User.objects.get(email=email)
-
-            serialized_data = serialize("json", user.favorite_genre.all(), use_natural_foreign_keys=True)
-
-            return Response({
-                'success': True,
-                'username': user.username,
-                'gender': user.gender,
-                'location': user.location,
-                'profile_photo': user.profile_photo,
-                'favorite_genre': json.loads(serialized_data)
-            }, status=status.HTTP_200_OK)
-
-        except User.DoesNotExist:
-            return Response({'success': False}, status=status.HTTP_400_BAD_REQUEST)
 
 
 

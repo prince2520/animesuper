@@ -18,6 +18,7 @@ import MyFavoriteData from './MyFavoriteData.json';
 import './MyFavorite.css';
 import '../MyFavoriteWatchlist.css';
 import { uid } from "uid";
+import { getFavoriteListThunk } from "../../../../redux/thunk/myFavoriteThunk";
 
 
 // Sub Component
@@ -32,9 +33,9 @@ const Heading = () => {
 
 const MyFavorite = () => {
     const dispatch = useDispatch();
-    const authCtx = useContext(AuthContext);
-    const favoriteData = useSelector(state => state.myFavorite.filterData);
+    const favorite = useSelector(state => state.myFavorite.favorite);
     const [showFavoriteSkeleton, setShowFavoriteSkeleton] = useState(false);
+    const [category, setCategory ] = useState("anime");
 
 
     const { ref, inView } = useInView({
@@ -55,14 +56,8 @@ const MyFavorite = () => {
 
     useEffect(() => {
         setShowFavoriteSkeleton(true);
-        getFavoriteList(authCtx.token).then(result => {
-            setShowFavoriteSkeleton(false);
-            dispatch(MyFavoriteActions.saveMyFavoriteData(result.Data))
-        }).catch(err => {
-            setShowFavoriteSkeleton(false);
-        });
-
-    }, [authCtx?.email, dispatch])
+        dispatch(getFavoriteListThunk()).finally(()=>setShowFavoriteSkeleton(false));
+    }, [])
 
 
     return (
@@ -72,16 +67,16 @@ const MyFavorite = () => {
                 <img alt='my_favorite' src={MyFavoriteImage} />
             </div>
             <div className='anime-status'>
-                <ChangeCategory eventHandler={(name) => { dispatch(MyFavoriteActions.changeDataCategory(name)) }} />
+                <ChangeCategory eventHandler={(name) => setCategory(name)} />
             </div>
             <div className="favorite-table">
                 <Heading />
                 <div className="favorite-table-list">
-                    {(!showFavoriteSkeleton && favoriteData.length === 0) && <NoData />}
-                    {favoriteData.map((res, id) =>
-                        <MyFavoriteItem key={uid(8)} res={res} id={id} />
+                    {(!showFavoriteSkeleton && !(category === "anime" ? favorite.anime : favorite.manga).length ) && <NoData />}
+                    {(category === "anime" ? favorite.anime : favorite.manga).map((item, idx) =>
+                        <MyFavoriteItem key={uid(8)} item={item} idx={idx} />
                     )}
-                    {(showFavoriteSkeleton && favoriteData.length === 0) && Array(5).fill(null).map(() => <FavoriteWatchlistSkeleton key={uid(8)} />)}
+                    {(showFavoriteSkeleton && !(category === "anime" ? favorite.anime : favorite.manga).length) && Array(5).fill(null).map(() => <FavoriteWatchlistSkeleton key={uid(8)} />)}
                 </div>
             </div>
         </div>

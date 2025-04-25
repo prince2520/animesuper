@@ -1,0 +1,62 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createWatchlistItemAPI, deleteWatchlistItemAPI, getWatchlistAPI } from "../api/watchlistAPI";
+
+
+// User - Get User
+export const createWatchlistThunk = createAsyncThunk(
+    'myWatchlist/createWatchlist',
+    async ({
+        category,
+        category_id,
+        img_url,
+        title,
+        num_episode_or_chapter,
+        media_type,
+    }, { getState, rejectWithValue }) => {
+        try {
+            const { auth } = getState();
+
+            let response = await createWatchlistItemAPI(
+                category,
+                category_id,
+                img_url,
+                title,
+                num_episode_or_chapter,
+                media_type,
+                auth.token
+            );
+
+            return {...response.data};
+        } catch (error) {
+            return rejectWithValue(error.message || "Something goes wrong!");
+        }
+    }
+);
+
+export const getWatchlistThunk = createAsyncThunk(
+    'myWatchlist/getWatchlist',
+    async (_, { getState, rejectWithValue }) => {
+        try {
+            const { auth } = getState();
+            let response = await getWatchlistAPI(auth.token);
+            return { ...response.data };
+        } catch (error) {
+            return rejectWithValue(error.message || "Something goes wrong!");
+        }
+    }
+);
+
+
+export const deleteWatchlistThunk = createAsyncThunk(
+    'myWatchlist/deleteWatchlist',
+    async ({ category, category_id }, { getState, rejectWithValue }) => {
+        try {
+            const { auth } = getState();
+            let response = await deleteWatchlistItemAPI(category, category_id, auth.token);
+            return {...response, category, category_id};
+        } catch (error) {
+            return rejectWithValue(error.message || "Something goes wrong!");
+        }
+    }
+);
+

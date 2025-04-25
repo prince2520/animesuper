@@ -8,7 +8,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {AuthContextProvider} from "./Context/auth";
 
 import App from './App';
-import store from "./store/store";
+import store from "./redux/store";
 
 import 'react-loading-skeleton/dist/skeleton.css'
 import './style.css';

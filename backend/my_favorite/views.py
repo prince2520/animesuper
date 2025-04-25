@@ -1,5 +1,6 @@
 import json
 
+from collections import defaultdict
 from django.core.serializers import serialize
 from django.db.models import Q
 from rest_framework import status
@@ -54,7 +55,7 @@ def AddFavoriteItem(request):
                 'success': False, 'description': 'Item already added to your favorite list!'},
                 status=status.HTTP_400_BAD_REQUEST)
 
-    return Response({'success': True, 'description': 'Item added to your favorite list successfully'},
+    return Response({'success': True, 'data': item, 'description': 'Item added to your favorite list successfully'},
                     status=status.HTTP_200_OK)
 
 
@@ -66,11 +67,14 @@ def DeleteFavoriteItem(request):
     
     user = request.user
     
+    print(body_data)
+    
     email = user.email
-    categoryId = body_data['categoryId']
+    category_id = body_data['category_id']
+    category = body_data['category']
 
     try:
-        item = FavoriteItem.objects.get(category_id=categoryId)
+        item = FavoriteItem.objects.get(Q(category_id=category_id) & Q(category=category))
     except item.DoesNotExist:
         item = None
 
@@ -92,6 +96,22 @@ def MyFavoriteList(request):
     
     user = User.objects.get(email=email)
     myFavoriteList = MyFavorite.objects.get(user=user)
-    serialized_data = serialize("json", myFavoriteList.favorite_list.all(), use_natural_foreign_keys=True)
+    
+    favorites = myFavoriteList.favorite_list.all()
+    data = defaultdict(list)
 
-    return Response({'success': True, 'Data': json.loads(serialized_data)}, status=status.HTTP_200_OK)
+    for item in favorites:
+        category = item.category.lower()
+        data[category].append({
+            'id': item.id,
+            'category_id': item.category_id,
+            'category': item.category,
+            'img_url': item.img_url,
+            'title': item.title,
+            'score': item.score,
+            'type': item.type,
+            'year': item.year,
+            'num_episode_chapter': item.num_episode_chapter
+        })      
+
+    return Response({'success': True, 'favorite': data}, status=status.HTTP_200_OK)

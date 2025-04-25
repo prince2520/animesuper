@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { editWatchlistItem } from "../../../api/watchlist";
-import { OverlayActions } from "../../../store/overlay";
+import { OverlayActions} from "../../../redux/slice/overlaySlice";
 import { AlertBoxActions } from "../../../store/alertBox";
 import { MyWatchlistActions } from "../../../store/myWatchlist";
 import { mangaStatus, animeStatus, categoryType  } from "../../../constants/constants";
@@ -26,6 +26,8 @@ const EditWatchlist = () => {
 
   const saveStatusHandler = (event) => {
     event.preventDefault();
+
+    
     editWatchlistItem(
       status,
       progressRef.current.value,
@@ -35,7 +37,7 @@ const EditWatchlist = () => {
       .then((res) => {
         dispatch(AlertBoxActions.saveAlertBoxData(res));
         if (res.success) {
-          dispatch(OverlayActions.closeOverlayHandler());
+          dispatch(OverlayActions.closeOverlayReducer());
           dispatch(
             MyWatchlistActions.editWatchlistItem({
               category_id: data.category_id,
@@ -66,7 +68,7 @@ const EditWatchlist = () => {
           <h5 className="close-button cursor-btn">
             <Icon
               color="white"
-              onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+              onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
               icon="material-symbols:close"
               style={{ fontSize: "2rem" }}
             />

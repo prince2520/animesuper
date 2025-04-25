@@ -2,32 +2,31 @@ import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 
-import { OverlayActions } from "../../../../../../store/overlay";
-import { MyWatchlistActions } from "../../../../../../store/myWatchlist";
+import { OverlayActions } from "../../../../../../redux/slice/overlaySlice";
+import { MyWatchlistActions } from "../../../../../../redux/slice/myWatchlistSlice";
 
 import "./MyWatchlistItemWeb.css";
 
-const MyWatchlistItemWeb = ({ res, index }) => {
+const MyWatchlistItemWeb = ({ item, index }) => {
   const dispatch = useDispatch();
-
   return (
     <div className="my-watchlist-table-item">
       <h5
-        style={{ borderLeft: `5px solid ${res.color}`, height: `100%` }}
+        style={{ borderLeft: `5px solid ${item.color}`, height: `100%` }}
         className="item-no"
       >
         {index + 1}
       </h5>
       <h5 className="item-img">
-        <img alt="main_picture" width="100%" src={res.fields.img_url} />
+        <img alt="main_picture" width="100%" src={item.img_url} />
       </h5>
-      <h5 className="item-title">{res.fields.title}</h5>
+      <h5 className="item-title">{item.title}</h5>
       <div className="item-progress">
         <div className="progress-bar-detail">
           <h5>
-            {res.fields.progress_read_watched} /{" "}
-            {res.fields.num_episode_or_chapter
-              ? res.fields.num_episode_or_chapter
+            {item.progress_read_watched} /{" "}
+            {item.num_episode_or_chapter
+              ? item.num_episode_or_chapter
               : "N/A"}
           </h5>
         </div>
@@ -35,30 +34,27 @@ const MyWatchlistItemWeb = ({ res, index }) => {
           <div
             className="progress-bar-completed"
             style={{
-              width: `${
-                res.fields.num_episode_or_chapter
-                  ? (res.fields.progress_read_watched /
-                      res.fields.num_episode_or_chapter) *
-                    100
+              width: `${item.num_episode_or_chapter
+                  ? (item.progress_read_watched /
+                    item.num_episode_or_chapter) *
+                  100
                   : ""
-              }%`,
+                }%`,
             }}
           />
         </div>
       </div>
       <h5 className="item-type">
-        {res.fields.type.charAt(0).toUpperCase() + res.fields.type.slice(1)}
+        {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
       </h5>
       <h5
         className="item-delete cursor-btn"
         onClick={() => {
-          dispatch(OverlayActions.showRemoveWatchlistHandler());
-          dispatch(
-            MyWatchlistActions.removeWatchlistItem({
-              category: res.fields.category,
-              categoryId: res.fields.category_id,
-            })
-          );
+          dispatch(MyWatchlistActions.saveDeleteWatchlistReducer({
+            deleteWatchlistCategory: item.category,
+            deleteWatchlistCategoryId: item.category_id
+          }))
+          dispatch(OverlayActions.showRemoveWatchlistReducer());
         }}
       >
         <Icon
@@ -69,9 +65,9 @@ const MyWatchlistItemWeb = ({ res, index }) => {
       <h5
         className="item-edit cursor-btn"
         onClick={() => {
-          dispatch(OverlayActions.showEditWatchlistHandler());
+          dispatch(OverlayActions.showEditWatchlistReducer());
           dispatch(
-            MyWatchlistActions.selectedWatchlistItemHandler({ ...res.fields })
+            MyWatchlistActions.selectedWatchlistItemHandler({ ...item })
           );
         }}
       >

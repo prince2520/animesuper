@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, authef, useState } from "react";
 
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,23 +8,22 @@ import Skeleton from "react-loading-skeleton";
 import Resizer from "react-image-file-resizer";
 
 import { storage } from "../../firebase";
-import { OverlayActions } from "../../store/overlay";
+import { OverlayActions } from "../../redux/slice/overlaySlice";
 import { AlertBoxActions } from "../../store/alertBox";
 import { MyProfileActions } from "../../store/myProfile";
-import { getProfileStatistics, saveProfile } from "../../api/auth";
+import { saveProfile } from "../../api/auth";
 
-import AuthContext from "../../Context/auth";
-import ProfileCardEdit from "./ProfileCardEdit/ProfileCardEdit";
 import UpAndDown from "../../animation/Wrapper/UpAndDown";
+import ProfileCardEdit from "./ProfileCardEdit/ProfileCardEdit";
 import ProfileCardStatistics from "./ProfileCardStatistics/ProfileCardStatistics";
 
 import "./ProfileCard.css";
+import { getAuthStatisticsThunk } from "../../redux/thunk/authThunk";
 
 const ProfileCard = () => {
-  const imgRef = useRef(null);
+  const imgRef = authef(null);
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
-  const user = useSelector((state) => state.myProfile);
+  const auth = useSelector((state) => state.auth);
 
   const [preview, setPreview] = useState(null);
   const [showEdit, setShowEdit] = useState(false);
@@ -48,23 +47,19 @@ const ProfileCard = () => {
   }, [profileImage]);
 
   useEffect(() => {
-    getProfileStatistics(authCtx.token)
-      .then((res) => {
-        setCategoryStats(res);
-      })
-      .catch((err) => console.log(err));
-  }, [authCtx.email]);
+    dispatch(getAuthStatisticsThunk());
+  }, []);
 
 
   // Update profile data in DB and save into state
   const saveProfileDetail = async (
-    username,
+    authname,
     gender,
     location,
     favorite_genre,
   ) => {
     if (profileImage) {
-      let imageRef = ref(storage, `images/${authCtx.email}`);
+      let imageRef = ref(storage, `images/${auth.email}`);
       const uploadTask = uploadBytesResumable(imageRef, profileImage);
       uploadTask.on(
         "state_changed",
@@ -87,19 +82,19 @@ const ProfileCard = () => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((profile_photo) => {
             saveProfile(
-              username,
+              authname,
               gender,
               location,
               favorite_genre,
               profile_photo,
-              authCtx.token
+              auth.token
             )
               .then((res) => {
                 dispatch(AlertBoxActions.saveAlertBoxData(res));
                 if (res.success) {
                   dispatch(
                     MyProfileActions.saveProfileData({
-                      username: username,
+                      authname: authname,
                       gender: gender,
                       location: location,
                       favorite_genre: favorite_genre,
@@ -114,19 +109,19 @@ const ProfileCard = () => {
       );
     } else {
       saveProfile(
-        username,
+        authname,
         gender,
         location,
         favorite_genre,
         null,
-        authCtx.token
+        auth.token
       )
         .then((res) => {
           dispatch(AlertBoxActions.saveAlertBoxData(res));
           if (res.success) {
             dispatch(
               MyProfileActions.saveProfileData({
-                username: username,
+                authname: authname,
                 gender: gender,
                 location: location,
                 favorite_genre: favorite_genre,
@@ -172,12 +167,13 @@ const ProfileCard = () => {
       <div className="flex-center profile-card-container-top">
         <span className="close-button">
           <Icon
-            onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+            onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
             color="white"
             icon="material-symbols:close"
             style={{ cursor: "pointer", fontSize: "2rem" }}
           />
         </span>
+      
         <h3>Profile</h3>
         <p
           className={`edit-button cursor-btn ${
@@ -191,14 +187,14 @@ const ProfileCard = () => {
       <div className="profile-card-container-bottom">
         <div className="profile-photo-container">
           <div className="flex-center profile-photo">
-            {user.profile_photo && (
+            {auth.profile_photo && (
               <img
                 alt={"profile"}
                 accept="image/*"
-                src={preview || user.profile_photo}
+                src={preview || auth.profile_photo}
               />
             )}
-            {!user.profile_photo && <Skeleton width={300} height={300} />}
+            {!auth.profile_photo && <Skeleton width={300} height={300} />}
           </div>
           {showEdit && (
             <span
@@ -216,8 +212,8 @@ const ProfileCard = () => {
           )}
         </div>
         <div className="profile-personal-details">
-          <h5 className="username">{user.username}</h5>
-          <p className="email">{authCtx.email && authCtx.email}</p>
+          <h5 className="authname">{auth.name}</h5>
+          <p className="email">{auth.email }</p>
         </div>
         {!showEdit && <ProfileCardStatistics categoryStats={categoryStats} />}
         {showEdit && <ProfileCardEdit saveProfileDetail={saveProfileDetail} />}

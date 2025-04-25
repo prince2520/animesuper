@@ -1,4 +1,3 @@
-// get anime/manga category list
 export const getCategoryListAPI = async (
   category,
   rank_type,
@@ -12,7 +11,7 @@ export const getCategoryListAPI = async (
 };
 
 // get anime/manga details
-export const getAnimeDetailAPI = async (category, id) => {
+export const getAnimeMangaDetailAPI = async (category, id) => {
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/animeManga/animeManga-detail/${id}?category=${category}`
   );
@@ -20,7 +19,7 @@ export const getAnimeDetailAPI = async (category, id) => {
 };
 
 // search anime/manga
-export const searchAnimeAPI = async (category, animeName, limit) => {
+export const searchAnimeMangaAPI = async (category, animeName, limit) => {
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/animeManga/animeManga-search?category=${category}&animeName=${animeName}&limit=${limit}`
   );

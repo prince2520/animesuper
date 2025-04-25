@@ -1,21 +1,43 @@
-import {createSlice} from '@reduxjs/toolkit';
-import { changeDataCategoryReducer, deleteFavoriteItemReducer, removeFavoriteItemReducer, saveMyFavoriteDataReducer } from '../reducer/myFavoriteReducer';
+import { createSlice } from '@reduxjs/toolkit';
+import { createFavoriteReducer, deleteFavoriteReducer, getFavoriteListReducer, saveDeleteFavoriteReducer } from '../reducer/myFavoriteReducer';
+import { createFavoriteThunk, deleteFavoriteThunk, getFavoriteListThunk } from '../thunk/myFavoriteThunk';
 
 const initialMyFavoriteState = {
-    removeCategory: 'none',
-    removeCategoryId: 0,
-    data: [],
-    filterData: []
+    favorite: {
+        anime: [],
+        manga: []
+    },
+
+    deleteFavoriteCategory: "",
+    deleteFavoriteCategoryId: ""
 };
 
 const MyFavoriteSlice = createSlice({
     name: 'myFavorite',
     initialState: initialMyFavoriteState,
     reducers: {
-        removeFavoriteItemReducer,
-        saveMyFavoriteDataReducer,
-        deleteFavoriteItemReducer,
-        changeDataCategoryReducer
+        saveDeleteFavoriteReducer
+    },
+
+    extraReducers: (builder) => {
+        builder
+            .addCase(getFavoriteListThunk.fulfilled, getFavoriteListReducer)
+            .addCase(getFavoriteListThunk.rejected, (state, action) => {
+                console.log(action.payload);
+            })
+
+        builder
+            .addCase(createFavoriteThunk.fulfilled, createFavoriteReducer)
+            .addCase(createFavoriteThunk.rejected, (state, action) => {
+                console.log(action.payload);
+            })
+
+        builder
+            .addCase(deleteFavoriteThunk.fulfilled, deleteFavoriteReducer)
+            .addCase(deleteFavoriteThunk.rejected, (state, action) => {
+                console.log(action.payload);
+            })
+
     }
 });
 

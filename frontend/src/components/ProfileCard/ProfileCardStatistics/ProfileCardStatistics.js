@@ -6,7 +6,7 @@ import Skeleton from "react-loading-skeleton";
 import randomColor from "randomcolor";
 
 import { categoryType, getStatusColor } from "../../../constants/constants";
-import { OverlayActions } from "../../../store/overlay";
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
 
 import CustomButton from "../../CustomButton/CustomButton";
 
@@ -22,8 +22,8 @@ const ProfileCardStatistics = (props) => {
   // Logout my account
   const logoutProfileCard = (event) => {
     event.preventDefault();
-    dispatch(OverlayActions.closeOverlayHandler());
-    dispatch(OverlayActions.showLogoutHandler());
+    dispatch(OverlayActions.closeOverlayReducer());
+    dispatch(OverlayActions.showLogoutReducer());
   };
 
   return (

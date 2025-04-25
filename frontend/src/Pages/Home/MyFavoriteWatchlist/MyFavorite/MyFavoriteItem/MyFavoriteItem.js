@@ -3,11 +3,11 @@ import React from "react";
 import MyFavoriteItemWeb from "./MyFavoriteItemWeb";
 import MyFavoriteItemMobile from "./MyFavoriteItemMobile";
 
-const MyFavoriteItem = ({ res, id }) => {
+const MyFavoriteItem = ({ item, idx }) => {
   return (
     <>
-      <MyFavoriteItemWeb index={id} res={res} />
-      <MyFavoriteItemMobile res={res} />
+      <MyFavoriteItemWeb item={item} idx={idx}/>
+      <MyFavoriteItemMobile item={item} idx={idx} />
     </>
   );
 };

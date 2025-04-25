@@ -1,7 +1,6 @@
-import {categoryType} from "../constants/constants";
+import { categoryType } from "../../constants/constants"; 
 
-
-export const saveDataReducer = (state, action) => {
+export const saveAnimeMangaReducer = (state, action) => {
     if (action.payload.category === categoryType[0].toLowerCase()) {
         state.animeRankData[action.payload.slug] = action.payload.data;
     } else {

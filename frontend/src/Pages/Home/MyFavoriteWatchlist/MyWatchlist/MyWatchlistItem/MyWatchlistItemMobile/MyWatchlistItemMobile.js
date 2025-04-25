@@ -2,38 +2,38 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
-import { OverlayActions } from "../../../../../../store/overlay";
+import { OverlayActions } from "../../../../../../redux/slice/overlaySlice";
 import { MyWatchlistActions } from "../../../../../../store/myWatchlist";
 
 import "./MyWatchlistItemMobile.css";
 
-const MyWatchlistItemMobile = ({ res }) => {
+const MyWatchlistItemMobile = ({ item }) => {
   const dispatch = useDispatch();
 
   return (
     <div className={"my-watchlist-table-item-mobile"}>
       <div className="my-watchlist-table-item-mobile-left">
-        <span className="item-no" style={{ borderLeft: `${res.color}` }} />
+        <span className="item-no" style={{ borderLeft: `${item.color}` }} />
         <span className="item-img">
-          <img alt="main_picture" width="100%" src={res.fields.img_url} />
+          <img alt="main_picture" width="100%" src={item.img_url} />
         </span>
       </div>
 
       <div className="my-watchlist-table-item-mobile-right">
-        <h5 className="item-title-mobile color-text">{res.fields.title}</h5>
+        <h5 className="item-title-mobile color-text">{item.title}</h5>
         <div className="item-type-mobile">
           <p>Type: </p>
           <p>
-            {res.fields.type.charAt(0).toUpperCase() + res.fields.type.slice(1)}
+            {item.type.charAt(0).toUpperCase() + item.type.slice(1)}
           </p>
         </div>
         <span className="item-progress">
           <p className={"progress-bar-title"}>Progress :</p>
           <div className="progress-bar-detail">
             <p className="color-text">
-              {res.fields.progress_read_watched} /{" "}
-              {res.fields.num_episode_or_chapter
-                ? res.fields.num_episode_or_chapter
+              {item.progress_read_watched} /{" "}
+              {item.num_episode_or_chapter
+                ? item.num_episode_or_chapter
                 : "N/A"}
             </p>
           </div>
@@ -42,9 +42,9 @@ const MyWatchlistItemMobile = ({ res }) => {
               className="progress-bar-completed"
               style={{
                 width: `${
-                  res.fields.num_episode_or_chapter
-                    ? (res.fields.progress_read_watched /
-                        res.fields.num_episode_or_chapter) *
+                  item.num_episode_or_chapter
+                    ? (item.progress_read_watched /
+                        item.num_episode_or_chapter) *
                       100
                     : ""
                 }%`,
@@ -58,10 +58,10 @@ const MyWatchlistItemMobile = ({ res }) => {
             style={{ cursor: "pointer" }}
             className="item-edit-mobile"
             onClick={() => {
-              dispatch(OverlayActions.showEditWatchlistHandler());
+              dispatch(OverlayActions.showEditWatchlistReducer());
               dispatch(
                 MyWatchlistActions.selectedWatchlistItemHandler({
-                  ...res.fields,
+                  ...item,
                 })
               );
             }}
@@ -72,11 +72,11 @@ const MyWatchlistItemMobile = ({ res }) => {
           <div
             className="item-delete-mobile cursor-btn"
             onClick={() => {
-              dispatch(OverlayActions.showRemoveWatchlistHandler());
+              dispatch(OverlayActions.showRemoveWatchlistReducer());
               dispatch(
                 MyWatchlistActions.removeWatchlistItem({
-                  category: res.fields.category,
-                  categoryId: res.fields.category_id,
+                  category: item.category,
+                  categoryId: item.category_id,
                 })
               );
             }}

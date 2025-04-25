@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 
 import { Outlet } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
-import AuthContext from "../../Context/auth";
 import SideBar from "../../components/SideBar/SideBar";
 import Overlay from "../../components/Overlay/overlay";
 import Footer from "../../components/Footer/Footer";
@@ -12,9 +11,6 @@ import MenuBtn from "../../components/MenuBtn/MenuBtn";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import ProfileWithShare from "../../components/ProfileWithShare/ProfileWithShare";
 import SideBarMobile from "../../components/SideBar/SideBarMobile/SideBarMobile";
-
-import { getProfileDetail } from "../../api/auth";
-import { MyProfileActions } from "../../store/myProfile";
 
 import "swiper/css";
 import "./Home.css";
@@ -28,29 +24,6 @@ const Home = () => {
   );
   const showSearchBar = useSelector((state) => state.helper.showSearchBar);
 
-  const authCtx = useContext(AuthContext);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    getProfileDetail(authCtx.token)
-      .then((res) => {
-        let favorite_genre = res?.favorite_genre?.map(
-          (result) => result.fields.name
-        );
-        dispatch(
-          MyProfileActions.saveProfileData({
-            username: res.username,
-            email: res.email,
-            profile_photo: res.profile_photo,
-            gender: res.gender,
-            location: res.location,
-            favorite_genre: favorite_genre,
-          })
-        );
-      })
-      .catch((err) => console.log(err));
-  }, [dispatch, authCtx?.email]);
-
   return (
     <div className="home-page">
       <div className={"home-left sidebar-web"}>{<SideBar />}</div>
@@ -58,9 +31,8 @@ const Home = () => {
       <div className="home-right">
         {showOverlay && <Overlay />}
         <div
-          className={`search-container ${
-            blurNavbar ? "search-container-blur" : ""
-          }`}
+          className={`search-container ${blurNavbar ? "search-container-blur" : ""
+            }`}
         >
           <div className="navbar-container">
             <Navbar />

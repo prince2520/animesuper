@@ -7,14 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { categoryType } from "../../../../constants/constants";
-import { AnimeActions } from "../../../../store/anime";
-import { getCategoryList } from "../../../../api/animeManga";
 
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 
 import "./AnimeMangaRanking.css";
 import { uid } from "uid";
+import { getCategoryListThunk } from "../../../../redux/thunk/animeMangaThunk";
 
 const AnimeMangaRanking = (props) => {
   const swiperRef = useRef();
@@ -23,20 +22,16 @@ const AnimeMangaRanking = (props) => {
   const { category } = useParams();
 
   const slug = props.rank.slug;
-  const animeData = useSelector((state) => state.anime.animeRankData[slug]);
-  const mangaData = useSelector((state) => state.anime.mangaRankData[slug]);
+  const animeData = useSelector((state) => state.animeManga.animeRankData[slug]);
+  const mangaData = useSelector((state) => state.animeManga.mangaRankData[slug]);
 
   useEffect(() => {
-    getCategoryList(category, props.rank.slug, 10).then((result) => {
-      dispatch(
-        AnimeActions.saveData({
-          category: category,
-          slug: props.rank.slug,
-          data: result.data,
-        })
-      );
-    });
+    dispatch(getCategoryListThunk({ category, rank_type: props.rank.slug, limit: 10, offset: 0 }));
   }, [category, props.rank.slug, dispatch]);
+
+
+  const getData = () => category === categoryType[0].toLowerCase() ? animeData : mangaData;
+
 
   return (
     <div className="ranking" style={props.style}>
@@ -104,21 +99,14 @@ const AnimeMangaRanking = (props) => {
             },
           }}
         >
-          {(category === categoryType[0].toLowerCase()
-            ? animeData
-            : mangaData) &&
-            (category === categoryType[0].toLowerCase()
-              ? animeData
-              : mangaData
-            ).map((res) => (
-              <SwiperSlide key={uid(8)}>
-                <div className="card-container">
-                  <Card detail={res.node} />
-                </div>
-              </SwiperSlide>
-            ))}
-          {!animeData &&
-            !mangaData &&
+          {(animeData || mangaData ) && Object.values(getData()).map((res) => (
+            <SwiperSlide key={uid(8)}>
+              <div className="card-container">
+                <Card detail={res.node} />
+              </div>
+            </SwiperSlide>
+          ))}
+          {(!animeData &&!mangaData) &&
             Array(6)
               .fill(null)
               .map(() => (
