@@ -17,7 +17,7 @@ from my_watchlist.models import MyWatchlistItem
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def AddWatchlistItem(request):
+def CreateWatchlist(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
     
@@ -50,16 +50,16 @@ def AddWatchlistItem(request):
 
         watchlist.save()
 
-        return Response({'success': True, 'description': 'Item added to watchlist successfully!'},
+        return Response({'message': 'Added to watchlist successfully!', 'data': watchlist},
                         status=status.HTTP_200_OK)
 
-    return Response({'success': False, 'description': 'Item already exists in your watchlist!', 'data': watchlist},
-                    status=status.HTTP_400_BAD_REQUEST)
+    return Response({'message': 'Already exists in your watchlist!' },
+                    status=status.HTTP_409_CONFLICT)
 
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def DeleteWatchlistItem(request):
+def DeleteWatchlist(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
     
@@ -75,16 +75,15 @@ def DeleteWatchlistItem(request):
 
     if item.exists() is not None:
         item.delete()
-        return Response({'success': True, 'description': 'Item deleted successfully!'}, status=status.HTTP_200_OK)
+        return Response({'message': 'Deleted successfully!'}, status=status.HTTP_200_OK)
 
-    return Response({'success': False, 'description': 'Something goes wrong!'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({'message': 'Something goes wrong!'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def GetMyWatchlist(request):
-    user = request.user
-    email = user.email  
+def GetWatchlist(request):
+    email = request.user.email 
 
     user = User.objects.get(email=email)
     myWatchList = MyWatchlistItem.objects.filter(user=user)
@@ -105,18 +104,16 @@ def GetMyWatchlist(request):
             'num_episode_or_chapter': item.num_episode_or_chapter
         })     
 
-    return Response({'success': True, 'data': data}, status=status.HTTP_200_OK)
+    return Response({'message': "Fetch watchlist successfully!", 'data': data}, status=status.HTTP_200_OK)
 
 
 @api_view(['PATCH'])
 @permission_classes([IsAuthenticated])
-def EditMyWatchlist(request):
+def UpdateWatchlist(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-
-    user = request.user
     
-    email = user.email   
+    email =  request.user.email   
         
     category = body_data['category']
     category_id = body_data['category_id']
@@ -130,4 +127,4 @@ def EditMyWatchlist(request):
     myWatchList.progress_read_watched = progress_read_watched
     myWatchList.save()
 
-    return Response({'success': True, 'description': 'Item edited status successfully!'}, status=status.HTTP_200_OK)
+    return Response({'success': True, 'description': 'Updated successfully!'}, status=status.HTTP_200_OK)

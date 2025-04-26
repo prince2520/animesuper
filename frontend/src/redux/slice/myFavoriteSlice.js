@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createFavoriteReducer, deleteFavoriteReducer, getFavoriteListReducer, saveDeleteFavoriteReducer, selectedFavoriteReducer } from '../reducer/myFavoriteReducer';
+import { createFavoriteReducer, deleteFavoriteReducer, getFavoriteListReducer, selectedFavoriteReducer } from '../reducer/myFavoriteReducer';
 import { createFavoriteThunk, deleteFavoriteThunk, getFavoriteListThunk } from '../thunk/myFavoriteThunk';
 
 const initialMyFavoriteState = {
@@ -22,21 +22,13 @@ const MyFavoriteSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getFavoriteListThunk.fulfilled, getFavoriteListReducer)
-            .addCase(getFavoriteListThunk.rejected, (state, action) => {
-                console.log(action.payload);
-            })
 
         builder
             .addCase(createFavoriteThunk.fulfilled, createFavoriteReducer)
-            .addCase(createFavoriteThunk.rejected, (state, action) => {
-                console.log(action.payload);
-            })
 
         builder
             .addCase(deleteFavoriteThunk.fulfilled, deleteFavoriteReducer)
-            .addCase(deleteFavoriteThunk.rejected, (state, action) => {
-                console.log(action.payload);
-            })
+
 
     }
 });

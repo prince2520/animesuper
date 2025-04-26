@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { createFavoriteItemAPI, deleteFavoriteItemAPI, getFavoriteListAPI } from "../api/favoriteAPI";
+import { createFavoriteAPI, createFavoriteItemAPI, deleteFavoriteAPI, deleteFavoriteItemAPI, getFavoriteListAPI } from "../api/favoriteAPI";
 
 export const createFavoriteThunk = createAsyncThunk(
     'myFavorite/createFavorite',
@@ -16,7 +16,7 @@ export const createFavoriteThunk = createAsyncThunk(
         try {
             const { auth } = getState();
 
-            let response = await createFavoriteItemAPI( 
+            let response = await createFavoriteAPI( 
                 category_id,
                 category,
                 img_url,
@@ -27,7 +27,7 @@ export const createFavoriteThunk = createAsyncThunk(
                 media_type, 
                 auth.token);
 
-            return {...response.data};
+            return response.data;
         } catch (error) {
             return rejectWithValue(error.message || "Something goes wrong!");
         }
@@ -40,7 +40,7 @@ export const getFavoriteListThunk = createAsyncThunk(
         try {
             const { auth } = getState();
             let response = await getFavoriteListAPI(auth.token);
-            return {...response.favorite};
+            return response.data;
         } catch (error) {
             return rejectWithValue(error.message || "Something goes wrong!");
         }
@@ -53,8 +53,8 @@ export const deleteFavoriteThunk = createAsyncThunk(
     async ({ category, category_id }, { getState ,rejectWithValue }) => {
         try {
             const { auth } = getState();
-            let response = await deleteFavoriteItemAPI(category, category_id, auth.token); 
-            return {...response, category, category_id};
+            await deleteFavoriteAPI(category, category_id, auth.token); 
+            return {category, category_id};
         } catch (error) {
             return rejectWithValue(error.message || "Something goes wrong!");
         }

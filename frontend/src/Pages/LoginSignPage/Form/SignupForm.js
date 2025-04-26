@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
-import { AlertBoxActions } from "../../../store/alertBox";
+import { AlertBoxActions } from "../../../redux/slice/alertBoxSlice";
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +22,7 @@ const SignupForm = () => {
 
     signUpHandler(...data)
     .then((res)=>{
-      AlertBoxActions.saveAlertBoxData(res);
+      AlertBoxActions.getAlertBoxReducer(res);
     }).catch((err)=>{ console.log(err)});
   };
 

@@ -1,5 +1,7 @@
+import { throwError } from "./throwError";
+
 // add a anime/manga to the user favorites list
-export const createFavoriteItemAPI = async (
+export const createFavoriteAPI = async (
   category_id,
   category,
   img_url,
@@ -11,7 +13,7 @@ export const createFavoriteItemAPI = async (
   token
 ) => {
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/my_favorite/add-item-favorite`,
+    `${process.env.REACT_APP_SERVER_URL}/my_favorite/create-favorite`,
     {
       method: "POST",
       headers: {
@@ -30,7 +32,8 @@ export const createFavoriteItemAPI = async (
       }),
     }
   );
-  return result.json();
+  const data = throwError(result);
+  return data;
 };
 
 // get user anime/manga favorite list
@@ -46,15 +49,16 @@ export const getFavoriteListAPI = async (token) => {
     }
   );
 
-  return result.json();
+  const data = throwError(result);
+  return data;
 };
 
 // remove anime/manga from favorites list
-export const deleteFavoriteItemAPI = async (category, category_id, token) => {
+export const deleteFavoriteAPI = async (category, category_id, token) => {
 
   console.log("delete", category, category_id)
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/my_favorite/delete-favorite-item`,
+    `${process.env.REACT_APP_SERVER_URL}/my_favorite/delete-favorite`,
     {
       method: "DELETE",
       headers: {
@@ -68,5 +72,6 @@ export const deleteFavoriteItemAPI = async (category, category_id, token) => {
     }
   );
 
-  return result.json();
+  const data = throwError(result);
+  return data;
 };

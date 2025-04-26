@@ -1,8 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { blurNavbarReducer, isSkipReducer, searchBarReducer, showMobileSideBarReducer } from '../reducer/helperReducer';
+import { blurNavbarReducer, searchBarReducer, showMobileSideBarReducer } from '../reducer/helperReducer';
 
 const initialHelperState = {
-    skip: false,
     showSearchBar: true,
     blurNavbar: true,
     showMobileSideBar: false
@@ -12,7 +11,6 @@ const helperSlice = createSlice({
     name: 'helper',
     initialState: initialHelperState,
     reducers: {
-        isSkipReducer,
         searchBarReducer,
         blurNavbarReducer,
         showMobileSideBarReducer

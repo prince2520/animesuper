@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
-import { OverlayActions } from "../../../store/overlay";
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
 import { mangaStatus, animeStatus, categoryType } from "../../../constants/constants";
 
 import CustomButton from "../../CustomButton/CustomButton";
 
-import "./EditWatchlist.css";
+import "./UpdateWatchlist.css";
 import { updateWatchlistThunk } from "../../../redux/thunk/myWatchlistThunk";
 
 const EditWatchlist = () => {
@@ -55,7 +54,7 @@ const EditWatchlist = () => {
           <h5 className="close-button cursor-btn">
             <Icon
               color="white"
-              onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+              onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
               icon="material-symbols:close"
               style={{ fontSize: "2rem" }}
             />

@@ -25,6 +25,8 @@ const ProfileCard = () => {
   const [preview, setPreview] = useState(null);
   const [showEdit, setShowEdit] = useState(false);
 
+  const watchlist = useSelector(state => state.myWatchlist.watchlist);
+
   const [compressImageHandler, compressImg] = useCompressImg();
 
   useEffect(() => {
@@ -41,7 +43,7 @@ const ProfileCard = () => {
 
   useEffect(() => {
     dispatch(getAuthStatisticsThunk());
-  }, [dispatch]);
+  }, [dispatch, JSON.stringify(watchlist)]);
 
 
   // Update profile data in DB and save into state

@@ -1,4 +1,4 @@
-export const saveAlertBoxDataReducer = (state, action) => {
+export const getAlertBoxReducer = (state, action) => {
     state.data = {
         success: action.payload.success,
         description: action.payload.description

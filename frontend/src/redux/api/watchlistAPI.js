@@ -1,8 +1,9 @@
+import { throwError } from "./throwError";
+
 // edit watchlist status
 export const updateWatchlistAPI = async (category, category_id, status, progress_read_watched, token) => {
-  console.log(category, category_id, status, progress_read_watched, token);
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/edit-watchlist-item`,
+    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/update-watchlist`,
     {
       method: "PATCH",
       headers: {
@@ -18,11 +19,12 @@ export const updateWatchlistAPI = async (category, category_id, status, progress
     }
   );
 
-  return result.json();
+  const data = throwError(result);
+  return data;
 };
 
 // add anime/manga to watchlist
-export const createWatchlistItemAPI = async (
+export const createWatchlistAPI = async (
   category,
   category_id,
   img_url,
@@ -32,7 +34,7 @@ export const createWatchlistItemAPI = async (
   token
 ) => {
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/add-watchlist-item`,
+    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/create-watchlist`,
     {
       method: "POST",
       headers: {
@@ -49,14 +51,15 @@ export const createWatchlistItemAPI = async (
       }),
     }
   );
-  return result.json();
+  const data = throwError(result);
+  return data;
 };
 
 
 //get user watchlist
 export const getWatchlistAPI = async (token) => {
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/get-watchlist-list`,
+    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/get-watchlist`,
     {
       method: "GET",
       headers: {
@@ -65,14 +68,14 @@ export const getWatchlistAPI = async (token) => {
       },
     }
   );
-
-  return result.json();
+  const data = throwError(result);
+  return data;
 };
 
 // delete anime/manga from watchlist
-export const deleteWatchlistItemAPI = async (category, category_id, token) => {
+export const deleteWatchlistAPI = async (category, category_id, token) => {
   let result = await fetch(
-    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/delete-watchlist-item`,
+    `${process.env.REACT_APP_SERVER_URL}/my_watchlist/delete-watchlist`,
     {
       method: "DELETE",
       headers: {
@@ -86,5 +89,6 @@ export const deleteWatchlistItemAPI = async (category, category_id, token) => {
     }
   );
 
-  return result.json();
+  const data = throwError(result);
+  return data;
 };

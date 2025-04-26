@@ -34,7 +34,7 @@ const MyFavoriteItemWeb = ({ item, idx }) => {
               selectedCategoryId : item.category_id
             })
           );
-          dispatch(OverlayActions.showRemoveFavoriteReducer());
+          dispatch(OverlayActions.showDeleteFavoriteReducer());
         }}
       >
         <Icon

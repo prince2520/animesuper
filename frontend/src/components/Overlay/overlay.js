@@ -5,7 +5,6 @@ import Modal from "../Modal/Modal";
 import ProfileCard from "../ProfileCard/ProfileCard";
 
 import { OverlayActions } from "../../redux/slice/overlaySlice";
-import { MyWatchlistActions } from "../../store/myWatchlist";
 
 import "./overlay.css";
 
@@ -30,10 +29,7 @@ const Overlay = () => {
         animate="animate"
         transition={{ duration: 0.15 }}
         className="overlay-box"
-        onClick={() => {
-          dispatch(OverlayActions.closeOverlayReducer());
-          dispatch(MyWatchlistActions.selectedWatchlistItemHandler({}));
-        }}
+        onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
       />
       {showProfile && <ProfileCard />}
       {!showProfile && <Modal />}

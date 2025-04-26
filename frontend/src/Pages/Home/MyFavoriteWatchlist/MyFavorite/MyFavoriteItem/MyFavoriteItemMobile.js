@@ -4,8 +4,9 @@ import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
 import { OverlayActions } from "../../../../../redux/slice/overlaySlice";
-import { MyFavoriteActions } from "../../../../../store/myFavorite";
+import { MyFavoriteActions } from "../../../../../redux/slice/myFavoriteSlice";
 import { favoriteItemData } from "../../../../../constants/constants";
+import { uid } from "uid";
 
 
 const MyFavoriteItemMobile = ({ item }) => {
@@ -29,7 +30,7 @@ const MyFavoriteItemMobile = ({ item }) => {
         </div>
 
         {favoriteItemData(item).map((data) => (
-          <div className="item-type-mobile">
+          <div key={uid(8)} className="item-type-mobile">
             {data.heading && <p>{data.heading}</p>}
             <p>{data.value}</p>
           </div>
@@ -41,19 +42,19 @@ const MyFavoriteItemMobile = ({ item }) => {
             className="item-delete-mobile cursor-btn"
             onClick={() => {
               dispatch(
-                MyFavoriteActions.removeFavoriteItem({
-                  category: item.type,
-                  categoryId: item.category_id,
+                MyFavoriteActions.selectedFavoriteReducer({
+                  selectedCategory: item.category,
+                  selectedCategoryId: item.category_id
                 })
               );
-              dispatch(OverlayActions.showRemoveFavoriteReducer());
+              dispatch(OverlayActions.showDeleteFavoriteReducer());
             }}
           >
             <Icon
               style={{ fontSize: "1.25rem" }}
               icon="material-symbols:delete-outline-rounded"
             />
-            <p style={{color: 'var(--primary)'}}>Delete</p>
+            <p style={{ color: 'var(--primary)' }}>Delete</p>
           </div>
         </div>
       </div>

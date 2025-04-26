@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { closeAlertBoxReducer, saveAlertBoxDataReducer } from '../reducer/alertBoxReducer';
+import { closeAlertBoxReducer, getAlertBoxReducer } from '../reducer/alertBoxReducer';
 
 
 const initialAlertBoxState = {
@@ -10,12 +10,11 @@ const initialAlertBoxState = {
     isVisible: false
 };
 
-
 const AlertBoxSlice = createSlice({
     name: 'alertBox',
     initialState: initialAlertBoxState,
     reducers: {
-        saveAlertBoxDataReducer,
+        getAlertBoxReducer,
         closeAlertBoxReducer
     }
 });

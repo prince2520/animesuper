@@ -1,22 +1,17 @@
-import {useDispatch} from 'react-redux'
 import {Link, Outlet} from "react-router-dom";
 
-import {helperActions} from "../../store/helper";
 import {loginSignupPageRight, Logo} from "../../photo";
 
 import './LoginSignupPage.css';
 
 const LoginSignupPage = () => {
 
-    const dispatch = useDispatch();
-
     return (
         <div className="form-page">
             <div className="form-page-left">
                 <span className="flex-center form-top">
                     <img alt={'anime-super'} src={Logo}/>
-                        <Link to='/home' className="color-text-light highlight cursor-btn"
-                              onClick={() => dispatch(helperActions.isSkipHandler(true))}>Skip >> </Link>
+                        <Link to='/home' className="color-text-light highlight cursor-btn">Skip >> </Link>
                 </span>
                 <Outlet/>
             </div>

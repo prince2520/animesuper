@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { AlertBoxActions } from "../../store/alertBox";
+import { AlertBoxActions } from "../../redux/slice/alertBoxSlice";
 import { categoryType } from "../../constants/constants";
 import { createWatchlistThunk } from "../../redux/thunk/myWatchlistThunk";
 
@@ -29,8 +29,8 @@ const Card = (props) => {
         ? props.detail.num_episodes
         : props.detail.num_chapters,
       media_type: props.detail.media_type,
-    })).unrap().then((res) => {
-      dispatch(AlertBoxActions.saveAlertBoxData(res))
+    })).unwrap().then((res) => {
+      dispatch(AlertBoxActions.getAlertBoxReducer(res))
     }).catch((err) => console.log(err));
   };
 

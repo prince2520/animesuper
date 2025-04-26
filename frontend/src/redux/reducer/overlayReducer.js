@@ -1,11 +1,7 @@
+import { initialOverlayState } from "../slice/overlaySlice";
+
 export const closeOverlayReducer = (state) => {
-    state.showOverlay = false;
-    state.showProfile = false;
-    state.showLogout = false;
-    state.showRemoveWatchlist = false;
-    state.showRemoveFavorite = false;
-    state.showEditWatchlist = false;
-    state.showThankYouBox = false;
+    return { ...initialOverlayState };
 };
 
 export const showProfileReducer = (state) => {
@@ -18,19 +14,19 @@ export const showLogoutReducer= (state) => {
     state.showLogout = true;
 };
 
-export const showRemoveFavoriteReducer = (state, action) => {
+export const showDeleteFavoriteReducer = (state, action) => {
     state.showOverlay = true;
-    state.showRemoveFavorite = true;
+    state.showDeleteFavorite = true;
 };
 
-export const showRemoveWatchlistReducer= (state) => {
+export const showDeleteWatchlistReducer= (state) => {
     state.showOverlay = true;
-    state.showRemoveWatchlist = true;
+    state.showDeleteWatchlist = true;
 };
 
-export const showEditWatchlistReducer = (state) => {
+export const showUpdateWatchlistReducer = (state) => {
     state.showOverlay = true;
-    state.showEditWatchlist = true;
+    state.showUpdateWatchlist = true;
 };
 
 export const showThankYouBoxReducer = (state) =>{

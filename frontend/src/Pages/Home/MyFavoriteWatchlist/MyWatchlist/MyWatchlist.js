@@ -1,10 +1,11 @@
+import { uid } from "uid";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
-import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-import { uid } from "uid";
 import { MyWatchlistImage } from "../../../../photo";
-import { helperActions } from "../../../../store/helper";
+import { helperActions } from "../../../../redux/slice/helperSlice";
 import { animeStatus, mangaStatus } from "../../../../constants/constants";
 import { getWatchlistThunk } from "../../../../redux/thunk/myWatchlistThunk";
 import { watchlistHeadings, watchlistColors } from "../../../../constants/constants";
@@ -16,7 +17,6 @@ import MyWatchlistItemSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchl
 
 import "./MyWatchlist.css";
 import "../MyFavoriteWatchlist.css";
-
 
 // Sub Components
 const Heading = () => {
@@ -56,22 +56,22 @@ const MyWatchlist = () => {
 
   const dispatch = useDispatch();
   const [status, setStatus] = useState("All Anime");
-  const [category, setCategory] = useState("anime");
+  const { category } = useParams();
+  const navigate = useNavigate();
 
   const [showWatchlistSkeleton, setShowWatchlistSkeleton] = useState(false);
 
   const watchlist = useSelector(state => state.myWatchlist.watchlist);
 
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    dispatch(helperActions.searchBarHandler(false));
-    dispatch(helperActions.blurNavbarHandler(!inView));
+    dispatch(helperActions.searchBarReducer(false));
+    dispatch(helperActions.blurNavbarReducer(!inView));
 
     return () => {
-      dispatch(helperActions.searchBarHandler(true));
-      dispatch(helperActions.blurNavbarHandler(true));
+      dispatch(helperActions.searchBarReducer(true));
+      dispatch(helperActions.blurNavbarReducer(true));
     };
   }, [inView, dispatch]);
 
@@ -80,10 +80,10 @@ const MyWatchlist = () => {
     dispatch(getWatchlistThunk()).unwrap().finally(() => setShowWatchlistSkeleton(false));
   }, [dispatch]);
 
-  useEffect(()=>{
-    let temp = (category === "anime" ? watchlist.anime : watchlist.manga).filter(item=> status === item.status | status === "All Manga" || status === "All Anime");
+  useEffect(() => {
+    let temp = watchlist[category.toLowerCase()].filter(item => status === item.status | status === "All Manga" || status === "All Anime");
     setData(temp);
-  },[category, status, watchlist.anime.length, watchlist.manga.length ]);
+  }, [status, category, JSON.stringify(watchlist)]);
 
   return (
     <div className="my-watchlist-page">
@@ -93,7 +93,15 @@ const MyWatchlist = () => {
       </div>
       <div className="anime-status">
         <ChangeCategory
-          eventHandler={(name) => setCategory(name)}
+          eventHandler={(name) => {
+            if (name.toLowerCase() === "anime")
+              setStatus("All Anime")
+            else
+              setStatus("All Manga")
+
+            navigate(`/home/my-watchlist/${name.toLowerCase()}`)
+          }
+          }
         />
         <div className="anime-status-list">
           {(category === "anime"

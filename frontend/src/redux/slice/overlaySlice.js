@@ -1,13 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { closeOverlayReducer, showEditWatchlistReducer, showLogoutReducer, showProfileReducer, showRemoveFavoriteReducer, showRemoveWatchlistReducer, showThankYouBoxReducer } from '../reducer/overlayReducer';
+import { closeOverlayReducer, showDeleteFavoriteReducer, showDeleteWatchlistReducer, showLogoutReducer, showProfileReducer, showThankYouBoxReducer, showUpdateWatchlistReducer } from '../reducer/overlayReducer';
 
-const initialOverlayState = {
+export const initialOverlayState = {
     showOverlay: false,
-    showProfile: false,
+    
     showLogout: false,
-    showRemoveFavorite: false,
-    showRemoveWatchlist: false,
-    showEditWatchlist: false,
+    showProfile: false,
+    showDeleteFavorite: false,
+    showDeleteWatchlist: false,
+    showUpdateWatchlist: false,
     showThankYouBox: false
 };
 
@@ -18,9 +19,9 @@ const OverlaySlice = createSlice({
         closeOverlayReducer,
         showProfileReducer,
         showLogoutReducer,
-        showRemoveFavoriteReducer,
-        showRemoveWatchlistReducer,
-        showEditWatchlistReducer,
+        showDeleteFavoriteReducer,
+        showDeleteWatchlistReducer,
+        showUpdateWatchlistReducer,
         showThankYouBoxReducer
     }
 });

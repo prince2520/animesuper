@@ -1,9 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getAuthStatisticsAPI, getUserAPI, loginAPI } from "../api/authAPI";
 import { getAnimeMangaDetailAPI, getCategoryListAPI } from "../api/animeMangaAPI";
 
 
-// User - Get User
 export const getCategoryListThunk = createAsyncThunk(
     'animeManga/getCategoryList',
     async ({ 
@@ -26,7 +24,6 @@ export const getCategoryListThunk = createAsyncThunk(
 );
 
 
-// Get animeManga 
 export const getAnimeMangaDetailThunk = createAsyncThunk(
     'animeManga/getAnimeMangaDetail',
     async ({category, id }, { rejectWithValue }) => {

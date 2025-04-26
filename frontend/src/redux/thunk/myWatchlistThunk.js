@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { createWatchlistItemAPI, deleteWatchlistItemAPI, getWatchlistAPI, updateWatchlistAPI } from "../api/watchlistAPI";
+import { createWatchlistAPI, createWatchlistItemAPI, deleteWatchlistAPI, deleteWatchlistItemAPI, getWatchlistAPI, updateWatchlistAPI } from "../api/watchlistAPI";
 
 
 // User - Get User
@@ -16,7 +16,7 @@ export const createWatchlistThunk = createAsyncThunk(
         try {
             const { auth } = getState();
 
-            let response = await createWatchlistItemAPI(
+            let response = await createWatchlistAPI(
                 category,
                 category_id,
                 img_url,
@@ -52,7 +52,7 @@ export const deleteWatchlistThunk = createAsyncThunk(
     async ({ category, category_id }, { getState, rejectWithValue }) => {
         try {
             const { auth } = getState();
-            let response = await deleteWatchlistItemAPI(category, category_id, auth.token);
+            let response = await deleteWatchlistAPI(category, category_id, auth.token);
             return { ...response, category, category_id };
         } catch (error) {
             return rejectWithValue(error.message || "Something goes wrong!");
@@ -66,7 +66,6 @@ export const updateWatchlistThunk = createAsyncThunk(
         try {
             const { auth } = getState();
             let response = await updateWatchlistAPI(category, category_id, status, progress_read_watched, auth.token);
-            console.log("thunk update ", response)
             return { ...response, status, progress_read_watched, category_id, category };
         } catch (error) {
             return rejectWithValue(error.message || "Something goes wrong!");

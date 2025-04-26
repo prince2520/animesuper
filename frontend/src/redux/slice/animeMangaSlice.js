@@ -4,10 +4,13 @@ import { getAnimeMangaDetailThunk, getCategoryListThunk } from '../thunk/animeMa
 
 
 const initialAnimeMangaState = {
-    animeRankData: {},
-    mangaRankData: {},
+    anime: {},
+    manga: {},
 
-    animeMangaCarouselData: {}
+    carousel: {
+        anime: [],
+        manga: []
+    }
 };
 
 const AnimeMangaSlice = createSlice({
@@ -20,14 +23,9 @@ const AnimeMangaSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getAnimeMangaDetailThunk.fulfilled, saveCarouselDataReducer)
-            .addCase(getAnimeMangaDetailThunk.rejected, (state, action) => {
-                console.log(action.payload);
-            })
+  
         builder
             .addCase(getCategoryListThunk.fulfilled, saveAnimeMangaReducer)
-            .addCase(getCategoryListThunk.rejected, (state, action) => {
-                console.log(action.payload);
-            });
     }
 });
 

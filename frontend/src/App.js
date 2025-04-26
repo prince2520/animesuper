@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
-import { AlertBoxActions } from "./store/alertBox";
+import { AlertBoxActions } from "./redux/slice/alertBoxSlice";
 
 import Home from "./Pages/Home/Home";
 import DMCA from "./Pages/Home/PolicyContactUs/DMCA";
@@ -29,20 +29,20 @@ let time = null;
 function App() {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
-  const visible = useSelector((state) => state.alertBox.isVisible);
-  const alertBoxData = useSelector((state) => state.alertBox.data);
+  const { data, isVisible } = useSelector((state) => state.alertBox);
+
 
   const navigate = useNavigate();
   const { autoLogout, logout } = useAuth();
 
   useEffect(() => {
     clearTimeout(time);
-    if (visible) {
+    if (isVisible) {
       time = setTimeout(() => {
-        dispatch(AlertBoxActions.closeAlertBox());
+        dispatch(AlertBoxActions.getAlertBoxReducer());
       }, [2000]);
     }
-  }, [dispatch, visible, alertBoxData]);
+  }, [dispatch, isVisible, data]);
 
 
   useEffect(() => {
@@ -65,7 +65,7 @@ function App() {
 
   return (
     <div className="App dark">
-      {visible && <AlertBox />}
+      {isVisible && <AlertBox />}
       <Routes>
         <Route path="/" element={<LoginSignupPage />}>
           <Route path="login" element={<LoginForm />} />
@@ -79,8 +79,8 @@ function App() {
           />
           {auth.isAuth && (
             <React.Fragment>
-              <Route path="my-watchlist" element={<MyWatchlist />} />
-              <Route path="my-favorite" element={<MyFavorite />} />
+              <Route path="my-watchlist/:category" element={<MyWatchlist />} />
+              <Route path="my-favorite/:category" element={<MyFavorite />} />
             </React.Fragment>
           )}
           <Route path="terms-and-condition" element={<TermAndCondition />} />

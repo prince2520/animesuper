@@ -2,8 +2,7 @@ import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { OverlayActions } from "../../../redux/slice/overlaySlice";
-import { AlertBoxActions } from "../../../store/alertBox";
-import { MyFavoriteActions } from "../../../store/myFavorite";
+import { AlertBoxActions } from "../../../redux/slice/alertBoxSlice";
 
 import CustomButton from "../../CustomButton/CustomButton";
 import { deleteFavoriteThunk } from "../../../redux/thunk/myFavoriteThunk";
@@ -20,7 +19,7 @@ const RemoveFavorite = () => {
     }))
       .unwrap()
       .then(res => {
-        dispatch(AlertBoxActions.saveAlertBoxData(res));
+        dispatch(AlertBoxActions.getAlertBoxReducer(res));
         dispatch(OverlayActions.closeOverlayReducer());
       }).catch(err=>console.log(err));
   }

@@ -6,9 +6,9 @@ import { useInView } from "react-intersection-observer";
 
 import Skeleton from "react-loading-skeleton";
 
-import { helperActions } from "../../../../store/helper";
+import { helperActions } from "../../../../redux/slice/helperSlice";
 import { getAnimeDetail } from "../../../../api/animeManga";
-import { AlertBoxActions } from "../../../../store/alertBox";
+import { AlertBoxActions } from "../../../../redux/slice/alertBoxSlice";
 import { categoryType } from "../../../../constants/constants";
 
 import AnimeMangaTop from "./AnimeMangaTop/AnimeMangaTop";
@@ -70,14 +70,14 @@ const AnimeMangaDetail = () => {
   }, [category, id, dispatch]);
 
   useEffect(() => {
-    dispatch(helperActions.blurNavbarHandler(!inView));
+    dispatch(helperActions.blurNavbarReducer(!inView));
     if (!inView) {
-      dispatch(helperActions.searchBarHandler(true));
+      dispatch(helperActions.searchBarReducer(true));
     } else {
-      dispatch(helperActions.searchBarHandler(false));
+      dispatch(helperActions.searchBarReducer(false));
     }
     return () => {
-      dispatch(helperActions.blurNavbarHandler(true));
+      dispatch(helperActions.blurNavbarReducer(true));
     };
   }, [inView, dispatch]);
 
@@ -92,8 +92,8 @@ const AnimeMangaDetail = () => {
         ? animeDetail.num_episodes
         : animeDetail.num_chapters,
       media_type: animeDetail.media_type,
-    })).unrap().then((res) => {
-      dispatch(AlertBoxActions.saveAlertBoxData(res))
+    })).unwrap().then((res) => {
+      dispatch(AlertBoxActions.getAlertBoxReducer(res))
     }).catch((err) => console.log(err));
   };
 
@@ -110,7 +110,7 @@ const AnimeMangaDetail = () => {
         : animeDetail.num_episodes,
       media_type: animeDetail.media_type,
     })).unwrap().then((res) => {
-      dispatch(AlertBoxActions.saveAlertBoxData(res));
+      dispatch(AlertBoxActions.getAlertBoxReducer(res));
     }).catch(err => console.log(err));
   };
 

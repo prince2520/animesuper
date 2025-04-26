@@ -8,81 +8,79 @@ import Skeleton from "react-loading-skeleton";
 import CustomButton from "../../../../../components/CustomButton/CustomButton";
 import { getAnimeMangaDetailThunk } from "../../../../../redux/thunk/animeMangaThunk";
 
-const AnimeMangaCarouselSlide = (props) => {
+const AnimeMangaCarouselSlide = ({ data }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const animeMangaCarouselData = useSelector(
-    (state) => state.animeManga.animeMangaCarouselData[props.category_id]
-  );
+
+  const carouselData = useSelector((state) => state.animeManga.carousel[data.category_id]);
 
   useEffect(() => {
     dispatch(getAnimeMangaDetailThunk({
-      category: props.category,
-      id: props.category_id
+      category: data.category,
+      id: data.category_id
     }));
-
-  }, [props.category, props.category_id, dispatch]);
+  }, [data.category, data.category_id, dispatch]);
 
   return (
     <div>
       <div className="img-overlay">
         <div className="content">
           <h2 className="title">
-            {animeMangaCarouselData?.title.slice(0, 250) || (
+            {carouselData?.title.slice(0, 250) || (
               <Skeleton width={"80%"} count={1} />
             )}
           </h2>
           <p className="synopsis color-text-light">
-            {animeMangaCarouselData?.synopsis.slice(0, 250) || (
+            {carouselData?.synopsis.slice(0, 250) || (
               <Skeleton count={3} />
             )}
-            {animeMangaCarouselData?.synopsis && "..."}
+            {carouselData?.synopsis && "..."}
           </p>
 
           <div className="flex-center more-info">
-            {animeMangaCarouselData?.media_type && (
+            {carouselData?.media_type && (
               <div className="type">
                 <Icon
                   className="color-text-light"
                   icon="material-symbols:play-circle-outline-rounded"
                 />
-                <h6>{animeMangaCarouselData?.media_type.toUpperCase()}</h6>
+                <h6>{carouselData?.media_type.toUpperCase()}</h6>
               </div>
             )}
-            {!animeMangaCarouselData?.media_type && (
+            {!carouselData?.media_type && (
               <Skeleton width={60} height={22} />
             )}
 
-            {animeMangaCarouselData?.average_episode_duration && (
+            {carouselData?.average_episode_duration && (
               <div className="duration">
                 <Icon
                   className="color-text-light"
                   icon="mdi:clock-time-three-outline"
                 />
                 <h6>{`${Math.round(
-                  animeMangaCarouselData?.average_episode_duration / 60
+                  carouselData?.average_episode_duration / 60
                 )}m`}</h6>
               </div>
             )}
 
-            {animeMangaCarouselData?.start_date && (
+            {carouselData?.start_date && (
               <div className="release-date">
                 <Icon
                   className="color-text-light"
                   icon="simple-line-icons:calender"
                 />
-                <h6>{animeMangaCarouselData?.start_date}</h6>
+                <h6>{carouselData?.start_date}</h6>
               </div>
             )}
-            {!animeMangaCarouselData?.start_date && (
+            {!carouselData?.start_date && (
               <Skeleton width={60} height={22} />
             )}
           </div>
 
           <div
             className="detail"
-            onClick={() => navigate(`${props.category_id}`)}
+            onClick={() => navigate(`${data.category_id}`)}
           >
             <CustomButton width={"100%"} backgroundColor={"var(--primary)"}>
               <h5 className="color-text">Detail</h5>
@@ -90,7 +88,7 @@ const AnimeMangaCarouselSlide = (props) => {
           </div>
         </div>
       </div>
-      <img src={props.coverImg} alt="cyberpunk" />
+      <img src={data.coverImg} alt="cyberpunk" />
     </div>
   );
 };

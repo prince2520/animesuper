@@ -6,8 +6,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { categoryType } from "../../../../constants/constants";
-
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 
@@ -22,15 +20,12 @@ const AnimeMangaRanking = (props) => {
   const { category } = useParams();
 
   const slug = props.rank.slug;
-  const animeData = useSelector((state) => state.animeManga.animeRankData[slug]);
-  const mangaData = useSelector((state) => state.animeManga.mangaRankData[slug]);
+
+  const animeManga = useSelector(state=>state.animeManga[category]);
 
   useEffect(() => {
     dispatch(getCategoryListThunk({ category, rank_type: props.rank.slug, limit: 10, offset: 0 }));
   }, [category, props.rank.slug, dispatch]);
-
-
-  const getData = () => category === categoryType[0].toLowerCase() ? animeData : mangaData;
 
 
   return (
@@ -99,14 +94,14 @@ const AnimeMangaRanking = (props) => {
             },
           }}
         >
-          {(animeData || mangaData ) && Object.values(getData()).map((res) => (
+          {animeManga[slug] && Object.values(animeManga[slug]).map((res) => (
             <SwiperSlide key={uid(8)}>
               <div className="card-container">
                 <Card detail={res.node} />
               </div>
             </SwiperSlide>
           ))}
-          {(!animeData &&!mangaData) &&
+          {!animeManga[slug] &&
             Array(6)
               .fill(null)
               .map(() => (

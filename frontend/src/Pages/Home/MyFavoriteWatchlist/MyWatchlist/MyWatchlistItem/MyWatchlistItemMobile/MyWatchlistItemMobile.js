@@ -3,7 +3,7 @@ import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
 import { OverlayActions } from "../../../../../../redux/slice/overlaySlice";
-import { MyWatchlistActions } from "../../../../../../store/myWatchlist";
+import { MyWatchlistActions } from "../../../../../../redux/slice/myWatchlistSlice";
 
 import "./MyWatchlistItemMobile.css";
 
@@ -41,13 +41,12 @@ const MyWatchlistItemMobile = ({ item }) => {
             <div
               className="progress-bar-completed"
               style={{
-                width: `${
-                  item.num_episode_or_chapter
-                    ? (item.progress_read_watched /
-                        item.num_episode_or_chapter) *
-                      100
-                    : ""
-                }%`,
+                width: `${item.num_episode_or_chapter
+                  ? (item.progress_read_watched /
+                    item.num_episode_or_chapter) *
+                  100
+                  : ""
+                  }%`,
               }}
             />
           </div>
@@ -58,7 +57,7 @@ const MyWatchlistItemMobile = ({ item }) => {
             style={{ cursor: "pointer" }}
             className="item-edit-mobile"
             onClick={() => {
-              dispatch(OverlayActions.showEditWatchlistReducer());
+              dispatch(OverlayActions.showUpdateWatchlistReducer());
               dispatch(
                 MyWatchlistActions.selectedWatchlistItemHandler({
                   ...item,
@@ -72,20 +71,20 @@ const MyWatchlistItemMobile = ({ item }) => {
           <div
             className="item-delete-mobile cursor-btn"
             onClick={() => {
-              dispatch(OverlayActions.showRemoveWatchlistReducer());
               dispatch(
-                MyWatchlistActions.removeWatchlistItem({
-                  category: item.category,
-                  categoryId: item.category_id,
+                MyWatchlistActions.selectedWatchlistReducer({
+                  selectedCategory: item.category,
+                  selectedCategoryId: item.category_id
                 })
               );
+              dispatch(OverlayActions.showDeleteWatchlistReducer());
             }}
           >
             <Icon
               style={{ fontSize: "1.25rem" }}
               icon="material-symbols:delete-outline-rounded"
             />
-            <p style={{color:"var(--primary)"}}>Delete</p>
+            <p style={{ color: "var(--primary)" }}>Delete</p>
           </div>
         </div>
       </div>

@@ -2,9 +2,9 @@ export const saveAnimeMangaReducer = (state, action) => {
     const { category, slug, data } = action.payload;
 
     if (category === "anime")
-        state.animeRankData[slug] = data;
+        state.anime[slug] = data;
     else
-        state.mangaRankData[slug] = data;
+        state.manga[slug] = data;
 
 };
 
@@ -12,5 +12,5 @@ export const saveCarouselDataReducer = (state, action) => {
     const {
         id,
     } = action.payload;
-    state.animeMangaCarouselData[id] = action.payload;
+    state.carousel[id] = action.payload;
 }

@@ -1,19 +1,17 @@
 import React from "react";
-
+import { uid } from "uid";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 
-import { categoryType } from "../../../../constants/constants";
-import { animeCarousel, mangaCarousel } from "../../../../photo";
+import {carousel } from "../../../../photo";
 
 import AnimeCarouselSlide from "./AnimeMangaCarouselSlide/AnimeMangaCarouselSlide";
 
 import "swiper/swiper-bundle.css";
 import "./AnimeMangaCarousel.css";
-import { uid } from "uid";
 
-const AnimeMangaCarousel = (props) => {
+const AnimeMangaCarousel = () => {
   const { category } = useParams();
 
   SwiperCore.use([Autoplay, Pagination]);
@@ -25,15 +23,10 @@ const AnimeMangaCarousel = (props) => {
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           pagination={{ clickable: true, type: "bullets" }}
         >
-          {(category === categoryType[0].toLowerCase()
-            ? animeCarousel
-            : mangaCarousel
-          ).map((res) => (
+          {carousel[category].map((data) => (
             <SwiperSlide key={uid(8)}>
               <AnimeCarouselSlide
-                category={res.category}
-                category_id={res.category_id}
-                coverImg={res.coverImg}
+                data={data}
               />
             </SwiperSlide>
           ))}

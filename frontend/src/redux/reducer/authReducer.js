@@ -1,7 +1,12 @@
+import { initialAuthState } from "../slice/authSlice";
+
+export const resetAuth = () => {
+    return {...initialAuthState};
+}
+
 export const saveAuthReducer = (state, action) => {
     const { username, email, profile_photo, gender, location, favorite_genre, token } = action.payload;
 
-    console.log("action.payload", action.payload)
     state.username = username;
     state.email = email;
     state.profile_photo = profile_photo;

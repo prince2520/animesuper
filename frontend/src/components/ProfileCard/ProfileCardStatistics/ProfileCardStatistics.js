@@ -64,8 +64,8 @@ const ProfileCardStatistics = () => {
                 <h6
                   key={uid(8)}
                   style={{ padding: "0.1rem 0.5rem" }}
-                  className={`cursor-btn ${category === name ? "selected" : ""}`}
-                  onClick={() => setCategory(name)}
+                  className={`cursor-btn ${category === name.toLowerCase() ? "selected" : ""}`}
+                  onClick={() => setCategory(name.toLowerCase())}
                 >
                   {name}
                 </h6>

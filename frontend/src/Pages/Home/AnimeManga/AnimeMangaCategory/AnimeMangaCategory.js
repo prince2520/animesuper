@@ -3,7 +3,6 @@ import React, { useEffect, useState, useCallback } from "react";
 import { Icon } from "@iconify/react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { getCategoryList } from "../../../../api/animeManga";
 import { animeCategory, categoryType, mangaCategory } from "../../../../constants/constants";
 
 import Card from "../../../../components/Card/Card";
@@ -12,6 +11,7 @@ import PrevNextButton from "../../../../components/PrevNextBtn/PrevNextBtn";
 
 import "./AnimeMangaCategory.css";
 import { uid } from "uid";
+import { getCategoryListAPI } from "../../../../redux/api/animeMangaAPI";
 
 const AnimeMangaCategory = () => {
   const [animeManga, setAnimeManga] = useState([]);
@@ -24,7 +24,7 @@ const AnimeMangaCategory = () => {
     let total = (firstMount ? 0 : offset) + value
     if (offset + value >= 0) {
       setAnimeManga([]);
-      getCategoryList(category, id, 20, total).then((result) => {
+      getCategoryListAPI(category, id, 20, total).then((result) => {
         setAnimeManga(result.data);
         setOffset(total);
       });
@@ -32,7 +32,6 @@ const AnimeMangaCategory = () => {
   };
 
   useEffect(() => {
-    setAnimeManga([]);
     updateAnimeMangaCategory(0, true);
   }, [category, id]);
 

@@ -1,17 +1,17 @@
 import React from "react";
-
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getAlertIconAndColor } from "../../common";
-import { AlertBoxActions } from "../../store/alertBox";
+import { AlertBoxActions } from "../../redux/slice/alertBoxSlice";
 
 import "./AlertBox.css";
-import { uid } from "uid";
 
 const AlertBox = () => {
   const dispatch = useDispatch();
+  
   const data = useSelector((state) => state.alertBox.data);
   const getIconAndColor = getAlertIconAndColor(data.success);
 
@@ -65,7 +65,7 @@ const AlertBox = () => {
           </div>
           <div
             className="alert-box-close"
-            onClick={() => dispatch(AlertBoxActions.closeAlertBox())}
+            onClick={() => dispatch(AlertBoxActions.getAlertBoxReducer())}
           >
             <Icon
               className={"cursor-btn"}

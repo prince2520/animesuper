@@ -1,9 +1,8 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 
-import AuthContext from "../../../Context/auth";
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 import { useDispatch } from "react-redux";

@@ -4,11 +4,11 @@ import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-import { helperActions } from "../../../store/helper";
+import { helperActions } from "../../../redux/slice/helperSlice";
 import { animeCategory, categoryType, mangaCategory } from "../../../constants/constants";
 
-import AnimeMangaCarousel from "./AnimeMangaCarousel/AnimeMangaCarousel";
 import AnimeMangaRanking from "./AnimeMangaRanking/AnimeMangaRanking";
+import AnimeMangaCarousel from "./AnimeMangaCarousel/AnimeMangaCarousel";
 
 import "./AnimeManga.css";
 import { uid } from "uid";
@@ -18,14 +18,15 @@ const AnimeManga = () => {
   const { category } = useParams();
 
   useEffect(() => {
-    dispatch(helperActions.searchBarHandler(true));
+    dispatch(helperActions.searchBarReducer(true));
   }, [dispatch]);
+
 
   const [ref, inView] = useInView();
 
   return (
     <div className="anime-page" ref={ref}>
-      <AnimeMangaCarousel category={category} />
+      <AnimeMangaCarousel/>
       <div className=" flex-center anime-manga-ranking-container">
         {(category === categoryType[0].toLowerCase()
           ? animeCategory

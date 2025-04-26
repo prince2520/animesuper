@@ -18,11 +18,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const Home = () => {
   const showOverlay = useSelector((state) => state.overlay.showOverlay);
-  const blurNavbar = useSelector((state) => state.helper.blurNavbar);
-  const showMobileSideBar = useSelector(
-    (state) => state.helper.showMobileSideBar
-  );
-  const showSearchBar = useSelector((state) => state.helper.showSearchBar);
+  const {blurNavbar, showMobileSideBar, showSearchBar } = useSelector((state)=>state.helper);
 
   return (
     <div className="home-page">

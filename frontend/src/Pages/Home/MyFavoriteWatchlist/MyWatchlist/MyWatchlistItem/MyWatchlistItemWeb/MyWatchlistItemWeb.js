@@ -1,6 +1,6 @@
+import React from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
-import React, { useEffect } from "react";
 
 import { OverlayActions } from "../../../../../../redux/slice/overlaySlice";
 import { MyWatchlistActions } from "../../../../../../redux/slice/myWatchlistSlice";
@@ -35,10 +35,10 @@ const MyWatchlistItemWeb = ({ item, index }) => {
             className="progress-bar-completed"
             style={{
               width: `${item.num_episode_or_chapter
-                  ? (item.progress_read_watched /
-                    item.num_episode_or_chapter) *
-                  100
-                  : ""
+                ? (item.progress_read_watched /
+                  item.num_episode_or_chapter) *
+                100
+                : ""
                 }%`,
             }}
           />
@@ -54,7 +54,7 @@ const MyWatchlistItemWeb = ({ item, index }) => {
             selectedCategory: item.category,
             selectedCategoryId: item.category_id
           }));
-          dispatch(OverlayActions.showRemoveWatchlistReducer());
+          dispatch(OverlayActions.showDeleteWatchlistReducer());
         }}
       >
         <Icon
@@ -65,13 +65,13 @@ const MyWatchlistItemWeb = ({ item, index }) => {
       <h5
         className="item-edit cursor-btn"
         onClick={() => {
-          dispatch(OverlayActions.showEditWatchlistReducer());
           dispatch(
-            MyWatchlistActions.selectedWatchlistReducer({ 
-              selectedCategory : item.category,
-              selectedCategoryId : item.category_id
-             })
+            MyWatchlistActions.selectedWatchlistReducer({
+              selectedCategory: item.category,
+              selectedCategoryId: item.category_id
+            })
           );
+          dispatch(OverlayActions.showUpdateWatchlistReducer());
         }}
       >
         <Icon icon="ri:edit-line" style={{ fontSize: "1.75rem" }} />

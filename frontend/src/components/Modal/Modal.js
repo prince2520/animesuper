@@ -1,31 +1,27 @@
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 import Logout from "./Logout/Logout";
 import ThankYou from "./ThankYou/ThankYou";
 import UpAndDown from "../../animation/Wrapper/UpAndDown";
-import EditWatchlist from "./EditWatchlist/EditWatchlist";
-import RemoveFavorite from "./RemoveFavorite/RemoveFavorite";
-import RemoveWatchlist from "./RemoveWatchlist/RemoveWatchlist";
+import EditWatchlist from "./UpdateWatchlist/UpdateWatchlist";
+import RemoveFavorite from "./DeleteFavorite/DeleteFavorite";
+import RemoveWatchlist from "./DeleteWatchlist/DeleteWatchlist";
 
 import './Modal.css'
 
 const Modal = () => {
-    const showLogout = useSelector(state => state.overlay.showLogout);
-    const showThankYouBox = useSelector(state => state.overlay.showThankYouBox);
-    const showEditWatchlist = useSelector(state => state.overlay.showEditWatchlist);
-    const showRemoveFavorite = useSelector(state => state.overlay.showRemoveFavorite);
-    const showRemoveWatchlist = useSelector(state => state.overlay.showRemoveWatchlist);
+    const { showLogout, showDeleteFavorite, showDeleteWatchlist, showUpdateWatchlist, showThankYouBox } = useSelector(state => state.overlay);
 
     return (
         <UpAndDown
-            className={`modal ${showThankYouBox ? 'modal-thank-you' : ''} ${showRemoveFavorite || showRemoveWatchlist || showLogout ? 'modal-remove' : ''} ${showEditWatchlist ? 'modal-watchlist-edit' : ''} `}>
-            <div className="modal-box-1"/>
+            className={`modal ${showThankYouBox ? 'modal-thank-you' : ''} ${showDeleteFavorite || showDeleteWatchlist || showLogout ? 'modal-remove' : ''} ${showUpdateWatchlist ? 'modal-watchlist-edit' : ''} `}>
+            <div className="modal-box-1" />
             <div className="flex-center modal-box-2">
-                {showRemoveWatchlist && <RemoveWatchlist/>}
-                {showRemoveFavorite && <RemoveFavorite/>}
-                {showEditWatchlist && <EditWatchlist/>}
-                {showLogout && <Logout/>}
-                {showThankYouBox && <ThankYou/>}
+                {showDeleteWatchlist && <RemoveWatchlist />}
+                {showDeleteFavorite && <RemoveFavorite />}
+                {showUpdateWatchlist && <EditWatchlist />}
+                {showLogout && <Logout />}
+                {showThankYouBox && <ThankYou />}
             </div>
         </UpAndDown>
     )

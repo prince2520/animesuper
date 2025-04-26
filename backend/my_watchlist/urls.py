@@ -2,8 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('add-watchlist-item', views.AddWatchlistItem),
-    path('get-watchlist-list', views.GetMyWatchlist),
-    path('delete-watchlist-item', views.DeleteWatchlistItem),
-    path('edit-watchlist-item', views.EditMyWatchlist)
+    path('create-watchlist', views.CreateWatchlist),
+    path('get-watchlist', views.GetWatchlist),
+    path('delete-watchlist', views.DeleteWatchlist),
+    path('update-watchlist', views.UpdateWatchlist)
 ]

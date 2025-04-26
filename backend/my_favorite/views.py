@@ -15,13 +15,11 @@ from my_favorite.models import FavoriteItem, MyFavorite
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def AddFavoriteItem(request):
+def CreateFavorite(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-    
-    user = request.user
-    
-    email = user.email
+        
+    email = request.user.email
     category_id = body_data['category_id']
     category = body_data['category']
     img_url = body_data['img_url']
@@ -31,19 +29,19 @@ def AddFavoriteItem(request):
     num_episode_chapter = body_data['num_episode_chapter']
     media_type = body_data['media_type']
 
-    item = FavoriteItem.objects.filter(category_id=category_id)
+    data = FavoriteItem.objects.filter(category_id=category_id)
 
-    if item.exists() is False:
-        item = FavoriteItem.objects \
+    if data.exists() is False:
+        data = FavoriteItem.objects \
             .create(category_id=category_id, category=category, img_url=img_url, title=title,
                     score=score, type=media_type, year=year, num_episode_chapter=num_episode_chapter)
-        item.save()
+        data.save()
 
     user = User.objects.get(email=email)
 
     if MyFavorite.objects.filter(user=user).exists() is False:
         favorite = MyFavorite.objects.create(user=user)
-        favorite.favorite_list.add(item)
+        favorite.favorite_list.add(data)
         favorite.save()
     else:
         if MyFavorite.objects.filter(Q(user=user) & Q(favorite_list__category_id=category_id)).exists() is False:
@@ -52,24 +50,20 @@ def AddFavoriteItem(request):
             favorite.save()
         else:
             return Response({
-                'success': False, 'description': 'Item already added to your favorite list!'},
-                status=status.HTTP_400_BAD_REQUEST)
+                'message': 'Already added to your favorite list!'},
+                status=status.HTTP_409_CONFLICT)
 
-    return Response({'success': True, 'data': item, 'description': 'Item added to your favorite list successfully'},
+    return Response({'message': 'Added to your favorite list successfully', 'data': data},
                     status=status.HTTP_200_OK)
 
 
 @api_view(['DELETE'])
 @permission_classes([IsAuthenticated])
-def DeleteFavoriteItem(request):
+def DeleteFavorite(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-    
-    user = request.user
-    
-    print(body_data)
-    
-    email = user.email
+            
+    email = request.user.email
     category_id = body_data['category_id']
     category = body_data['category']
 
@@ -83,16 +77,14 @@ def DeleteFavoriteItem(request):
     myFavoriteList.favorite_list.remove(item)
     myFavoriteList.save()
 
-    return Response({'success': True, 'description': 'Item deleted from your favorite list successfully!'},
+    return Response({'message': 'Deleted from favorite list successfully!'},
                     status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def MyFavoriteList(request):
-    
-    user = request.user
-    email = user.email
+def GetFavoritelist(request):
+    email = request.user.email
     
     user = User.objects.get(email=email)
     myFavoriteList = MyFavorite.objects.get(user=user)
@@ -114,4 +106,4 @@ def MyFavoriteList(request):
             'num_episode_chapter': item.num_episode_chapter
         })      
 
-    return Response({'success': True, 'favorite': data}, status=status.HTTP_200_OK)
+    return Response({'message': "Favorite list successfully!", 'data': data}, status=status.HTTP_200_OK)

@@ -1,6 +1,4 @@
 import {
-    animeStatus,
-    mangaStatus,
     getStatusColor,
 } from "../../constants/constants";
 
@@ -38,8 +36,6 @@ export const updateWatchlistReducer = (state, action) => {
             item.color = getStatusColor(status);
             item.progress_read_watched = progress_read_watched;
             item.status = status;
-
-            console.log(JSON.parse(JSON.stringify(item)));
 
         }
         return item;

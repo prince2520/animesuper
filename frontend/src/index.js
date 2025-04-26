@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import {Provider} from "react-redux";
-import {SkeletonTheme} from "react-loading-skeleton";
-import {BrowserRouter as Router} from "react-router-dom";
+import { Provider } from "react-redux";
+import { SkeletonTheme } from "react-loading-skeleton";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import {AuthContextProvider} from "./Context/auth";
 
 import App from './App';
 import store from "./redux/store";
@@ -21,9 +20,7 @@ root.render(
         highlightColor={`var(--skeleton-highlight)`}>
         <Router>
             <Provider store={store}>
-                <AuthContextProvider>
-                    <App/>
-                </AuthContextProvider>
+                <App />
             </Provider>
         </Router>
     </SkeletonTheme>

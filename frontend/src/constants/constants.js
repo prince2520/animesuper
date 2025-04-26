@@ -113,12 +113,12 @@ export const sideBarData = (isAuth) => {
         {
           name: "Watchlist",
           icon: "ph:book-bookmark",
-          to: "my-watchlist",
+          to: "my-watchlist/anime",
         },
         {
           name: "Favorite",
           icon: "mdi:cards-heart",
-          to: "my-favorite",
+          to: "my-favorite/anime",
         },
       ],
       isAuth: isAuth,

@@ -1,17 +1,15 @@
-import { useContext } from "react";
-
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
-import { OverlayActions} from "../../../redux/slice/overlaySlice";
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
 
-import AuthContext from "../../../Context/auth";
 import CustomButton from "../../CustomButton/CustomButton";
+import { useAuth } from "../../../hooks/useAuth";
 
 
 const Logout = () => {
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
+  const { autoLogout } = useAuth();
 
   return (
     <div className="logout-container">
@@ -42,7 +40,7 @@ const Logout = () => {
           width={"45%"}
           onClick={() => {
             dispatch(OverlayActions.closeOverlayReducer());
-            authCtx.autoLogout();
+            autoLogout();
           }}
           backgroundColor={"var(--error)"}
         >

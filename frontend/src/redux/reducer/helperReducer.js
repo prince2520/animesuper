@@ -1,7 +1,3 @@
-export const isSkipReducer = (state, action) => {
-    state.skip = action.payload;
-};
-
 export const searchBarReducer = (state, action) => {
     state.showSearchBar = action.payload;
 };

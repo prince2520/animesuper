@@ -1,14 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { MyFavoriteImage } from "../../../../photo";
-import { helperActions } from "../../../../store/helper";
-import { getFavoriteList } from "../../../../api/favorite";
-import { MyFavoriteActions } from "../../../../store/myFavorite";
+import { helperActions } from "../../../../redux/slice/helperSlice";
+
 
 import NoData from "../NoData/NoData";
-import AuthContext from "../../../../Context/auth";
 import MyFavoriteItem from "./MyFavoriteItem/MyFavoriteItem";
 import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
 import FavoriteWatchlistSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
@@ -19,6 +17,7 @@ import './MyFavorite.css';
 import '../MyFavoriteWatchlist.css';
 import { uid } from "uid";
 import { getFavoriteListThunk } from "../../../../redux/thunk/myFavoriteThunk";
+import { useNavigate, useParams } from "react-router-dom";
 
 
 // Sub Component
@@ -35,7 +34,8 @@ const MyFavorite = () => {
     const dispatch = useDispatch();
     const favorite = useSelector(state => state.myFavorite.favorite);
     const [showFavoriteSkeleton, setShowFavoriteSkeleton] = useState(false);
-    const [category, setCategory ] = useState("anime");
+    const { category } = useParams();
+    const navigate = useNavigate();
 
 
     const { ref, inView } = useInView({
@@ -45,18 +45,18 @@ const MyFavorite = () => {
 
 
     useEffect(() => {
-        dispatch(helperActions.searchBarHandler(false));
-        dispatch(helperActions.blurNavbarHandler(!inView));
+        dispatch(helperActions.searchBarReducer(false));
+        dispatch(helperActions.blurNavbarReducer(!inView));
 
         return () => {
-            dispatch(helperActions.searchBarHandler(true));
-            dispatch(helperActions.blurNavbarHandler(true));
+            dispatch(helperActions.searchBarReducer(true));
+            dispatch(helperActions.blurNavbarReducer(true));
         }
     }, [inView, dispatch]);
 
     useEffect(() => {
         setShowFavoriteSkeleton(true);
-        dispatch(getFavoriteListThunk()).finally(()=>setShowFavoriteSkeleton(false));
+        dispatch(getFavoriteListThunk()).finally(() => setShowFavoriteSkeleton(false));
     }, [])
 
 
@@ -67,16 +67,16 @@ const MyFavorite = () => {
                 <img alt='my_favorite' src={MyFavoriteImage} />
             </div>
             <div className='anime-status'>
-                <ChangeCategory eventHandler={(name) => setCategory(name)} />
+                <ChangeCategory eventHandler={(name) => navigate(`/home/my-favorite/${name.toLowerCase()}`)} />
             </div>
             <div className="favorite-table">
                 <Heading />
                 <div className="favorite-table-list">
-                    {(!showFavoriteSkeleton && !(category === "anime" ? favorite.anime : favorite.manga).length ) && <NoData />}
-                    {(category === "anime" ? favorite.anime : favorite.manga).map((item, idx) =>
+                    {(!showFavoriteSkeleton && !favorite[category].length) && <NoData />}
+                    {(favorite[category]).map((item, idx) =>
                         <MyFavoriteItem key={uid(8)} item={item} idx={idx} />
                     )}
-                    {(showFavoriteSkeleton && !(category === "anime" ? favorite.anime : favorite.manga).length) && Array(5).fill(null).map(() => <FavoriteWatchlistSkeleton key={uid(8)} />)}
+                    {(showFavoriteSkeleton && !favorite[category].length) && Array(5).fill(null).map(() => <FavoriteWatchlistSkeleton key={uid(8)} />)}
                 </div>
             </div>
         </div>

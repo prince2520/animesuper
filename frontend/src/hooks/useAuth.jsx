@@ -11,29 +11,25 @@ export function useAuth() {
 
     const authTimer = useCallback((data) => {
         // add new token in local storage and set expiry date
-        if (data.success) {
-            localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data.token);
 
-            const remainingMilliseconds = 24 * 60 * 60 * 1000;
+        const remainingMilliseconds = 24 * 60 * 60 * 1000;
 
-            const expiryDate = new Date(
-                new Date().getTime() + remainingMilliseconds
-            );
+        const expiryDate = new Date(
+            new Date().getTime() + remainingMilliseconds
+        );
 
-            localStorage.setItem("expiryDate", expiryDate.toISOString());
-            
-            autoLogout(remainingMilliseconds);
-            dispatch(AlertBoxActions.closeAlertBoxReducer());
-            navigate("/home");
-        } else {
-            dispatch(AlertBoxActions.saveAlertBoxDataReducer(data));
-        }
+        localStorage.setItem("expiryDate", expiryDate.toISOString());
+
+        autoLogout(remainingMilliseconds);
+        //dispatch(AlertBoxActions.getAlertBoxReducer(data));
+        navigate("/home");
     }, []);
 
     const logout = useCallback(() => {
-        dispatch(AuthActions.updateIsAuthReducer({ isAuth: false }));
+        dispatch(AuthActions.resetAuth());
         localStorage.clear();
-        navigate("login");
+        navigate("/login");
     }, [dispatch]);
 
     const autoLogout = useCallback((milliseconds) => {
