@@ -1,5 +1,6 @@
 // edit watchlist status
-export const updateWatchlistItemAPI = async (status, progress, category_id, token) => {
+export const updateWatchlistAPI = async (category, category_id, status, progress_read_watched, token) => {
+  console.log(category, category_id, status, progress_read_watched, token);
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_watchlist/edit-watchlist-item`,
     {
@@ -9,9 +10,10 @@ export const updateWatchlistItemAPI = async (status, progress, category_id, toke
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
+        category: category,
         category_id: category_id,
-        progress: progress,
         status: status,
+        progress_read_watched: progress_read_watched,
       })
     }
   );

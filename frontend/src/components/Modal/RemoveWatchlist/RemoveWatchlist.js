@@ -14,8 +14,8 @@ const RemoveWatchlist = () => {
 
   const deleteWatchlistHandler = () => {
     dispatch(deleteWatchlistThunk({
-      category: myWatchlist.deleteWatchlistCategory,
-      category_id: myWatchlist.deleteWatchlistCategoryId
+      category: myWatchlist.selectedCategory,
+      category_id: myWatchlist.selectedCategoryId
     }))
       .unwrap()
       .then(res => {

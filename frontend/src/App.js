@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
@@ -6,7 +6,6 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { AlertBoxActions } from "./store/alertBox";
 
 import Home from "./Pages/Home/Home";
-import AuthContext from "./Context/auth";
 import DMCA from "./Pages/Home/PolicyContactUs/DMCA";
 import AlertBox from "./components/AlertBox/AlertBox";
 import AnimeManga from "./Pages/Home/AnimeManga/AnimeManga";
@@ -29,13 +28,12 @@ let time = null;
 
 function App() {
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
+  const auth = useSelector(state => state.auth);
   const visible = useSelector((state) => state.alertBox.isVisible);
   const alertBoxData = useSelector((state) => state.alertBox.data);
 
-  const {autoLogout, logout} = useAuth();
-
   const navigate = useNavigate();
+  const { autoLogout, logout } = useAuth();
 
   useEffect(() => {
     clearTimeout(time);
@@ -61,8 +59,8 @@ function App() {
       new Date(localExpiryDate).getTime() - new Date().getTime();
 
     autoLogout(remainingMilliseconds);
-    dispatch(getUserThunk({token: localToken}))
-    .unwrap().then(()=>navigate("home")).catch((err)=>console.log(err));
+    dispatch(getUserThunk({ token: localToken }))
+      .unwrap().then(() => navigate("home")).catch((err) => console.log(err));
   }, []);
 
   return (
@@ -79,7 +77,7 @@ function App() {
             path=":category/category/:id"
             element={<AnimeMangaCategory />}
           />
-          {authCtx.isAuth && (
+          {auth.isAuth && (
             <React.Fragment>
               <Route path="my-watchlist" element={<MyWatchlist />} />
               <Route path="my-favorite" element={<MyFavorite />} />

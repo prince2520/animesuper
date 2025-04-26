@@ -23,7 +23,7 @@ const Navbar = () => {
         <div className="flex-center profile">
           <img
             onClick={() => dispatch(OverlayActions.showProfileReducer())}
-            src={auth.profilePhoto}
+            src={auth.profile_photo}
             alt="profile-img"
           />
         </div>

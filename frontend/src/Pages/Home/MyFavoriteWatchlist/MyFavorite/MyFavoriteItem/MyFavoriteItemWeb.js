@@ -29,9 +29,9 @@ const MyFavoriteItemWeb = ({ item, idx }) => {
         style={{ width: "10%" }}
         onClick={() => {
           dispatch(
-            MyFavoriteActions.saveDeleteFavoriteReducer({
-              deleteFavoriteCategory: item.category,
-              deleteFavoriteCategoryId : item.category_id
+            MyFavoriteActions.selectedFavoriteReducer({
+              selectedCategory: item.category,
+              selectedCategoryId : item.category_id
             })
           );
           dispatch(OverlayActions.showRemoveFavoriteReducer());

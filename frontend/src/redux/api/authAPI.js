@@ -1,9 +1,9 @@
-export const editAuthAPI = async (
+export const updateAuthAPI = async (
   username,
   gender,
   location,
-  favorite_genre,
   photoUrl,
+  favorite_genre,
   token
 ) => {
   let result = await fetch(

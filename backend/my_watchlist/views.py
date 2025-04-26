@@ -116,16 +116,18 @@ def EditMyWatchlist(request):
 
     user = request.user
     
-    email = user.email    
+    email = user.email   
+        
+    category = body_data['category']
     category_id = body_data['category_id']
-    item_status = body_data['status']
-    progress = body_data['progress']
+    status_item = body_data['status']
+    progress_read_watched = body_data['progress_read_watched']
 
     user = User.objects.get(email=email)
 
-    myWatchList = MyWatchlistItem.objects.get(Q(user=user) & Q(category_id=category_id))
-    myWatchList.status = item_status
-    myWatchList.progress_read_watched = progress
+    myWatchList = MyWatchlistItem.objects.get(Q(user=user) & Q(category=category) & Q(category_id=category_id))
+    myWatchList.status = status_item
+    myWatchList.progress_read_watched = progress_read_watched
     myWatchList.save()
 
     return Response({'success': True, 'description': 'Item edited status successfully!'}, status=status.HTTP_200_OK)

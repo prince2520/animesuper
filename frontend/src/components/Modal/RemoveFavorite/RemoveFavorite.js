@@ -15,8 +15,8 @@ const RemoveFavorite = () => {
 
   const deleteFavoriteHandler = () => {
     dispatch(deleteFavoriteThunk({
-      category: myFavorite.deleteFavoriteCategory,
-      category_id: myFavorite.deleteFavoriteCategoryId
+      category: myFavorite.selectedCategory,
+      category_id: myFavorite.selectedCategoryId
     }))
       .unwrap()
       .then(res => {

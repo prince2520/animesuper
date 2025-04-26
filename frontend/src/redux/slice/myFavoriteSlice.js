@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { createFavoriteReducer, deleteFavoriteReducer, getFavoriteListReducer, saveDeleteFavoriteReducer } from '../reducer/myFavoriteReducer';
+import { createFavoriteReducer, deleteFavoriteReducer, getFavoriteListReducer, saveDeleteFavoriteReducer, selectedFavoriteReducer } from '../reducer/myFavoriteReducer';
 import { createFavoriteThunk, deleteFavoriteThunk, getFavoriteListThunk } from '../thunk/myFavoriteThunk';
 
 const initialMyFavoriteState = {
@@ -8,15 +8,15 @@ const initialMyFavoriteState = {
         manga: []
     },
 
-    deleteFavoriteCategory: "",
-    deleteFavoriteCategoryId: ""
+    selectedCategory: "",
+    selectedCategoryId: ""
 };
 
 const MyFavoriteSlice = createSlice({
     name: 'myFavorite',
     initialState: initialMyFavoriteState,
     reducers: {
-        saveDeleteFavoriteReducer
+        selectedFavoriteReducer
     },
 
     extraReducers: (builder) => {

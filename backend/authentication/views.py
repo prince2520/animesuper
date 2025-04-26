@@ -147,8 +147,19 @@ def editProfile(request):
                     genre = Genre.objects.get(name=genre)
                     user.favorite_genre.add(genre)
             user.save()
+        
+            serialized_data = serialize("json", user.favorite_genre.all(), use_natural_foreign_keys=True)
+            
+            data = {
+                'username': user.username,
+                'email': user.email,
+                'profile_photo': user.profile_photo,
+                'gender': user.gender,
+                'location' : user.location,
+                'favorite_genre': json.loads(serialized_data),
+            }
 
-            return Response({'success': True, 'description': 'Profile edited successfully'}, status=status.HTTP_200_OK)
+            return Response({'success': True, 'description': 'Profile edited successfully', 'data':data}, status=status.HTTP_200_OK)
         except user.DoesNotExist:
             return Response({'success': False, 'description': 'Something goes wrong!'}, status=status.HTTP_404_NOT_FOUND)
 
@@ -177,10 +188,13 @@ def getProfileStatistics(request):
                     'status': manga,
                     'count': my_watchlist.filter(Q(category='manga') & Q(status=manga)).count()
                 })
-
+                
+            stats = {
+                'anime' : animeStats,
+                'manga' : mangaStats
+            }    
             return Response({
-                'mangaStats': mangaStats,
-                'animeStats': animeStats
+                'stats': stats
             }, status=status.HTTP_200_OK)
 
         except my_watchlist.DoesNotExist:

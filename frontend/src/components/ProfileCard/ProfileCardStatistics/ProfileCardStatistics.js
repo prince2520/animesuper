@@ -13,11 +13,11 @@ import CustomButton from "../../CustomButton/CustomButton";
 import "./ProfileCardStatistics.css";
 import { uid } from "uid";
 
-const ProfileCardStatistics = (props) => {
-  const [selectedCategory, setSelectedCategory] = useState(categoryType[0]);
+const ProfileCardStatistics = () => {
+  const [category, setCategory] = useState("anime");
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.myProfile);
+  const auth = useSelector((state) => state.auth);
 
   // Logout my account
   const logoutProfileCard = (event) => {
@@ -35,8 +35,8 @@ const ProfileCardStatistics = (props) => {
         <div className="favorite-genre">
           <h5 className="favorite-genre-title">Favorite Genre</h5>
           <div className="favorite-genre-list">
-            {user.old_favorite_genre.length > 0 ? (
-              user.old_favorite_genre.map((res) => {
+            {auth.favorite_genre.length > 0 ? (
+              auth.favorite_genre.map((res) => {
                 let color = randomColor({
                   luminosity: "light",
                   hue: "random",
@@ -47,7 +47,7 @@ const ProfileCardStatistics = (props) => {
                     className="favorite-genre-item"
                     style={{ borderColor: `${color}`, color: `${color}` }}
                   >
-                    <p style={{color: color}}>{res}</p>
+                    <p style={{ color: color }}>{res}</p>
                   </span>
                 );
               })
@@ -64,10 +64,8 @@ const ProfileCardStatistics = (props) => {
                 <h6
                   key={uid(8)}
                   style={{ padding: "0.1rem 0.5rem" }}
-                  className={`cursor-btn ${
-                    selectedCategory === name ? "selected" : ""
-                  }`}
-                  onClick={() => setSelectedCategory(name)}
+                  className={`cursor-btn ${category === name ? "selected" : ""}`}
+                  onClick={() => setCategory(name)}
                 >
                   {name}
                 </h6>
@@ -75,25 +73,21 @@ const ProfileCardStatistics = (props) => {
             </div>
           </div>
           <div className="statistics-list">
-            {(selectedCategory === categoryType[0]
-              ? props.categoryStats.animeStats
-              : props.categoryStats.mangaStats
-            ).map((res) => (
+            {(auth.stats[category]).map((s) => (
               <div className="statistics-item" key={uid(8)}>
                 <div className="currently-watching">
                   <span
                     className="circle"
-                    style={{ backgroundColor: getStatusColor(res.status) }}
+                    style={{ backgroundColor: getStatusColor(s.status) }}
                   />
                   <div className="currently-watching-detail">
-                    <p className="title">{res.status}</p>
-                    <p className="value">{res.count}</p>
+                    <p className="title">{s.status}</p>
+                    <p className="value">{s.count}</p>
                   </div>
                 </div>
               </div>
             ))}
-            {props.categoryStats.animeStats.length === 0 &&
-            props.categoryStats.mangaStats.length === 0 ? (
+            {auth.stats[category].length === 0 ? (
               <Skeleton count={5} />
             ) : null}
           </div>

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {  createWatchlistReducer, deleteWatchlistReducer, getWatchlistReducer, saveDeleteWatchlistReducer } from "../reducer/myWatchlistReducer";
-import { createWatchlistThunk, deleteWatchlistThunk, getWatchlistThunk } from "../thunk/myWatchlistThunk";
+import { createWatchlistReducer, deleteWatchlistReducer, getWatchlistReducer, selectedWatchlistReducer, updateWatchlistReducer } from "../reducer/myWatchlistReducer";
+import { createWatchlistThunk, deleteWatchlistThunk, getWatchlistThunk, updateWatchlistThunk } from "../thunk/myWatchlistThunk";
 
 const initialMyWatchlistState = {
   watchlist: {
@@ -8,15 +8,15 @@ const initialMyWatchlistState = {
     manga: []
   },
 
-  deleteWatchlistCategory: "",
-  deleteWatchlistCategoryId: ""
+  selectedCategory: "",
+  selectedCategoryId: ""
 };
 
 const MyWatchlistSlice = createSlice({
   name: "myWatchlist",
   initialState: initialMyWatchlistState,
   reducers: {
-    saveDeleteWatchlistReducer
+    selectedWatchlistReducer,
   },
 
   extraReducers: (builder) => {
@@ -28,13 +28,20 @@ const MyWatchlistSlice = createSlice({
 
     builder
       .addCase(createWatchlistThunk.fulfilled, createWatchlistReducer)
-      .addCase(createWatchlistThunk.rejected, (state, actions) => {
+      .addCase(createWatchlistThunk.rejected, (_, actions) => {
         console.log(actions.payload);
       })
 
     builder
       .addCase(deleteWatchlistThunk.fulfilled, deleteWatchlistReducer)
-      .addCase(deleteWatchlistThunk.rejected, (state, actions)=>{
+      .addCase(deleteWatchlistThunk.rejected, (_, actions) => {
+        console.log(actions.payload)
+      })
+
+
+    builder
+      .addCase(updateWatchlistThunk.fulfilled, updateWatchlistReducer)
+      .addCase(updateWatchlistThunk.rejected, (_, actions) => {
         console.log(actions.payload)
       })
   }

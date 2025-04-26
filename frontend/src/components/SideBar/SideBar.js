@@ -1,22 +1,18 @@
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
-import { useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Logo } from "../../photo";
 import { sideBarData } from "../../constants/constants";
 import { OverlayActions } from "../../redux/slice/overlaySlice";
 
-import AuthContext from "../../Context/auth";
-
 import "./SideBar.css";
-import { uid } from "uid";
 
 const SideBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const authCtx = useContext(AuthContext);
+  const auth = useSelector(state => state.auth);
 
   return (
     <div className="sidebar">
@@ -25,7 +21,7 @@ const SideBar = () => {
           <img alt={"anime-super"} src={Logo} width={"100%"} />
         </Link>
         <div className="options">
-          {sideBarData(authCtx.isAuth).map((data) => {
+          {sideBarData(auth.isAuth).map((data) => {
             return (
               data.isAuth && (
                 <div className="option" key={uid(8)}>
@@ -51,7 +47,7 @@ const SideBar = () => {
       <div className="sidebar-bottom">
         <div className="option">
           <h6>General</h6>
-          {authCtx.isAuth && (
+          {auth.isAuth && (
             <div
               className="cursor-btn  option-link"
               onClick={() => dispatch(OverlayActions.showLogoutReducer())}
@@ -62,7 +58,7 @@ const SideBar = () => {
               <h5 className={"category-btn"}>Logout</h5>
             </div>
           )}
-          {!authCtx.isAuth && (
+          {!auth.isAuth && (
             <div
               className="cursor-btn option-link"
               onClick={() => navigate("/login")}

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { saveAuthReducer, saveAuthSatisticsReducer, updateIsAuthReducer } from '../reducer/authReducer';
-import { getAuthStatisticsThunk, getUserThunk, loginThunk } from '../thunk/authThunk';
+import { getAuthStatisticsThunk, getUserThunk, loginThunk, updatedAuthThunk } from '../thunk/authThunk';
 
 const initialAuthState = {
     email: "",
@@ -10,10 +10,13 @@ const initialAuthState = {
     location: '',
     token: null,
     favorite_genre: [],
+    isAuth: false,
 
-
-    animeStats: [],
-    mangaStats: []
+    // profile stats
+    stats: {
+        anime: [],
+        manga: []
+    }
 };
 
 const AuthSlice = createSlice({
@@ -32,7 +35,6 @@ const AuthSlice = createSlice({
                 console.log(action.payload);
             })
 
-
         builder
             .addCase(getUserThunk.fulfilled, saveAuthReducer)
             .addCase(getUserThunk.rejected, (state, action) => {
@@ -42,6 +44,12 @@ const AuthSlice = createSlice({
         builder
             .addCase(getAuthStatisticsThunk.fulfilled, saveAuthSatisticsReducer)
             .addCase(getAuthStatisticsThunk.rejected, (state, action) => {
+                console.log(action.payload);
+            })
+
+        builder
+            .addCase(updatedAuthThunk.fulfilled, saveAuthReducer)
+            .addCase(updatedAuthThunk.rejected, (state, action) => {
                 console.log(action.payload);
             })
 

@@ -50,10 +50,10 @@ const MyWatchlistItemWeb = ({ item, index }) => {
       <h5
         className="item-delete cursor-btn"
         onClick={() => {
-          dispatch(MyWatchlistActions.saveDeleteWatchlistReducer({
-            deleteWatchlistCategory: item.category,
-            deleteWatchlistCategoryId: item.category_id
-          }))
+          dispatch(MyWatchlistActions.selectedWatchlistReducer({
+            selectedCategory: item.category,
+            selectedCategoryId: item.category_id
+          }));
           dispatch(OverlayActions.showRemoveWatchlistReducer());
         }}
       >
@@ -67,7 +67,10 @@ const MyWatchlistItemWeb = ({ item, index }) => {
         onClick={() => {
           dispatch(OverlayActions.showEditWatchlistReducer());
           dispatch(
-            MyWatchlistActions.selectedWatchlistItemHandler({ ...item })
+            MyWatchlistActions.selectedWatchlistReducer({ 
+              selectedCategory : item.category,
+              selectedCategoryId : item.category_id
+             })
           );
         }}
       >
