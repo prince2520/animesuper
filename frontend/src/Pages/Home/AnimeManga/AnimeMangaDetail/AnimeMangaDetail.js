@@ -65,16 +65,16 @@ const AnimeMangaDetail = () => {
     });
   }, [category, id, dispatch]);
 
+
+
   useEffect(() => {
+    dispatch(helperActions.searchBarReducer(false));
     dispatch(helperActions.blurNavbarReducer(!inView));
-    if (!inView) {
-      dispatch(helperActions.searchBarReducer(true));
-    } else {
-      dispatch(helperActions.searchBarReducer(false));
-    }
+
     return () => {
+      dispatch(helperActions.searchBarReducer(true));
       dispatch(helperActions.blurNavbarReducer(true));
-    };
+    }
   }, [inView, dispatch]);
 
   // Add to anime/manga to watchlist

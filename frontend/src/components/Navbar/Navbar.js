@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <MenuBtn />
-      <Link to="/home" className="nav-logo">
+      <Link to="/home/anime" className="nav-logo">
         <img alt="anime-super" src={Logo} />
       </Link>
       {auth.isAuth ? (
@@ -28,7 +28,7 @@ const Navbar = () => {
           />
         </div>
       ) : (
-        <Link to="/login" className="login-btn">
+        <Link to="/auth/login" className="login-btn">
           <h5 className="color-text">Login</h5>
         </Link>
       )}

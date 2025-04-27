@@ -39,7 +39,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   column-gap: 20%;
   z-index: 10;
@@ -55,7 +55,15 @@
   column-gap: 5rem;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+
 }
+
+.search-bar-box.show{
+  justify-content:  flex-end;
+
+}
+
 
 .search-bar-box .menu-btn-container {
   display: none;
@@ -66,9 +74,6 @@
   backdrop-filter: blur(6px);
 }
 
-.show {
-  justify-content: flex-end;
-}
 
 .show form {
   display: none;
