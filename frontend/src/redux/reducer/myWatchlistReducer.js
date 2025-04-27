@@ -9,7 +9,6 @@ export const getWatchlistReducer = (state, action) => {
 };
 
 export const createWatchlistReducer = (state, action) => {
-    console.log(action.payload);
     const {category} = action.payload;
     state.watchlist[category].push(action.payload);
 }

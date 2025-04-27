@@ -60,7 +60,6 @@ function App() {
 
     autoLogout(remainingMilliseconds);
     dispatch(getUserThunk({ token: localToken }))
-      .unwrap().then(() => navigate("home")).catch((err) => console.log(err));
   }, []);
 
   return (
