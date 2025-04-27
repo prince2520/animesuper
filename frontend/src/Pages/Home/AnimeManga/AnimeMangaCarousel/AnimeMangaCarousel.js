@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { uid } from "uid";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 
 import AnimeCarouselSlide from "./AnimeMangaCarouselSlide/AnimeMangaCarouselSlide";
 
-import {carousel } from "../../../../photo";
+import { carousel } from "../../../../photo";
 
 import "swiper/swiper-bundle.css";
 import "./AnimeMangaCarousel.css";

@@ -12,8 +12,7 @@ import { getAnimeMangaDetailThunk } from "../../../../../redux/thunk/animeMangaT
 const AnimeMangaCarouselSlide = ({ data }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-
+  
   const carouselData = useSelector((state) => state.animeManga.carousel[data.category_id]);
 
   useEffect(() => {

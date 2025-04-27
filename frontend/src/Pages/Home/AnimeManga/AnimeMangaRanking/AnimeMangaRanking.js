@@ -23,7 +23,7 @@ const AnimeMangaRanking = (props) => {
 
   const slug = props.rank.slug;
 
-  const animeManga = useSelector(state=>state.animeManga[category]);
+  const animeManga = useSelector(state => state.animeManga[category]);
 
   useEffect(() => {
     dispatch(getCategoryListThunk({ category, rank_type: props.rank.slug, limit: 10, offset: 0 }));

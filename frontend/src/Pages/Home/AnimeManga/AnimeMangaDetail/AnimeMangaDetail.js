@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
@@ -10,10 +10,10 @@ import AnimeMangaTop from "./AnimeMangaTop/AnimeMangaTop";
 import CustomButton from "../../../../components/CustomButton/CustomButton";
 import AnimeMangaDetailBottom from "./AnimMangaDetailBottom/AnimeMangaDetailBottom";
 
-import { getAnimeDetail } from "../../../../api/animeManga";
+import { getAnimeMangaDetailAPI } from "../../../../redux/api/animeMangaAPI";
 import { categoryType } from "../../../../constants/constants";
 import { helperActions } from "../../../../redux/slice/helperSlice";
-import {createWatchlistThunk } from "../../../../redux/thunk/myWatchlistThunk";
+import { createWatchlistThunk } from "../../../../redux/thunk/myWatchlistThunk";
 import { createFavoriteThunk } from "../../../../redux/thunk/myFavoriteThunk";
 
 import "./AnimeMangaDetail.css";
@@ -60,7 +60,7 @@ const AnimeMangaDetail = () => {
   });
 
   useEffect(() => {
-    getAnimeDetail(category, id).then((result) => {
+    getAnimeMangaDetailAPI(category, id).then((result) => {
       setAnimeDetail(result.data);
     });
   }, [category, id, dispatch]);

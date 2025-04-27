@@ -4,12 +4,12 @@ import React, { useEffect, useState } from "react";
 import { categoryType } from "../../constants/constants";
 
 import "./ChangeCategory.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ChangeCategory = (props) => {
   const { category } = useParams();
   const [selectedCategory, setSelectedCategory] = useState(category || categoryType[0]);
-  
+
   return (
     <div className="flex-center anime-manga-button">
       {categoryType.map((name) => (

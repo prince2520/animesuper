@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 
 import { Icon } from "@iconify/react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import SearchResult from "../SearchResult/SearchResult";
 
@@ -12,6 +12,7 @@ import "./SearchBar.css";
 
 const SearchBar = () => {
   const wrapperRef = useRef();
+
   const [inputFocus, setInputFocus] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
 

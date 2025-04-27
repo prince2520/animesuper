@@ -25,8 +25,7 @@ export function useAuth() {
         localStorage.setItem("expiryDate", expiryDate.toISOString());
 
         autoLogout(remainingMilliseconds);
-        //dispatch(AlertBoxActions.getAlertBoxReducer(data));
-        navigate("/home");
+        navigate("/home/anime");
     }, []);
 
     const logout = useCallback(() => {
@@ -39,7 +38,7 @@ export function useAuth() {
 
         localStorage.clear();
 
-        navigate("/login");
+        navigate("/auth/login");
 
     }, [dispatch]);
 

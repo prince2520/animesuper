@@ -61,7 +61,7 @@ const SideBar = () => {
           {!auth.isAuth && (
             <div
               className="cursor-btn option-link"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/auth/login")}
             >
               <h5>
                 <Icon

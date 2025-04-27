@@ -11,7 +11,7 @@ const LoginSignupPage = () => {
             <div className="form-page-left">
                 <span className="flex-center form-top">
                     <img alt={'anime-super'} src={Logo}/>
-                        <Link to='/home' className="color-text-light highlight cursor-btn">Skip >> </Link>
+                        <Link to='/home/anime' className="color-text-light highlight cursor-btn">Skip >> </Link>
                 </span>
                 <Outlet/>
             </div>

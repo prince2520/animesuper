@@ -23,10 +23,11 @@ const AnimeMangaCategory = () => {
     let total = (firstMount ? 0 : offset) + value
     if (offset + value >= 0) {
       setAnimeManga([]);
-      getCategoryListAPI(category, id, 20, total).then((result) => {
-        setAnimeManga(result.data.data);
-        setOffset(total);
-      });
+      getCategoryListAPI(category, id, 20, total)
+        .then((result) => {
+          setAnimeManga(result.data.data);
+          setOffset(total);
+        });
     }
   };
 
@@ -64,11 +65,10 @@ const AnimeMangaCategory = () => {
           : mangaCategory
         ).map((res) => (
           <h5
-          key={uid(8)}
+            key={uid(8)}
             onClick={() => navigate(`/home/${category}/category/${res.slug}`)}
-            className={`anime-manga-filter-button cursor-btn ${
-              id === res.slug ? "selected" : ""
-            }`}
+            className={`anime-manga-filter-button cursor-btn ${id === res.slug ? "selected" : ""
+              }`}
           >
             {res.title}
           </h5>

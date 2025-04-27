@@ -65,7 +65,8 @@ function App() {
     <div className="App dark">
       {isVisible && <AlertBox />}
       <Routes>
-        <Route path="/" element={<LoginSignupPage />}>
+        <Route index element={<Navigate to={"/auth/login"} />} />
+        <Route path="/auth" element={<LoginSignupPage />}>
           <Route path="login" element={<LoginForm />} />
           <Route path="signup" element={<SignupForm />} />
         </Route>
@@ -85,9 +86,9 @@ function App() {
           <Route path="contact-us" element={<ContactUs />} />
           <Route path=":category" element={<AnimeManga />} />
           <Route path=":category/:id" element={<AnimeMangaDetail />} />
-          <Route path="" element={<Navigate to={"anime"} />} />
         </Route>
-        <Route path="*" element={<NotPageFound/>} />
+        {/* <Route path="/not-found-page" element={<NotPageFound />} />
+        <Route path="*" element={<Navigate to={"/not-found-page"} />} /> */}
       </Routes>
     </div>
   );

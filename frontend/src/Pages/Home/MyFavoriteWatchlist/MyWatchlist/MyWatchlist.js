@@ -65,6 +65,7 @@ const MyWatchlist = () => {
 
   const [data, setData] = useState([]);
 
+
   useEffect(() => {
     dispatch(helperActions.searchBarReducer(false));
     dispatch(helperActions.blurNavbarReducer(!inView));
