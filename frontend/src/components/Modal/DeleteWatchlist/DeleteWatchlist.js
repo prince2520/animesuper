@@ -2,12 +2,11 @@ import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { OverlayActions } from "../../../redux/slice/overlaySlice";
-import { AlertBoxActions } from "../../../redux/slice/alertBoxSlice";
-
-import CustomButton from "../../CustomButton/CustomButton";
 import { deleteWatchlistThunk } from "../../../redux/thunk/myWatchlistThunk";
 
-const RemoveWatchlist = () => {
+import CustomButton from "../../CustomButton/CustomButton";
+
+const DeleteWatchlist = () => {
   const dispatch = useDispatch();
   const myWatchlist = useSelector(state => state.myWatchlist);
 
@@ -17,12 +16,6 @@ const RemoveWatchlist = () => {
       category: myWatchlist.selectedCategory,
       category_id: myWatchlist.selectedCategoryId
     }))
-      .unwrap()
-      .then(res => {
-        dispatch(AlertBoxActions.getAlertBoxReducer(res));
-        dispatch(OverlayActions.closeOverlayReducer());
-      })
-      .catch(err => console.log(err));
   }
 
   return (
@@ -64,4 +57,4 @@ const RemoveWatchlist = () => {
   );
 };
 
-export default RemoveWatchlist;
+export default DeleteWatchlist;

@@ -1,17 +1,16 @@
+import { uid } from "uid";
 import React, { useState } from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
 import randomColor from "randomcolor";
 
-import { categoryType, getStatusColor } from "../../../constants/constants";
-import { OverlayActions } from "../../../redux/slice/overlaySlice";
-
 import CustomButton from "../../CustomButton/CustomButton";
 
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
+import { categoryType, getStatusColor } from "../../../constants/constants";
+
 import "./ProfileCardStatistics.css";
-import { uid } from "uid";
 
 const ProfileCardStatistics = () => {
   const [category, setCategory] = useState("anime");

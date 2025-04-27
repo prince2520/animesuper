@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
+import { useNavigate } from "react-router-dom";
 
 const AnimeMangaDetailRelated = ({ animeDetail, category }) => {
   const navigate = useNavigate();

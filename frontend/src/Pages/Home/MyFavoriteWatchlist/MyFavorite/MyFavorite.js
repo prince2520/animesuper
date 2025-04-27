@@ -1,24 +1,21 @@
+import { uid } from "uid";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import React, { useEffect, useState } from "react";
-
-import { MyFavoriteImage } from "../../../../photo";
-import { helperActions } from "../../../../redux/slice/helperSlice";
-
+import { useNavigate, useParams } from "react-router-dom";
 
 import NoData from "../NoData/NoData";
+import MyFavoriteData from './MyFavoriteData.json';
 import MyFavoriteItem from "./MyFavoriteItem/MyFavoriteItem";
 import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
 import FavoriteWatchlistSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
 
-import MyFavoriteData from './MyFavoriteData.json';
+import { MyFavoriteImage } from "../../../../photo";
+import { helperActions } from "../../../../redux/slice/helperSlice";
+import { getFavoriteListThunk } from "../../../../redux/thunk/myFavoriteThunk";
 
 import './MyFavorite.css';
 import '../MyFavoriteWatchlist.css';
-import { uid } from "uid";
-import { getFavoriteListThunk } from "../../../../redux/thunk/myFavoriteThunk";
-import { useNavigate, useParams } from "react-router-dom";
-
 
 // Sub Component
 const Heading = () => {

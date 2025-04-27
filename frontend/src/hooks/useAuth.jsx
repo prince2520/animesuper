@@ -1,8 +1,11 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { AlertBoxActions } from '../redux/slice/alertBoxSlice';
 import { AuthActions } from '../redux/slice/authSlice';
+import { MyFavoriteActions } from '../redux/slice/myFavoriteSlice';
+import { MyWatchlistActions } from '../redux/slice/myWatchlistSlice';
+import { OverlayActions } from '../redux/slice/overlaySlice';
+import { helperActions } from '../redux/slice/helperSlice';
 
 export function useAuth() {
     const dispatch = useDispatch();
@@ -27,9 +30,17 @@ export function useAuth() {
     }, []);
 
     const logout = useCallback(() => {
+
         dispatch(AuthActions.resetAuth());
+        dispatch(OverlayActions.resetOverlayReducer());
+        dispatch(helperActions.resetHelperReducer());
+        dispatch(MyFavoriteActions.resetFavoriteReducer());
+        dispatch(MyWatchlistActions.resetWatchlistReducer());
+
         localStorage.clear();
+
         navigate("/login");
+
     }, [dispatch]);
 
     const autoLogout = useCallback((milliseconds) => {

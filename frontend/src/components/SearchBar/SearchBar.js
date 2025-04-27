@@ -3,16 +3,17 @@ import React, { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useParams } from "react-router-dom";
 
-import { searchAnime } from "../../api/animeManga";
-
 import SearchResult from "../SearchResult/SearchResult";
+
+import { AlertBoxActions } from "../../redux/slice/alertBoxSlice";
+import { searchAnimeMangaAPI } from "../../redux/api/animeMangaAPI";
 
 import "./SearchBar.css";
 
 const SearchBar = () => {
   const wrapperRef = useRef();
   const [inputFocus, setInputFocus] = useState(false);
-  const [searchResult, setSearchResult] = useState(null);
+  const [searchResult, setSearchResult] = useState([]);
 
   const { category } = useParams();
 
@@ -31,11 +32,18 @@ const SearchBar = () => {
 
   const getSearchResult = (event) => {
     event.preventDefault();
-    searchAnime(category || "anime", event.target[0].value, 3)
+
+    if (event.target[0].value.trim() === "")
+      return
+
+    searchAnimeMangaAPI(category, event.target[0].value, 3)
       .then((result) => {
-        setSearchResult(result.data);
+        setSearchResult(result.data.data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(AlertBoxActions({
+        success: false,
+        message: err.message || "Something goes wrong"
+      })));
   };
 
   const closeSearchHandler = () => {
@@ -53,7 +61,7 @@ const SearchBar = () => {
       <button style={{ background: "none", border: "none", padding: "0" }}>
         <Icon icon="material-symbols:search" />
       </button>
-      {inputFocus && searchResult && (
+      {inputFocus && searchResult.length > 0 && (
         <SearchResult
           closeSearchHandler={closeSearchHandler}
           results={searchResult}

@@ -33,3 +33,7 @@ export const showThankYouBoxReducer = (state) =>{
     state.showOverlay = true;
     state.showThankYouBox = true;
 };
+
+export const resetOverlayReducer = () => {
+    return {...initialOverlayState};
+}

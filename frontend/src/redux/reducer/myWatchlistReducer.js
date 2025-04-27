@@ -1,6 +1,7 @@
 import {
     getStatusColor,
 } from "../../constants/constants";
+import { initialMyWatchlistState } from "../slice/myWatchlistSlice";
 
 
 export const getWatchlistReducer = (state, action) => {
@@ -42,4 +43,9 @@ export const updateWatchlistReducer = (state, action) => {
     });
 
     return state;
+}
+
+
+export const resetWatchlistReducer = () =>{
+    return {...initialMyWatchlistState};
 }

@@ -33,6 +33,8 @@ export const createWatchlistAPI = async (
   media_type,
   token
 ) => {
+  console.log("createWatchlistAPI");
+
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_watchlist/create-watchlist`,
     {

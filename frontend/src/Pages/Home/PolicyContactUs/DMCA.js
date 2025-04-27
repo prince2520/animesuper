@@ -1,6 +1,6 @@
-import "./PolicyContactUs.css";
-
 import {dmcaConditions} from "../../../constants/constants"
+
+import "./PolicyContactUs.css";
 
 const DMCA = () => {
   return (

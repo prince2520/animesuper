@@ -1,13 +1,12 @@
 import React from "react";
 
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
 import { OverlayActions } from "../../../../../redux/slice/overlaySlice";
 import { MyFavoriteActions } from "../../../../../redux/slice/myFavoriteSlice";
 import { favoriteItemData } from "../../../../../constants/constants";
-import { uid } from "uid";
-
 
 const MyFavoriteItemMobile = ({ item }) => {
   const dispatch = useDispatch();

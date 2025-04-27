@@ -4,9 +4,9 @@ import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Autoplay, Pagination } from "swiper";
 
-import {carousel } from "../../../../photo";
-
 import AnimeCarouselSlide from "./AnimeMangaCarouselSlide/AnimeMangaCarouselSlide";
+
+import {carousel } from "../../../../photo";
 
 import "swiper/swiper-bundle.css";
 import "./AnimeMangaCarousel.css";

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
 import CustomButton from "../../../../../components/CustomButton/CustomButton";
+
 import { getAnimeMangaDetailThunk } from "../../../../../redux/thunk/animeMangaThunk";
 
 const AnimeMangaCarouselSlide = ({ data }) => {

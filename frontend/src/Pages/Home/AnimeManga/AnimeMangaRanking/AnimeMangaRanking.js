@@ -1,3 +1,4 @@
+import { uid } from "uid";
 import React from "react";
 import { useEffect, useRef } from "react";
 
@@ -9,9 +10,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 
-import "./AnimeMangaRanking.css";
-import { uid } from "uid";
 import { getCategoryListThunk } from "../../../../redux/thunk/animeMangaThunk";
+
+import "./AnimeMangaRanking.css";
+
 
 const AnimeMangaRanking = (props) => {
   const swiperRef = useRef();

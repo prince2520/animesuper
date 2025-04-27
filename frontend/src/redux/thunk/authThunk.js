@@ -3,6 +3,7 @@ import { getAuthAPI, getAuthStatisticsAPI, loginAPI, signUpAPI, updateAuthAPI } 
 import { AlertBoxActions } from "../slice/alertBoxSlice";
 
 
+//  Thunk -  create a user .
 export const signupThunk = createAsyncThunk(
     'auth/signup',
     async ({ username , email, password, confirmPassword }, { dispatch, rejectWithValue }) => {
@@ -20,6 +21,8 @@ export const signupThunk = createAsyncThunk(
     }
 );
 
+
+//  Thunk -  login in to user .
 export const loginThunk = createAsyncThunk(
     'auth/login',
     async ({ email, password }, { dispatch, rejectWithValue }) => {
@@ -37,6 +40,7 @@ export const loginThunk = createAsyncThunk(
     }
 );
 
+//  Thunk -  Get User data.
 export const getUserThunk = createAsyncThunk(
     'auth/getUser',
     async ({ token }, {dispatch, rejectWithValue }) => {
@@ -53,6 +57,7 @@ export const getUserThunk = createAsyncThunk(
     }
 );
 
+//  Thunk -  get anime/manga statistics of auth.
 export const getAuthStatisticsThunk = createAsyncThunk(
     'auth/getAuthStatistics',
     async (_, { dispatch, getState, rejectWithValue }) => {

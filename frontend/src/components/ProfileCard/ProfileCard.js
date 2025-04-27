@@ -1,21 +1,20 @@
-import React, { useEffect, useState, useRef } from "react";
-
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState, useRef } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 import Skeleton from "react-loading-skeleton";
-import { storage } from "../../firebase";
-import { OverlayActions } from "../../redux/slice/overlaySlice";
 
-
+import useCompressImg from "../../hooks/useCompressImg";
 import UpAndDown from "../../animation/Wrapper/UpAndDown";
 import ProfileCardEdit from "./ProfileCardEdit/ProfileCardEdit";
 import ProfileCardStatistics from "./ProfileCardStatistics/ProfileCardStatistics";
 
-import "./ProfileCard.css";
+import { storage } from "../../firebase";
+import { OverlayActions } from "../../redux/slice/overlaySlice";
 import { getAuthStatisticsThunk, updatedAuthThunk } from "../../redux/thunk/authThunk";
-import useCompressImg from "../../hooks/useCompressImg";
+
+import "./ProfileCard.css";
 
 const ProfileCard = () => {
   const imgRef = useRef(null);

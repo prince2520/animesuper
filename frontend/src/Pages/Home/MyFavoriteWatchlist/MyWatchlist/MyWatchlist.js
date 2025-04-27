@@ -4,16 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
 import { useNavigate, useParams } from "react-router-dom";
 
+import NoData from "../NoData/NoData";
+import MyWatchlistItem from "./MyWatchlistItem/MyWatchlistItem";
+import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
+import MyWatchlistItemSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
+
 import { MyWatchlistImage } from "../../../../photo";
 import { helperActions } from "../../../../redux/slice/helperSlice";
 import { animeStatus, mangaStatus } from "../../../../constants/constants";
 import { getWatchlistThunk } from "../../../../redux/thunk/myWatchlistThunk";
 import { watchlistHeadings, watchlistColors } from "../../../../constants/constants";
-
-import NoData from "../NoData/NoData";
-import MyWatchlistItem from "./MyWatchlistItem/MyWatchlistItem";
-import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
-import MyWatchlistItemSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
 
 import "./MyWatchlist.css";
 import "../MyFavoriteWatchlist.css";

@@ -1,10 +1,11 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createWatchlistAPI, deleteWatchlistAPI, getWatchlistAPI, updateWatchlistAPI } from "../api/watchlistAPI";
 import { AlertBoxActions } from "../slice/alertBoxSlice";
+import { OverlayActions } from "../slice/overlaySlice";
 
 
-// User - Get User
-export const createWatchlistThunk = createAsyncThunk(
+//  Thunk -  create watchlist anime/manga into auth.
+ export const createWatchlistThunk = createAsyncThunk(
     'myWatchlist/createWatchlist',
     async ({
         category,
@@ -25,7 +26,9 @@ export const createWatchlistThunk = createAsyncThunk(
                 media_type,
                 auth.token
             );
+            
             dispatch(AlertBoxActions.getAlertBoxReducer(response))
+            
             return { ...response.data };
         } catch (error) {
             dispatch(AlertBoxActions.getAlertBoxReducer({
@@ -37,6 +40,7 @@ export const createWatchlistThunk = createAsyncThunk(
     }
 );
 
+//  Thunk -  create watchlist anime/manga list from auth.
 export const getWatchlistThunk = createAsyncThunk(
     'myWatchlist/getWatchlist',
     async (_, { dispatch, getState, rejectWithValue }) => {
@@ -54,14 +58,15 @@ export const getWatchlistThunk = createAsyncThunk(
     }
 );
 
-
+//  Thunk -  delete watchlist anime/manga from auth.
 export const deleteWatchlistThunk = createAsyncThunk(
     'myWatchlist/deleteWatchlist',
     async ({ category, category_id }, { dispatch, getState, rejectWithValue }) => {
         try {
             const { auth } = getState();
             let response = await deleteWatchlistAPI(category, category_id, auth.token);
-            dispatch(AlertBoxActions.getAlertBoxReducer(response))
+            dispatch(OverlayActions.closeOverlayReducer());
+            dispatch(AlertBoxActions.getAlertBoxReducer(response));
             return { ...response, category, category_id };
         } catch (error) {
             dispatch(AlertBoxActions.getAlertBoxReducer({
@@ -74,6 +79,7 @@ export const deleteWatchlistThunk = createAsyncThunk(
     }
 );
 
+//  Thunk -  update watchlist anime/manga into auth.
 export const updateWatchlistThunk = createAsyncThunk(
     'myWatchlist/updateWatchlist',
     async ({ category, category_id, status, progress_read_watched }, { dispatch, getState, rejectWithValue }) => {

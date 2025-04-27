@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createWatchlistReducer, deleteWatchlistReducer, getWatchlistReducer, selectedWatchlistReducer, updateWatchlistReducer } from "../reducer/myWatchlistReducer";
+import { createWatchlistReducer, deleteWatchlistReducer, getWatchlistReducer, resetWatchlistReducer, selectedWatchlistReducer, updateWatchlistReducer } from "../reducer/myWatchlistReducer";
 import { createWatchlistThunk, deleteWatchlistThunk, getWatchlistThunk, updateWatchlistThunk } from "../thunk/myWatchlistThunk";
 
-const initialMyWatchlistState = {
+export const initialMyWatchlistState = {
   watchlist: {
     anime: [],
     manga: []
@@ -15,8 +15,10 @@ const initialMyWatchlistState = {
 const MyWatchlistSlice = createSlice({
   name: "myWatchlist",
   initialState: initialMyWatchlistState,
+  
   reducers: {
     selectedWatchlistReducer,
+    resetWatchlistReducer
   },
 
   extraReducers: (builder) => {
@@ -35,13 +37,13 @@ const MyWatchlistSlice = createSlice({
     builder
       .addCase(deleteWatchlistThunk.fulfilled, deleteWatchlistReducer)
       .addCase(deleteWatchlistThunk.rejected, (_, actions) => {
-        console.log(actions.payload);
+        console.error(actions.payload);
       })
 
     builder
       .addCase(updateWatchlistThunk.fulfilled, updateWatchlistReducer)
       .addCase(updateWatchlistThunk.rejected, (_, actions) => {
-        console.log(actions.payload);
+        console.error(actions.payload);
       })
   }
 });

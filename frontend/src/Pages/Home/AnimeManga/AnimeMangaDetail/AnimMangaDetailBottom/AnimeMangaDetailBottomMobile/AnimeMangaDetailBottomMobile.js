@@ -1,3 +1,4 @@
+import { uid } from "uid";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
@@ -8,7 +9,6 @@ import AnimeMangaDetailRelated from "../AnimeMangaDetailRelated";
 import AnimeMangaDetailInformation from "../AnimeMangaDetailInformation";
 
 import "./AnimeMangaDetailBottomMobile.css";
-import { uid } from "uid";
 
 const AnimeMangaDetailBottomMobile = ({ animeDetail, category }) => {
   const [selectedLink, setSelectedLink] = useState(detail_links[0]);

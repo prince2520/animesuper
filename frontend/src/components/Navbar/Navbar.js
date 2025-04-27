@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import MenuBtn from "../MenuBtn/MenuBtn";
+
 import { Logo } from "../../photo";
 import { OverlayActions } from "../../redux/slice/overlaySlice";
-
-import MenuBtn from "../MenuBtn/MenuBtn";
 
 import "./Navbar.css";
 

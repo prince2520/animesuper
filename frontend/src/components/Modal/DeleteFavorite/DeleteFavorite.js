@@ -1,13 +1,13 @@
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
+import CustomButton from "../../CustomButton/CustomButton";
+
 import { OverlayActions } from "../../../redux/slice/overlaySlice";
 import { AlertBoxActions } from "../../../redux/slice/alertBoxSlice";
-
-import CustomButton from "../../CustomButton/CustomButton";
 import { deleteFavoriteThunk } from "../../../redux/thunk/myFavoriteThunk";
 
-const RemoveFavorite = () => {
+const DeleteFavorite = () => {
   const dispatch = useDispatch();
   const myFavorite = useSelector(state => state.myFavorite)
 
@@ -63,4 +63,4 @@ const RemoveFavorite = () => {
   );
 };
 
-export default RemoveFavorite;
+export default DeleteFavorite;

@@ -1,17 +1,17 @@
+import { uid } from "uid";
 import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-import { helperActions } from "../../../redux/slice/helperSlice";
-import { animeCategory, categoryType, mangaCategory } from "../../../constants/constants";
-
 import AnimeMangaRanking from "./AnimeMangaRanking/AnimeMangaRanking";
 import AnimeMangaCarousel from "./AnimeMangaCarousel/AnimeMangaCarousel";
 
+import { helperActions } from "../../../redux/slice/helperSlice";
+import { animeCategory, categoryType, mangaCategory } from "../../../constants/constants";
+
 import "./AnimeManga.css";
-import { uid } from "uid";
 
 const AnimeManga = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,6 @@ const AnimeManga = () => {
   useEffect(() => {
     dispatch(helperActions.searchBarReducer(true));
   }, [dispatch]);
-
 
   const [ref, inView] = useInView();
 

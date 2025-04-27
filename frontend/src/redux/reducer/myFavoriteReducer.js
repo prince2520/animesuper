@@ -1,3 +1,5 @@
+import { initialMyFavoriteState } from "../slice/myFavoriteSlice";
+
 export const selectedFavoriteReducer = (state, action) => {
     const { selectedCategory, selectedCategoryId } = action.payload;
 
@@ -18,4 +20,8 @@ export const deleteFavoriteReducer = (state, action) => {
 export const createFavoriteReducer = (state, action) => {
     const { category } = action.payload;
     state.favorite[category].push(action.payload);
+}
+
+export const resetFavoriteReducer = () =>{
+    return {...initialMyFavoriteState};
 }

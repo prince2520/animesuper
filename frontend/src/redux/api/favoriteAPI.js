@@ -12,6 +12,7 @@ export const createFavoriteAPI = async (
   media_type,
   token
 ) => {
+  console.log("createFavoriteAPI");
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_favorite/create-favorite`,
     {

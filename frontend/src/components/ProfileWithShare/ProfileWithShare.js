@@ -1,14 +1,14 @@
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Skeleton from "react-loading-skeleton";
 
-import { OverlayActions } from "../../redux/slice/overlaySlice";
-
 import ZoomInZoomOut from "../../animation/Wrapper/ZoomInZoomOut";
 
+import { OverlayActions } from "../../redux/slice/overlaySlice";
+
 import "./ProfileWithShare.css";
-import { uid } from "uid";
 
 const ProfileWithShare = () => {
   const dispatch = useDispatch();

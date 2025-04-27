@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
-import { OverlayActions } from "../../../redux/slice/overlaySlice";
-import { mangaStatus, animeStatus, categoryType } from "../../../constants/constants";
+import React, { useEffect, useRef, useState } from "react";
 
 import CustomButton from "../../CustomButton/CustomButton";
 
-import "./UpdateWatchlist.css";
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
 import { updateWatchlistThunk } from "../../../redux/thunk/myWatchlistThunk";
+import { mangaStatus, animeStatus, categoryType } from "../../../constants/constants";
+
+import "./UpdateWatchlist.css";
 
 const EditWatchlist = () => {
   const dispatch = useDispatch();

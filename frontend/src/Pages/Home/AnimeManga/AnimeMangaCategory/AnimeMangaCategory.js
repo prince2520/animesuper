@@ -1,17 +1,16 @@
-import React, { useEffect, useState, useCallback } from "react";
-
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
 import { useNavigate, useParams } from "react-router-dom";
-
-import { animeCategory, categoryType, mangaCategory } from "../../../../constants/constants";
+import React, { useEffect, useState } from "react";
 
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 import PrevNextButton from "../../../../components/PrevNextBtn/PrevNextBtn";
 
-import "./AnimeMangaCategory.css";
-import { uid } from "uid";
 import { getCategoryListAPI } from "../../../../redux/api/animeMangaAPI";
+import { animeCategory, categoryType, mangaCategory } from "../../../../constants/constants";
+
+import "./AnimeMangaCategory.css";
 
 const AnimeMangaCategory = () => {
   const [animeManga, setAnimeManga] = useState([]);

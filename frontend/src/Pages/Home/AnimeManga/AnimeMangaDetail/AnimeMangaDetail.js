@@ -6,16 +6,13 @@ import { useInView } from "react-intersection-observer";
 
 import Skeleton from "react-loading-skeleton";
 
-import { helperActions } from "../../../../redux/slice/helperSlice";
-import { getAnimeDetail } from "../../../../api/animeManga";
-import { AlertBoxActions } from "../../../../redux/slice/alertBoxSlice";
-import { categoryType } from "../../../../constants/constants";
-
 import AnimeMangaTop from "./AnimeMangaTop/AnimeMangaTop";
 import CustomButton from "../../../../components/CustomButton/CustomButton";
 import AnimeMangaDetailBottom from "./AnimMangaDetailBottom/AnimeMangaDetailBottom";
 
-
+import { getAnimeDetail } from "../../../../api/animeManga";
+import { categoryType } from "../../../../constants/constants";
+import { helperActions } from "../../../../redux/slice/helperSlice";
 import {createWatchlistThunk } from "../../../../redux/thunk/myWatchlistThunk";
 import { createFavoriteThunk } from "../../../../redux/thunk/myFavoriteThunk";
 
@@ -91,9 +88,7 @@ const AnimeMangaDetail = () => {
         ? animeDetail.num_episodes
         : animeDetail.num_chapters,
       media_type: animeDetail.media_type,
-    })).unwrap().then((res) => {
-      dispatch(AlertBoxActions.getAlertBoxReducer(res))
-    }).catch((err) => console.log(err));
+    }))
   };
 
   const createFavoriteHandler = () => {
@@ -108,9 +103,7 @@ const AnimeMangaDetail = () => {
         ? animeDetail.num_chapters
         : animeDetail.num_episodes,
       media_type: animeDetail.media_type,
-    })).unwrap().then((res) => {
-      dispatch(AlertBoxActions.getAlertBoxReducer(res));
-    }).catch(err => console.log(err));
+    }))
   };
 
   return (

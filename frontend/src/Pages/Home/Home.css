@@ -55,7 +55,6 @@
   column-gap: 5rem;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .search-bar-box .menu-btn-container {
@@ -68,7 +67,7 @@
 }
 
 .show {
-  justify-content: flex-end !important;
+  justify-content: flex-end;
 }
 
 .show form {
@@ -100,6 +99,7 @@
 
   .search-container .search-bar-box {
     padding: 0 0.5rem;
+
   }
 
   .home-right .search-container {
@@ -129,6 +129,12 @@
   .search-bar-box .menu-btn-container {
     display: block;
   }
+
+  
+  .search-container .search-bar-box {
+    justify-content: space-between;
+
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -144,4 +150,10 @@
   .search-bar-box .menu-btn-container {
     display: block;
   }
+
+  .search-container .search-bar-box {
+    justify-content: space-between;
+
+  }
+
 }

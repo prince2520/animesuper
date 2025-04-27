@@ -1,7 +1,7 @@
 import React from "react";
+import { uid } from "uid";
 
 import Card from "../../../../../components/Card/Card";
-import { uid } from "uid";
 
 const AnimeMangaRecommendation = ({ animeDetail }) => {
   return (

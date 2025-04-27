@@ -6,7 +6,6 @@ import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { AlertBoxActions } from "../../redux/slice/alertBoxSlice";
 import { categoryType } from "../../constants/constants";
 import { createWatchlistThunk } from "../../redux/thunk/myWatchlistThunk";
 

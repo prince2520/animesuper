@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import { closeOverlayReducer, showDeleteFavoriteReducer, showDeleteWatchlistReducer, showLogoutReducer, showProfileReducer, showThankYouBoxReducer, showUpdateWatchlistReducer } from '../reducer/overlayReducer';
+import { closeOverlayReducer, resetOverlayReducer, showDeleteFavoriteReducer, showDeleteWatchlistReducer, showLogoutReducer, showProfileReducer, showThankYouBoxReducer, showUpdateWatchlistReducer } from '../reducer/overlayReducer';
 
 export const initialOverlayState = {
     showOverlay: false,
@@ -16,6 +16,7 @@ const OverlaySlice = createSlice({
     name: 'overlay',
     initialState: initialOverlayState,
     reducers: {
+        resetOverlayReducer,
         closeOverlayReducer,
         showProfileReducer,
         showLogoutReducer,

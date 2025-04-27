@@ -1,11 +1,11 @@
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { policiesData } from "../../constants/constants";
 
 import { FooterImage, Logo } from "../../photo";
+import { policiesData } from "../../constants/constants";
 
 import "./Footer.css";
-import { uid } from "uid";
 
 const Footer = () => {
   return (

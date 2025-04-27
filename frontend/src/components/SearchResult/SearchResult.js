@@ -1,9 +1,9 @@
+import { uid } from "uid";
 import { useNavigate } from "react-router-dom";
 
 import randomColor from "randomcolor";
 
 import "./SearchResult.css";
-import { uid } from "uid";
 
 const SearchResult = ({ results, closeSearchHandler }) => {
   const navigate = useNavigate();

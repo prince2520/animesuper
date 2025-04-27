@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getAnimeMangaDetailAPI, getCategoryListAPI } from "../api/animeMangaAPI";
 import { AlertBoxActions } from "../slice/alertBoxSlice";
 
+//  Thunk -  fetch a ranked category list (anime/manga) from the API.
 export const getCategoryListThunk = createAsyncThunk(
     'animeManga/getCategoryList',
     async ({
@@ -27,6 +28,7 @@ export const getCategoryListThunk = createAsyncThunk(
 );
 
 
+//  Thunk - fetch a (anime/manga) detail from the API.
 export const getAnimeMangaDetailThunk = createAsyncThunk(
     'animeManga/getAnimeMangaDetail',
     async ({ category, id }, { dispatch, rejectWithValue }) => {

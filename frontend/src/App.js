@@ -23,6 +23,7 @@ import "./App.css";
 import { AuthActions } from "./redux/slice/authSlice";
 import { useAuth } from "./hooks/useAuth";
 import { getUserThunk } from "./redux/thunk/authThunk";
+import NotPageFound from "./Pages/NotPageFound/NotPageFound";
 
 let time = null;
 
@@ -31,8 +32,6 @@ function App() {
   const auth = useSelector(state => state.auth);
   const { isVisible } = useSelector((state) => state.alertBox);
 
-
-  const navigate = useNavigate();
   const { autoLogout, logout } = useAuth();
 
   useEffect(() => {
@@ -69,7 +68,6 @@ function App() {
         <Route path="/" element={<LoginSignupPage />}>
           <Route path="login" element={<LoginForm />} />
           <Route path="signup" element={<SignupForm />} />
-          <Route path="" element={<Navigate to={"login"} />} />
         </Route>
         <Route path="/home" element={<Home />}>
           <Route
@@ -89,6 +87,7 @@ function App() {
           <Route path=":category/:id" element={<AnimeMangaDetail />} />
           <Route path="" element={<Navigate to={"anime"} />} />
         </Route>
+        <Route path="*" element={<NotPageFound/>} />
       </Routes>
     </div>
   );

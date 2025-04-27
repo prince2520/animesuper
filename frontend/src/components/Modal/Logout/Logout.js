@@ -1,11 +1,10 @@
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
-import { OverlayActions } from "../../../redux/slice/overlaySlice";
-
 import CustomButton from "../../CustomButton/CustomButton";
-import { useAuth } from "../../../hooks/useAuth";
 
+import { useAuth } from "../../../hooks/useAuth";
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
 
 const Logout = () => {
   const dispatch = useDispatch();

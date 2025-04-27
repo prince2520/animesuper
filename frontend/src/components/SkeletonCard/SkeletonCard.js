@@ -1,5 +1,8 @@
-import './SkeletonCard.css';
 import Skeleton from "react-loading-skeleton";
+
+import './SkeletonCard.css';
+
+
 const SkeletonCard = () => {
     return (
         <div className={'skeleton-card'}>

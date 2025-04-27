@@ -1,13 +1,13 @@
 import { useState } from "react";
-
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 import CustomButton from "../../../components/CustomButton/CustomButton";
-import { useDispatch } from "react-redux";
-import { loginThunk } from "../../../redux/thunk/authThunk";
+
 import { useAuth } from "../../../hooks/useAuth";
+import { loginThunk } from "../../../redux/thunk/authThunk";
 
 const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -23,7 +23,6 @@ const LoginForm = () => {
     }))
     .unwrap()
     .then(((data) => {
-      console.log(data)
       authTimer(data);
     }))
     .catch((err) => {console.log(err)});
