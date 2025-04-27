@@ -23,10 +23,10 @@ const LoginForm = () => {
     }))
     .unwrap()
     .then(((data) => {
+      console.log(data)
       authTimer(data);
     }))
     .catch((err) => {console.log(err)});
-    
   };
 
   return (

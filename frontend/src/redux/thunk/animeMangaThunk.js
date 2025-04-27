@@ -1,23 +1,26 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getAnimeMangaDetailAPI, getCategoryListAPI } from "../api/animeMangaAPI";
-
+import { AlertBoxActions } from "../slice/alertBoxSlice";
 
 export const getCategoryListThunk = createAsyncThunk(
     'animeManga/getCategoryList',
-    async ({ 
+    async ({
         category,
         rank_type,
         limit,
-        offset }, { rejectWithValue }) => {
+        offset }, { dispatch, rejectWithValue }) => {
         try {
             let response = await getCategoryListAPI(
                 category,
                 rank_type,
                 limit,
                 offset = 0);
-  
-            return {data: {...response.data}, category, slug: rank_type};
+            return { data: response.data.data, category, slug: rank_type };
         } catch (error) {
+            dispatch(AlertBoxActions.getAlertBoxReducer({
+                success: false,
+                message: error.message || "Something goes wrong!"
+            }))
             return rejectWithValue(error.message || "Something goes wrong!");
         }
     }
@@ -26,11 +29,15 @@ export const getCategoryListThunk = createAsyncThunk(
 
 export const getAnimeMangaDetailThunk = createAsyncThunk(
     'animeManga/getAnimeMangaDetail',
-    async ({category, id }, { rejectWithValue }) => {
+    async ({ category, id }, { dispatch, rejectWithValue }) => {
         try {
             let response = await getAnimeMangaDetailAPI(category, id);
-            return response;
+            return response.data;
         } catch (error) {
+            dispatch(AlertBoxActions.getAlertBoxReducer({
+                success: false,
+                message: error.message || "Something goes wrong!"
+            }))
             return rejectWithValue(error.message || "Something goes wrong!");
         }
     }

@@ -29,9 +29,7 @@ const Card = (props) => {
         ? props.detail.num_episodes
         : props.detail.num_chapters,
       media_type: props.detail.media_type,
-    })).unwrap().then((res) => {
-      dispatch(AlertBoxActions.getAlertBoxReducer(res))
-    }).catch((err) => console.log(err));
+    }));
   };
 
   return (

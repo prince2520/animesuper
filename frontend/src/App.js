@@ -29,7 +29,7 @@ let time = null;
 function App() {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
-  const { data, isVisible } = useSelector((state) => state.alertBox);
+  const { isVisible } = useSelector((state) => state.alertBox);
 
 
   const navigate = useNavigate();
@@ -39,10 +39,10 @@ function App() {
     clearTimeout(time);
     if (isVisible) {
       time = setTimeout(() => {
-        dispatch(AlertBoxActions.getAlertBoxReducer());
+        dispatch(AlertBoxActions.closeAlertBoxReducer());
       }, [2000]);
     }
-  }, [dispatch, isVisible, data]);
+  }, [dispatch, isVisible]);
 
 
   useEffect(() => {

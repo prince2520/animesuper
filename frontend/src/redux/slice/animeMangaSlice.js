@@ -23,9 +23,15 @@ const AnimeMangaSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getAnimeMangaDetailThunk.fulfilled, saveCarouselDataReducer)
-  
+            .addCase(getAnimeMangaDetailThunk.rejected, (_, actions) => {
+                console.error(actions.payload);
+            })
+
         builder
             .addCase(getCategoryListThunk.fulfilled, saveAnimeMangaReducer)
+            .addCase(getCategoryListThunk.rejected, (_, actions) => {
+                console.error(actions.payload);
+            })
     }
 });
 

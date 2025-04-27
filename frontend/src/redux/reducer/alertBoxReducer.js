@@ -1,16 +1,14 @@
+import { initialAlertBoxState } from "../slice/alertBoxSlice";
+
 export const getAlertBoxReducer = (state, action) => {
-    state.data = {
-        success: action.payload.success,
-        description: action.payload.description
-    }
+    const { message, success } = action.payload;
+
+    state.success = success ?? false;
+    state.message = message ?? "Something goes wrong";
     state.isVisible = true;
 };
 
 
-export const closeAlertBoxReducer = (state) => {
-    state.data = {
-        success: false,
-        description: ''
-    };
-    state.isVisible = false;
+export const closeAlertBoxReducer = () => {
+    return {...initialAlertBoxState}
 };

@@ -12,8 +12,8 @@ import "./AlertBox.css";
 const AlertBox = () => {
   const dispatch = useDispatch();
   
-  const data = useSelector((state) => state.alertBox.data);
-  const getIconAndColor = getAlertIconAndColor(data.success);
+  const {success, message} = useSelector((state) => state.alertBox);
+  const getIconAndColor = getAlertIconAndColor(success);
 
   const alertBoxVariant = {
     initial: {
@@ -59,8 +59,8 @@ const AlertBox = () => {
           </div>
           <div className="flex-center alert-box-content">
             <div style={{ paddingLeft: "1rem" }}>
-              <h5>{data.success ? "Success" : "Error"}</h5>
-              <p className="color-text">{data.description}</p>
+              <h5>{success ? "Success" : "Error"}</h5>
+              <p className="color-text">{message}</p>
             </div>
           </div>
           <div

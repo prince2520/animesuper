@@ -11,10 +11,11 @@ const MenuBtn = () => {
     <Icon
       className="cursor-btn"
       icon="material-symbols:menu-rounded"
+
       onClick={() =>
         dispatch(helperActions.showMobileSideBarReducer(!showMobileSideBar))
       }
-      style={{ fontSize: "2rem", color: "white" }}
+      style={{alignItems:"left", fontSize: "2rem", color: "white" }}
     />
   );
 };

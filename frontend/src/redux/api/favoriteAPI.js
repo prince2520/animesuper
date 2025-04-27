@@ -55,8 +55,6 @@ export const getFavoriteListAPI = async (token) => {
 
 // remove anime/manga from favorites list
 export const deleteFavoriteAPI = async (category, category_id, token) => {
-
-  console.log("delete", category, category_id)
   let result = await fetch(
     `${process.env.REACT_APP_SERVER_URL}/my_favorite/delete-favorite`,
     {

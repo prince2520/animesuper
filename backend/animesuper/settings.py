@@ -100,14 +100,13 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django_yugabytedb',
-        'NAME':  'yugabyte',
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': 5433,
-        'USER': 'admin',
-        'CONN_MAX_AGE': None,
-        'PASSWORD': os.getenv('DB_PASSWORD')
+    'default': {        
+        'ENGINE': os.getenv('DB_ENGINE'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST':os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 

@@ -22,14 +22,21 @@ const MyFavoriteSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getFavoriteListThunk.fulfilled, getFavoriteListReducer)
+            .addCase(getFavoriteListThunk.rejected, (_, actions) => {
+                console.log(actions.payload);
+            })
 
         builder
             .addCase(createFavoriteThunk.fulfilled, createFavoriteReducer)
+            .addCase(createFavoriteThunk.rejected, (_, actions) => {
+                console.log(actions.payload);
+            })
 
         builder
             .addCase(deleteFavoriteThunk.fulfilled, deleteFavoriteReducer)
-
-
+            .addCase(deleteFavoriteThunk.rejected, (_, actions) => {
+                console.log(actions.payload);
+            })
     }
 });
 

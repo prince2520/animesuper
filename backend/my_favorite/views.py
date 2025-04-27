@@ -50,10 +50,22 @@ def CreateFavorite(request):
             favorite.save()
         else:
             return Response({
+                'success': False,
                 'message': 'Already added to your favorite list!'},
                 status=status.HTTP_409_CONFLICT)
-
-    return Response({'message': 'Added to your favorite list successfully', 'data': data},
+    
+    data = {
+        'category_id' : category_id,
+        'category' : category,
+        'img_url': img_url,
+        'title' : title,
+        'score' : score,
+        'year' : year,
+        'num_episode_chapter' : num_episode_chapter,
+        'media_type' : media_type
+        }
+        
+    return Response({'success': True, 'message': 'Added to your favorite list successfully', 'data': data},
                     status=status.HTTP_200_OK)
 
 
@@ -77,7 +89,7 @@ def DeleteFavorite(request):
     myFavoriteList.favorite_list.remove(item)
     myFavoriteList.save()
 
-    return Response({'message': 'Deleted from favorite list successfully!'},
+    return Response({'success': True, 'message': 'Deleted from favorite list successfully!'},
                     status=status.HTTP_200_OK)
 
 
@@ -106,4 +118,4 @@ def GetFavoritelist(request):
             'num_episode_chapter': item.num_episode_chapter
         })      
 
-    return Response({'message': "Favorite list successfully!", 'data': data}, status=status.HTTP_200_OK)
+    return Response({'success': False, 'message': "Favorite list successfully!", 'data': data}, status=status.HTTP_200_OK)

@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { resetAuth, saveAuthReducer, saveAuthSatisticsReducer, updateIsAuthReducer } from '../reducer/authReducer';
-import { getAuthStatisticsThunk, getUserThunk, loginThunk, updatedAuthThunk } from '../thunk/authThunk';
+import { getAuthStatisticsThunk, getUserThunk, loginThunk, signupThunk, updatedAuthThunk } from '../thunk/authThunk';
 
 export const initialAuthState = {
     email: "",
@@ -32,15 +32,32 @@ const AuthSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(loginThunk.fulfilled, saveAuthReducer)
+            .addCase(loginThunk.rejected, (_, actions) => {
+                console.error(actions.payload);
+            })
+        builder
+            .addCase(signupThunk.fulfilled, saveAuthReducer)
+            .addCase(signupThunk.rejected, (_, actions) => {
+                console.error(actions.payload);
+            })
 
         builder
             .addCase(getUserThunk.fulfilled, saveAuthReducer)
+            .addCase(getUserThunk.rejected, (_, actions) => {
+                console.error(actions.payload);
+            })
 
         builder
             .addCase(getAuthStatisticsThunk.fulfilled, saveAuthSatisticsReducer)
+            .addCase(getAuthStatisticsThunk.rejected, (_, actions) => {
+                console.error(actions.payload);
+            })
 
         builder
             .addCase(updatedAuthThunk.fulfilled, saveAuthReducer)
+            .addCase(updatedAuthThunk.rejected, (_, actions) => {
+                console.error(actions.payload);
+            })
 
     }
 });

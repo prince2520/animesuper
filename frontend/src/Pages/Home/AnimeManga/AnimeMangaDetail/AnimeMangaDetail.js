@@ -58,14 +58,13 @@ const AnimeMangaDetail = () => {
   const [animeDetail, setAnimeDetail] = useState();
 
   const { ref, inView } = useInView({
-    /* Optional options */
     threshold: 0.8,
     delay: 200,
   });
 
   useEffect(() => {
     getAnimeDetail(category, id).then((result) => {
-      setAnimeDetail(result);
+      setAnimeDetail(result.data);
     });
   }, [category, id, dispatch]);
 

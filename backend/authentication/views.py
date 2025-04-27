@@ -30,18 +30,33 @@ def SignUp(request):
         confirmPassword = body_data['confirmPassword']
 
         if not password == confirmPassword:
-            return Response({'message': 'Confirm password not matched!'},
+            return Response({'success': False, 'message': 'Confirm password not matched!'},
                             status=status.HTTP_406_NOT_ACCEPTABLE)
 
         if User.objects.filter(email=email).exists() is not False:
-            return Response({'message': 'User with this email already exists!'},
+            return Response({'success': False, 'message': 'User with this email already exists!'},
                             status=status.HTTP_409_CONFLICT)
 
         profile = User.objects.create_user(email=email, password=password)
         profile.username = username
         profile.save()
+        
+        token = RefreshToken.for_user(profile)
+        
+        serialized_data = serialize("json", profile.favorite_genre.all(), use_natural_foreign_keys=True)
+            
+        data = {
+            'username': profile.username,
+            'email': profile.email,
+            'profile_photo': profile.profile_photo,
+            'gender': profile.gender,
+            'location' : profile.location,
+            'favorite_genre': json.loads(serialized_data),
+            'token': str(token.access_token)
+        }   
+         
 
-        return Response({'message': 'Account created successfully!'}, status=status.HTTP_200_OK)
+        return Response({'success': True, 'message': 'Account created successfully!', 'data': data}, status=status.HTTP_200_OK)
 
 
 @csrf_exempt
@@ -57,11 +72,11 @@ def SignIn(request):
         user = User.objects.filter(email=email).first()
 
         if User.objects.filter(email=email).exists() is False:
-            return Response({'message': 'User with this email not exists!'},
+            return Response({'success': False,'message': 'User with this email not exists!'},
                             status=status.HTTP_404_NOT_FOUND)
 
         if not user.check_password(password):
-            return Response({'message': 'Password is incorrect!'},
+            return Response({'success': False, 'message': 'Password is incorrect!'},
                             status=status.HTTP_401_UNAUTHORIZED)
             
         token = RefreshToken.for_user(user)
@@ -78,7 +93,7 @@ def SignIn(request):
             'token': str(token.access_token)
         }   
          
-        return Response({'message': "Sign in successfully!", 'data' : data}, status=status.HTTP_200_OK)
+        return Response({'success': True, 'message': "Sign in successfully!", 'data' : data}, status=status.HTTP_200_OK)
 
 
 
@@ -92,7 +107,7 @@ def GetAuth(request):
         user = User.objects.filter(email=email).first()
 
         if User.objects.filter(email=email).exists() is False:
-            return Response({'message': 'User with this email not exists!'},
+            return Response({'success': False, 'message': 'User with this email not exists!'},
                             status=status.HTTP_404_NOT_FOUND)
         
         serialized_data = serialize("json", user.favorite_genre.all(), use_natural_foreign_keys=True)
@@ -107,6 +122,7 @@ def GetAuth(request):
         } 
         
         return Response({
+            'success': True,
             "message" : "fetch user successfully!", 
             'data': data,
         }, status=status.HTTP_200_OK)
@@ -157,9 +173,9 @@ def UpdateAuth(request):
                 'favorite_genre': json.loads(serialized_data),
             }
 
-            return Response({'message': 'Profile edited successfully', 'data': data}, status=status.HTTP_200_OK)
+            return Response({'success': True, 'message': 'Profile edited successfully', 'data': data}, status=status.HTTP_200_OK)
         except user.DoesNotExist:
-            return Response({'message': 'You are unauthorized user!'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'success': False, 'message': 'You are unauthorized user!'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 
@@ -193,9 +209,10 @@ def GetAuthStatistics(request):
             }    
             
             return Response({
+                'success': True,
                 'message': "Fetch user statistics successfully!",
                 'data': data
             }, status=status.HTTP_200_OK)
 
         except my_watchlist.DoesNotExist:
-            return Response({'message': 'You are unauthorized user!'}, status=status.HTTP_401_UNAUTHORIZED)
+            return Response({'success': False, 'message': 'You are unauthorized user!'}, status=status.HTTP_401_UNAUTHORIZED)

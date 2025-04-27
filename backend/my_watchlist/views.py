@@ -49,11 +49,20 @@ def CreateWatchlist(request):
             watchlist.status = 'Plan to watch'
 
         watchlist.save()
+        
+        data = {
+            'category_id':category_id,
+            'category':category,
+            'img_url':img_url,
+            'title':title,
+            'type':media_type,
+            'num_episode_or_chapter':num_episode_or_chapter
+        }
 
-        return Response({'message': 'Added to watchlist successfully!', 'data': watchlist},
+        return Response({'success': True, 'message': 'Added to watchlist successfully!', 'data': data},
                         status=status.HTTP_200_OK)
 
-    return Response({'message': 'Already exists in your watchlist!' },
+    return Response({'success': False, 'message': 'Already exists in your watchlist!' },
                     status=status.HTTP_409_CONFLICT)
 
 
@@ -75,9 +84,9 @@ def DeleteWatchlist(request):
 
     if item.exists() is not None:
         item.delete()
-        return Response({'message': 'Deleted successfully!'}, status=status.HTTP_200_OK)
+        return Response({'success': True, 'message': 'Deleted successfully!'}, status=status.HTTP_200_OK)
 
-    return Response({'message': 'Something goes wrong!'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({'success': False, 'message': 'Something goes wrong!'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET'])
@@ -104,7 +113,7 @@ def GetWatchlist(request):
             'num_episode_or_chapter': item.num_episode_or_chapter
         })     
 
-    return Response({'message': "Fetch watchlist successfully!", 'data': data}, status=status.HTTP_200_OK)
+    return Response({'success': True, 'message': "Fetch watchlist successfully!", 'data': data}, status=status.HTTP_200_OK)
 
 
 @api_view(['PATCH'])
@@ -127,4 +136,4 @@ def UpdateWatchlist(request):
     myWatchList.progress_read_watched = progress_read_watched
     myWatchList.save()
 
-    return Response({'success': True, 'description': 'Updated successfully!'}, status=status.HTTP_200_OK)
+    return Response({'success': True, 'message': 'Updated successfully!'}, status=status.HTTP_200_OK)

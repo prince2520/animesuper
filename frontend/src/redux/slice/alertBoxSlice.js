@@ -2,11 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import { closeAlertBoxReducer, getAlertBoxReducer } from '../reducer/alertBoxReducer';
 
 
-const initialAlertBoxState = {
-    data: {
-        success: false,
-        description: ''
-    },
+export const initialAlertBoxState = {
+    success: false,
+    message: '',
     isVisible: false
 };
 

@@ -22,15 +22,27 @@ const MyWatchlistSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getWatchlistThunk.fulfilled, getWatchlistReducer)
+      .addCase(getWatchlistThunk.rejected, (_, actions) => {
+        console.error(actions.payload);
+      })
 
     builder
       .addCase(createWatchlistThunk.fulfilled, createWatchlistReducer)
+      .addCase(createWatchlistThunk.rejected, (_, actions) => {
+        console.error(actions.payload);
+      })
 
     builder
       .addCase(deleteWatchlistThunk.fulfilled, deleteWatchlistReducer)
+      .addCase(deleteWatchlistThunk.rejected, (_, actions) => {
+        console.log(actions.payload);
+      })
 
     builder
       .addCase(updateWatchlistThunk.fulfilled, updateWatchlistReducer)
+      .addCase(updateWatchlistThunk.rejected, (_, actions) => {
+        console.log(actions.payload);
+      })
   }
 });
 

@@ -1,29 +1,28 @@
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useDispatch } from "react-redux";
 
-import CustomButton from "../../../components/CustomButton/CustomButton";
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
-import { AlertBoxActions } from "../../../redux/slice/alertBoxSlice";
+import CustomButton from "../../../components/CustomButton/CustomButton";
+
+import { signupThunk } from "../../../redux/thunk/authThunk";
 
 const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const signUpHandler = async (event) => {
-    let data = {
-      username: event.target[0].value,
-      email: event.target[1].value, 
-      password: event.target[2].value,
-      confirmPassword: event.target[3].value
-    };
+  const dispatch = useDispatch();
 
+  const signUpHandler = async (event) => {
     event.preventDefault();
 
-    signUpHandler(...data)
-    .then((res)=>{
-      AlertBoxActions.getAlertBoxReducer(res);
-    }).catch((err)=>{ console.log(err)});
+    let username =  event.target[0].value;
+    let email = event.target[1].value;
+    let password = event.target[2].value;
+    let confirmPassword = event.target[3].value;
+
+    dispatch(signupThunk({username, email, password, confirmPassword}));
   };
 
   return (

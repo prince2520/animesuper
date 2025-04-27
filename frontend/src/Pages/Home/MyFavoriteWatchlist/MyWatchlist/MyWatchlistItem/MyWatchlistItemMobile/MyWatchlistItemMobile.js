@@ -59,8 +59,9 @@ const MyWatchlistItemMobile = ({ item }) => {
             onClick={() => {
               dispatch(OverlayActions.showUpdateWatchlistReducer());
               dispatch(
-                MyWatchlistActions.selectedWatchlistItemHandler({
-                  ...item,
+                MyWatchlistActions.selectedWatchlistReducer({
+                  selectedCategory: item.category,
+                  selectedCategoryId: item.category_id
                 })
               );
             }}

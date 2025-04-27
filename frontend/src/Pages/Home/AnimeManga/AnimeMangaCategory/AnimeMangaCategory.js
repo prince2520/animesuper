@@ -25,7 +25,7 @@ const AnimeMangaCategory = () => {
     if (offset + value >= 0) {
       setAnimeManga([]);
       getCategoryListAPI(category, id, 20, total).then((result) => {
-        setAnimeManga(result.data);
+        setAnimeManga(result.data.data);
         setOffset(total);
       });
     }

@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { createFavoriteAPI, createFavoriteItemAPI, deleteFavoriteAPI, deleteFavoriteItemAPI, getFavoriteListAPI } from "../api/favoriteAPI";
+import { createFavoriteAPI, deleteFavoriteAPI, getFavoriteListAPI } from "../api/favoriteAPI";
+import { AlertBoxActions } from "../slice/alertBoxSlice";
 
 export const createFavoriteThunk = createAsyncThunk(
     'myFavorite/createFavorite',
-    async ({ 
+    async ({
         category_id,
         category,
         img_url,
@@ -12,11 +13,11 @@ export const createFavoriteThunk = createAsyncThunk(
         year,
         num_episode_chapter,
         media_type,
-        }, { getState ,rejectWithValue }) => {
+    }, { dispatch, getState, rejectWithValue }) => {
         try {
             const { auth } = getState();
 
-            let response = await createFavoriteAPI( 
+            let response = await createFavoriteAPI(
                 category_id,
                 category,
                 img_url,
@@ -24,11 +25,15 @@ export const createFavoriteThunk = createAsyncThunk(
                 score,
                 year,
                 num_episode_chapter,
-                media_type, 
+                media_type,
                 auth.token);
-
+            dispatch(AlertBoxActions.getAlertBoxReducer(response))
             return response.data;
         } catch (error) {
+            dispatch(AlertBoxActions.getAlertBoxReducer({
+                success: false,
+                message: error.message || "Something goes wrong!"
+            }))
             return rejectWithValue(error.message || "Something goes wrong!");
         }
     }
@@ -36,12 +41,16 @@ export const createFavoriteThunk = createAsyncThunk(
 
 export const getFavoriteListThunk = createAsyncThunk(
     'myFavorite/getFavoriteList',
-    async (_, { getState ,rejectWithValue }) => {
+    async (_, { dispatch, getState, rejectWithValue }) => {
         try {
             const { auth } = getState();
             let response = await getFavoriteListAPI(auth.token);
             return response.data;
         } catch (error) {
+            dispatch(AlertBoxActions.getAlertBoxReducer({
+                success: false,
+                message: error.message || "Something goes wrong!"
+            }))
             return rejectWithValue(error.message || "Something goes wrong!");
         }
     }
@@ -50,12 +59,17 @@ export const getFavoriteListThunk = createAsyncThunk(
 
 export const deleteFavoriteThunk = createAsyncThunk(
     'myFavorite/deleteFavorite',
-    async ({ category, category_id }, { getState ,rejectWithValue }) => {
+    async ({ category, category_id }, { dispatch, getState, rejectWithValue }) => {
         try {
             const { auth } = getState();
-            await deleteFavoriteAPI(category, category_id, auth.token); 
-            return {category, category_id};
+            const response = await deleteFavoriteAPI(category, category_id, auth.token);
+            dispatch(AlertBoxActions.getAlertBoxReducer(response))
+            return { category, category_id };
         } catch (error) {
+            dispatch(AlertBoxActions.getAlertBoxReducer({
+                success: false,
+                message: error.message || "Something goes wrong!"
+            }))
             return rejectWithValue(error.message || "Something goes wrong!");
         }
     }
