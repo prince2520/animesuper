@@ -1,5 +1,4 @@
 import { Icon } from "@iconify/react";
-
 import { ThankYouImg } from "../../../photo";
 
 const ThankYou = () => {

@@ -1,29 +1,29 @@
+import { uid } from "uid";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useInView } from "react-intersection-observer";
-import React, { useContext, useEffect, useState } from "react";
-
-import { animeStatus, mangaStatus, categoryType } from "../../../../constants/constants";
-import { MyWatchlistImage } from "../../../../photo";
-import { helperActions } from "../../../../store/helper";
-import { getMyWatchlist } from "../../../../api/watchlist";
-import { watchlistHeadings, watchlistColors } from "../../../../constants/constants";
-import { MyWatchlistActions } from "../../../../store/myWatchlist";
+import { useNavigate, useParams } from "react-router-dom";
 
 import NoData from "../NoData/NoData";
-import AuthContext from "../../../../Context/auth";
 import MyWatchlistItem from "./MyWatchlistItem/MyWatchlistItem";
 import ChangeCategory from "../../../../components/ChangeCategory/ChangeCategory";
 import MyWatchlistItemSkeleton from "../FavoriteWatchlistSkeleton/FavoriteWatchlistSkeleton";
 
-import "../MyFavoriteWatchlist.css";
+import { MyWatchlistImage } from "../../../../photo";
+import { helperActions } from "../../../../redux/slice/helperSlice";
+import { animeStatus, mangaStatus } from "../../../../constants/constants";
+import { getWatchlistThunk } from "../../../../redux/thunk/myWatchlistThunk";
+import { watchlistHeadings, watchlistColors } from "../../../../constants/constants";
+
 import "./MyWatchlist.css";
+import "../MyFavoriteWatchlist.css";
 
 // Sub Components
 const Heading = () => {
   return (
     <div className="my-watchlist-table-heading">
       {watchlistHeadings.map((heading) => (
-        <h5 className="color-text" style={{ width: heading.width }}>
+        <h5 key={uid(8)} className="color-text" style={{ width: heading.width }}>
           {heading.title}
         </h5>
       ))}
@@ -37,7 +37,7 @@ const ColorStatus = () => {
     <div className="anime-status-color">
       {watchlistColors.map((data) => {
         return (
-          <div className={`${data.className} color-title`}>
+          <div key={uid(8)} className={`${data.className} color-title`}>
             <span className="circle" />
             <h6>{data.title}</h6>
           </div>
@@ -55,42 +55,36 @@ const MyWatchlist = () => {
   });
 
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
-  const filterData = useSelector((state) => state.myWatchlist.filterData);
-  const statusFilter = useSelector((state) => state.myWatchlist.currStatus);
+  const [status, setStatus] = useState("All Anime");
+  const { category } = useParams();
+  const navigate = useNavigate();
 
-  const [selectedCategory, setSelectedCategory] = useState("Anime");
   const [showWatchlistSkeleton, setShowWatchlistSkeleton] = useState(false);
 
+  const watchlist = useSelector(state => state.myWatchlist.watchlist);
+
+  const [data, setData] = useState([]);
+
+
   useEffect(() => {
-    dispatch(helperActions.searchBarHandler(false));
-    dispatch(helperActions.blurNavbarHandler(!inView));
+    dispatch(helperActions.searchBarReducer(false));
+    dispatch(helperActions.blurNavbarReducer(!inView));
 
     return () => {
-      dispatch(helperActions.searchBarHandler(true));
-      dispatch(helperActions.blurNavbarHandler(true));
+      dispatch(helperActions.searchBarReducer(true));
+      dispatch(helperActions.blurNavbarReducer(true));
     };
   }, [inView, dispatch]);
 
   useEffect(() => {
     setShowWatchlistSkeleton(true);
+    dispatch(getWatchlistThunk()).unwrap().finally(() => setShowWatchlistSkeleton(false));
+  }, [dispatch]);
 
-    getMyWatchlist(authCtx.email)
-      .then((result) => {
-        dispatch(MyWatchlistActions.saveMyWatchlistData(result.Data));
-        setShowWatchlistSkeleton(false);
-      })
-      .catch((err) => setShowWatchlistSkeleton(false));
-
-    return () => {
-      dispatch(
-        MyWatchlistActions.currentStatus({
-          currStatus: animeStatus[0],
-          selectedCategory: "anime",
-        })
-      );
-    };
-  }, [authCtx?.email, dispatch]);
+  useEffect(() => {
+    let temp = watchlist[category.toLowerCase()].filter(item => status === item.status | status === "All Manga" || status === "All Anime");
+    setData(temp);
+  }, [status, category, JSON.stringify(watchlist)]);
 
   return (
     <div className="my-watchlist-page">
@@ -101,25 +95,26 @@ const MyWatchlist = () => {
       <div className="anime-status">
         <ChangeCategory
           eventHandler={(name) => {
-            setSelectedCategory(name);
-            dispatch(MyWatchlistActions.changeCategory(name));
-          }}
+            if (name.toLowerCase() === "anime")
+              setStatus("All Anime")
+            else
+              setStatus("All Manga")
+
+            navigate(`/home/my-watchlist/${name.toLowerCase()}`)
+          }
+          }
         />
         <div className="anime-status-list">
-          {(selectedCategory === categoryType[0]
+          {(category === "anime"
             ? animeStatus
             : mangaStatus
           ).map((res) => (
             <span
+              key={uid(8)}
               onClick={() => {
-                dispatch(
-                  MyWatchlistActions.currentStatus({
-                    currStatus: res,
-                    selectedCategory: selectedCategory,
-                  })
-                );
+                setStatus(res);
               }}
-              className={`cursor-btn ${statusFilter === res ? "selected" : ""}`}
+              className={`cursor-btn ${status === res ? "selected" : ""}`}
             >
               <h5>{res}</h5>
             </span>
@@ -130,15 +125,15 @@ const MyWatchlist = () => {
       <div className="my-watchlist-table">
         <Heading />
         <div className="my-watchlist-table-list">
-          {!showWatchlistSkeleton && filterData.length === 0 && <NoData />}
-          {filterData.map((res, index) => (
-            <MyWatchlistItem res={res} index={index} />
+          {!showWatchlistSkeleton && data.length === 0 && <NoData />}
+          {data.map((item, index) => (
+            <MyWatchlistItem key={uid(8)} item={item} index={index} />
           ))}
           {showWatchlistSkeleton &&
-            filterData.length === 0 &&
+            !data.length &&
             Array(5)
               .fill(null)
-              .map(() => <MyWatchlistItemSkeleton />)}
+              .map(() => <MyWatchlistItemSkeleton key={uid(8)} />)}
         </div>
       </div>
     </div>

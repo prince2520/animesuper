@@ -1,188 +1,89 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState, useRef } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 import Skeleton from "react-loading-skeleton";
-import Resizer from "react-image-file-resizer";
+
+import useCompressImg from "../../hooks/useCompressImg";
+import UpAndDown from "../../animation/Wrapper/UpAndDown";
+import ProfileCardEdit from "./ProfileCardEdit/ProfileCardEdit";
+import ProfileCardStatistics from "./ProfileCardStatistics/ProfileCardStatistics";
 
 import { storage } from "../../firebase";
-import { OverlayActions } from "../../store/overlay";
-import { AlertBoxActions } from "../../store/alertBox";
-import { MyProfileActions } from "../../store/myProfile";
-import { getProfileStatistics, saveProfile } from "../../api/auth";
-
-import AuthContext from "../../Context/auth";
-import ProfileCardEdit from "./ProfileCardEdit/ProfileCardEdit";
-import UpAndDown from "../../animation/Wrapper/UpAndDown";
-import ProfileCardStatistics from "./ProfileCardStatistics/ProfileCardStatistics";
+import { OverlayActions } from "../../redux/slice/overlaySlice";
+import { getAuthStatisticsThunk, updatedAuthThunk } from "../../redux/thunk/authThunk";
 
 import "./ProfileCard.css";
 
 const ProfileCard = () => {
   const imgRef = useRef(null);
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
-  const user = useSelector((state) => state.myProfile);
+  const auth = useSelector((state) => state.auth);
 
   const [preview, setPreview] = useState(null);
   const [showEdit, setShowEdit] = useState(false);
-  const [profileImage, setProfileImage] = useState(null);
-  const [categoryStats, setCategoryStats] = useState({
-    animeStats: [],
-    mangaStats: [],
-  });
 
+  const watchlist = useSelector(state => state.myWatchlist.watchlist);
+
+  const [compressImageHandler, compressImg] = useCompressImg();
 
   useEffect(() => {
-    if (profileImage) {
+    if (compressImg) {
       const readImg = new FileReader();
       readImg.onloadend = () => {
         setPreview(readImg.result);
       };
-      readImg.readAsDataURL(profileImage);
+      readImg.readAsDataURL(compressImg);
     } else {
       setPreview(null);
     }
-  }, [profileImage]);
+  }, [compressImg]);
 
   useEffect(() => {
-    getProfileStatistics(authCtx.email)
-      .then((res) => {
-        setCategoryStats(res);
-      })
-      .catch((err) => console.log(err));
-  }, [authCtx.email]);
+    dispatch(getAuthStatisticsThunk());
+  }, [dispatch, JSON.stringify(watchlist)]);
 
 
   // Update profile data in DB and save into state
-  const saveProfileDetail = async (
-    username,
-    gender,
-    location,
-    favorite_genre
+  const updatedProfileHandler = async (
+    data
   ) => {
-    if (profileImage) {
-      let imageRef = ref(storage, `images/${authCtx.email}`);
-      const uploadTask = uploadBytesResumable(imageRef, profileImage);
-      await uploadTask.on(
+    if (compressImg) {
+      let imageRef = ref(storage, `images/${auth.email}`);
+      const uploadTask = uploadBytesResumable(imageRef, compressImg);
+      uploadTask.on(
         "state_changed",
         (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log("Upload is " + progress + "% done");
-          switch (snapshot.state) {
-            case "paused":
-              console.log("Upload is paused");
-              break;
-            case "running":
-              console.log("Upload is running");
-              break;
-            default:
-              console.log("Error");
-          }
         },
-        (error) => {},
+        (error) => { },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((profile_photo) => {
-            saveProfile(
-              authCtx.email,
-              username,
-              gender,
-              location,
-              favorite_genre,
-              profile_photo
-            )
-              .then((res) => {
-                dispatch(AlertBoxActions.saveAlertBoxData(res));
-                if (res.success) {
-                  dispatch(
-                    MyProfileActions.saveProfileData({
-                      username: username,
-                      gender: gender,
-                      location: location,
-                      favorite_genre: favorite_genre,
-                      profile_photo: profile_photo,
-                    })
-                  );
-                }
-              })
-              .catch((err) => console.log());
+            dispatch(updatedAuthThunk({ ...data, profile_photo }));
           });
         }
       );
     } else {
-      saveProfile(
-        authCtx.email,
-        username,
-        gender,
-        location,
-        favorite_genre,
-        null
-      )
-        .then((res) => {
-          dispatch(AlertBoxActions.saveAlertBoxData(res));
-          if (res.success) {
-            dispatch(
-              MyProfileActions.saveProfileData({
-                username: username,
-                gender: gender,
-                location: location,
-                favorite_genre: favorite_genre,
-              })
-            );
-          }
-        })
-        .catch((err) => console.log());
+      dispatch(updatedAuthThunk({ ...data, profile_photo: auth.profile_photo }));
     }
   };
-
-  // Compress Profile Upload Image 
-  const compressProfileImage = (event) => {
-    const file = event.target.files[0];
-    if (file && file.type.substr(0, 5) === "image") {
-      try {
-        Resizer.imageFileResizer(
-          event.target.files[0],
-          300,
-          300,
-          "JPEG",
-          100,
-          0,
-          (uri) => {
-            setProfileImage(uri);
-          },
-          "blob",
-          200,
-          200
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    } else {
-      setProfileImage(null);
-    }
-  };
-
- 
 
   return (
     <UpAndDown className="profile-card-container">
       <div className="flex-center profile-card-container-top">
         <span className="close-button">
           <Icon
-            onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+            onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
             color="white"
             icon="material-symbols:close"
             style={{ cursor: "pointer", fontSize: "2rem" }}
           />
         </span>
+
         <h3>Profile</h3>
         <p
-          className={`edit-button cursor-btn ${
-            showEdit && "edit-button-selected"
-          }`}
+          className={`edit-button cursor-btn ${showEdit && "edit-button-selected"
+            }`}
           onClick={() => setShowEdit(!showEdit)}
         >
           Edit
@@ -191,14 +92,14 @@ const ProfileCard = () => {
       <div className="profile-card-container-bottom">
         <div className="profile-photo-container">
           <div className="flex-center profile-photo">
-            {user.profile_photo && (
+            {auth.profile_photo && (
               <img
                 alt={"profile"}
                 accept="image/*"
-                src={preview || user.profile_photo}
+                src={preview || auth.profile_photo}
               />
             )}
-            {!user.profile_photo && <Skeleton width={300} height={300} />}
+            {!auth.profile_photo && <Skeleton width={300} height={300} />}
           </div>
           {showEdit && (
             <span
@@ -209,18 +110,18 @@ const ProfileCard = () => {
                 ref={imgRef}
                 type={"file"}
                 style={{ display: "none" }}
-                onChange={(event) => compressProfileImage(event)}
+                onChange={(event) => compressImageHandler(event)}
               />
               <Icon icon="ri:edit-line" />
             </span>
           )}
         </div>
         <div className="profile-personal-details">
-          <h5 className="username">{user.username}</h5>
-          <p className="email">{authCtx.email && authCtx.email}</p>
+          <h5 className="authname">{auth.username}</h5>
+          <p className="email">{auth.email}</p>
         </div>
-        {!showEdit && <ProfileCardStatistics categoryStats={categoryStats} />}
-        {showEdit && <ProfileCardEdit saveProfileDetail={saveProfileDetail} />}
+        {!showEdit && <ProfileCardStatistics />}
+        {showEdit && <ProfileCardEdit updatedProfileHandler={updatedProfileHandler} />}
       </div>
     </UpAndDown>
   );

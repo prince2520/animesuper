@@ -1,3 +1,4 @@
+import { uid } from "uid";
 import React from "react";
 import { useEffect, useRef } from "react";
 
@@ -6,14 +7,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { categoryType } from "../../../../constants/constants";
-import { AnimeActions } from "../../../../store/anime";
-import { getCategoryList } from "../../../../api/animeManga";
-
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 
+import { getCategoryListThunk } from "../../../../redux/thunk/animeMangaThunk";
+
 import "./AnimeMangaRanking.css";
+
 
 const AnimeMangaRanking = (props) => {
   const swiperRef = useRef();
@@ -22,20 +22,13 @@ const AnimeMangaRanking = (props) => {
   const { category } = useParams();
 
   const slug = props.rank.slug;
-  const animeData = useSelector((state) => state.anime.animeRankData[slug]);
-  const mangaData = useSelector((state) => state.anime.mangaRankData[slug]);
+
+  const animeManga = useSelector(state => state.animeManga[category]);
 
   useEffect(() => {
-    getCategoryList(category, props.rank.slug, 10).then((result) => {
-      dispatch(
-        AnimeActions.saveData({
-          category: category,
-          slug: props.rank.slug,
-          data: result.data,
-        })
-      );
-    });
+    dispatch(getCategoryListThunk({ category, rank_type: props.rank.slug, limit: 10, offset: 0 }));
   }, [category, props.rank.slug, dispatch]);
+
 
   return (
     <div className="ranking" style={props.style}>
@@ -48,10 +41,10 @@ const AnimeMangaRanking = (props) => {
           <div className="navigation-buttons">
             {["<", ">"].map((data) => (
               <button
+                key={uid(8)}
                 style={{ cursor: "pointer" }}
-                className={`flex-center ${
-                  data === "<" ? `prev-button` : `next-button`
-                }`}
+                className={`flex-center ${data === "<" ? `prev-button` : `next-button`
+                  }`}
                 onClick={() =>
                   data === "<"
                     ? swiperRef.current?.slidePrev()
@@ -103,25 +96,18 @@ const AnimeMangaRanking = (props) => {
             },
           }}
         >
-          {(category === categoryType[0].toLowerCase()
-            ? animeData
-            : mangaData) &&
-            (category === categoryType[0].toLowerCase()
-              ? animeData
-              : mangaData
-            ).map((res) => (
-              <SwiperSlide>
-                <div className="card-container">
-                  <Card detail={res.node} />
-                </div>
-              </SwiperSlide>
-            ))}
-          {!animeData &&
-            !mangaData &&
+          {animeManga[slug] && Object.values(animeManga[slug]).map((res) => (
+            <SwiperSlide key={uid(8)}>
+              <div className="card-container">
+                <Card detail={res.node} />
+              </div>
+            </SwiperSlide>
+          ))}
+          {!animeManga[slug] &&
             Array(6)
               .fill(null)
               .map(() => (
-                <SwiperSlide>
+                <SwiperSlide key={uid(8)}>
                   <div className="card-container">
                     <SkeletonCard />
                   </div>

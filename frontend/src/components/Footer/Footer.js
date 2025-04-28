@@ -1,8 +1,9 @@
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { policiesData } from "../../constants/constants";
 
 import { FooterImage, Logo } from "../../photo";
+import { policiesData } from "../../constants/constants";
 
 import "./Footer.css";
 
@@ -14,7 +15,7 @@ const Footer = () => {
         <div className="footer-left">
           <div className="policies">
             {policiesData.map((data) => (
-              <Link key={data.toString()} to={data.to}>
+              <Link key={uid(8)} to={data.to}>
                 <p className="color-text-light highlight">{data.name}</p>
               </Link>
             ))}
@@ -32,7 +33,7 @@ const Footer = () => {
             {["logos:facebook", "logos:reddit-icon", "logos:twitter"].map(
               (icon) => (
                 <Icon
-                  key={icon.toString()}
+                  key={uid(8)}
                   icon={icon}
                   style={{ fontSize: "2rem" }}
                 />

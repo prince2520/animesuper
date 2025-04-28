@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
-import { contactUs } from "../../../../api/auth";
-import { OverlayActions } from "../../../../store/overlay";
+import { contactUsAPI } from "../../../../redux/api/authAPI";
+import { OverlayActions } from "../../../../redux/slice/overlaySlice";
 import {contactLinkData} from "../../../../constants/constants";
 
 import CustomButton from "../../../../components/CustomButton/CustomButton";
@@ -24,7 +24,7 @@ const ContactUs = () => {
     let email = emailRef.current.value;
     let message = messageRef.current.value;
 
-    contactUs(email, message)
+    contactUsAPI(email, message)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   };
@@ -71,7 +71,7 @@ const ContactUs = () => {
           className="contact-us-submit"
           onClick={() => {
             messageUs();
-            dispatch(OverlayActions.showThankYouBoxHandler());
+            dispatch(OverlayActions.showThankYouBoxReducer());
           }}
         >
           <CustomButton width={"100%"} backgroundColor={"var(--primary)"}>

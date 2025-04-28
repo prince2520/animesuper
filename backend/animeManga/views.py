@@ -2,14 +2,11 @@ import json
 
 import requests
 # Html mail required import
-from django.core.mail import EmailMultiAlternatives
 from django.shortcuts import render
-from django.template.loader import render_to_string
-from django.utils.html import strip_tags
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
+import time
 from animesuper import settings
 
 from django.core.mail import send_mail
@@ -29,9 +26,14 @@ def ListAnimeManga(request):
     headers = {
         'X-MAL-CLIENT-ID': f'{settings.MYANIMELIST_API_KEY}'
     }
+    
+    time.sleep(5)
+    
     response = requests.get(urls, headers=headers)
+    
+    data = response.json()
 
-    return Response(response.json(), status=status.HTTP_200_OK)
+    return Response({'success': True, 'message': "Anime manga fetch successfully!", 'data': data}, status=status.HTTP_200_OK)
 
 
 @api_view(['GET', 'POST'])
@@ -46,8 +48,13 @@ def AnimeMangaDetail(request, animeID: int):
         'X-MAL-CLIENT-ID': f'{settings.MYANIMELIST_API_KEY}'
     }
 
+    time.sleep(5)
+
     response = requests.get(urls, headers=headers)
-    return Response(response.json(), status=status.HTTP_200_OK)
+
+    data = response.json()
+    
+    return Response({'success': True, 'message': "Anime manga detail fetch successfully!", 'data': data}, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -61,9 +68,13 @@ def AnimeMangaSearch(request):
     headers = {
         'X-MAL-CLIENT-ID': f'{settings.MYANIMELIST_API_KEY}'
     }
+    
+    time.sleep(5)
 
     response = requests.get(urls, headers=headers)
-    return Response(response.json(), status=status.HTTP_200_OK)
+    
+    data = response.json()
+    return Response({'success': True, 'message': "Anime manga search fetch successfully!", 'data': data}, status=status.HTTP_200_OK)
 
 
 @api_view(['GET', 'POST'])
@@ -82,7 +93,7 @@ def ContactUs(request):
         [email],
         fail_silently=False,
     )
-    return Response({'success': True}, status=status.HTTP_200_OK)
+    return Response({'success': True, "message": "Message send successfully!"}, status=status.HTTP_200_OK)
 
 
 def home(request):

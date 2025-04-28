@@ -1,17 +1,14 @@
-import { useContext } from "react";
-
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
-import { OverlayActions } from "../../../store/overlay";
-
-import AuthContext from "../../../Context/auth";
 import CustomButton from "../../CustomButton/CustomButton";
 
+import { useAuth } from "../../../hooks/useAuth";
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
 
 const Logout = () => {
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
+  const { autoLogout } = useAuth();
 
   return (
     <div className="logout-container">
@@ -23,7 +20,7 @@ const Logout = () => {
             color="white"
             icon="material-symbols:close"
             style={{ fontSize: "2rem" }}
-            onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+            onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
           />
         </span>
       </div>
@@ -33,7 +30,7 @@ const Logout = () => {
       <div className="logout-container-bottom">
         <CustomButton
           width={"45%"}
-          onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+          onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
           backgroundColor={"var(--success)"}
         >
           <h5 className="color-text">No</h5>
@@ -41,8 +38,8 @@ const Logout = () => {
         <CustomButton
           width={"45%"}
           onClick={() => {
-            dispatch(OverlayActions.closeOverlayHandler());
-            authCtx.autoLogout();
+            dispatch(OverlayActions.closeOverlayReducer());
+            autoLogout();
           }}
           backgroundColor={"var(--error)"}
         >

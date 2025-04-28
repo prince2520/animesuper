@@ -1,36 +1,39 @@
+import { uid } from "uid";
 import React, { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 
-import { helperActions } from "../../../store/helper";
-import { animeCategory, categoryType, mangaCategory } from "../../../constants/constants";
-
-import AnimeMangaCarousel from "./AnimeMangaCarousel/AnimeMangaCarousel";
 import AnimeMangaRanking from "./AnimeMangaRanking/AnimeMangaRanking";
+import AnimeMangaCarousel from "./AnimeMangaCarousel/AnimeMangaCarousel";
+
+import { helperActions } from "../../../redux/slice/helperSlice";
+import { animeCategory, categoryType, mangaCategory } from "../../../constants/constants";
 
 import "./AnimeManga.css";
 
 const AnimeManga = () => {
   const dispatch = useDispatch();
+
   const { category } = useParams();
+  
 
   useEffect(() => {
-    dispatch(helperActions.searchBarHandler(true));
+    dispatch(helperActions.searchBarReducer(true));
   }, [dispatch]);
 
   const [ref, inView] = useInView();
 
   return (
     <div className="anime-page" ref={ref}>
-      <AnimeMangaCarousel category={category} />
+      <AnimeMangaCarousel />
       <div className=" flex-center anime-manga-ranking-container">
         {(category === categoryType[0].toLowerCase()
           ? animeCategory
           : mangaCategory
         ).map((rank) => {
-          return inView ? <AnimeMangaRanking rank={rank} /> : null;
+          return inView ? <AnimeMangaRanking key={uid(8)} rank={rank} /> : null;
         })}
       </div>
     </div>

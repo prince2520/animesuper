@@ -1,3 +1,4 @@
+import { uid } from "uid";
 import { useNavigate } from "react-router-dom";
 
 import randomColor from "randomcolor";
@@ -16,7 +17,7 @@ const SearchResult = ({ results, closeSearchHandler }) => {
         });
         return (
           <div
-            key={res.toString()}
+            key={uid(8)}
             className="search-result-item"
             onClick={() => navigate(`anime/${res.node.id}`)}
           >
@@ -34,7 +35,7 @@ const SearchResult = ({ results, closeSearchHandler }) => {
                   res.node.status,
                   res.node.start_date,
                 ].map((data) => (
-                  <li key={data.toString()}>
+                  <li key={uid(8)}>
                     <h6>{data.toUpperCase()}</h6>
                   </li>
                 ))}
@@ -48,7 +49,7 @@ const SearchResult = ({ results, closeSearchHandler }) => {
                     });
                     return (
                       <li
-                        key={g.toString()}
+                        key={uid(8)}
                         className="genre-list"
                         style={{
                           border: `1px ${color} solid`,

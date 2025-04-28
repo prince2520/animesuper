@@ -1,3 +1,4 @@
+import { uid } from "uid";
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 
@@ -40,6 +41,7 @@ const AnimeMangaDetailBottomMobile = ({ animeDetail, category }) => {
       <div className="detail-links">
         {detail_links.map((links) => (
           <h4
+            key={uid(8)}
             className={`detail-link ${selectedLink === links && "selected"}`}
             onClick={() => setSelectedLink(links)}
           >

@@ -4,19 +4,22 @@ from django.core.serializers import serialize
 from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from accounts.models import User, Genre
 from my_watchlist.models import MyWatchlistItem
+from rest_framework_simplejwt.tokens import RefreshToken
+
 
 animeStatus = ['Dropped', 'Currently Watching', 'Complete', 'On Hold', 'Plan to watch']
 mangaStatus = ['Dropped', 'Currently Reading', 'Complete', 'On Hold', 'Plan to read']
 
 # Create your views here.
 
-@api_view(['GET', 'POST', 'OPTIONS'])
-def signup(request):
+@api_view(['POST'])
+def SignUp(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')
         body_data = json.loads(body_unicode)
@@ -27,29 +30,38 @@ def signup(request):
         confirmPassword = body_data['confirmPassword']
 
         if not password == confirmPassword:
-            return Response({'success': False, 'description': 'Confirm password not matched!'},
-                            status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': False, 'message': 'Confirm password not matched!'},
+                            status=status.HTTP_406_NOT_ACCEPTABLE)
 
         if User.objects.filter(email=email).exists() is not False:
-            return Response({'success': False, 'description': 'User with this email already exists!'},
-                            status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': False, 'message': 'User with this email already exists!'},
+                            status=status.HTTP_409_CONFLICT)
 
         profile = User.objects.create_user(email=email, password=password)
         profile.username = username
         profile.save()
+        
+        token = RefreshToken.for_user(profile)
+        
+        serialized_data = serialize("json", profile.favorite_genre.all(), use_natural_foreign_keys=True)
+            
+        data = {
+            'username': profile.username,
+            'email': profile.email,
+            'profile_photo': profile.profile_photo,
+            'gender': profile.gender,
+            'location' : profile.location,
+            'favorite_genre': json.loads(serialized_data),
+            'token': str(token.access_token)
+        }   
+         
 
-        return Response({
-            username: profile.username,
-            'success': True,
-            'description': 'Account created successfully!'
-        }, status=status.HTTP_200_OK)
-    else:
-        return Response({'success': False, 'description': 'Something went wrong!'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'success': True, 'message': 'Account created successfully!', 'data': data}, status=status.HTTP_200_OK)
 
 
 @csrf_exempt
-@api_view(['GET', 'POST', 'OPTIONS'])
-def signin(request):
+@api_view(['POST'])
+def SignIn(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')
         body_data = json.loads(body_unicode)
@@ -60,29 +72,71 @@ def signin(request):
         user = User.objects.filter(email=email).first()
 
         if User.objects.filter(email=email).exists() is False:
-            return Response({'success': False, 'description': 'User with this email not exists!'},
-                            status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': False,'message': 'User with this email not exists!'},
+                            status=status.HTTP_404_NOT_FOUND)
 
         if not user.check_password(password):
-            return Response({'success': False, 'description': 'Password is incorrect!'},
-                            status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': False, 'message': 'Password is incorrect!'},
+                            status=status.HTTP_401_UNAUTHORIZED)
+            
+        token = RefreshToken.for_user(user)
+        
+        serialized_data = serialize("json", user.favorite_genre.all(), use_natural_foreign_keys=True)
+            
+        data = {
+            'username': user.username,
+            'email': user.email,
+            'profile_photo': user.profile_photo,
+            'gender': user.gender,
+            'location' : user.location,
+            'favorite_genre': json.loads(serialized_data),
+            'token': str(token.access_token)
+        }   
+         
+        return Response({'success': True, 'message': "Sign in successfully!", 'data' : data}, status=status.HTTP_200_OK)
+
+
+
+@csrf_exempt
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def GetAuth(request):
+    if request.method == 'GET':
+        email = request.user.email
+
+        user = User.objects.filter(email=email).first()
+
+        if User.objects.filter(email=email).exists() is False:
+            return Response({'success': False, 'message': 'User with this email not exists!'},
+                            status=status.HTTP_404_NOT_FOUND)
+        
+        serialized_data = serialize("json", user.favorite_genre.all(), use_natural_foreign_keys=True)
+        
+        data = {
+            'username': user.username,
+            'email': user.email,
+            'profile_photo': user.profile_photo,
+            'gender': user.gender,
+            'location' : user.location,
+            'favorite_genre': json.loads(serialized_data)
+        } 
+        
         return Response({
             'success': True,
-            'email': user.email,
-            'username': user.username,
-            'profilePhoto': user.profile_photo,
-            'isAuth': True
+            "message" : "fetch user successfully!", 
+            'data': data,
         }, status=status.HTTP_200_OK)
 
 
 @csrf_exempt
-@api_view(['POST', 'OPTIONS'])
-def editProfile(request):
-    if request.method == 'POST':
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def UpdateAuth(request):
+    if request.method == 'PATCH':
         body_unicode = request.body.decode('utf-8')
         body_data = json.loads(body_unicode)
 
-        email = body_data['email']
+        email =  request.user.email
 
         user = None
 
@@ -107,42 +161,30 @@ def editProfile(request):
                     genre = Genre.objects.get(name=genre)
                     user.favorite_genre.add(genre)
             user.save()
-
-            return Response({'success': True, 'description': 'Profile edited successfully'}, status=status.HTTP_200_OK)
-        except user.DoesNotExist:
-            return Response({'success': False, 'description': 'Something goes wrong!'}, status=status.HTTP_404_NOT_FOUND)
-
-
-@csrf_exempt
-@api_view(['GET'])
-def getProfileDetail(request):
-    if request.method == 'GET':
-        email = request.GET.get('email', '')
-
-        try:
-            user = User.objects.get(email=email)
-
+        
             serialized_data = serialize("json", user.favorite_genre.all(), use_natural_foreign_keys=True)
-
-            return Response({
-                'success': True,
+            
+            data = {
                 'username': user.username,
-                'gender': user.gender,
-                'location': user.location,
+                'email': user.email,
                 'profile_photo': user.profile_photo,
-                'favorite_genre': json.loads(serialized_data)
-            }, status=status.HTTP_200_OK)
+                'gender': user.gender,
+                'location' : user.location,
+                'favorite_genre': json.loads(serialized_data),
+            }
 
-        except User.DoesNotExist:
-            return Response({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': True, 'message': 'Profile edited successfully', 'data': data}, status=status.HTTP_200_OK)
+        except user.DoesNotExist:
+            return Response({'success': False, 'message': 'You are unauthorized user!'}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 
 @csrf_exempt
 @api_view(['GET'])
-def getProfileStatistics(request):
+@permission_classes([IsAuthenticated])
+def GetAuthStatistics(request):
     if request.method == 'GET':
-        email = request.GET.get('email', '')
+        email = request.user.email
 
         try:
             my_watchlist = MyWatchlistItem.objects.filter(user__email=email)
@@ -160,11 +202,17 @@ def getProfileStatistics(request):
                     'status': manga,
                     'count': my_watchlist.filter(Q(category='manga') & Q(status=manga)).count()
                 })
-
+                
+            data = {
+                'anime' : animeStats,
+                'manga' : mangaStats
+            }    
+            
             return Response({
-                'mangaStats': mangaStats,
-                'animeStats': animeStats
+                'success': True,
+                'message': "Fetch user statistics successfully!",
+                'data': data
             }, status=status.HTTP_200_OK)
 
         except my_watchlist.DoesNotExist:
-            return Response({'success': False}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'success': False, 'message': 'You are unauthorized user!'}, status=status.HTTP_401_UNAUTHORIZED)

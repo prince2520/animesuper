@@ -3,11 +3,12 @@ import React from "react";
 import MyWatchlistItemWeb from "./MyWatchlistItemWeb/MyWatchlistItemWeb";
 import MyWatchlistItemMobile from "./MyWatchlistItemMobile/MyWatchlistItemMobile";
 
-const MyWatchlistItem = ({ res, index }) => {
+const MyWatchlistItem = ({ item, index }) => {
+
   return (
     <>
-      <MyWatchlistItemWeb res={res} index={index} />
-      <MyWatchlistItemMobile res={res} index={index} />
+      <MyWatchlistItemWeb item={item} index={index} />
+      <MyWatchlistItemMobile item={item} index={index} />
     </>
   );
 };

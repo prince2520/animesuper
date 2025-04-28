@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+from datetime import timedelta
 import os
 from pathlib import Path
 
@@ -44,7 +45,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'rest_framework_simplejwt'
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1)
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -88,14 +100,13 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django_yugabytedb',
-        'NAME':  'yugabyte',
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': 5433,
-        'USER': 'admin',
-        'CONN_MAX_AGE': None,
-        'PASSWORD': os.getenv('DB_PASSWORD')
+    'default': {        
+        'ENGINE': os.getenv('DB_ENGINE'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST':os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 

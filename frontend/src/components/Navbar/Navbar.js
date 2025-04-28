@@ -1,37 +1,34 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Logo } from "../../photo";
-import { OverlayActions } from "../../store/overlay";
-
 import MenuBtn from "../MenuBtn/MenuBtn";
-import AuthContext from "../../Context/auth";
+
+import { Logo } from "../../photo";
+import { OverlayActions } from "../../redux/slice/overlaySlice";
 
 import "./Navbar.css";
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
 
-  const profilePhoto = useSelector((state) => state.myProfile.profile_photo);
+  const auth = useSelector((state) => state.auth);
 
   return (
     <div className="navbar">
       <MenuBtn />
-      <Link to="/home" className="nav-logo">
+      <Link to="/home/anime" className="nav-logo">
         <img alt="anime-super" src={Logo} />
       </Link>
-      {authCtx.isAuth ? (
+      {auth.isAuth ? (
         <div className="flex-center profile">
           <img
-            onClick={() => dispatch(OverlayActions.showProfileHandler())}
-            src={profilePhoto}
+            onClick={() => dispatch(OverlayActions.showProfileReducer())}
+            src={auth.profile_photo}
             alt="profile-img"
           />
         </div>
       ) : (
-        <Link to="/login" className="login-btn">
+        <Link to="/auth/login" className="login-btn">
           <h5 className="color-text">Login</h5>
         </Link>
       )}

@@ -1,21 +1,18 @@
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
-import { useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Logo } from "../../photo";
 import { sideBarData } from "../../constants/constants";
-import { OverlayActions } from "../../store/overlay";
-
-import AuthContext from "../../Context/auth";
+import { OverlayActions } from "../../redux/slice/overlaySlice";
 
 import "./SideBar.css";
 
 const SideBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const authCtx = useContext(AuthContext);
+  const auth = useSelector(state => state.auth);
 
   return (
     <div className="sidebar">
@@ -24,14 +21,14 @@ const SideBar = () => {
           <img alt={"anime-super"} src={Logo} width={"100%"} />
         </Link>
         <div className="options">
-          {sideBarData(authCtx.isAuth).map((data) => {
+          {sideBarData(auth.isAuth).map((data) => {
             return (
               data.isAuth && (
-                <div className="option" key={data.toString()}>
+                <div className="option" key={uid(8)}>
                   <h6>{data.categoryTitle}</h6>
                   {data.subCategoryData.map((subData) => (
                     <Link
-                      key={subData.toString()}
+                      key={uid(8)}
                       className="option-link"
                       to={subData.to}
                     >
@@ -50,10 +47,10 @@ const SideBar = () => {
       <div className="sidebar-bottom">
         <div className="option">
           <h6>General</h6>
-          {authCtx.isAuth && (
+          {auth.isAuth && (
             <div
               className="cursor-btn  option-link"
-              onClick={() => dispatch(OverlayActions.showLogoutHandler())}
+              onClick={() => dispatch(OverlayActions.showLogoutReducer())}
             >
               <h5>
                 <Icon icon="ri:logout-circle-line" />
@@ -61,10 +58,10 @@ const SideBar = () => {
               <h5 className={"category-btn"}>Logout</h5>
             </div>
           )}
-          {!authCtx.isAuth && (
+          {!auth.isAuth && (
             <div
               className="cursor-btn option-link"
-              onClick={() => navigate("/login")}
+              onClick={() => navigate("/auth/login")}
             >
               <h5>
                 <Icon

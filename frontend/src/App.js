@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 
-import { AlertBoxActions } from "./store/alertBox";
+import { AlertBoxActions } from "./redux/slice/alertBoxSlice";
 
 import Home from "./Pages/Home/Home";
-import AuthContext from "./Context/auth";
 import DMCA from "./Pages/Home/PolicyContactUs/DMCA";
 import AlertBox from "./components/AlertBox/AlertBox";
 import AnimeManga from "./Pages/Home/AnimeManga/AnimeManga";
@@ -21,42 +20,65 @@ import AnimeMangaDetail from "./Pages/Home/AnimeManga/AnimeMangaDetail/AnimeMang
 import AnimeMangaCategory from "./Pages/Home/AnimeManga/AnimeMangaCategory/AnimeMangaCategory";
 
 import "./App.css";
+import { AuthActions } from "./redux/slice/authSlice";
+import { useAuth } from "./hooks/useAuth";
+import { getUserThunk } from "./redux/thunk/authThunk";
+import NotPageFound from "./Pages/NotPageFound/NotPageFound";
 
 let time = null;
 
 function App() {
   const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
-  const visible = useSelector((state) => state.alertBox.isVisible);
-  const alertBoxData = useSelector((state) => state.alertBox.data);
+  const auth = useSelector(state => state.auth);
+  const { isVisible } = useSelector((state) => state.alertBox);
+
+  const { autoLogout, logout } = useAuth();
 
   useEffect(() => {
     clearTimeout(time);
-    if (visible) {
+    if (isVisible) {
       time = setTimeout(() => {
-        dispatch(AlertBoxActions.closeAlertBox());
+        dispatch(AlertBoxActions.closeAlertBoxReducer());
       }, [2000]);
     }
-  }, [dispatch, visible, alertBoxData]);
+  }, [dispatch, isVisible]);
+
+
+  useEffect(() => {
+    const localToken = localStorage.getItem("token");
+
+    const localExpiryDate = localStorage.getItem("expiryDate");
+
+    if (new Date(localExpiryDate) <= new Date()) {
+      dispatch(AuthActions.updateIsAuthReducer({ isAuth: false }));
+      logout();
+      return;
+    }
+    const remainingMilliseconds =
+      new Date(localExpiryDate).getTime() - new Date().getTime();
+
+    autoLogout(remainingMilliseconds);
+    dispatch(getUserThunk({ token: localToken }))
+  }, []);
 
   return (
     <div className="App dark">
-      {visible && <AlertBox />}
+      {isVisible && <AlertBox />}
       <Routes>
-        <Route path="/" element={<LoginSignupPage />}>
+        <Route index element={<Navigate to={"/auth/login"} />} />
+        <Route path="/auth" element={<LoginSignupPage />}>
           <Route path="login" element={<LoginForm />} />
           <Route path="signup" element={<SignupForm />} />
-          <Route path="" element={<Navigate to={"login"} />} />
         </Route>
         <Route path="/home" element={<Home />}>
           <Route
             path=":category/category/:id"
             element={<AnimeMangaCategory />}
           />
-          {authCtx.isAuth && (
+          {auth.isAuth && (
             <React.Fragment>
-              <Route path="my-watchlist" element={<MyWatchlist />} />
-              <Route path="my-favorite" element={<MyFavorite />} />
+              <Route path="my-watchlist/:category" element={<MyWatchlist />} />
+              <Route path="my-favorite/:category" element={<MyFavorite />} />
             </React.Fragment>
           )}
           <Route path="terms-and-condition" element={<TermAndCondition />} />
@@ -64,8 +86,9 @@ function App() {
           <Route path="contact-us" element={<ContactUs />} />
           <Route path=":category" element={<AnimeManga />} />
           <Route path=":category/:id" element={<AnimeMangaDetail />} />
-          <Route path="" element={<Navigate to={"anime"} />} />
         </Route>
+        {/* <Route path="/not-found-page" element={<NotPageFound />} />
+        <Route path="*" element={<Navigate to={"/not-found-page"} />} /> */}
       </Routes>
     </div>
   );

@@ -1,27 +1,25 @@
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 import Skeleton from "react-loading-skeleton";
 
-import { categoryType } from "../../../../constants/constants";
-import { helperActions } from "../../../../store/helper";
-import { addToFavorite } from "../../../../api/favorite";
-import { addToWatchlist } from "../../../../api/watchlist";
-import { getAnimeDetail } from "../../../../api/animeManga";
-import { AlertBoxActions } from "../../../../store/alertBox";
-
-import AuthContext from "../../../../Context/auth";
 import AnimeMangaTop from "./AnimeMangaTop/AnimeMangaTop";
 import CustomButton from "../../../../components/CustomButton/CustomButton";
 import AnimeMangaDetailBottom from "./AnimMangaDetailBottom/AnimeMangaDetailBottom";
 
+import { getAnimeMangaDetailAPI } from "../../../../redux/api/animeMangaAPI";
+import { categoryType } from "../../../../constants/constants";
+import { helperActions } from "../../../../redux/slice/helperSlice";
+import { createWatchlistThunk } from "../../../../redux/thunk/myWatchlistThunk";
+import { createFavoriteThunk } from "../../../../redux/thunk/myFavoriteThunk";
+
 import "./AnimeMangaDetail.css";
 
 // Sub-Component 
-const AnimeMangaTopMobile = ({addToFavoriteHandler, addToWatchListHandler}) => {
+const AnimeMangaTopMobile = ({ addToFavoriteHandler, addToWatchListHandler }) => {
   return (
     <div className="anime-detail-watchlist-like">
       <div
@@ -53,87 +51,59 @@ const AnimeMangaTopMobile = ({addToFavoriteHandler, addToWatchListHandler}) => {
 const AnimeMangaDetail = () => {
   const dispatch = useDispatch();
   const { category, id } = useParams();
-  const authCtx = useContext(AuthContext);
+
   const [animeDetail, setAnimeDetail] = useState();
 
   const { ref, inView } = useInView({
-    /* Optional options */
     threshold: 0.8,
     delay: 200,
   });
 
   useEffect(() => {
-    getAnimeDetail(category, id).then((result) => {
-      setAnimeDetail(result);
+    getAnimeMangaDetailAPI(category, id).then((result) => {
+      setAnimeDetail(result.data);
     });
   }, [category, id, dispatch]);
 
+
+
   useEffect(() => {
-    dispatch(helperActions.blurNavbarHandler(!inView));
-    if (!inView) {
-      dispatch(helperActions.searchBarHandler(true));
-    } else {
-      dispatch(helperActions.searchBarHandler(false));
-    }
+    dispatch(helperActions.searchBarReducer(false));
+    dispatch(helperActions.blurNavbarReducer(!inView));
+
     return () => {
-      dispatch(helperActions.blurNavbarHandler(true));
-    };
+      dispatch(helperActions.searchBarReducer(true));
+      dispatch(helperActions.blurNavbarReducer(true));
+    }
   }, [inView, dispatch]);
 
   // Add to anime/manga to watchlist
-  const addToWatchListHandler = () => {
-    if (authCtx.isAuth) {
-      addToWatchlist(
-        authCtx.email,
-        category,
-        animeDetail.id,
-        animeDetail.main_picture.medium,
-        animeDetail.title,
-        category === categoryType[0].toLowerCase()
-          ? animeDetail.num_episodes
-          : animeDetail.num_chapters,
-        animeDetail.media_type
-      )
-        .then((res) => dispatch(AlertBoxActions.saveAlertBoxData(res)))
-        .catch((err) => console.log(err));
-    } else {
-      dispatch(
-        AlertBoxActions.saveAlertBoxData({
-          success: false,
-          description: "User not Authenticated, Please login!",
-        })
-      );
-    }
+  const createWatchlistHandler = () => {
+    dispatch(createWatchlistThunk({
+      category,
+      category_id: animeDetail.id,
+      img_url: animeDetail.main_picture.medium,
+      title: animeDetail.title,
+      num_episode_or_chapter: (category === categoryType[0].toLowerCase())
+        ? animeDetail.num_episodes
+        : animeDetail.num_chapters,
+      media_type: animeDetail.media_type,
+    }))
   };
 
-  // Add to anime/manga to favorite list
-  const addToFavoriteHandler = () => {
-    if (authCtx.isAuth) {
-      addToFavorite(
-        authCtx.email,
-        animeDetail.id,
-        category,
-        animeDetail.main_picture.large,
-        animeDetail.title,
-        animeDetail.mean ? animeDetail.mean : 0,
-        animeDetail.start_date.slice(0, 4),
-        category === categoryType[1].toLowerCase()
-          ? animeDetail.num_chapters
-          : animeDetail.num_episodes,
-        animeDetail.media_type
-      )
-        .then((res) => {
-          dispatch(AlertBoxActions.saveAlertBoxData(res));
-        })
-        .catch((err) => console.log(err));
-    } else {
-      dispatch(
-        AlertBoxActions.saveAlertBoxData({
-          success: false,
-          description: "User not Authenticated, Please login!",
-        })
-      );
-    }
+  const createFavoriteHandler = () => {
+    dispatch(createFavoriteThunk({
+      category_id: animeDetail.id,
+      category: category,
+      img_url: animeDetail.main_picture.large,
+      title: animeDetail.title,
+      score: animeDetail.mean ? animeDetail.mean : 0,
+      year: animeDetail.start_date.slice(0, 4),
+      num_episode_chapter: category === categoryType[1].toLowerCase()
+        ? animeDetail.num_chapters
+        : animeDetail.num_episodes,
+      media_type: animeDetail.media_type,
+    }))
   };
 
   return (
@@ -145,12 +115,12 @@ const AnimeMangaDetail = () => {
           <Skeleton height={"100%"} width={"100%"} />
         )}
         <AnimeMangaTopMobile
-          addToWatchListHandler={addToWatchListHandler}
-         addToFavoriteHandler={addToFavoriteHandler}/>
+          addToWatchListHandler={createWatchlistHandler}
+          addToFavoriteHandler={createFavoriteHandler} />
       </div>
       <AnimeMangaTop
-        addToFavoriteHandler={addToFavoriteHandler}
-        addToWatchListHandler={addToWatchListHandler}
+        addToFavoriteHandler={createFavoriteHandler}
+        addToWatchListHandler={createWatchlistHandler}
         animeDetail={animeDetail}
         category={category}
       />

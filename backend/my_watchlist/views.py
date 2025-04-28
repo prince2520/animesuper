@@ -1,10 +1,12 @@
 import json
 
+from collections import defaultdict
 from django.core.serializers import serialize
 from django.db.models import Q
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 
 from accounts.models import User
 from my_watchlist.models import MyWatchlistItem
@@ -13,12 +15,15 @@ from my_watchlist.models import MyWatchlistItem
 # Create your views here.
 
 
-@api_view(['POST', 'GET'])
-def AddWatchlistItem(request):
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def CreateWatchlist(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-
-    email = body_data['email']
+    
+    user = request.user
+    
+    email = user.email
     category = body_data['category']
     category_id = body_data['category_id']
     img_url = body_data['img_url']
@@ -44,56 +49,91 @@ def AddWatchlistItem(request):
             watchlist.status = 'Plan to watch'
 
         watchlist.save()
+        
+        data = {
+            'category_id':category_id,
+            'category':category,
+            'img_url':img_url,
+            'title':title,
+            'type':media_type,
+            'num_episode_or_chapter':num_episode_or_chapter
+        }
 
-        return Response({'success': True, 'description': 'Item added to watchlist successfully!'},
+        return Response({'success': True, 'message': 'Added to watchlist successfully!', 'data': data},
                         status=status.HTTP_200_OK)
 
-    return Response({'success': False, 'description': 'Item already exists in your watchlist!'},
-                    status=status.HTTP_400_BAD_REQUEST)
+    return Response({'success': False, 'message': 'Already exists in your watchlist!' },
+                    status=status.HTTP_409_CONFLICT)
 
 
-@api_view(['GET', 'POST'])
-def DeleteWatchlistItem(request):
-    email = request.GET.get('email', '')
-    category_id = request.GET.get('categoryId', '')
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def DeleteWatchlist(request):
+    body_unicode = request.body.decode('utf-8')
+    body_data = json.loads(body_unicode)
+    
+    user = request.user
+    
+    email = user.email  
+    category_id = body_data['category_id']
+    category = body_data['category']
 
     user = User.objects.get(email=email)
 
-    item = MyWatchlistItem.objects.filter(Q(user=user) & Q(category_id=category_id))
+    item = MyWatchlistItem.objects.filter(Q(user=user) & Q(category_id=category_id) & Q(category=category))
 
     if item.exists() is not None:
         item.delete()
-        return Response({'success': True, 'description': 'Item deleted successfully!'}, status=status.HTTP_200_OK)
+        return Response({'success': True, 'message': 'Deleted successfully!'}, status=status.HTTP_200_OK)
 
-    return Response({'success': False, 'description': 'Something goes wrong!'}, status=status.HTTP_400_BAD_REQUEST)
+    return Response({'success': False, 'message': 'Something goes wrong!'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'POST'])
-def GetMyWatchlist(request):
-    email = request.GET.get('email', '')
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def GetWatchlist(request):
+    email = request.user.email 
 
     user = User.objects.get(email=email)
     myWatchList = MyWatchlistItem.objects.filter(user=user)
-    serialized_data = serialize("json", myWatchList, use_natural_foreign_keys=True)
+    
+    data = defaultdict(list)
 
-    return Response({'success': True, 'Data': json.loads(serialized_data)}, status=status.HTTP_200_OK)
+    for item in myWatchList:
+        category = item.category.lower()
+        data[category].append({
+            'id': item.id,
+            'progress_read_watched': item.progress_read_watched,
+            'status': item.status,
+            'category_id': item.category_id,
+            'category': item.category,
+            'img_url': item.img_url,
+            'title': item.title,
+            'type': item.type,
+            'num_episode_or_chapter': item.num_episode_or_chapter
+        })     
+
+    return Response({'success': True, 'message': "Fetch watchlist successfully!", 'data': data}, status=status.HTTP_200_OK)
 
 
-@api_view(['GET', 'POST', 'PUT'])
-def EditMyWatchlist(request):
+@api_view(['PATCH'])
+@permission_classes([IsAuthenticated])
+def UpdateWatchlist(request):
     body_unicode = request.body.decode('utf-8')
     body_data = json.loads(body_unicode)
-
-    email = body_data['email']
+    
+    email =  request.user.email   
+        
+    category = body_data['category']
     category_id = body_data['category_id']
-    item_status = body_data['status']
-    progress = body_data['progress']
+    status_item = body_data['status']
+    progress_read_watched = body_data['progress_read_watched']
 
     user = User.objects.get(email=email)
 
-    myWatchList = MyWatchlistItem.objects.get(Q(user=user) & Q(category_id=category_id))
-    myWatchList.status = item_status
-    myWatchList.progress_read_watched = progress
+    myWatchList = MyWatchlistItem.objects.get(Q(user=user) & Q(category=category) & Q(category_id=category_id))
+    myWatchList.status = status_item
+    myWatchList.progress_read_watched = progress_read_watched
     myWatchList.save()
 
-    return Response({'success': True, 'description': 'Item edited status successfully!'}, status=status.HTTP_200_OK)
+    return Response({'success': True, 'message': 'Updated successfully!'}, status=status.HTTP_200_OK)

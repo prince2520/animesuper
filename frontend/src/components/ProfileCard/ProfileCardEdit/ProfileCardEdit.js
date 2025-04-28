@@ -1,49 +1,44 @@
-import React, { useRef } from "react";
-
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
+import React, { useRef, useState } from "react";
 
 import randomColor from "randomcolor";
-
-import { MyProfileActions } from "../../../store/myProfile";
-
 import CustomButton from "../../CustomButton/CustomButton";
 
 import './ProfileCardEdit.css';
 
-const ProfileCardEdit = (props) => {
+const ProfileCardEdit = ({ updatedProfileHandler }) => {
   const genreRef = useRef(null);
-  const genderRef = useRef(null);
-  const usernameRef = useRef(null);
-  const locationRef = useRef(null);
 
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.myProfile);
+  const auth = useSelector((state) => state.auth);
 
+  const [newFavoriteGenre, setNewFavoriteGenre] = useState(auth.favorite_genre);
 
-  // Update and save profile details 
-  const saveEditHandler = (event) => {
+  const submitUpdatedEditHandler = (event) =>{
     event.preventDefault();
-    props.saveProfileDetail(
-      usernameRef.current.value,
-      genderRef.current.value,
-      locationRef.current.value,
-      user.new_favorite_genre
-    );
-  };
+
+    let data = {
+      username : event.target[0].value,
+      gender : event.target[1].value,
+      location : event.target[2].value,
+      favorite_genre : newFavoriteGenre
+    }
+
+    updatedProfileHandler(data);
+  }
 
   return (
     <form
       className="flex-center profile-card-edit-form"
-      onSubmit={(event) => saveEditHandler(event)}
+      onSubmit={submitUpdatedEditHandler}
     >
       <div className="username-container">
         <p>Username</p>
         <span className="input-box">
           <Icon icon="gg:profile" style={{ fontSize: "1.5rem" }} />
           <input
-            ref={usernameRef}
-            defaultValue={user.username}
+            defaultValue={auth.username}
             placeholder="example_123"
           />
         </span>
@@ -55,8 +50,7 @@ const ProfileCardEdit = (props) => {
           <span className="input-box">
             <Icon icon="mdi:gender-male" style={{ fontSize: "1.5rem" }} />
             <input
-              ref={genderRef}
-              defaultValue={user.gender}
+              defaultValue={auth.gender}
               placeholder="Male"
             />
           </span>
@@ -70,8 +64,7 @@ const ProfileCardEdit = (props) => {
               style={{ fontSize: "1.5rem" }}
             />
             <input
-              ref={locationRef}
-              defaultValue={user.location}
+              defaultValue={auth.location}
               placeholder="India, Delhi"
             />
           </span>
@@ -84,9 +77,8 @@ const ProfileCardEdit = (props) => {
           <input ref={genreRef} placeholder="ex - Action" />
           <Icon
             onClick={() => {
-              if (genreRef.current.value !== "") {
-                dispatch(MyProfileActions.addNewGenre(genreRef.current.value));
-              }
+              if (genreRef.current.value !== "")
+                setNewFavoriteGenre(prevState => [...prevState, genreRef.current.value]);
             }}
             icon="material-symbols:add-circle-outline"
             style={{ fontSize: "1.5rem", cursor: "pointer" }}
@@ -95,15 +87,18 @@ const ProfileCardEdit = (props) => {
       </div>
       <div className="favorite-genre">
         <div className="favorite-genre-list">
-          {user.new_favorite_genre.map((genre) => {
+          {newFavoriteGenre.map((genre) => {
             let color = randomColor({
               luminosity: "light",
               hue: "random",
             });
             return (
               <p
-                key={genre.toString()}
-                onClick={() => dispatch(MyProfileActions.deleteGenre(genre))}
+                key={uid(8)}
+                onClick={() => setNewFavoriteGenre(prevState=>{
+                  prevState = prevState.filter(g=>g !== genre)
+                  return prevState
+                })}
                 className="favorite-genre-item"
                 style={{
                   borderColor: `${color}`,

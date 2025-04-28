@@ -1,26 +1,37 @@
-import { useContext, useState } from "react";
-
+import { useState } from "react";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import AuthContext from "../../../Context/auth";
 import ZoomInZoomOut from "../../../animation/Wrapper/ZoomInZoomOut";
 import CustomButton from "../../../components/CustomButton/CustomButton";
 
-const LoginForm = () => {
-  const authCtx = useContext(AuthContext);
+import { useAuth } from "../../../hooks/useAuth";
+import { loginThunk } from "../../../redux/thunk/authThunk";
 
+const LoginForm = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+  const {authTimer} = useAuth();
 
   const loginHandler = (event) => {
     event.preventDefault();
-    authCtx.loginHandler(event.target[0].value, event.target[1].value);
+
+    dispatch(loginThunk({
+      email: event.target[0].value,
+      password: event.target[1].value
+    }))
+    .unwrap()
+    .then(((data) => {
+      authTimer(data);
+    }))
+    .catch((err) => {console.log(err)});
   };
 
   return (
     <form onSubmit={(event) => loginHandler(event)}>
       <h2>Login</h2>
-      
+
       <div>
         <h5>Email</h5>
         <span className="input-box">
@@ -57,7 +68,7 @@ const LoginForm = () => {
           <p className="color-text-light highlight">Sign up</p>
         </Link>
       </span>
-      
+
     </form>
   );
 };

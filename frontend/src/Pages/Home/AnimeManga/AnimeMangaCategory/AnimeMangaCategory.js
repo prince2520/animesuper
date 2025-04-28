@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useCallback } from "react";
-
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
 import { useNavigate, useParams } from "react-router-dom";
-
-import { getCategoryList } from "../../../../api/animeManga";
-import { animeCategory, categoryType, mangaCategory } from "../../../../constants/constants";
+import React, { useEffect, useState } from "react";
 
 import Card from "../../../../components/Card/Card";
 import SkeletonCard from "../../../../components/SkeletonCard/SkeletonCard";
 import PrevNextButton from "../../../../components/PrevNextBtn/PrevNextBtn";
+
+import { getCategoryListAPI } from "../../../../redux/api/animeMangaAPI";
+import { animeCategory, categoryType, mangaCategory } from "../../../../constants/constants";
 
 import "./AnimeMangaCategory.css";
 
@@ -23,15 +23,15 @@ const AnimeMangaCategory = () => {
     let total = (firstMount ? 0 : offset) + value
     if (offset + value >= 0) {
       setAnimeManga([]);
-      getCategoryList(category, id, 20, total).then((result) => {
-        setAnimeManga(result.data);
-        setOffset(total);
-      });
+      getCategoryListAPI(category, id, 20, total)
+        .then((result) => {
+          setAnimeManga(result.data.data);
+          setOffset(total);
+        });
     }
   };
 
   useEffect(() => {
-    setAnimeManga([]);
     updateAnimeMangaCategory(0, true);
   }, [category, id]);
 
@@ -65,10 +65,10 @@ const AnimeMangaCategory = () => {
           : mangaCategory
         ).map((res) => (
           <h5
+            key={uid(8)}
             onClick={() => navigate(`/home/${category}/category/${res.slug}`)}
-            className={`anime-manga-filter-button cursor-btn ${
-              id === res.slug ? "selected" : ""
-            }`}
+            className={`anime-manga-filter-button cursor-btn ${id === res.slug ? "selected" : ""
+              }`}
           >
             {res.title}
           </h5>
@@ -77,7 +77,7 @@ const AnimeMangaCategory = () => {
 
       <div className="anime-manga-category-cards">
         {animeManga.map((res) => (
-          <div className="card-container" key={res.node.id}>
+          <div className="card-container" key={uid(8)}>
             <Card detail={res.node} />
           </div>
         ))}
@@ -85,7 +85,7 @@ const AnimeMangaCategory = () => {
           Array(20)
             .fill(null)
             .map((res, index) => (
-              <div className="card-container" key={index}>
+              <div className="card-container" key={uid(8)}>
                 <SkeletonCard />
               </div>
             ))}

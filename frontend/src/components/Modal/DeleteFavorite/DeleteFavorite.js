@@ -1,31 +1,28 @@
-import { useContext } from "react";
-
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { OverlayActions } from "../../../store/overlay";
-import { AlertBoxActions } from "../../../store/alertBox";
-import { removeFavoriteItem } from "../../../api/favorite";
-import { MyFavoriteActions } from "../../../store/myFavorite";
-
-import AuthContext from "../../../Context/auth";
 import CustomButton from "../../CustomButton/CustomButton";
 
-const RemoveFavorite = () => {
-  const dispatch = useDispatch();
-  const authCtx = useContext(AuthContext);
-  const category = useSelector((state) => state.myFavorite.removeCategory);
-  const categoryId = useSelector((state) => state.myFavorite.removeCategoryId);
+import { OverlayActions } from "../../../redux/slice/overlaySlice";
+import { AlertBoxActions } from "../../../redux/slice/alertBoxSlice";
+import { deleteFavoriteThunk } from "../../../redux/thunk/myFavoriteThunk";
 
-  const removeFavoriteItemHandler = () => {
-    removeFavoriteItem(authCtx.email, category, categoryId)
-      .then((res) => {
-        dispatch(AlertBoxActions.saveAlertBoxData(res));
-        dispatch(MyFavoriteActions.deleteFavoriteItem());
-        dispatch(OverlayActions.closeOverlayHandler());
-      })
-      .catch((err) => console.log(err));
-  };
+const DeleteFavorite = () => {
+  const dispatch = useDispatch();
+  const myFavorite = useSelector(state => state.myFavorite)
+
+
+  const deleteFavoriteHandler = () => {
+    dispatch(deleteFavoriteThunk({
+      category: myFavorite.selectedCategory,
+      category_id: myFavorite.selectedCategoryId
+    }))
+      .unwrap()
+      .then(res => {
+        dispatch(AlertBoxActions.getAlertBoxReducer(res));
+        dispatch(OverlayActions.closeOverlayReducer());
+      }).catch(err=>console.log(err));
+  }
 
   return (
     <div className="remove-favorite-container">
@@ -33,7 +30,7 @@ const RemoveFavorite = () => {
         <h3>Remove</h3>
         <span>
           <Icon
-            onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+            onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
             className={"cursor-btn"}
             color="white"
             icon="material-symbols:close"
@@ -49,14 +46,14 @@ const RemoveFavorite = () => {
       <div className="flex-center remove-favorite-container-bottom">
         <CustomButton
           width={"45%"}
-          onClick={() => dispatch(OverlayActions.closeOverlayHandler())}
+          onClick={() => dispatch(OverlayActions.closeOverlayReducer())}
           backgroundColor={"var(--error)"}
         >
           <h5 className="color-text">No</h5>
         </CustomButton>
         <CustomButton
           width={"45%"}
-          onClick={() => removeFavoriteItemHandler()}
+          onClick={() => deleteFavoriteHandler()}
           backgroundColor={"var(--success)"}
         >
           <h5 className="color-text">Yes</h5>
@@ -66,4 +63,4 @@ const RemoveFavorite = () => {
   );
 };
 
-export default RemoveFavorite;
+export default DeleteFavorite;

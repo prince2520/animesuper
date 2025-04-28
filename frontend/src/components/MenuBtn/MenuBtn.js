@@ -1,22 +1,21 @@
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { helperActions } from "../../store/helper";
+import { helperActions } from "../../redux/slice/helperSlice";
 
 const MenuBtn = () => {
   const dispatch = useDispatch();
-  const showMobileSideBar = useSelector(
-    (state) => state.helper.showMobileSideBar
-  );
+  const showMobileSideBar = useSelector((state) => state.helper.showMobileSideBar);
 
   return (
     <Icon
       className="cursor-btn"
       icon="material-symbols:menu-rounded"
+
       onClick={() =>
-        dispatch(helperActions.showMobileSideBarHandler(!showMobileSideBar))
+        dispatch(helperActions.showMobileSideBarReducer(!showMobileSideBar))
       }
-      style={{ fontSize: "2rem", color: "white" }}
+      style={{alignItems:"left", fontSize: "2rem", color: "white" }}
     />
   );
 };

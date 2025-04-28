@@ -1,14 +1,14 @@
 import React from "react";
 
+import { uid } from "uid";
 import { Icon } from "@iconify/react";
 import { useDispatch } from "react-redux";
 
-import { OverlayActions } from "../../../../../store/overlay";
-import { MyFavoriteActions } from "../../../../../store/myFavorite";
+import { OverlayActions } from "../../../../../redux/slice/overlaySlice";
+import { MyFavoriteActions } from "../../../../../redux/slice/myFavoriteSlice";
 import { favoriteItemData } from "../../../../../constants/constants";
 
-
-const MyFavoriteItemMobile = ({ res }) => {
+const MyFavoriteItemMobile = ({ item }) => {
   const dispatch = useDispatch();
 
   return (
@@ -19,17 +19,17 @@ const MyFavoriteItemMobile = ({ res }) => {
             alt="main_picture"
             width="100%"
             style={{ width: "6rem", height: "100%" }}
-            src={res.fields.img_url}
+            src={item.img_url}
           />
         </span>
       </div>
       <div className="favorite-table-item-mobile-right">
         <div className="item-type-mobile">
-          <h5 className="color-text">{res.fields.title}</h5>
+          <h5 className="color-text">{item.title}</h5>
         </div>
 
-        {favoriteItemData(res.fields).map((data) => (
-          <div className="item-type-mobile">
+        {favoriteItemData(item).map((data) => (
+          <div key={uid(8)} className="item-type-mobile">
             {data.heading && <p>{data.heading}</p>}
             <p>{data.value}</p>
           </div>
@@ -41,19 +41,19 @@ const MyFavoriteItemMobile = ({ res }) => {
             className="item-delete-mobile cursor-btn"
             onClick={() => {
               dispatch(
-                MyFavoriteActions.removeFavoriteItem({
-                  category: res.fields.type,
-                  categoryId: res.fields.category_id,
+                MyFavoriteActions.selectedFavoriteReducer({
+                  selectedCategory: item.category,
+                  selectedCategoryId: item.category_id
                 })
               );
-              dispatch(OverlayActions.showRemoveFavoriteHandler());
+              dispatch(OverlayActions.showDeleteFavoriteReducer());
             }}
           >
             <Icon
               style={{ fontSize: "1.25rem" }}
               icon="material-symbols:delete-outline-rounded"
             />
-            <p style={{color: 'var(--primary)'}}>Delete</p>
+            <p style={{ color: 'var(--primary)' }}>Delete</p>
           </div>
         </div>
       </div>
