@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { uid } from "uid";
 import { motion } from "framer-motion";

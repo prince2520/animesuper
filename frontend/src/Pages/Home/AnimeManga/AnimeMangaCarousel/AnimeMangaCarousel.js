@@ -8,7 +8,6 @@ import AnimeCarouselSlide from "./AnimeMangaCarouselSlide/AnimeMangaCarouselSlid
 
 import { carousel } from "../../../../photo";
 
-import "swiper/swiper-bundle.css";
 import "./AnimeMangaCarousel.css";
 
 const AnimeMangaCarousel = () => {

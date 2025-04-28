@@ -1,3 +1,6 @@
+import "swiper/swiper-bundle.css";
+import "swiper/css";
+
 import React from "react";
 
 import { Outlet } from "react-router-dom";
@@ -12,7 +15,6 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import ProfileWithShare from "../../components/ProfileWithShare/ProfileWithShare";
 import SideBarMobile from "../../components/SideBar/SideBarMobile/SideBarMobile";
 
-import "swiper/css";
 import "./Home.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
