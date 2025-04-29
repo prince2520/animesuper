@@ -1,7 +1,7 @@
 ![Github Cover](https://github.com/prince2520/animesuper/assets/68547999/f1677b8d-589b-412a-b57a-da74f6245377)
 
 <p align = "center">
-  AnimeSuper: ultimate hub for anime fans, seamless platform to organize favorites, and stay updated on trends.😊
+AnimeSuper is the ultimate hub for anime and manga fans to track progress, organize favorites, and stay updated on the latest trends and releases. 😊
 </p>
 <p align="center" width="50%">
 <a href="https://html.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white" alt="html5"/></a>
@@ -12,10 +12,13 @@
 <a href="https://redux.js.org/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white" alt="redux"/></a>
 <a href="https://reactrouter.com/en/main" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white" alt="react router"/></a>
 <a href="https://docs.djangoproject.com/en/5.0/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white" alt="django"/></a>
+ <a href="https://www.django-rest-framework.org/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/DJANGO-REST-ff1709?style=for-the-badge&logo=django&logoColor=white&color=ff1709&labelColor=gray" alt="django Rest Framwork"/></a>
 <a href="https://www.sqlite.org/docs.html" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white" alt="sqlite"/></a>
 <a href="https://firebase.google.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase" alt="firebase"/></a>
+<a href="https://supabase.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase"/></a>
 <a href="https://vercel.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" alt="vercel"/></a>
 <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="figma"/></a>
+ 
 </p>
 
 </br>
@@ -24,6 +27,7 @@
 
 ## Table Of Contents
 * [About the Project](#about-the-project)
+* [Features](#features)
 * [Built With](#built-with)
 * [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
@@ -38,23 +42,44 @@
 ![AnimeSuper](https://github.com/prince2520/animesuper/assets/68547999/18dda8f2-01cb-46cf-abe3-70f7544f4ab1)
 
 <p align="left">
-AnimeSuper is the ultimate hub for anime enthusiasts, providing a seamless platform to organize and cherish their favorite  anime/manga and also user organize their watchlist. With a user-friendly interface, it ensures fans stay effortlessly updated on the latest trends, creating a delightful experience that fosters a sense of community and passion among anime lovers. 
+**AnimeSuper** is your personal hub for all things **anime** and **manga**! Whether you're watching a long-running series or reading the latest manga chapter, AnimeSuper helps you stay organized and in the loop.
+
+## Features
+
+- **Track Your Progress**  
+  Easily manage your anime and manga by sorting them into categories:
+  - ✅ **Completed**  
+  - ❌ **Dropped**  
+  - ⏸️ **On Hold**  
+  - ▶️ **Currently Watching / Reading**  
+  - 📅 **Plan to Watch / Read**  
+
+- **Learn About Anime**  
+  Get detailed info on your favorite shows — summaries, genres, and more — all in one place.
+
+- **Stay Ahead of the Curve**  
+  Check out a list of **upcoming anime releases** so you never miss a premiere. 
 </p>
 
 ## Built With
 #### Frontend
 * [React](https://react.dev/)
-* [Figma](https://www.figma.com/)
-* [Iconify](https://iconify.design/)
+* [React Router](https://reactrouter.com/)
+* [React Redux](https://react-redux.js.org/)
+* [React Thunk](https://redux.js.org/usage/writing-logic-thunks)
 * [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer)
 * [Redux Toolkit](https://redux-toolkit.js.org/)
-* [Swiper](https://swiperjs.com/)
 * [React Image File Resizer](https://www.npmjs.com/package/react-image-file-resizer)
+* [Swiper](https://swiperjs.com/)
 * [Firebase](https://firebase.google.com/)
+* [Figma](https://www.figma.com/)
+
 
 #### Backend
 * [Django](https://www.djangoproject.com/)
 * [Django Rest Framework](https://www.django-rest-framework.org/)
+* [Django Framework SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+* [SQLite](https://sqlite.org/)
 * [MyAnimelist API](https://myanimelist.net/apiconfig/references/api/v2)
 
 ## Getting Started  
@@ -78,32 +103,37 @@ git clone https://github.com/prince2520/animesuper.git
 ```
 
 #### Frontend
+<p><b>Step 2 -</b> Change current directory to "frontend"  </p>
 
-<p><b>Step 2 -</b> Install the necessary dependencies. </p>
+```
+cd frontend 
+```
+
+<p><b>Step 3 -</b> Install the necessary dependencies. </p>
 
 ```
 npm install 
 ```
 
-<p><b>Step 3 -</b> Add environment variables. </p>
+<p><b>Step 4 -</b> Add environment variables. </p>
 
 ```
 # Create .env file and paste to root folder
 
 # Add the url of your server
-REACT_APP_SERVER_URL= http://127.0.0.1:8000
+REACT_APP_SERVER_URL=****
 
-# Add your firebase credentials here
 # firebase config (Add your config data)
-REACT_APP_apiKey=*****
-REACT_APP_authDomain=*****
-REACT_APP_projectId=*****
-REACT_APP_storageBucket=*****
-REACT_APP_messagingSenderId=*****
-REACT_APP_appId=*****
-REACT_APP_measurementId=*****
+REACT_APP_apiKey=****
+REACT_APP_authDomain=****
+REACT_APP_projectId=****
+REACT_APP_storageBucket=****
+REACT_APP_messagingSenderId=****
+REACT_APP_appId=****
+REACT_APP_measurementId=****
+
 ```
-<p><b>Step 4 -</b> Run frontend server locally.</p>
+<p><b>Step 5 -</b> Run frontend server locally.</p>
 
 ```
 npm start 
@@ -111,40 +141,58 @@ npm start
 
 #### Backend
 
-<p><b>Step 5 -</b> Install the necessary dependencies. </p>
+<p><b>Step 2 -</b> Change current directory to "backend" </p>
+
+```
+cd backend
+```
+
+<p><b>Step 3 -</b> Install the necessary dependencies. </p>
 
 ```
 pip install -r requirements.txt 
 ```
 
-<p><b>Step 6 -</b> Add environment variables. </p>
+<p><b>Step 4 -</b> Add environment variables. </p>
 
 ```
 # add .env file to animesuper directory
 
-# add your myanimelist api credentials
+# create an account on myanimelist api and put credential there 
 MYANIMELIST_URL=https://api.myanimelist.net
-MYANIMELIST_API_KEY==******
+MYANIMELIST_API_KEY=****
+SENDER_EMAIL=******
 
-# email credentials 
 EMAIL_USE_TLS=True
 EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=******
-EMAIL_HOST_PASSWORD=******
-SENDER_EMAIL=******
+EMAIL_HOST_USER=*****
+EMAIL_HOST_PASSWORD=*****
 EMAIL_PORT=587
 
 
-# add your yugabyte credentials
-DB_ENGINE=django_yugabytedb
-DB_NAME=yugabyte
-DB_HOST=******
-DB_PORT=5433
-DB_CONN_MAX_AGE=None
-DB_USER=admin
-DB_PASSWORD=******
+# create supabase account and put credential there
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=postgres
+DB_USER=****
+DB_PASSWORD=****
+DB_HOST=****
+DB_PORT=6543
 
 ```
+
+<p><b>Step 5 -</b> Make migrations for your database. </p>
+
+```
+py manage.py makemigrations
+```
+
+
+<p><b>Step 6 -</b> Apply the migrations to the database. </p>
+
+```
+py manage.py migrate
+```
+
 
 <p><b>Step 7 -</b> Run backend server locally.</p>
 
