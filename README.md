@@ -118,17 +118,17 @@ npm install
 # Create .env file and paste to root folder
 
 # Add the url of your server
-REACT_APP_SERVER_URL= http://127.0.0.1:8000
+REACT_APP_SERVER_URL=****
 
-# Add your firebase credentials here
 # firebase config (Add your config data)
-REACT_APP_apiKey=*****
-REACT_APP_authDomain=*****
-REACT_APP_projectId=*****
-REACT_APP_storageBucket=*****
-REACT_APP_messagingSenderId=*****
-REACT_APP_appId=*****
-REACT_APP_measurementId=*****
+REACT_APP_apiKey=****
+REACT_APP_authDomain=****
+REACT_APP_projectId=****
+REACT_APP_storageBucket=****
+REACT_APP_messagingSenderId=****
+REACT_APP_appId=****
+REACT_APP_measurementId=****
+
 ```
 <p><b>Step 5 -</b> Run frontend server locally.</p>
 
@@ -155,27 +155,25 @@ pip install -r requirements.txt
 ```
 # add .env file to animesuper directory
 
-# add your myanimelist api credentials
+# create an account on myanimelist api and put credential there 
 MYANIMELIST_URL=https://api.myanimelist.net
-MYANIMELIST_API_KEY==******
+MYANIMELIST_API_KEY=****
+SENDER_EMAIL=******
 
-# email credentials 
 EMAIL_USE_TLS=True
 EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=******
-EMAIL_HOST_PASSWORD=******
-SENDER_EMAIL=******
+EMAIL_HOST_USER=*****
+EMAIL_HOST_PASSWORD=*****
 EMAIL_PORT=587
 
 
-# add your yugabyte credentials
-DB_ENGINE=django_yugabytedb
-DB_NAME=yugabyte
-DB_HOST=******
-DB_PORT=5433
-DB_CONN_MAX_AGE=None
-DB_USER=admin
-DB_PASSWORD=******
+# create supabase account and put credential there
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=postgres
+DB_USER=****
+DB_PASSWORD=****
+DB_HOST=****
+DB_PORT=6543
 
 ```
 
