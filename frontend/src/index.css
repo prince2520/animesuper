@@ -10,8 +10,8 @@
     --background-secondary: white;
     --background-primary: var(--primary);
 
-    --progress-bar:  #2D3135;
-    --progress-bar-done:#dadada ;
+    --progress-bar: #2D3135;
+    --progress-bar-done: #dadada;
 
     --primary: #F6764D;
     --white: #ffffff;
@@ -19,7 +19,7 @@
     --text: white;
     --text-light: #ABA5A5;
     --text-extra-light: #636262;
-    --text-secondary: #dadada ;
+    --text-secondary: #dadada;
     --text-primary: var(--primary);
 
     --border: #242323;
@@ -55,10 +55,3 @@ body {
     font-family: "Mulish", sans-serif;
     font-style: normal;
 }
-
-
-
-
-.card-container  > img {
-    
- }

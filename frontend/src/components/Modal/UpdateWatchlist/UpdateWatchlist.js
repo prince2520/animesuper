@@ -9,6 +9,7 @@ import { updateWatchlistThunk } from "../../../redux/thunk/myWatchlistThunk";
 import { mangaStatus, animeStatus, categoryType } from "../../../constants/constants";
 
 import "./UpdateWatchlist.css";
+import { AlertBoxActions } from "../../../redux/slice/alertBoxSlice";
 
 const EditWatchlist = () => {
   const dispatch = useDispatch();
@@ -29,11 +30,23 @@ const EditWatchlist = () => {
   const updateWatchlistHandler = (event) => {
     event.preventDefault();
 
+    function isOnlyDigits(value) {
+      return /^\d+$/.test(value);
+    }
+  
+    if (!isOnlyDigits(progressRef.current.value) || parseInt(progressRef.current.value) > data?.num_episode_or_chapter) {
+      dispatch(AlertBoxActions.getAlertBoxReducer({
+        success: false,
+        message: "Progress input not valid!"
+      }))
+      return
+    };
+
     let temp = {
       category: data.category,
       category_id: data.category_id,
       status: status,
-      progress_read_watched: progressRef.current.value,
+      progress_read_watched: parseInt(progressRef.current.value),
     }
 
     dispatch(updateWatchlistThunk({ ...temp }));
