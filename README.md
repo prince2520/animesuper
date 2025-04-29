@@ -61,17 +61,22 @@ AnimeSuper is the ultimate hub for anime and manga fans to track progress, organ
 ## Built With
 #### Frontend
 * [React](https://react.dev/)
-* [Figma](https://www.figma.com/)
-* [Iconify](https://iconify.design/)
+* [React Router](https://reactrouter.com/)
+* [React Redux](https://react-redux.js.org/)
+* [React Thunk](https://redux.js.org/usage/writing-logic-thunks)
 * [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer)
 * [Redux Toolkit](https://redux-toolkit.js.org/)
-* [Swiper](https://swiperjs.com/)
 * [React Image File Resizer](https://www.npmjs.com/package/react-image-file-resizer)
+* [Swiper](https://swiperjs.com/)
 * [Firebase](https://firebase.google.com/)
+* [Figma](https://www.figma.com/)
+
 
 #### Backend
 * [Django](https://www.djangoproject.com/)
 * [Django Rest Framework](https://www.django-rest-framework.org/)
+* [Django Framework SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/)
+* [SQLite](https://sqlite.org/)
 * [MyAnimelist API](https://myanimelist.net/apiconfig/references/api/v2)
 
 ## Getting Started  
@@ -188,7 +193,7 @@ py manage.py migrate
 ```
 
 
-<p><b>Step 6 -</b> Run backend server locally.</p>
+<p><b>Step 7 -</b> Run backend server locally.</p>
 
 ```
 py manage.py runserver 8000
