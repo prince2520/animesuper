@@ -115,6 +115,9 @@ input:-webkit-autofill:active {
   height: 17rem;
   width: clamp(10rem, 10vw + 1rem, 12rem);
   flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  position: relative;
 }
 
 /* custom css classes */

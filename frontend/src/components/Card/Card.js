@@ -70,14 +70,13 @@ const Card = (props) => {
           </div>
         )}
       </div>
-      <ZoomInZoomOut>
-        <img
-          style={{ cursor: "pointer" }}
-          onClick={() => navigate(`/home/${category}/${props.detail.id}`)}
-          src={props.detail.main_picture?.medium}
-          alt="card"
-        />
-      </ZoomInZoomOut>
+      <img
+        className="card__image"
+        style={{ cursor: "pointer" }}
+        onClick={() => navigate(`/home/${category}/${props.detail.id}`)}
+        src={props.detail.main_picture?.medium}
+        alt="card"
+      />
     </div>
   );
 };

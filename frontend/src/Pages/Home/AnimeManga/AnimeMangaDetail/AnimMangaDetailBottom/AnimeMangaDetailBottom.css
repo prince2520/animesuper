@@ -89,6 +89,7 @@
     max-width: 10rem;
     width: 45%;
     height: 15rem;
+    position: relative;
 }
 
 .recommendation-container {

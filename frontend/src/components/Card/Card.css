@@ -2,8 +2,18 @@
     height: 100%;
     width: 100%;
     position: relative;
-    border-radius: 0.75rem;
-    overflow: hidden;
+}
+
+.card > .card__image,
+.card > .card__image
+{
+    transition: transform 0.2s ease-in-out;
+}
+
+.card > .card__image:hover,
+.card > .card__image:active
+{
+    transform: scale(1.1);
 }
 
 
