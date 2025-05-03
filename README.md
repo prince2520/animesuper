@@ -18,12 +18,9 @@ AnimeSuper is the ultimate hub for anime and manga fans to track progress, organ
 <a href="https://supabase.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase"/></a>
 <a href="https://vercel.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" alt="vercel"/></a>
 <a href="https://www.figma.com/" target="_blank" rel="noreferrer"> <img src="https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white" alt="figma"/></a>
- 
 </p>
-
 </br>
 <br/>
-
 
 ## Table Of Contents
 * [About the Project](#about-the-project)
