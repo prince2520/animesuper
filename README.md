@@ -65,8 +65,8 @@ AnimeSuper is the ultimate hub for anime and manga fans to track progress, organ
 #### Frontend
 * [React](https://react.dev/)
 * [React Router](https://reactrouter.com/)
-* [React Redux](https://react-redux.js.org/)
-* [React Thunk](https://redux.js.org/usage/writing-logic-thunks)
+* [Redux](https://react-redux.js.org/)
+* [Redux Thunk](https://redux.js.org/usage/writing-logic-thunks)
 * [React Intersection Observer](https://www.npmjs.com/package/react-intersection-observer)
 * [Redux Toolkit](https://redux-toolkit.js.org/)
 * [React Image File Resizer](https://www.npmjs.com/package/react-image-file-resizer)
